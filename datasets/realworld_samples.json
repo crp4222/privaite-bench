@@ -1,0 +1,83 @@
+[
+  {
+    "id": "rse_edito",
+    "lang": "fr",
+    "text": "Marianne Laigneau, Présidente du Directoire d Enedis. Nos 41000 salariés sont mobilisés sur le terrain pour la transition écologique. Ce deuxième Rapport de Responsabilité Sociétale et Environnementale témoigne des avancées concrètes réalisées en 2024.",
+    "expected": {
+      "Marianne Laigneau": "PERSON"
+    }
+  },
+  {
+    "id": "rse_credits_photos",
+    "lang": "fr",
+    "text": "Crédits photos : Enedis, RTE, Olivier Ulrich, Julien Goldstein, Morgan Richard, Paul Robin, Laurent Vautrin, William Beaucardet, Laurent Mayeux, Jean-Noël Dias, Olivier Guerrin, Thierry Laporte, Jean-Luc Petit, Pierre Olivier",
+    "expected": {
+      "Olivier Ulrich": "PERSON",
+      "Julien Goldstein": "PERSON",
+      "Morgan Richard": "PERSON",
+      "Paul Robin": "PERSON",
+      "Laurent Vautrin": "PERSON",
+      "William Beaucardet": "PERSON",
+      "Laurent Mayeux": "PERSON",
+      "Jean-Noël Dias": "PERSON",
+      "Olivier Guerrin": "PERSON",
+      "Thierry Laporte": "PERSON",
+      "Jean-Luc Petit": "PERSON",
+      "Pierre Olivier": "PERSON"
+    }
+  },
+  {
+    "id": "rse_governance_contact",
+    "lang": "fr",
+    "text": "Directrice Financière : Claire Beaumont-Laforge (c.beaumont@gfe-group.eu, +33 1 45 67 89 01). Directeur des Risques : Thomas Wernher-Schmidt. Administratrice indépendante : Isabelle Fontaine-Dubois.",
+    "expected": {
+      "Claire Beaumont-Laforge": "PERSON",
+      "c.beaumont@gfe-group.eu": "EMAIL_ADDRESS",
+      "+33 1 45 67 89 01": "PHONE_NUMBER",
+      "Thomas Wernher-Schmidt": "PERSON",
+      "Isabelle Fontaine-Dubois": "PERSON"
+    }
+  },
+  {
+    "id": "rse_chiffres_clean",
+    "lang": "fr",
+    "text": "Capital financier : 5,3 Md EUR d investissements bruts en 2024, dont 1,3 Md EUR consacré à la résilience et à la modernisation du réseau. Capital humain : 41016 collaborateurs dont 2540 alternants, soit 6,6% de l effectif. 1,4M de km de réseau. 88,4% des déchets valorisés.",
+    "expected": {}
+  },
+  {
+    "id": "rse_carbone_clean",
+    "lang": "fr",
+    "text": "Les émissions du scope 1 sont en baisse de 7%, soit -6 ktCO2e en 2024, grâce à l électrification de la flotte de véhicules. Le facteur d émission du mix électrique moyen français est calculé et publié chaque année par l Ademe. Le bilan carbone 2024 d Enedis a été audité en assurance modérée par KPMG.",
+    "expected": {}
+  },
+  {
+    "id": "rse_ethique_clean",
+    "lang": "fr",
+    "text": "La plateforme de signalement est accessible 24h/24 et 7j/7. 30 signalements émanant majoritairement de ses salariés ont été reçus par Enedis en 2024, dont deux ont été classés sans suite. Le pôle Sûreté, Intelligence économique et Éthique du Secrétariat général traite les dossiers.",
+    "expected": {}
+  },
+  {
+    "id": "rse_biodiversite_clean",
+    "lang": "fr",
+    "text": "Enedis collabore avec la LPO à l échelle nationale et locale depuis plus de vingt ans afin de limiter l impact des lignes électriques sur les oiseaux. Le Gyp Act a permis de dynamiser les effectifs du gypaète barbu avec 46 oiseaux libérés. Un gypaète barbu est né dans le massif du Vercors pour la première fois depuis plus de cent ans.",
+    "expected": {}
+  },
+  {
+    "id": "rse_investissements_clean",
+    "lang": "fr",
+    "text": "96 Md EUR d investissements entre 2022 et 2040 dont 25% sont consacrés à la modernisation et à la résilience du réseau public de distribution d électricité. 703 M EUR : part d investissement consacrée par Enedis à l adaptation de ses ouvrages en 2024.",
+    "expected": {}
+  },
+  {
+    "id": "rse_numerique_clean",
+    "lang": "fr",
+    "text": "Enedis est labellisée Numérique responsable niveau 2 avec une note de 732/1000. 384 salariés ont participé à la Fresque du numérique en 2024. Plus de 400 salariés ont suivi les e-learnings du niveau 1 de ce parcours.",
+    "expected": {}
+  },
+  {
+    "id": "rse_jeux_olympiques_clean",
+    "lang": "fr",
+    "text": "Au total, 98,4% des besoins de Paris 2024 ont été couverts par l électricité du réseau. Cette première en France a permis de réduire de 83% les émissions de CO2 liées à l électricité du plus grand événement sportif de la planète.",
+    "expected": {}
+  }
+]

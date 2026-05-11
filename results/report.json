@@ -9,7 +9,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 138.0
+        "latency_ms": 129.8
       },
       {
         "id": "fr_two_persons",
@@ -19,7 +19,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 20.7
+        "latency_ms": 18.2
       },
       {
         "id": "fr_lowercase_name",
@@ -29,7 +29,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 13.9
+        "latency_ms": 12.1
       },
       {
         "id": "fr_contextual_suis",
@@ -39,7 +39,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 10.3
+        "latency_ms": 7.5
       },
       {
         "id": "fr_mon_nom_est",
@@ -49,7 +49,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 9.7
+        "latency_ms": 8.1
       },
       {
         "id": "en_full_profile",
@@ -59,7 +59,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 13.6
+        "latency_ms": 12.3
       },
       {
         "id": "en_lowercase_name",
@@ -69,7 +69,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 4.8
+        "latency_ms": 3.9
       },
       {
         "id": "en_multiple_people",
@@ -79,7 +79,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 7.2
+        "latency_ms": 6.5
       },
       {
         "id": "de_full_profile",
@@ -89,17 +89,19 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 13.1
+        "latency_ms": 14.1
       },
       {
         "id": "de_with_date",
         "lang": "de",
         "total_expected": 2,
-        "detected": 2,
-        "missed": 0,
-        "missed_items": {},
+        "detected": 1,
+        "missed": 1,
+        "missed_items": {
+          "Schmidt": "PERSON"
+        },
         "false_positives": [],
-        "latency_ms": 11.1
+        "latency_ms": 12.6
       },
       {
         "id": "mixed_fr_en",
@@ -109,7 +111,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 15.9
+        "latency_ms": 15.8
       },
       {
         "id": "iban_and_card",
@@ -119,7 +121,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 13.8
+        "latency_ms": 14.0
       },
       {
         "id": "bank_transfer_order",
@@ -129,17 +131,19 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 58.2
+        "latency_ms": 54.8
       },
       {
         "id": "bank_account_opening",
         "lang": "fr",
         "total_expected": 5,
-        "detected": 5,
-        "missed": 0,
-        "missed_items": {},
+        "detected": 4,
+        "missed": 1,
+        "missed_items": {
+          "Marie-Françoise": "PERSON"
+        },
         "false_positives": [],
-        "latency_ms": 46.7
+        "latency_ms": 45.7
       },
       {
         "id": "insurance_claim_en",
@@ -149,7 +153,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 26.6
+        "latency_ms": 26.5
       },
       {
         "id": "hr_employee_record",
@@ -159,17 +163,19 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 23.3
+        "latency_ms": 22.1
       },
       {
         "id": "german_bank_letter",
         "lang": "de",
         "total_expected": 8,
-        "detected": 8,
-        "missed": 0,
-        "missed_items": {},
+        "detected": 7,
+        "missed": 1,
+        "missed_items": {
+          "Schneider-Weber": "PERSON"
+        },
         "false_positives": [],
-        "latency_ms": 47.6
+        "latency_ms": 42.2
       },
       {
         "id": "spanish_contract",
@@ -179,17 +185,19 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 47.4
+        "latency_ms": 38.5
       },
       {
         "id": "italian_invoice",
         "lang": "it",
         "total_expected": 5,
-        "detected": 5,
-        "missed": 0,
-        "missed_items": {},
+        "detected": 4,
+        "missed": 1,
+        "missed_items": {
+          "Francesca De Luca": "PERSON"
+        },
         "false_positives": [],
-        "latency_ms": 38.4
+        "latency_ms": 41.1
       },
       {
         "id": "medical_referral_en",
@@ -199,17 +207,19 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 19.8
+        "latency_ms": 20.3
       },
       {
         "id": "fr_cv",
         "lang": "fr",
         "total_expected": 7,
-        "detected": 7,
-        "missed": 0,
-        "missed_items": {},
+        "detected": 6,
+        "missed": 1,
+        "missed_items": {
+          "Isabelle": "PERSON"
+        },
         "false_positives": [],
-        "latency_ms": 37.4
+        "latency_ms": 40.7
       },
       {
         "id": "fr_bail",
@@ -219,7 +229,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 45.2
+        "latency_ms": 46.8
       },
       {
         "id": "en_complaint",
@@ -229,7 +239,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 19.3
+        "latency_ms": 19.5
       },
       {
         "id": "en_nda",
@@ -239,7 +249,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 18.5
+        "latency_ms": 20.8
       },
       {
         "id": "de_mietvertrag",
@@ -249,17 +259,19 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 38.6
+        "latency_ms": 42.1
       },
       {
         "id": "es_denuncia",
         "lang": "es",
         "total_expected": 6,
-        "detected": 6,
-        "missed": 0,
-        "missed_items": {},
+        "detected": 5,
+        "missed": 1,
+        "missed_items": {
+          "María del Carmen Ortega Ruiz": "PERSON"
+        },
         "false_positives": [],
-        "latency_ms": 34.9
+        "latency_ms": 36.0
       },
       {
         "id": "it_preventivo",
@@ -269,7 +281,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 31.2
+        "latency_ms": 30.9
       },
       {
         "id": "en_medical_notes",
@@ -279,7 +291,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 19.6
+        "latency_ms": 21.6
       },
       {
         "id": "fr_procuration",
@@ -289,7 +301,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 39.7
+        "latency_ms": 40.4
       },
       {
         "id": "en_job_application",
@@ -299,7 +311,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 18.9
+        "latency_ms": 19.0
       },
       {
         "id": "de_arztbrief",
@@ -309,7 +321,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 33.8
+        "latency_ms": 34.5
       },
       {
         "id": "fr_devis_artisan",
@@ -319,7 +331,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 47.0
+        "latency_ms": 46.3
       },
       {
         "id": "en_wire_transfer",
@@ -335,11 +347,13 @@
         "id": "es_contrato_laboral",
         "lang": "es",
         "total_expected": 6,
-        "detected": 6,
-        "missed": 0,
-        "missed_items": {},
+        "detected": 5,
+        "missed": 1,
+        "missed_items": {
+          "Fernando José Méndez Castillo": "PERSON"
+        },
         "false_positives": [],
-        "latency_ms": 37.6
+        "latency_ms": 37.4
       },
       {
         "id": "fr_lettre_resiliation",
@@ -349,7 +363,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 41.1
+        "latency_ms": 42.2
       },
       {
         "id": "en_tenant_application",
@@ -359,7 +373,144 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 19.3
+        "latency_ms": 19.2
+      },
+      {
+        "id": "rse_edito",
+        "lang": "fr",
+        "total_expected": 1,
+        "detected": 1,
+        "missed": 0,
+        "missed_items": {},
+        "false_positives": [],
+        "latency_ms": 22.0
+      },
+      {
+        "id": "rse_credits_photos",
+        "lang": "fr",
+        "total_expected": 12,
+        "detected": 12,
+        "missed": 0,
+        "missed_items": {},
+        "false_positives": [],
+        "latency_ms": 20.3
+      },
+      {
+        "id": "rse_governance_contact",
+        "lang": "fr",
+        "total_expected": 5,
+        "detected": 5,
+        "missed": 0,
+        "missed_items": {},
+        "false_positives": [],
+        "latency_ms": 18.4
+      },
+      {
+        "id": "rse_chiffres_clean",
+        "lang": "fr",
+        "total_expected": 0,
+        "detected": 0,
+        "missed": 0,
+        "missed_items": {},
+        "false_positives": [
+          {
+            "text": "Md EUR",
+            "type": "LOCATION"
+          },
+          {
+            "text": "Capital",
+            "type": "LOCATION"
+          }
+        ],
+        "latency_ms": 28.8
+      },
+      {
+        "id": "rse_carbone_clean",
+        "lang": "fr",
+        "total_expected": 0,
+        "detected": 0,
+        "missed": 0,
+        "missed_items": {},
+        "false_positives": [],
+        "latency_ms": 28.6
+      },
+      {
+        "id": "rse_ethique_clean",
+        "lang": "fr",
+        "total_expected": 0,
+        "detected": 0,
+        "missed": 0,
+        "missed_items": {},
+        "false_positives": [],
+        "latency_ms": 24.9
+      },
+      {
+        "id": "rse_biodiversite_clean",
+        "lang": "fr",
+        "total_expected": 0,
+        "detected": 0,
+        "missed": 0,
+        "missed_items": {},
+        "false_positives": [
+          {
+            "text": "massif du Vercors",
+            "type": "LOCATION"
+          }
+        ],
+        "latency_ms": 32.3
+      },
+      {
+        "id": "rse_investissements_clean",
+        "lang": "fr",
+        "total_expected": 0,
+        "detected": 0,
+        "missed": 0,
+        "missed_items": {},
+        "false_positives": [
+          {
+            "text": "M EUR",
+            "type": "PERSON"
+          },
+          {
+            "text": "EUR",
+            "type": "LOCATION"
+          }
+        ],
+        "latency_ms": 23.8
+      },
+      {
+        "id": "rse_numerique_clean",
+        "lang": "fr",
+        "total_expected": 0,
+        "detected": 0,
+        "missed": 0,
+        "missed_items": {},
+        "false_positives": [
+          {
+            "text": "732/1000. 384",
+            "type": "PHONE_NUMBER"
+          }
+        ],
+        "latency_ms": 21.6
+      },
+      {
+        "id": "rse_jeux_olympiques_clean",
+        "lang": "fr",
+        "total_expected": 0,
+        "detected": 0,
+        "missed": 0,
+        "missed_items": {},
+        "false_positives": [
+          {
+            "text": "France",
+            "type": "LOCATION"
+          },
+          {
+            "text": "Paris",
+            "type": "LOCATION"
+          }
+        ],
+        "latency_ms": 19.8
       }
     ],
     "clean": [
@@ -371,7 +522,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 9.9
+        "latency_ms": 9.5
       },
       {
         "id": "fr_weather",
@@ -381,7 +532,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 10.0
+        "latency_ms": 9.8
       },
       {
         "id": "fr_programming",
@@ -391,7 +542,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 9.7
+        "latency_ms": 9.6
       },
       {
         "id": "fr_greeting",
@@ -411,7 +562,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 11.2
+        "latency_ms": 11.5
       },
       {
         "id": "fr_cooking",
@@ -421,7 +572,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 12.8
+        "latency_ms": 12.9
       },
       {
         "id": "en_technical",
@@ -430,8 +581,13 @@
         "detected": 0,
         "missed": 0,
         "missed_items": {},
-        "false_positives": [],
-        "latency_ms": 6.5
+        "false_positives": [
+          {
+            "text": "Kubernetes",
+            "type": "LOCATION"
+          }
+        ],
+        "latency_ms": 5.9
       },
       {
         "id": "en_math",
@@ -451,7 +607,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 4.5
+        "latency_ms": 4.6
       },
       {
         "id": "en_code_review",
@@ -471,7 +627,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 9.9
+        "latency_ms": 9.5
       },
       {
         "id": "fr_numbers",
@@ -481,7 +637,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 13.8
+        "latency_ms": 12.1
       },
       {
         "id": "en_programming_langs",
@@ -491,7 +647,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 5.6
+        "latency_ms": 4.6
       },
       {
         "id": "fr_business",
@@ -501,7 +657,7 @@
         "missed": 0,
         "missed_items": {},
         "false_positives": [],
-        "latency_ms": 13.0
+        "latency_ms": 12.6
       }
     ]
   }
