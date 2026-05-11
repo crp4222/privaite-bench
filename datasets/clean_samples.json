@@ -1,0 +1,86 @@
+[
+  {
+    "id": "fr_general_question",
+    "lang": "fr",
+    "text": "Peux-tu me résumer ces informations dans un tableau ?",
+    "expected": {}
+  },
+  {
+    "id": "fr_weather",
+    "lang": "fr",
+    "text": "Quel temps fait-il aujourd'hui ? Il pleut beaucoup en ce moment.",
+    "expected": {}
+  },
+  {
+    "id": "fr_programming",
+    "lang": "fr",
+    "text": "Explique-moi comment fonctionne Python. Montre-moi un exemple en c++ aussi.",
+    "expected": {}
+  },
+  {
+    "id": "fr_greeting",
+    "lang": "fr",
+    "text": "Bonjour, comment allez-vous ? Je voudrais un café s'il vous plaît.",
+    "expected": {}
+  },
+  {
+    "id": "fr_economics",
+    "lang": "fr",
+    "text": "Le PIB mondial est de 100 000 milliards d'euros en 2024.",
+    "expected": {}
+  },
+  {
+    "id": "fr_cooking",
+    "lang": "fr",
+    "text": "Pour faire une tarte aux pommes, il faut 500g de farine, 250g de beurre et 6 pommes.",
+    "expected": {}
+  },
+  {
+    "id": "en_technical",
+    "lang": "en",
+    "text": "How do I configure a Kubernetes deployment with 3 replicas and a NodePort service?",
+    "expected": {}
+  },
+  {
+    "id": "en_math",
+    "lang": "en",
+    "text": "What is the integral of x squared from 0 to 5?",
+    "expected": {}
+  },
+  {
+    "id": "en_history",
+    "lang": "en",
+    "text": "When did World War II end? What were the main causes?",
+    "expected": {}
+  },
+  {
+    "id": "en_code_review",
+    "lang": "en",
+    "text": "Review this function: def add(a, b): return a + b. Is it correct?",
+    "expected": {}
+  },
+  {
+    "id": "de_general",
+    "lang": "de",
+    "text": "Wie funktioniert maschinelles Lernen? Erkläre es mir bitte einfach.",
+    "expected": {}
+  },
+  {
+    "id": "fr_numbers",
+    "lang": "fr",
+    "text": "Mon code postal est 75001 et mon numéro de commande est CMD-2024-98765.",
+    "expected": {}
+  },
+  {
+    "id": "en_programming_langs",
+    "lang": "en",
+    "text": "Compare Python, JavaScript, Rust and C# for backend development.",
+    "expected": {}
+  },
+  {
+    "id": "fr_business",
+    "lang": "fr",
+    "text": "L'entreprise a réalisé un chiffre d'affaires de 50 millions d'euros au premier trimestre.",
+    "expected": {}
+  }
+]

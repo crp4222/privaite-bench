@@ -1,0 +1,106 @@
+[
+  {
+    "id": "bank_transfer_order",
+    "lang": "fr",
+    "text": "Objet: Ordre de virement\n\nMadame, Monsieur,\n\nJe soussigné Jean-Philippe Moreau, titulaire du compte n° 00045678912 à la Banque Populaire, agence de Strasbourg, demande par la présente l'exécution du virement suivant:\n\nBénéficiaire: Sophie Leclerc-Martini\nIBAN bénéficiaire: FR76 3000 6000 0112 3456 7890 189\nBIC: BNPAFRPPXXX\nMontant: 15 750,00 EUR\nMotif: Remboursement prêt personnel\n\nMes coordonnées:\nAdresse: 14 rue du Général de Gaulle, 67000 Strasbourg\nTéléphone: +33 3 88 45 67 89\nEmail: jp.moreau@wanadoo.fr\nDate de naissance: 22 septembre 1975\n\nCordialement,\nJean-Philippe Moreau",
+    "expected": {
+      "Jean-Philippe Moreau": "PERSON",
+      "Sophie Leclerc-Martini": "PERSON",
+      "FR76 3000 6000 0112 3456 7890 189": "IBAN_CODE",
+      "+33 3 88 45 67 89": "PHONE_NUMBER",
+      "jp.moreau@wanadoo.fr": "EMAIL_ADDRESS",
+      "22 septembre 1975": "DATE_TIME"
+    }
+  },
+  {
+    "id": "bank_account_opening",
+    "lang": "fr",
+    "text": "DEMANDE D'OUVERTURE DE COMPTE\n\nNom: Durand-Petit\nPrénom: Marie-Françoise\nDate de naissance: 3 avril 1988\nLieu de naissance: Bordeaux\nNationalité: Française\nAdresse: 28 avenue des Champs-Élysées, 75008 Paris\nTéléphone: 06 98 76 54 32\nEmail: mf.durand@hotmail.fr\nProfession: Directrice financière\nEmployeur: Groupe Renault SA\nRevenu annuel: 95 000 EUR\nNuméro de sécurité sociale: 2 88 04 33 123 456 78\nPièce d'identité: CNI n° 1234567890123",
+    "expected": {
+      "Marie-Françoise": "PERSON",
+      "Durand-Petit": "PERSON",
+      "3 avril 1988": "DATE_TIME",
+      "06 98 76 54 32": "PHONE_NUMBER",
+      "mf.durand@hotmail.fr": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "insurance_claim_en",
+    "lang": "en",
+    "text": "INSURANCE CLAIM FORM\n\nPolicyholder: James Robert Thompson\nPolicy Number: INS-2024-887654\nDate of Birth: March 15, 1982\nAddress: 42 Baker Street, London W1U 3BW\nPhone: +44 20 7946 0958\nEmail: j.thompson@barclays.co.uk\n\nClaim Details:\nDate of Incident: January 8, 2025\nLocation: Manchester Airport\nDescription: Lost luggage during transit from London Heathrow to Manchester.\n\nBank Details for Reimbursement:\nAccount Holder: James R. Thompson\nIBAN: GB82 WEST 1234 5698 7654 32\nBIC: WESTGB2L",
+    "expected": {
+      "James Robert Thompson": "PERSON",
+      "+44 20 7946 0958": "PHONE_NUMBER",
+      "j.thompson@barclays.co.uk": "EMAIL_ADDRESS",
+      "GB82 WEST 1234 5698 7654 32": "IBAN_CODE"
+    }
+  },
+  {
+    "id": "hr_employee_record",
+    "lang": "en",
+    "text": "EMPLOYEE RECORD\n\nName: Dr. Elizabeth Chen-Nakamura\nEmployee ID: EMP-2019-04521\nSSN: 234-56-7890\nDate of Birth: 07/14/1990\nAddress: 1500 Market Street, Apt 12B, Philadelphia, PA 19102\nPhone: (215) 555-0147\nEmail: e.chen@globalcorp.com\nEmergency Contact: Michael Chen, +1 215 555 0293\nBank Account: Chase Bank, Routing 021000021, Account 123456789\nSalary: $145,000/year\nStart Date: March 1, 2019\nDepartment: Engineering\nManager: Raj Patel (r.patel@globalcorp.com)",
+    "expected": {
+      "Elizabeth Chen-Nakamura": "PERSON",
+      "234-56-7890": "US_SSN",
+      "(215) 555-0147": "PHONE_NUMBER",
+      "e.chen@globalcorp.com": "EMAIL_ADDRESS",
+      "Michael Chen": "PERSON",
+      "+1 215 555 0293": "PHONE_NUMBER",
+      "r.patel@globalcorp.com": "EMAIL_ADDRESS",
+      "Raj Patel": "PERSON"
+    }
+  },
+  {
+    "id": "german_bank_letter",
+    "lang": "de",
+    "text": "Sehr geehrte Frau Schneider-Weber,\n\nbezüglich Ihres Kontos Nr. 9876543210 bei der Sparkasse München möchten wir Sie informieren, dass die Überweisung an Herrn Thomas Becker (IBAN: DE89 3704 0044 0532 0130 00) in Höhe von 5.230,00 EUR erfolgreich ausgeführt wurde.\n\nBitte kontaktieren Sie uns bei Fragen unter +49 89 1234 5678 oder per E-Mail an kundenservice@sparkasse-muenchen.de.\n\nIhre Beraterin: Claudia Hoffmann\nTelefon: +49 170 9876543\nE-Mail: c.hoffmann@sparkasse.de\n\nFiliale: Marienplatz 8, 80331 München\n\nMit freundlichen Grüßen,\nSparkasse München",
+    "expected": {
+      "Schneider-Weber": "PERSON",
+      "Thomas Becker": "PERSON",
+      "DE89 3704 0044 0532 0130 00": "IBAN_CODE",
+      "+49 89 1234 5678": "PHONE_NUMBER",
+      "kundenservice@sparkasse-muenchen.de": "EMAIL_ADDRESS",
+      "Claudia Hoffmann": "PERSON",
+      "+49 170 9876543": "PHONE_NUMBER",
+      "c.hoffmann@sparkasse.de": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "spanish_contract",
+    "lang": "es",
+    "text": "CONTRATO DE PRESTACIÓN DE SERVICIOS\n\nEntre las partes:\n\nDon Alejandro García-López, con DNI 12345678A, domiciliado en Calle Gran Vía 45, 3ºB, 28013 Madrid, teléfono +34 612 345 678, correo electrónico a.garcia@telefonica.es\n\ny\n\nDoña Carmen Ruiz Fernández, con DNI 87654321B, domiciliada en Avenida Diagonal 250, 08006 Barcelona, teléfono +34 698 765 432, correo electrónico c.ruiz@bbva.es\n\nSe acuerda lo siguiente para la prestación de servicios de consultoría financiera.",
+    "expected": {
+      "Alejandro García-López": "PERSON",
+      "+34 612 345 678": "PHONE_NUMBER",
+      "a.garcia@telefonica.es": "EMAIL_ADDRESS",
+      "Carmen Ruiz Fernández": "PERSON",
+      "+34 698 765 432": "PHONE_NUMBER",
+      "c.ruiz@bbva.es": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "italian_invoice",
+    "lang": "it",
+    "text": "FATTURA N. 2025/0042\n\nEmittente: Studio Legale Bianchi & Associati\nAvv. Giuseppe Bianchi\nVia Roma 15, 20121 Milano\nP.IVA: IT12345678901\nTel: +39 02 1234 5678\nEmail: g.bianchi@studiobianchi.it\n\nDestinatario: Sig.ra Francesca De Luca\nVia Condotti 88, 00187 Roma\nCodice Fiscale: DLCFNC85M41H501Z\nEmail: f.deluca@unicredit.it\n\nDescrizione: Consulenza legale - Pratica n. 2025/A-123\nImporto: EUR 3.500,00 + IVA",
+    "expected": {
+      "Giuseppe Bianchi": "PERSON",
+      "+39 02 1234 5678": "PHONE_NUMBER",
+      "g.bianchi@studiobianchi.it": "EMAIL_ADDRESS",
+      "Francesca De Luca": "PERSON",
+      "f.deluca@unicredit.it": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "medical_referral_en",
+    "lang": "en",
+    "text": "PATIENT REFERRAL\n\nFrom: Dr. Sarah Mitchell, MD\nPractice: London Bridge Medical Centre\nPhone: +44 7911 234567\nEmail: s.mitchell@nhs.uk\n\nTo: Dr. Andrew Patel\nDepartment of Cardiology, St Thomas' Hospital\n\nPatient: Mrs. Margaret O'Brien-Sullivan\nDOB: 14/03/1958\nNHS Number: 943 476 5919\nAddress: 7 Kensington Gardens, London SW7 4QR\nPhone: +44 7911 234568\n\nDear Dr. Patel,\n\nI am referring Mrs. O'Brien-Sullivan for urgent cardiology assessment following abnormal ECG findings.",
+    "expected": {
+      "Sarah Mitchell": "PERSON",
+      "+44 7911 234567": "PHONE_NUMBER",
+      "s.mitchell@nhs.uk": "EMAIL_ADDRESS",
+      "Andrew Patel": "PERSON",
+      "Margaret O'Brien-Sullivan": "PERSON",
+      "+44 7911 234568": "PHONE_NUMBER"
+    }
+  }
+]

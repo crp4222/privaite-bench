@@ -1,0 +1,221 @@
+[
+  {
+    "id": "fr_cv",
+    "lang": "fr",
+    "text": "CURRICULUM VITAE\n\nNom: Lefèvre-Bouchard\nPrénom: Isabelle\nDate de naissance: 28 juin 1992\nAdresse: 73 boulevard Haussmann, 75008 Paris\nTéléphone: 07 63 48 92 15\nEmail: i.lefevre@protonmail.com\n\nFormation:\n2014 - Master Finance, HEC Paris\n2012 - Licence Économie, Université Paris-Dauphine\n\nExpérience:\n2018-présent: Analyste senior chez BNP Paribas\nContact référent: Marc-Antoine Girard (m.girard@bnpparibas.fr)",
+    "expected": {
+      "Lefèvre-Bouchard": "PERSON",
+      "Isabelle": "PERSON",
+      "28 juin 1992": "DATE_TIME",
+      "07 63 48 92 15": "PHONE_NUMBER",
+      "i.lefevre@protonmail.com": "EMAIL_ADDRESS",
+      "Marc-Antoine Girard": "PERSON",
+      "m.girard@bnpparibas.fr": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "fr_bail",
+    "lang": "fr",
+    "text": "CONTRAT DE BAIL\n\nEntre le bailleur:\nNom: Thierry Vasseur\nAdresse: 5 place Bellecour, 69002 Lyon\nTéléphone: +33 4 78 93 10 20\nEmail: t.vasseur@gmail.com\n\nEt le locataire:\nNom: Amandine Roche-Dupuis\nNée le 14 février 1995\nTéléphone: 06 45 78 12 36\nEmail: a.roche@outlook.fr\n\nObjet: Location d'un appartement T3 situé au 12 rue de la République, 69001 Lyon.\nLoyer mensuel: 850 EUR\nDépôt de garantie: 850 EUR\nIBAN pour le paiement: FR76 3000 6000 0112 3456 7890 189",
+    "expected": {
+      "Thierry Vasseur": "PERSON",
+      "+33 4 78 93 10 20": "PHONE_NUMBER",
+      "t.vasseur@gmail.com": "EMAIL_ADDRESS",
+      "Amandine Roche-Dupuis": "PERSON",
+      "14 février 1995": "DATE_TIME",
+      "06 45 78 12 36": "PHONE_NUMBER",
+      "a.roche@outlook.fr": "EMAIL_ADDRESS",
+      "FR76 3000 6000 0112 3456 7890 189": "IBAN_CODE"
+    }
+  },
+  {
+    "id": "en_complaint",
+    "lang": "en",
+    "text": "FORMAL COMPLAINT\n\nFrom: Patricia Williams-Chen\nEmail: p.williams@gmail.com\nPhone: +1 415 555 0132\n\nTo: Customer Service Manager\n\nDate: May 3, 2025\n\nDear Sir/Madam,\n\nI am writing to complain about the service I received at your branch on April 28. My account number is 7890123456 and I was served by an employee named David O'Connor who was extremely rude. I can be reached at the number above or via my colleague Rebecca Torres (r.torres@company.com, +1 415 555 0198).",
+    "expected": {
+      "Patricia Williams-Chen": "PERSON",
+      "p.williams@gmail.com": "EMAIL_ADDRESS",
+      "+1 415 555 0132": "PHONE_NUMBER",
+      "David O'Connor": "PERSON",
+      "Rebecca Torres": "PERSON",
+      "r.torres@company.com": "EMAIL_ADDRESS",
+      "+1 415 555 0198": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "en_nda",
+    "lang": "en",
+    "text": "NON-DISCLOSURE AGREEMENT\n\nThis Agreement is entered into between:\n\nName: Dr. William Fitzgerald III\nTitle: Chief Technology Officer\nCompany: Nexus Innovations Ltd\nEmail: w.fitzgerald@nexusinnovations.com\nPhone: +44 20 7123 4567\n\nand\n\nName: Aisha Patel-Rahman\nTitle: Head of Research\nCompany: BioGenesis Corp\nEmail: a.patel@biogenesis.co.uk\nPhone: +44 7911 123456\n\nEffective Date: January 15, 2025\nExpiration: January 15, 2027",
+    "expected": {
+      "William Fitzgerald": "PERSON",
+      "w.fitzgerald@nexusinnovations.com": "EMAIL_ADDRESS",
+      "+44 20 7123 4567": "PHONE_NUMBER",
+      "Aisha Patel-Rahman": "PERSON",
+      "a.patel@biogenesis.co.uk": "EMAIL_ADDRESS",
+      "+44 7911 123456": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "de_mietvertrag",
+    "lang": "de",
+    "text": "MIETVERTRAG\n\nVermieter:\nName: Heinrich Brandt\nAdresse: Friedrichstraße 123, 10117 Berlin\nTelefon: +49 30 9876 5432\nE-Mail: h.brandt@gmx.de\n\nMieter:\nName: Lena Kowalski-Braun\nGeboren am 7. Oktober 1993\nTelefon: +49 176 2345 6789\nE-Mail: l.kowalski@posteo.de\nIBAN: DE89 3704 0044 0532 0130 00\n\nMietobjekt: 2-Zimmer-Wohnung, Schönhauser Allee 45, 10435 Berlin\nKaltmiete: 780 EUR\nKaution: 2.340 EUR",
+    "expected": {
+      "Heinrich Brandt": "PERSON",
+      "+49 30 9876 5432": "PHONE_NUMBER",
+      "h.brandt@gmx.de": "EMAIL_ADDRESS",
+      "Lena Kowalski-Braun": "PERSON",
+      "7. Oktober 1993": "DATE_TIME",
+      "+49 176 2345 6789": "PHONE_NUMBER",
+      "l.kowalski@posteo.de": "EMAIL_ADDRESS",
+      "DE89 3704 0044 0532 0130 00": "IBAN_CODE"
+    }
+  },
+  {
+    "id": "es_denuncia",
+    "lang": "es",
+    "text": "DENUNCIA POLICIAL\n\nDenunciante:\nNombre: María del Carmen Ortega Ruiz\nDNI: 45678901X\nTeléfono: +34 654 321 098\nCorreo: mc.ortega@yahoo.es\n\nHechos:\nEl día 15 de abril de 2025, me sustrajeron el bolso en la estación de Atocha. El bolso contenía:\n- Tarjeta de crédito Visa terminada en 4321\n- Teléfono móvil Samsung\n- Documentación personal\n\nTestigo: Juan Pablo Hernández Ríos, contacto: jp.hernandez@gmail.com, tel: +34 612 987 654",
+    "expected": {
+      "María del Carmen Ortega Ruiz": "PERSON",
+      "+34 654 321 098": "PHONE_NUMBER",
+      "mc.ortega@yahoo.es": "EMAIL_ADDRESS",
+      "Juan Pablo Hernández Ríos": "PERSON",
+      "jp.hernandez@gmail.com": "EMAIL_ADDRESS",
+      "+34 612 987 654": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "it_preventivo",
+    "lang": "it",
+    "text": "PREVENTIVO N. 2025-0089\n\nCliente:\nNome: Alessandro Ferretti\nIndirizzo: Via Garibaldi 22, 10122 Torino\nTel: +39 011 567 8901\nEmail: a.ferretti@libero.it\nCodice Fiscale: FRRLS85D12L219R\n\nFornitore:\nNome: Giulia Mantovani\nP.IVA: IT98765432109\nTel: +39 349 876 5432\nEmail: g.mantovani@pec.it\n\nOggetto: Ristrutturazione bagno e cucina\nImporto stimato: EUR 12.500,00 + IVA",
+    "expected": {
+      "Alessandro Ferretti": "PERSON",
+      "+39 011 567 8901": "PHONE_NUMBER",
+      "a.ferretti@libero.it": "EMAIL_ADDRESS",
+      "Giulia Mantovani": "PERSON",
+      "+39 349 876 5432": "PHONE_NUMBER",
+      "g.mantovani@pec.it": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "en_medical_notes",
+    "lang": "en",
+    "text": "CLINICAL NOTES\n\nPatient: Eleanor Whitfield-Barnes\nDOB: 22/08/1967\nNHS: 456 789 0123\nPhone: +44 20 7946 0958\nEmail: e.whitfield@btinternet.com\n\nReferring GP: Dr. Hamish MacLeod\nPractice: Edinburgh Central Medical\nPhone: +44 131 555 0199\nEmail: h.macleod@nhs.scot\n\nPresenting complaint: Persistent lower back pain x 6 weeks.\nMedication: Ibuprofen 400mg TDS, Codeine 30mg PRN\nAllergies: Penicillin, Latex",
+    "expected": {
+      "Eleanor Whitfield-Barnes": "PERSON",
+      "+44 20 7946 0958": "PHONE_NUMBER",
+      "e.whitfield@btinternet.com": "EMAIL_ADDRESS",
+      "Hamish MacLeod": "PERSON",
+      "+44 131 555 0199": "PHONE_NUMBER",
+      "h.macleod@nhs.scot": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "fr_procuration",
+    "lang": "fr",
+    "text": "PROCURATION\n\nJe soussignée, Catherine Beaumont-Lacroix, née le 30 novembre 1968, demeurant au 8 rue des Lilas, 31000 Toulouse, titulaire de la carte d'identité n° 1234567890, donne par la présente procuration à:\n\nMonsieur Philippe Desjardins\nNé le 2 mars 1970\nDemeurant au 45 avenue Jean Jaurès, 31000 Toulouse\nTéléphone: 05 61 23 45 67\nEmail: p.desjardins@sfr.fr\n\npour me représenter auprès de la Banque Postale, agence de Toulouse, pour toute opération sur mon compte n° 0012345678901.",
+    "expected": {
+      "Catherine Beaumont-Lacroix": "PERSON",
+      "30 novembre 1968": "DATE_TIME",
+      "Philippe Desjardins": "PERSON",
+      "2 mars 1970": "DATE_TIME",
+      "05 61 23 45 67": "PHONE_NUMBER",
+      "p.desjardins@sfr.fr": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "en_job_application",
+    "lang": "en",
+    "text": "Dear Hiring Manager,\n\nI am writing to apply for the Senior Developer position. My name is Christopher Nguyen-Park and I have 8 years of experience in full-stack development.\n\nContact:\nEmail: c.nguyen@protonmail.ch\nPhone: +1 650 555 0142\nLinkedIn: linkedin.com/in/cnguyen\n\nReferences:\n1. Dr. Samantha Rivera, CTO at TechFlow Inc.\n   Email: s.rivera@techflow.io\n   Phone: +1 408 555 0167\n\n2. Marcus Johnson-Lee, Engineering Lead\n   Email: m.johnson@amazon.com",
+    "expected": {
+      "Christopher Nguyen-Park": "PERSON",
+      "c.nguyen@protonmail.ch": "EMAIL_ADDRESS",
+      "+1 650 555 0142": "PHONE_NUMBER",
+      "Samantha Rivera": "PERSON",
+      "s.rivera@techflow.io": "EMAIL_ADDRESS",
+      "+1 408 555 0167": "PHONE_NUMBER",
+      "Marcus Johnson-Lee": "PERSON",
+      "m.johnson@amazon.com": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "de_arztbrief",
+    "lang": "de",
+    "text": "ARZTBRIEF\n\nPatient: Maximilian Schröder-Hoffmann\nGeburtsdatum: 15. Januar 1985\nKrankenkasse: AOK Bayern\nVersichertennummer: A123456789\nTelefon: +49 89 4567 8901\nE-Mail: m.schroeder@t-online.de\n\nBehandelnder Arzt: Dr. med. Franziska Neumann\nPraxis: Hausarztpraxis am Viktualienmarkt\nTelefon: +49 89 1234 5678\nE-Mail: f.neumann@praxis-muenchen.de\n\nDiagnose: Hypertonie Stadium II\nTherapie: Ramipril 5mg 1-0-0, Kontrolltermin in 4 Wochen",
+    "expected": {
+      "Maximilian Schröder-Hoffmann": "PERSON",
+      "15. Januar 1985": "DATE_TIME",
+      "+49 89 4567 8901": "PHONE_NUMBER",
+      "m.schroeder@t-online.de": "EMAIL_ADDRESS",
+      "Franziska Neumann": "PERSON",
+      "+49 89 1234 5678": "PHONE_NUMBER",
+      "f.neumann@praxis-muenchen.de": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "fr_devis_artisan",
+    "lang": "fr",
+    "text": "DEVIS N° 2025-156\n\nArtisan:\nNom: Sébastien Moreau-Petit\nSIRET: 12345678901234\nTél: 06 12 34 56 78\nEmail: s.moreau@artisan-plombier.fr\n\nClient:\nNom: Françoise Dubois\nTél: 06 98 76 54 32\nEmail: f.dubois@orange.fr\nAdresse du chantier: 15 impasse des Cerisiers, 33000 Bordeaux\n\nDescription des travaux:\n- Remplacement chaudière gaz\n- Installation thermostat connecté\n\nMontant HT: 3 200,00 EUR\nTVA 10%: 320,00 EUR\nTotal TTC: 3 520,00 EUR",
+    "expected": {
+      "Sébastien Moreau-Petit": "PERSON",
+      "06 12 34 56 78": "PHONE_NUMBER",
+      "s.moreau@artisan-plombier.fr": "EMAIL_ADDRESS",
+      "Françoise Dubois": "PERSON",
+      "06 98 76 54 32": "PHONE_NUMBER",
+      "f.dubois@orange.fr": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "en_wire_transfer",
+    "lang": "en",
+    "text": "WIRE TRANSFER INSTRUCTION\n\nOriginator:\nName: Robert James McAllister\nAccount: 9876543210\nBank: HSBC London\nPhone: +44 20 7946 0123\nEmail: r.mcallister@hsbc.co.uk\n\nBeneficiary:\nName: Yuki Tanaka-Anderson\nIBAN: GB29 NWBK 6016 1331 9268 19\nBIC: NWBKGB2L\nBank: NatWest\nEmail: y.tanaka@gmail.com\n\nAmount: GBP 25,000.00\nReference: Property deposit - 44 Churchill Road\nDate: May 10, 2025",
+    "expected": {
+      "Robert James McAllister": "PERSON",
+      "+44 20 7946 0123": "PHONE_NUMBER",
+      "r.mcallister@hsbc.co.uk": "EMAIL_ADDRESS",
+      "Yuki Tanaka-Anderson": "PERSON",
+      "GB29 NWBK 6016 1331 9268 19": "IBAN_CODE",
+      "y.tanaka@gmail.com": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "es_contrato_laboral",
+    "lang": "es",
+    "text": "CONTRATO DE TRABAJO\n\nEmpleador: TechSolutions España S.L.\nCIF: B12345678\n\nTrabajador:\nNombre: Fernando José Méndez Castillo\nDNI: 98765432Z\nFecha de nacimiento: 12 de agosto de 1990\nTeléfono: +34 678 901 234\nCorreo: f.mendez@outlook.es\n\nSupervisor:\nNombre: Ana Belén Torres Sánchez\nTeléfono: +34 611 222 333\nCorreo: ab.torres@techsolutions.es\n\nPuesto: Ingeniero de Software Senior\nSalario bruto anual: 48.000 EUR\nFecha de inicio: 1 de junio de 2025",
+    "expected": {
+      "Fernando José Méndez Castillo": "PERSON",
+      "+34 678 901 234": "PHONE_NUMBER",
+      "f.mendez@outlook.es": "EMAIL_ADDRESS",
+      "Ana Belén Torres Sánchez": "PERSON",
+      "+34 611 222 333": "PHONE_NUMBER",
+      "ab.torres@techsolutions.es": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "fr_lettre_resiliation",
+    "lang": "fr",
+    "text": "Objet: Résiliation de contrat d'assurance\n\nJe soussigné, Antoine Bernard-Lefranc, né le 8 décembre 1983, titulaire du contrat n° HAB-2020-456789, souhaite résilier mon contrat d'assurance habitation à effet du 1er juillet 2025.\n\nMes coordonnées:\nAdresse: 22 rue Pasteur, 69007 Lyon\nTéléphone: 04 72 34 56 78\nEmail: a.bernard@free.fr\n\nIBAN pour le remboursement: FR76 3000 6000 0112 3456 7890 189\n\nJe vous prie d'agréer l'expression de mes salutations distinguées.\n\nAntoine Bernard-Lefranc",
+    "expected": {
+      "Antoine Bernard-Lefranc": "PERSON",
+      "8 décembre 1983": "DATE_TIME",
+      "04 72 34 56 78": "PHONE_NUMBER",
+      "a.bernard@free.fr": "EMAIL_ADDRESS",
+      "FR76 3000 6000 0112 3456 7890 189": "IBAN_CODE"
+    }
+  },
+  {
+    "id": "en_tenant_application",
+    "lang": "en",
+    "text": "RENTAL APPLICATION\n\nApplicant Information:\nName: Jennifer O'Sullivan-Park\nDate of Birth: 09/23/1991\nSSN: 078-05-1120\nCurrent Address: 789 Pine Avenue, San Francisco, CA 94102\nPhone: +1 415 555 0175\nEmail: j.osullivan@icloud.com\n\nEmployment:\nEmployer: Goldman Sachs\nPosition: Vice President, Risk Management\nSalary: $210,000/year\nManager: Benjamin Okafor (b.okafor@gs.com)\n\nPrevious Landlord:\nName: Margaret Chen\nPhone: +1 415 555 0134\nEmail: m.chen@sfrentals.com",
+    "expected": {
+      "Jennifer O'Sullivan-Park": "PERSON",
+      "078-05-1120": "US_SSN",
+      "+1 415 555 0175": "PHONE_NUMBER",
+      "j.osullivan@icloud.com": "EMAIL_ADDRESS",
+      "Benjamin Okafor": "PERSON",
+      "b.okafor@gs.com": "EMAIL_ADDRESS",
+      "Margaret Chen": "PERSON",
+      "+1 415 555 0134": "PHONE_NUMBER",
+      "m.chen@sfrentals.com": "EMAIL_ADDRESS"
+    }
+  }
+]

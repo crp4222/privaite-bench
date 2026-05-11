@@ -1,0 +1,123 @@
+[
+  {
+    "id": "fr_full_profile",
+    "lang": "fr",
+    "text": "Bonjour, je suis Marie-Claire Dupont-Moretti, née le 15 mars 1987 à Lyon. Mon email est mc.dupont@gmail.com et mon numéro est le +33 6 78 45 12 90. Mon IBAN est FR76 3000 6000 0112 3456 7890 189. Ma carte bancaire est 4111 1111 1111 1111. Mon IP est 192.168.1.42.",
+    "expected": {
+      "Marie-Claire Dupont-Moretti": "PERSON",
+      "mc.dupont@gmail.com": "EMAIL_ADDRESS",
+      "+33 6 78 45 12 90": "PHONE_NUMBER",
+      "FR76 3000 6000 0112 3456 7890 189": "IBAN_CODE",
+      "4111 1111 1111 1111": "CREDIT_CARD",
+      "192.168.1.42": "IP_ADDRESS",
+      "15 mars 1987": "DATE_TIME"
+    }
+  },
+  {
+    "id": "fr_two_persons",
+    "lang": "fr",
+    "text": "J'ai rendez-vous avec Pierre-Antoine Lefebvre (pa.lefebvre@orange.fr, 06 12 98 76 54) le 23 décembre 2025 au restaurant Le Petit Zinc à Paris.",
+    "expected": {
+      "Pierre-Antoine Lefebvre": "PERSON",
+      "pa.lefebvre@orange.fr": "EMAIL_ADDRESS",
+      "06 12 98 76 54": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "fr_lowercase_name",
+    "lang": "fr",
+    "text": "je m'appelle dénis navarros de la ciudad et mon numéro c'est 06 27 43 23 54",
+    "expected": {
+      "dénis navarros": "PERSON",
+      "06 27 43 23 54": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "fr_contextual_suis",
+    "lang": "fr",
+    "text": "je suis jean-paul belmondo et je vis à marseille",
+    "expected": {
+      "jean-paul belmondo": "PERSON"
+    }
+  },
+  {
+    "id": "fr_mon_nom_est",
+    "lang": "fr",
+    "text": "mon nom est Éloïse Bérénice-Duval et mon mail est eloise.bd@laposte.net",
+    "expected": {
+      "Éloïse Bérénice-Duval": "PERSON",
+      "eloise.bd@laposte.net": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "en_full_profile",
+    "lang": "en",
+    "text": "My name is Sarah Johnson, I live in New York. My email is sarah.j@company.org and my phone is +1 212 555 0199. My SSN is 078-05-1120 and my credit card is 5500 0000 0000 0004.",
+    "expected": {
+      "Sarah Johnson": "PERSON",
+      "sarah.j@company.org": "EMAIL_ADDRESS",
+      "+1 212 555 0199": "PHONE_NUMBER",
+      "078-05-1120": "US_SSN",
+      "5500 0000 0000 0004": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "en_lowercase_name",
+    "lang": "en",
+    "text": "my name is john smith and my email is john@test.com",
+    "expected": {
+      "john smith": "PERSON",
+      "john@test.com": "EMAIL_ADDRESS"
+    }
+  },
+  {
+    "id": "en_multiple_people",
+    "lang": "en",
+    "text": "Contact Alice Martin (alice@corp.io) or Bob Wilson (bob.w@corp.io) at their London office. IP: 10.0.0.42.",
+    "expected": {
+      "Alice Martin": "PERSON",
+      "alice@corp.io": "EMAIL_ADDRESS",
+      "Bob Wilson": "PERSON",
+      "bob.w@corp.io": "EMAIL_ADDRESS",
+      "10.0.0.42": "IP_ADDRESS"
+    }
+  },
+  {
+    "id": "de_full_profile",
+    "lang": "de",
+    "text": "ich heiße Hans Müller und meine E-Mail ist hans.mueller@web.de. Meine Telefonnummer ist +49 170 1234567.",
+    "expected": {
+      "Hans Müller": "PERSON",
+      "hans.mueller@web.de": "EMAIL_ADDRESS",
+      "+49 170 1234567": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "de_with_date",
+    "lang": "de",
+    "text": "Frau Schmidt, geboren am 3. März 1990 in Berlin, wohnt jetzt in München.",
+    "expected": {
+      "Schmidt": "PERSON",
+      "3. März 1990": "DATE_TIME"
+    }
+  },
+  {
+    "id": "mixed_fr_en",
+    "lang": "fr",
+    "text": "Hello, je m'appelle François-Xavier de Villepin. My email is fx.villepin@gmail.com and my phone is +33 6 99 88 77 66. I live in Paris.",
+    "expected": {
+      "François-Xavier de Villepin": "PERSON",
+      "fx.villepin@gmail.com": "EMAIL_ADDRESS",
+      "+33 6 99 88 77 66": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "iban_and_card",
+    "lang": "fr",
+    "text": "Virement sur IBAN DE89 3704 0044 0532 0130 00, carte Visa 4111 1111 1111 1111.",
+    "expected": {
+      "DE89 3704 0044 0532 0130 00": "IBAN_CODE",
+      "4111 1111 1111 1111": "CREDIT_CARD"
+    }
+  }
+]
