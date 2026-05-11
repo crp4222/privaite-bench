@@ -1,0 +1,50 @@
+[
+  {
+    "id": "dlptest_row1",
+    "lang": "en",
+    "source": "https://dlptest.com/sample-data.csv",
+    "text": "Customer: Johnson White, SSN 172-32-1176, born 4/21/1958. Address: 10932 Bigge Rd, Menlo Park, CA 94025. Phone: 408 496-7223. Email: jwhite@domain.com. Credit card: 5270-4267-6450-5516, CVC 123, expires 2010/06/25.",
+    "expected": {
+      "Johnson White": "PERSON",
+      "jwhite@domain.com": "EMAIL_ADDRESS",
+      "408 496-7223": "PHONE_NUMBER",
+      "5270-4267-6450-5516": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "dlptest_row2",
+    "lang": "en",
+    "source": "https://dlptest.com/sample-data.csv",
+    "text": "Customer: Ashley Borden, SSN 514-14-8905, born 12/22/1944. Address: 4469 Sherman Street, Goff, KS 66428. Phone: 785-939-6046. Email: aborden@domain.com. Credit card: 5370-4638-8881-3020, CVC 713.",
+    "expected": {
+      "Ashley Borden": "PERSON",
+      "aborden@domain.com": "EMAIL_ADDRESS",
+      "785-939-6046": "PHONE_NUMBER",
+      "5370-4638-8881-3020": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "dlptest_row3",
+    "lang": "en",
+    "source": "https://dlptest.com/sample-data.csv",
+    "text": "Customer: Marjorie Green, SSN 213-46-8915, born 4/21/1958. Address: 309 63rd St. #411, Oakland, CA 94618. Phone: 415 986-7020. Email: mgreen@domain.com. Credit card: 4916-9766-5240-6147, CVC 258.",
+    "expected": {
+      "Marjorie Green": "PERSON",
+      "mgreen@domain.com": "EMAIL_ADDRESS",
+      "415 986-7020": "PHONE_NUMBER",
+      "4916-9766-5240-6147": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "dlptest_row4",
+    "lang": "en",
+    "source": "https://dlptest.com/sample-data.csv",
+    "text": "Customer: Jerome Munsch, SSN 524-02-7657, born 3/25/1962. Address: 2183 Roy Alley, Centennial, CO 80112. Phone: 303-901-6123. Email: jmunsch@domain.com. Credit card: 5180-3807-3679-8221, CVC 612.",
+    "expected": {
+      "Jerome Munsch": "PERSON",
+      "jmunsch@domain.com": "EMAIL_ADDRESS",
+      "303-901-6123": "PHONE_NUMBER",
+      "5180-3807-3679-8221": "CREDIT_CARD"
+    }
+  }
+]

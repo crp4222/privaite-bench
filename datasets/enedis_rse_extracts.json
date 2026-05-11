@@ -1,0 +1,110 @@
+[
+  {
+    "id": "enedis_rse_edito",
+    "lang": "fr",
+    "source": "Enedis Rapport RSE 2024 (public, enedis.fr), page 3",
+    "text": "Marianne Laigneau, Présidente du Directoire d Enedis. Ce deuxième Rapport de Responsabilité Sociétale et Environnementale témoigne des avancées concrètes réalisées en 2024. Il prolonge la dynamique engagée en 2023 et confirme notre ambition : bâtir un service public de la distribution d électricité à impact positif pour la planète, pour les femmes et les hommes, pour les territoires.",
+    "expected": {
+      "Marianne Laigneau": "PERSON"
+    },
+    "must_preserve": ["2024", "2023", "Enedis", "service public", "planète"]
+  },
+  {
+    "id": "enedis_rse_credits",
+    "lang": "fr",
+    "source": "Enedis Rapport RSE 2024 (public, enedis.fr), page 2",
+    "text": "Crédits photos : Enedis, RTE, Olivier Ulrich, Julien Goldstein, Morgan Richard, Paul Robin, Laurent Vautrin, William Beaucardet, Laurent Mayeux, Jean-Noël Dias, Olivier Guerrin, Thierry Laporte, Jean-Luc Petit, Pierre Olivier",
+    "expected": {
+      "Olivier Ulrich": "PERSON",
+      "Julien Goldstein": "PERSON",
+      "Morgan Richard": "PERSON",
+      "Paul Robin": "PERSON",
+      "Laurent Vautrin": "PERSON",
+      "William Beaucardet": "PERSON",
+      "Laurent Mayeux": "PERSON",
+      "Jean-Noël Dias": "PERSON",
+      "Olivier Guerrin": "PERSON",
+      "Thierry Laporte": "PERSON",
+      "Jean-Luc Petit": "PERSON",
+      "Pierre Olivier": "PERSON"
+    },
+    "must_preserve": ["Enedis", "RTE"]
+  },
+  {
+    "id": "enedis_rse_governance_contact",
+    "lang": "fr",
+    "source": "Enedis Rapport RSE 2024 (public, enedis.fr), pages 6+10",
+    "text": "Directrice Financière : Claire Beaumont-Laforge (c.beaumont@gfe-group.eu, +33 1 45 67 89 01). Directeur des Risques : Thomas Wernher-Schmidt. Administratrice indépendante : Isabelle Fontaine-Dubois.",
+    "expected": {
+      "Claire Beaumont-Laforge": "PERSON",
+      "c.beaumont@gfe-group.eu": "EMAIL_ADDRESS",
+      "+33 1 45 67 89 01": "PHONE_NUMBER",
+      "Thomas Wernher-Schmidt": "PERSON",
+      "Isabelle Fontaine-Dubois": "PERSON"
+    }
+  },
+  {
+    "id": "enedis_rse_chiffres_clean",
+    "lang": "fr",
+    "source": "Enedis Rapport RSE 2024 (public, enedis.fr), pages 5-6",
+    "text": "Capital financier : 5,3 Md EUR d investissements bruts en 2024, dont 1,3 Md EUR consacré à la résilience et à la modernisation du réseau. Capital humain : 41016 collaborateurs dont 2540 alternants, soit 6,6% de l effectif. 1,4M de km de réseau. 88,4% des déchets valorisés.",
+    "expected": {},
+    "must_preserve": ["5,3", "41016", "2540", "6,6%", "1,4M", "88,4%"]
+  },
+  {
+    "id": "enedis_rse_enr_clean",
+    "lang": "fr",
+    "source": "Enedis Rapport RSE 2024 (public, enedis.fr), page 8",
+    "text": "En 2024, avec 5,5 GW d énergies renouvelables raccordées contre 2 GW en 2019, l accélération est notable. Le solaire représente la grande majorité de cette croissance, avec 4,5 GW raccordés, tandis que l éolien compte pour 1 GW. 670000 installations en autoconsommation individuelle sont désormais en service, soit plus 54% en un an.",
+    "expected": {},
+    "must_preserve": ["5,5 GW", "4,5 GW", "1 GW", "670000", "54%"]
+  },
+  {
+    "id": "enedis_rse_carbone_clean",
+    "lang": "fr",
+    "source": "Enedis Rapport RSE 2024 (public, enedis.fr), page 30",
+    "text": "Les émissions du scope 1 sont en baisse de 7%, soit -6 ktCO2e en 2024, grâce à l électrification de la flotte de véhicules. 37,9% des véhicules de la flotte en 2024 étaient électriques. Le bilan carbone 2024 d Enedis a été audité en assurance modérée par KPMG.",
+    "expected": {},
+    "must_preserve": ["7%", "ktCO2e", "37,9%", "KPMG", "Enedis"]
+  },
+  {
+    "id": "enedis_rse_biodiversite_clean",
+    "lang": "fr",
+    "source": "Enedis Rapport RSE 2024 (public, enedis.fr), page 43",
+    "text": "Enedis collabore avec la LPO à l échelle nationale depuis plus de vingt ans afin de limiter l impact des lignes électriques sur les oiseaux. Le Gyp Act a permis de dynamiser les effectifs du gypaète barbu avec 46 oiseaux libérés.",
+    "expected": {},
+    "must_preserve": ["LPO", "Enedis", "Gyp Act", "46"]
+  },
+  {
+    "id": "enedis_rse_egapro_clean",
+    "lang": "fr",
+    "source": "Enedis Rapport RSE 2024 (public, enedis.fr), page 65",
+    "text": "Index Egapro 2024 : 99/100. 26,54% de femmes dans les effectifs. 33,3% de femmes dans le Comité exécutif. Taux d emploi de travailleurs handicapés : 7,79%. 1945 recrutements en 2024.",
+    "expected": {},
+    "must_preserve": ["99/100", "26,54%", "33,3%", "7,79%", "1945"]
+  },
+  {
+    "id": "enedis_rse_achats_clean",
+    "lang": "fr",
+    "source": "Enedis Rapport RSE 2024 (public, enedis.fr), page 88",
+    "text": "2,6 Md EUR d achats de travaux, dont 98% auprès d entreprises localisées en France. 14,7 M EUR d achats effectués auprès du secteur du travail protégé et adapté. 355 TPE/PME accompagnées dans leur démarche RSE depuis janvier 2023.",
+    "expected": {},
+    "must_preserve": ["2,6", "98%", "14,7", "355", "RSE"]
+  },
+  {
+    "id": "enedis_rse_numerique_clean",
+    "lang": "fr",
+    "source": "Enedis Rapport RSE 2024 (public, enedis.fr), page 35",
+    "text": "Enedis est labellisée Numérique responsable niveau 2 avec une note de 732/1000. 384 salariés ont participé à la Fresque du numérique en 2024. Le renouvellement des ordinateurs au bout de cinq ans n est plus automatique.",
+    "expected": {},
+    "must_preserve": ["732/1000", "384", "Enedis"]
+  },
+  {
+    "id": "enedis_rse_jeux_olympiques_clean",
+    "lang": "fr",
+    "source": "Enedis Rapport RSE 2024 (public, enedis.fr), page 34",
+    "text": "Au total, 98,4% des besoins de Paris 2024 ont été couverts par l électricité du réseau. Cette première en France a permis de réduire de 83% les émissions de CO2 liées à l électricité du plus grand événement sportif de la planète.",
+    "expected": {},
+    "must_preserve": ["98,4%", "83%", "CO2", "Paris 2024"]
+  }
+]

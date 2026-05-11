@@ -213,7 +213,11 @@ async def main():
     pii_samples = load_dataset(base / "datasets" / "pii_samples.json")
     clean_samples = load_dataset(base / "datasets" / "clean_samples.json")
 
-    for extra in ["corporate_samples.json", "batch_samples.json", "realworld_samples.json"]:
+    for extra in [
+        "corporate_samples.json", "batch_samples.json",
+        "realworld_samples.json", "dlptest_us.json",
+        "enedis_rse_extracts.json",
+    ]:
         path = base / "datasets" / extra
         if path.exists():
             extra_data = load_dataset(path)
