@@ -43,11 +43,19 @@ PRESETS = {
                 score_threshold=0.4,
                 entities=[
                     "PERSON", "EMAIL_ADDRESS", "PHONE_NUMBER", "CREDIT_CARD",
-                    "IBAN_CODE", "IP_ADDRESS", "LOCATION", "DATE_TIME",
-                    "US_SSN", "URL",
+                    "IBAN_CODE", "IP_ADDRESS", "DATE_TIME",
+                    "US_SSN", "UK_NHS",
                 ],
             ),
         ),
+        anonymization=AnonymizationConfig(
+            method="placeholder", faker_locale=["fr_FR", "en_US"]
+        ),
+        deanonymization=DeanonymizationConfig(enabled=True),
+    ),
+    "onnx": PIIConfig(
+        enabled=True,
+        preset="onnx",
         anonymization=AnonymizationConfig(
             method="placeholder", faker_locale=["fr_FR", "en_US"]
         ),
