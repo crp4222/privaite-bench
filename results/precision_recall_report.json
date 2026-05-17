@@ -1,0 +1,819 @@
+{
+  "aggregate": {
+    "tp": 263,
+    "fp": 47,
+    "fn": 16,
+    "precision": 0.8483870967741935,
+    "recall": 0.942652329749104,
+    "f1": 0.8930390492359932
+  },
+  "by_doc": [
+    {
+      "id": "fr_full_profile",
+      "lang": "fr",
+      "tp": 7,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 7,
+      "detected_total": 7,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "fr_two_persons",
+      "lang": "fr",
+      "tp": 3,
+      "fp": 1,
+      "fn": 0,
+      "expected_total": 3,
+      "detected_total": 4,
+      "fp_items": [
+        "23 décembre 2025"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "fr_lowercase_name",
+      "lang": "fr",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 2,
+      "detected_total": 2,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "fr_contextual_suis",
+      "lang": "fr",
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 1,
+      "detected_total": 1,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "fr_mon_nom_est",
+      "lang": "fr",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 2,
+      "detected_total": 2,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "en_full_profile",
+      "lang": "en",
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 5,
+      "detected_total": 5,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "en_lowercase_name",
+      "lang": "en",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 2,
+      "detected_total": 2,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "en_multiple_people",
+      "lang": "en",
+      "tp": 4,
+      "fp": 0,
+      "fn": 1,
+      "expected_total": 5,
+      "detected_total": 4,
+      "fp_items": [],
+      "fn_items": [
+        "Alice Martin"
+      ]
+    },
+    {
+      "id": "de_full_profile",
+      "lang": "de",
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 3,
+      "detected_total": 3,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "de_with_date",
+      "lang": "de",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 2,
+      "detected_total": 2,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "mixed_fr_en",
+      "lang": "fr",
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 3,
+      "detected_total": 3,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "iban_and_card",
+      "lang": "fr",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 2,
+      "detected_total": 2,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "bank_transfer_order",
+      "lang": "fr",
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 6,
+      "detected_total": 6,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "bank_account_opening",
+      "lang": "fr",
+      "tp": 4,
+      "fp": 0,
+      "fn": 1,
+      "expected_total": 5,
+      "detected_total": 4,
+      "fp_items": [],
+      "fn_items": [
+        "Marie-Françoise"
+      ]
+    },
+    {
+      "id": "insurance_claim_en",
+      "lang": "en",
+      "tp": 4,
+      "fp": 2,
+      "fn": 0,
+      "expected_total": 4,
+      "detected_total": 6,
+      "fp_items": [
+        "James R. Thompson",
+        "2024-887654"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "hr_employee_record",
+      "lang": "en",
+      "tp": 8,
+      "fp": 3,
+      "fn": 0,
+      "expected_total": 8,
+      "detected_total": 11,
+      "fp_items": [
+        "021000021",
+        "07/14/1990",
+        "Dr"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "german_bank_letter",
+      "lang": "de",
+      "tp": 7,
+      "fp": 1,
+      "fn": 1,
+      "expected_total": 8,
+      "detected_total": 8,
+      "fp_items": [
+        "9876543210"
+      ],
+      "fn_items": [
+        "Schneider-Weber"
+      ]
+    },
+    {
+      "id": "spanish_contract",
+      "lang": "es",
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 6,
+      "detected_total": 6,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "italian_invoice",
+      "lang": "it",
+      "tp": 5,
+      "fp": 1,
+      "fn": 0,
+      "expected_total": 5,
+      "detected_total": 6,
+      "fp_items": [
+        "Studio Legale Bianchi"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "medical_referral_en",
+      "lang": "en",
+      "tp": 4,
+      "fp": 4,
+      "fn": 2,
+      "expected_total": 6,
+      "detected_total": 8,
+      "fp_items": [
+        "Dear Dr. Patel",
+        "943 476 5919",
+        "14/03/1958",
+        "Mrs"
+      ],
+      "fn_items": [
+        "s.mitchell@nhs.uk",
+        "Andrew Patel"
+      ]
+    },
+    {
+      "id": "fr_cv",
+      "lang": "fr",
+      "tp": 6,
+      "fp": 0,
+      "fn": 1,
+      "expected_total": 7,
+      "detected_total": 6,
+      "fp_items": [],
+      "fn_items": [
+        "Isabelle"
+      ]
+    },
+    {
+      "id": "fr_bail",
+      "lang": "fr",
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 8,
+      "detected_total": 8,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "en_complaint",
+      "lang": "en",
+      "tp": 5,
+      "fp": 2,
+      "fn": 2,
+      "expected_total": 7,
+      "detected_total": 7,
+      "fp_items": [
+        "7890123456",
+        "Dear Sir"
+      ],
+      "fn_items": [
+        "David O'Connor",
+        "Rebecca Torres"
+      ]
+    },
+    {
+      "id": "en_nda",
+      "lang": "en",
+      "tp": 5,
+      "fp": 1,
+      "fn": 1,
+      "expected_total": 6,
+      "detected_total": 6,
+      "fp_items": [
+        "Dr"
+      ],
+      "fn_items": [
+        "William Fitzgerald"
+      ]
+    },
+    {
+      "id": "de_mietvertrag",
+      "lang": "de",
+      "tp": 7,
+      "fp": 1,
+      "fn": 1,
+      "expected_total": 8,
+      "detected_total": 8,
+      "fp_items": [
+        "Name"
+      ],
+      "fn_items": [
+        "Heinrich Brandt"
+      ]
+    },
+    {
+      "id": "es_denuncia",
+      "lang": "es",
+      "tp": 5,
+      "fp": 1,
+      "fn": 1,
+      "expected_total": 6,
+      "detected_total": 6,
+      "fp_items": [
+        "Nombre"
+      ],
+      "fn_items": [
+        "María del Carmen Ortega Ruiz"
+      ]
+    },
+    {
+      "id": "it_preventivo",
+      "lang": "it",
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 6,
+      "detected_total": 6,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "en_medical_notes",
+      "lang": "en",
+      "tp": 5,
+      "fp": 1,
+      "fn": 1,
+      "expected_total": 6,
+      "detected_total": 6,
+      "fp_items": [
+        "22/08/1967"
+      ],
+      "fn_items": [
+        "Hamish MacLeod"
+      ]
+    },
+    {
+      "id": "fr_procuration",
+      "lang": "fr",
+      "tp": 6,
+      "fp": 3,
+      "fn": 0,
+      "expected_total": 6,
+      "detected_total": 9,
+      "fp_items": [
+        "0012345678901",
+        "Jean Jaurès",
+        "1234567890"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "en_job_application",
+      "lang": "en",
+      "tp": 8,
+      "fp": 2,
+      "fn": 0,
+      "expected_total": 8,
+      "detected_total": 10,
+      "fp_items": [
+        "Engineering Lead",
+        "Email"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "de_arztbrief",
+      "lang": "de",
+      "tp": 6,
+      "fp": 0,
+      "fn": 1,
+      "expected_total": 7,
+      "detected_total": 6,
+      "fp_items": [],
+      "fn_items": [
+        "Franziska Neumann"
+      ]
+    },
+    {
+      "id": "fr_devis_artisan",
+      "lang": "fr",
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 6,
+      "detected_total": 6,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "en_wire_transfer",
+      "lang": "en",
+      "tp": 6,
+      "fp": 2,
+      "fn": 0,
+      "expected_total": 6,
+      "detected_total": 8,
+      "fp_items": [
+        "Name",
+        "9876543210"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "es_contrato_laboral",
+      "lang": "es",
+      "tp": 6,
+      "fp": 1,
+      "fn": 0,
+      "expected_total": 6,
+      "detected_total": 7,
+      "fp_items": [
+        "Nombre"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "fr_lettre_resiliation",
+      "lang": "fr",
+      "tp": 5,
+      "fp": 2,
+      "fn": 0,
+      "expected_total": 5,
+      "detected_total": 7,
+      "fp_items": [
+        "juillet 2025",
+        "2020-456789"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "en_tenant_application",
+      "lang": "en",
+      "tp": 9,
+      "fp": 2,
+      "fn": 0,
+      "expected_total": 9,
+      "detected_total": 11,
+      "fp_items": [
+        "Name",
+        "09/23/1991"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "dlptest_row1",
+      "lang": "en",
+      "tp": 4,
+      "fp": 3,
+      "fn": 0,
+      "expected_total": 4,
+      "detected_total": 7,
+      "fp_items": [
+        "2010/06/25",
+        "born 4/21/1958",
+        "172-32-1176"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "dlptest_row2",
+      "lang": "en",
+      "tp": 4,
+      "fp": 2,
+      "fn": 0,
+      "expected_total": 4,
+      "detected_total": 6,
+      "fp_items": [
+        "born 12/22/1944",
+        "514-14-8905"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "dlptest_row3",
+      "lang": "en",
+      "tp": 4,
+      "fp": 2,
+      "fn": 0,
+      "expected_total": 4,
+      "detected_total": 6,
+      "fp_items": [
+        "born 4/21/1958",
+        "213-46-8915"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "dlptest_row4",
+      "lang": "en",
+      "tp": 4,
+      "fp": 3,
+      "fn": 0,
+      "expected_total": 4,
+      "detected_total": 7,
+      "fp_items": [
+        "Roy Alley",
+        "born 3/25/1962",
+        "524-02-7657"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "enedis_rse_edito",
+      "lang": "fr",
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 1,
+      "detected_total": 1,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "enedis_rse_credits",
+      "lang": "fr",
+      "tp": 12,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 12,
+      "detected_total": 12,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "enedis_rse_governance_contact",
+      "lang": "fr",
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 5,
+      "detected_total": 5,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "enedis_rse_chiffres_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 0,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "enedis_rse_enr_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 0,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "enedis_rse_carbone_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 0,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "enedis_rse_biodiversite_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 0,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "enedis_rse_egapro_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 0,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "enedis_rse_achats_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 1,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 1,
+      "fp_items": [
+        "janvier 2023"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "enedis_rse_numerique_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 1,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 1,
+      "fp_items": [
+        "732/1000. 384"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "enedis_rse_jeux_olympiques_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 0,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "rse_edito",
+      "lang": "fr",
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 1,
+      "detected_total": 1,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "rse_credits_photos",
+      "lang": "fr",
+      "tp": 12,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 12,
+      "detected_total": 12,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "rse_governance_contact",
+      "lang": "fr",
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 5,
+      "detected_total": 5,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "rse_chiffres_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 0,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "rse_carbone_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 0,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "rse_ethique_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 0,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "rse_biodiversite_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 0,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "rse_investissements_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 1,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 1,
+      "fp_items": [
+        "M EUR"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "rse_numerique_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 1,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 1,
+      "fp_items": [
+        "732/1000. 384"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "rse_jeux_olympiques_clean",
+      "lang": "fr",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "expected_total": 0,
+      "detected_total": 0,
+      "fp_items": [],
+      "fn_items": []
+    },
+    {
+      "id": "fr_long_corporate",
+      "lang": "fr",
+      "tp": 14,
+      "fp": 1,
+      "fn": 0,
+      "expected_total": 14,
+      "detected_total": 15,
+      "fp_items": [
+        "23 mai 2025"
+      ],
+      "fn_items": []
+    },
+    {
+      "id": "en_long_legal",
+      "lang": "en",
+      "tp": 8,
+      "fp": 0,
+      "fn": 2,
+      "expected_total": 10,
+      "detected_total": 8,
+      "fp_items": [],
+      "fn_items": [
+        "William Fitzgerald",
+        "+44 7911 654321"
+      ]
+    },
+    {
+      "id": "de_long_medical",
+      "lang": "de",
+      "tp": 10,
+      "fp": 2,
+      "fn": 1,
+      "expected_total": 11,
+      "detected_total": 12,
+      "fp_items": [
+        "Leitender Oberarzt Kardiologie",
+        "Klinische Untersuchung"
+      ],
+      "fn_items": [
+        "Franziska Neumann"
+      ]
+    }
+  ]
+}

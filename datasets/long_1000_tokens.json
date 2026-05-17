@@ -1,0 +1,43 @@
+[
+  {
+    "id": "fr_1000t_corporate",
+    "lang": "fr",
+    "tokens_estimate": 1050,
+    "text": "RAPPORT ANNUEL 2024 - GROUPE FINANCIER EUROPÉEN — DOCUMENT INTERNE CONFIDENTIEL\n\nI. RÉSUMÉ EXÉCUTIF\n\nLe Groupe Financier Européen a réalisé un chiffre d'affaires consolidé de 2,3 milliards d'euros en 2024, en hausse de 12% par rapport à 2023. Le résultat net s'établit à 340 millions d'euros, soit une marge nette de 14,8%. Cette performance traduit la solidité du modèle économique et l'efficacité de la stratégie de diversification mise en œuvre depuis 2022.\n\nLe Directeur Général, Jean-Marc Vasseur-Delacroix, a déclaré lors de l'assemblée générale du 15 mars 2025 : \"Nos résultats confirment la pertinence de notre stratégie de diversification et démontrent la résilience de notre modèle face aux turbulences macroéconomiques.\" Il peut être contacté au +33 1 45 67 89 00 ou par email à jm.vasseur@gfe-group.eu pour toute information complémentaire.\n\nII. GOUVERNANCE\n\nLe Conseil d'Administration, présidé par Philippe de Montfort depuis 2019, se compose de douze membres dont six administratrices indépendantes. La Directrice Financière, Claire Beaumont-Laforge, joignable au +33 1 45 67 89 01 ou à c.beaumont@gfe-group.eu, a précisé les modalités de calcul du résultat opérationnel. Le Directeur des Risques, Thomas Wernher-Schmidt (+33 1 45 67 89 03, t.wernher@gfe-group.eu), supervise la mise en conformité avec les nouvelles exigences prudentielles Bâle IV.\n\nL'Administratrice indépendante, Isabelle Fontaine-Dubois, préside le Comité d'Audit. Marc-Antoine Leroy, Responsable des Relations Investisseurs, peut être contacté au +33 1 45 67 89 04 ou à investor.relations@gfe-group.eu pour toute demande de renseignements de la part d'analystes financiers ou de la presse économique.\n\nIII. PERFORMANCE PAR DIVISION\n\nLa Division Banque de Détail, dirigée par Sébastien Moreau-Petit (+33 1 45 67 89 05, s.moreau@gfe-retail.fr), exploite 850 agences réparties entre la France, la Belgique et le Luxembourg. Le portefeuille compte 4,2 millions de clients actifs. Le PNB de la division atteint 1,1 milliard d'euros, en progression de 6%. La satisfaction client mesurée par le NPS est passée de 42 à 51 points en un an.\n\nLa Division Banque d'Investissement, sous la responsabilité de Sarah O'Brien-Mitchell (sarah.obrien@gfe-ib.com, +33 1 45 67 89 06), a généré 780 millions d'euros de revenus de trading, soit une progression de 34% par rapport à l'exercice précédent. Les desks de Paris, Londres et Francfort opèrent en coordination étroite. Le desk de Londres peut être joint au +44 20 7946 0958.\n\nLa Division Gestion d'Actifs, pilotée par Alessandro Ferretti-Rossi (a.ferretti@gfe-am.com, +39 02 1234 5678), gère 45 milliards d'euros d'actifs sous mandat. Les performances annualisées sur cinq ans atteignent 8,3% nets pour les portefeuilles diversifiés et 11,2% pour les stratégies actions. La collecte nette annuelle s'établit à 2,8 milliards d'euros.\n\nIV. INFORMATIONS JURIDIQUES ET FINANCIÈRES\n\nLe siège social du Groupe est situé au 1 place de la Bourse, 75002 Paris. Le numéro SIREN de la société est 123 456 789. L'IBAN principal pour les opérations de marché est FR76 3000 6000 0112 3456 7890 189. Le numéro LEI est 969500ABCDEFGHIJ1234.\n\nLes commissaires aux comptes sont le Cabinet Durand & Associés (audit@durand-associes.fr, +33 1 56 78 90 12) et le Cabinet Ernst & Young (ey.france@ey.com). Pour toute question concernant les états financiers consolidés, veuillez vous adresser à Catherine Beaumont-Lacroix, Directrice de la Consolidation, à c.beaumont-lacroix@gfe-group.eu ou au +33 1 45 67 89 07.\n\nV. PERSPECTIVES 2025\n\nLe Groupe table sur une croissance organique du chiffre d'affaires comprise entre 8% et 11% pour l'exercice 2025. Le programme d'acquisitions ciblées de 500 millions d'euros se poursuit, principalement dans les fintech européennes. Trois opérations sont actuellement en cours de négociation pour un montant cumulé de 280 millions d'euros, avec une finalisation prévue avant le 30 septembre 2025.",
+    "expected": {
+      "Jean-Marc Vasseur-Delacroix": "PERSON",
+      "+33 1 45 67 89 00": "PHONE_NUMBER",
+      "jm.vasseur@gfe-group.eu": "EMAIL_ADDRESS",
+      "15 mars 2025": "DATE_TIME",
+      "Philippe de Montfort": "PERSON",
+      "Claire Beaumont-Laforge": "PERSON",
+      "+33 1 45 67 89 01": "PHONE_NUMBER",
+      "c.beaumont@gfe-group.eu": "EMAIL_ADDRESS",
+      "Thomas Wernher-Schmidt": "PERSON",
+      "+33 1 45 67 89 03": "PHONE_NUMBER",
+      "t.wernher@gfe-group.eu": "EMAIL_ADDRESS",
+      "Isabelle Fontaine-Dubois": "PERSON",
+      "Marc-Antoine Leroy": "PERSON",
+      "+33 1 45 67 89 04": "PHONE_NUMBER",
+      "investor.relations@gfe-group.eu": "EMAIL_ADDRESS",
+      "Sébastien Moreau-Petit": "PERSON",
+      "+33 1 45 67 89 05": "PHONE_NUMBER",
+      "s.moreau@gfe-retail.fr": "EMAIL_ADDRESS",
+      "Sarah O'Brien-Mitchell": "PERSON",
+      "sarah.obrien@gfe-ib.com": "EMAIL_ADDRESS",
+      "+33 1 45 67 89 06": "PHONE_NUMBER",
+      "+44 20 7946 0958": "PHONE_NUMBER",
+      "Alessandro Ferretti-Rossi": "PERSON",
+      "a.ferretti@gfe-am.com": "EMAIL_ADDRESS",
+      "+39 02 1234 5678": "PHONE_NUMBER",
+      "FR76 3000 6000 0112 3456 7890 189": "IBAN_CODE",
+      "audit@durand-associes.fr": "EMAIL_ADDRESS",
+      "+33 1 56 78 90 12": "PHONE_NUMBER",
+      "ey.france@ey.com": "EMAIL_ADDRESS",
+      "Catherine Beaumont-Lacroix": "PERSON",
+      "c.beaumont-lacroix@gfe-group.eu": "EMAIL_ADDRESS",
+      "+33 1 45 67 89 07": "PHONE_NUMBER",
+      "30 septembre 2025": "DATE_TIME"
+    }
+  }
+]

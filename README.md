@@ -6,34 +6,71 @@ Measures detection rate, false positive rate, and latency across languages and e
 
 ## Latest results
 
-**61 documents, 244 PII entities, 5 languages, 8 entity types.**
+### Precision / Recall / F1 (entity-level, 64 documents, 5 languages)
 
-| Metric | Result |
-|--------|--------|
-| Detection rate | 97.1% (237/244) |
-| False positives | 1/14 clean texts (Kubernetes flagged as LOCATION) |
-| EMAIL | 100% (59/59) |
-| PHONE | 100% (52/52) |
-| IBAN | 100% (9/9) |
-| CREDIT_CARD | 100% (7/7) |
-| US_SSN | 100% (3/3) |
-| IP_ADDRESS | 100% (2/2) |
-| DATE_TIME | 100% (11/11) |
-| PERSON | 93% (94/101) — weakest, see Known misses below |
-| FR | 98% |
-| EN | 100% |
-| DE | 93% |
-| ES | 89% |
-| IT | 91% |
+We measure at the entity level:
+- **TP** = entity correctly flagged (matches expected)
+- **FP** = entity flagged but not in expected list
+- **FN** = entity in expected list but not flagged
 
-### Known misses
+| Metric | Value |
+|--------|-------|
+| **Precision** | **84.8%** (of what we flag, how much is real PII) |
+| **Recall** | **94.3%** (of real PII, how much we catch) |
+| **F1** | **89.3%** |
+| TP / FP / FN | 263 / 47 / 16 |
 
-All 7 misses are PERSON entities that spaCy NER doesn't detect:
+**By language:**
+
+| Lang | Precision | Recall | F1 |
+|------|-----------|--------|----|
+| FR | 91.0% | 98.2% | 94.5% |
+| EN | 75.4% | 90.8% | 82.4% |
+| DE | 89.7% | 89.7% | 89.7% |
+| ES | 89.5% | 94.4% | 91.9% |
+| IT | 91.7% | 100.0% | 95.7% |
+
+### Honest analysis of false positives
+
+Many "false positives" are actually real PII we forgot to include in the expected list:
+- DLP test SSNs we didn't annotate ("172-32-1176", "514-14-8905", etc.)
+- Dates in expected docs ("23 décembre 2025", "14/03/1958")
+- Account numbers ("9876543210", "0012345678901")
+
+Genuine over-anonymization (model errors) is limited to:
+- Field labels: "Name", "Email", "Nombre"
+- Honorifics / titles: "Dr", "Mrs"
+- Salutations: "Dear Sir"
+- Short alphanumeric IDs misread as account numbers
+
+EN has the lowest precision because we annotated less rigorously and the English dataset has more form-style documents (more labels like "Name:", "Dear Dr.").
+
+### Known recall misses (16 FN out of 279 expected)
+
+PERSON entities that NER doesn't detect:
 - Single-word names without context ("Schmidt", "Isabelle", "Schneider-Weber")
-- Long multi-part Spanish names ("María del Carmen Ortega Ruiz", "Fernando José Méndez Castillo")
-- Compound name with particle ("Francesca De Luca")
+- Long multi-part Spanish names ("María del Carmen Ortega Ruiz")
+- Compound names with particle ("Francesca De Luca")
 
-Regex-based entities (email, phone, IBAN, credit card, IP, SSN) are 100%.
+Regex-based entities (email, phone, IBAN, credit card, IP, SSN) reach near-100%.
+
+## Latency (Apple M1 Pro, light preset)
+
+Measured on real corporate documents at p50/p95/p99 over 30 runs each. Adding a language adds ~70-100ms per request.
+
+| Languages active | ~500 tokens p50 | ~1000 tokens p50 |
+|------------------|-----------------|------------------|
+| 1 (en or fr) | 62 ms | 113 ms |
+| 2 (fr + en) | 129 ms | 232 ms |
+| 3 (fr + en + de) | 199 ms | 356 ms |
+| 5 (fr + en + de + es + it) | 326 ms | 587 ms |
+| 7 (+ pt + nl) | 460 ms | 814 ms |
+
+p95 stays within 2-5% of p50. p99 spikes occasionally to 1s on the largest configurations (cold spaCy state).
+
+Boot time: 6.3 s for 1 language, ~4.2 s for 7 languages (cached spaCy models).
+
+If you only need 1-2 languages, latency is well under 250 ms even on long documents. Enabling 7 languages is meant for multi-lingual SaaS use cases and triples the cost.
 
 ## Datasets
 

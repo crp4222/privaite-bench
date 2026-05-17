@@ -1,0 +1,73 @@
+[
+  {
+    "id": "fr_long_corporate",
+    "lang": "fr",
+    "text": "RAPPORT TRIMESTRIEL Q1 2025 - GROUPE FINANCIER EUROPÉEN\n\nLe Directeur Général, Jean-Marc Vasseur-Delacroix, a présenté lors de l'assemblée du 15 mars 2025 les résultats du premier trimestre. Le chiffre d'affaires consolidé atteint 2,3 milliards d'euros, en hausse de 12% par rapport à la même période de l'année précédente. Le résultat net s'établit à 340 millions d'euros, soit une marge nette de 14,8%, marquant une amélioration significative par rapport aux 11,2% du trimestre précédent.\n\nLa Directrice Financière, Claire Beaumont-Laforge, joignable au +33 1 45 67 89 01 ou par email à c.beaumont@gfe-group.eu, a précisé que ces résultats s'expliquent principalement par trois facteurs. D'abord, la diversification réussie vers les marchés émergents qui représentent désormais 28% du chiffre d'affaires, contre 19% un an auparavant. Ensuite, la maîtrise des coûts opérationnels avec une réduction de 8% des charges fixes, permise par les efforts de digitalisation entrepris depuis 2023. Enfin, la performance exceptionnelle de la division Banque d'Investissement, dirigée par Sarah O'Brien-Mitchell, qui a généré 780 millions de revenus de trading, soit une progression de 34% en un an.\n\nLes investissements stratégiques se poursuivent. Le Comité d'Investissement, présidé par Pierre-Antoine Lefebvre (pa.lefebvre@gfe-group.eu, +33 1 45 67 89 02), a validé un programme d'acquisitions ciblées de 500 millions d'euros pour 2025, principalement dans les fintech européennes et les solutions de paiement digital. Trois opérations sont déjà en cours de négociation pour un montant cumulé de 280 millions d'euros.\n\nLe Conseil d'Administration, présidé par Philippe de Montfort depuis 2019, a également approuvé le versement d'un dividende intérimaire de 1,85 euro par action, payable le 23 mai 2025. Cette décision reflète la confiance de l'instance dirigeante dans la trajectoire de croissance du Groupe et sa capacité à maintenir un retour attractif aux actionnaires.\n\nPour toute demande d'information complémentaire, les analystes peuvent contacter Marc-Antoine Leroy, Responsable Relations Investisseurs, au +33 1 45 67 89 04 ou à investor.relations@gfe-group.eu. Le siège social du Groupe est situé au 1 place de la Bourse, 75002 Paris. L'IBAN de la société pour les opérations de marché est FR76 3000 6000 0112 3456 7890 189.",
+    "expected": {
+      "Jean-Marc Vasseur-Delacroix": "PERSON",
+      "Claire Beaumont-Laforge": "PERSON",
+      "+33 1 45 67 89 01": "PHONE_NUMBER",
+      "c.beaumont@gfe-group.eu": "EMAIL_ADDRESS",
+      "Sarah O'Brien-Mitchell": "PERSON",
+      "Pierre-Antoine Lefebvre": "PERSON",
+      "pa.lefebvre@gfe-group.eu": "EMAIL_ADDRESS",
+      "+33 1 45 67 89 02": "PHONE_NUMBER",
+      "Philippe de Montfort": "PERSON",
+      "Marc-Antoine Leroy": "PERSON",
+      "+33 1 45 67 89 04": "PHONE_NUMBER",
+      "investor.relations@gfe-group.eu": "EMAIL_ADDRESS",
+      "FR76 3000 6000 0112 3456 7890 189": "IBAN_CODE",
+      "15 mars 2025": "DATE_TIME"
+    },
+    "must_preserve": [
+      "2,3 milliards d'euros", "340 millions", "14,8%", "11,2%",
+      "28%", "19%", "8%", "780 millions", "34%",
+      "500 millions", "280 millions", "1,85 euro", "75002"
+    ]
+  },
+  {
+    "id": "en_long_legal",
+    "lang": "en",
+    "text": "NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT\n\nThis Agreement is entered into as of January 15, 2025, between:\n\nNexus Innovations Ltd, a company incorporated under the laws of England and Wales, having its registered office at 42 Baker Street, London W1U 3BW, represented by Dr. William Fitzgerald III, Chief Technology Officer (email: w.fitzgerald@nexusinnovations.com, phone: +44 20 7123 4567), hereinafter referred to as the \"Disclosing Party\".\n\nAND\n\nBioGenesis Corp, a Delaware corporation, having its principal place of business at 1500 Market Street, Philadelphia, PA 19102, represented by Aisha Patel-Rahman, Head of Research (email: a.patel@biogenesis.co.uk, phone: +44 7911 654321), hereinafter referred to as the \"Receiving Party\".\n\nWHEREAS the Parties wish to explore a potential business collaboration regarding the development of next-generation pharmaceutical compounds, and in connection with such exploration, may exchange certain confidential information; NOW THEREFORE, in consideration of the mutual covenants and promises contained herein, the Parties agree as follows.\n\nFirst, the term \"Confidential Information\" shall mean any and all non-public information disclosed by the Disclosing Party to the Receiving Party, whether oral, written, electronic, or in any other form, including but not limited to: research data, clinical trial results, formulations, manufacturing processes, financial projections, customer lists, marketing strategies, and any other proprietary information identified as confidential at the time of disclosure or that would reasonably be understood to be confidential under the circumstances.\n\nSecond, the Receiving Party agrees to maintain strict confidentiality of the Confidential Information and shall not, without prior written consent of the Disclosing Party, disclose, publish, communicate, or otherwise make available any Confidential Information to any third party. The Receiving Party shall use the Confidential Information solely for the purpose of evaluating the potential business collaboration and for no other purpose whatsoever.\n\nThird, this Agreement shall be effective for a period of three years from the date first written above, after which the obligations of confidentiality shall continue for an additional five-year period. Any violation of this Agreement shall entitle the Disclosing Party to seek injunctive relief and damages, including reasonable attorney fees.\n\nFor any inquiry regarding this Agreement, please contact Sarah Mitchell at legal@nexusinnovations.com or +44 7911 234568. Bank details for any financial obligations under this Agreement: account holder Nexus Innovations Ltd, IBAN GB29 NWBK 6016 1331 9268 19, BIC NWBKGB2L.",
+    "expected": {
+      "William Fitzgerald": "PERSON",
+      "w.fitzgerald@nexusinnovations.com": "EMAIL_ADDRESS",
+      "+44 20 7123 4567": "PHONE_NUMBER",
+      "Aisha Patel-Rahman": "PERSON",
+      "a.patel@biogenesis.co.uk": "EMAIL_ADDRESS",
+      "+44 7911 654321": "PHONE_NUMBER",
+      "Sarah Mitchell": "PERSON",
+      "legal@nexusinnovations.com": "EMAIL_ADDRESS",
+      "+44 7911 234568": "PHONE_NUMBER",
+      "GB29 NWBK 6016 1331 9268 19": "IBAN_CODE"
+    },
+    "must_preserve": [
+      "Confidential Information", "three years", "five-year period",
+      "Disclosing Party", "Receiving Party", "January 15, 2025"
+    ]
+  },
+  {
+    "id": "de_long_medical",
+    "lang": "de",
+    "text": "PATIENTENBERICHT - KARDIOLOGISCHE UNTERSUCHUNG\n\nPatient: Maximilian Schröder-Hoffmann\nGeburtsdatum: 15. Januar 1985\nKrankenkasse: AOK Bayern\nVersichertennummer: A123456789\nTelefon: +49 89 4567 8901\nE-Mail: m.schroeder@t-online.de\nAdresse: Schönhauser Allee 45, 80331 München\n\nÜberweisender Arzt: Dr. med. Franziska Neumann\nPraxis: Hausarztpraxis am Viktualienmarkt\nTelefon: +49 89 1234 5678\nE-Mail: f.neumann@praxis-muenchen.de\n\nAnamnese: Der Patient stellte sich am 12. März 2025 in unserer Praxis vor mit Beschwerden über zunehmende Belastungsdyspnoe und sporadische Brustenge, die seit etwa drei Monaten bestehen. Die Symptome verschlechtern sich bei körperlicher Belastung, insbesondere beim Treppensteigen, und bessern sich in Ruhe. Familienanamnese: Der Vater verstarb mit 62 Jahren an einem Herzinfarkt, die Mutter leidet an arterieller Hypertonie. Der Patient ist Nichtraucher seit 2018, treibt regelmäßig Sport und ist BMI-normalgewichtig.\n\nKlinische Untersuchung: Blutdruck 158/95 mmHg, Herzfrequenz 78/min, regelmäßig. Auskultatorisch unauffällige Herztöne, keine pathologischen Geräusche. Pulmo: vesikuläres Atemgeräusch, keine Rasselgeräusche. Periphere Ödeme nicht nachweisbar. EKG zeigt einen normofrequenten Sinusrhythmus, keine signifikanten ST-Streckenveränderungen, leichte linksventrikuläre Hypertrophiezeichen.\n\nEchokardiographie: Linksventrikuläre Funktion erhalten (EF 58%), leichte konzentrische linksventrikuläre Hypertrophie passend zur arteriellen Hypertonie, diastolische Funktionsstörung Grad I. Keine relevanten Klappenvitien, keine pulmonale Hypertonie, normale rechtsventrikuläre Funktion.\n\nLaborwerte: Troponin T <0,01 ng/ml, NT-proBNP 245 pg/ml (leicht erhöht), Gesamtcholesterin 235 mg/dl, LDL 158 mg/dl, HDL 42 mg/dl, Triglyceride 198 mg/dl, HbA1c 5,7%, Kreatinin 0,9 mg/dl, eGFR 92 ml/min.\n\nDiagnose: Hypertonie Stadium II mit beginnender hypertensiver Herzkrankheit. Dyslipidämie. Mittleres kardiovaskuläres Risiko nach SCORE-Charts.\n\nTherapieempfehlung: Beginn mit Ramipril 5 mg 1-0-0 und Atorvastatin 20 mg 0-0-1. Lebensstilmodifikation: salzarme mediterrane Ernährung, regelmäßige aerobe Aktivität (mindestens 150 Minuten/Woche), Stressreduktion. Wiedervorstellung in 4 Wochen zur Blutdruckkontrolle und Verträglichkeitskontrolle der Medikation. Bei Beschwerdezunahme oder akuten Brustschmerzen sofortige Vorstellung in der Notaufnahme.\n\nMit kollegialen Grüßen,\nDr. med. Klaus-Dieter Wagner\nLeitender Oberarzt Kardiologie\nKlinikum München-Schwabing\nTelefon Sekretariat: +49 89 3068 1234\nE-Mail: k.wagner@klinikum-muenchen.de",
+    "expected": {
+      "Maximilian Schröder-Hoffmann": "PERSON",
+      "15. Januar 1985": "DATE_TIME",
+      "+49 89 4567 8901": "PHONE_NUMBER",
+      "m.schroeder@t-online.de": "EMAIL_ADDRESS",
+      "Franziska Neumann": "PERSON",
+      "+49 89 1234 5678": "PHONE_NUMBER",
+      "f.neumann@praxis-muenchen.de": "EMAIL_ADDRESS",
+      "12. März 2025": "DATE_TIME",
+      "Klaus-Dieter Wagner": "PERSON",
+      "+49 89 3068 1234": "PHONE_NUMBER",
+      "k.wagner@klinikum-muenchen.de": "EMAIL_ADDRESS"
+    },
+    "must_preserve": [
+      "Belastungsdyspnoe", "Brustenge", "BMI-normalgewichtig",
+      "158/95 mmHg", "EF 58%", "Troponin T", "NT-proBNP",
+      "Hypertonie Stadium II", "Ramipril 5 mg", "Atorvastatin 20 mg",
+      "SCORE-Charts", "AOK Bayern"
+    ]
+  }
+]
