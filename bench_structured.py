@@ -305,7 +305,7 @@ def _load(base: Path, name: str) -> list[dict]:
         return json.load(f)
 
 
-async def main() -> None:
+async def main(presets: list[str]) -> None:
     base = Path(__file__).parent
 
     corpus: list[dict] = []
@@ -316,11 +316,16 @@ async def main() -> None:
     print(f"Loaded {len(corpus)} flat samples (re-wrapped into {len(CARRIERS)} carriers), "
           f"{len(native)} native structured samples")
 
+    builders = {"light": _real_config, "onnx": _onnx_config}
     report: dict = {}
-    for preset_name, config in (("light", _real_config()), ("onnx", _onnx_config())):
+    for preset_name in presets:
         print(f"\n{'#' * 72}\n# PRESET: {preset_name}\n{'#' * 72}")
-        engine = PIIEngine(config)
-        await engine.initialize()
+        engine = PIIEngine(builders[preset_name]())
+        try:
+            await engine.initialize()
+        except Exception as exc:
+            print(f"  skipping {preset_name}: {type(exc).__name__}: {exc}")
+            continue
 
         rewrapped = [await eval_rewrapped(engine, s) for s in corpus]
         native_results = [await eval_native(engine, s) for s in native]
@@ -435,7 +440,14 @@ async def selftest() -> int:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--selftest", action="store_true", help="Validate harness with a fake detector (no spaCy).")
+    parser.add_argument(
+        "--preset",
+        choices=["light", "onnx", "all"],
+        default="all",
+        help="Which preset(s) to run. onnx is skipped gracefully if its deps are missing.",
+    )
     args = parser.parse_args()
     if args.selftest:
         sys.exit(1 if asyncio.run(selftest()) else 0)
-    asyncio.run(main())
+    presets = ["light", "onnx"] if args.preset == "all" else [args.preset]
+    asyncio.run(main(presets))
