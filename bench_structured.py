@@ -290,6 +290,13 @@ def _real_config() -> PIIConfig:
     )
 
 
+# light + the OpenAI privacy-filter ONNX model (needs `pip install transformers onnxruntime`).
+def _onnx_config() -> PIIConfig:
+    config = _real_config()
+    config.detectors.onnx.enabled = True
+    return config
+
+
 def _load(base: Path, name: str) -> list[dict]:
     path = base / "datasets" / name
     if not path.exists():
@@ -307,33 +314,32 @@ async def main() -> None:
     native = _load(base, "structured_samples.json")
 
     print(f"Loaded {len(corpus)} flat samples (re-wrapped into {len(CARRIERS)} carriers), "
-          f"{len(native)} native structured samples\n")
+          f"{len(native)} native structured samples")
 
-    engine = PIIEngine(_real_config())
-    await engine.initialize()
+    report: dict = {}
+    for preset_name, config in (("light", _real_config()), ("onnx", _onnx_config())):
+        print(f"\n{'#' * 72}\n# PRESET: {preset_name}\n{'#' * 72}")
+        engine = PIIEngine(config)
+        await engine.initialize()
 
-    rewrapped = [await eval_rewrapped(engine, s) for s in corpus]
-    native_results = [await eval_native(engine, s) for s in native]
+        rewrapped = [await eval_rewrapped(engine, s) for s in corpus]
+        native_results = [await eval_native(engine, s) for s in native]
 
-    await engine.shutdown()
+        await engine.shutdown()
 
-    rewrapped_summary = report_rewrapped(rewrapped)
-    native_summary = report_native(native_results)
+        rewrapped_summary = report_rewrapped(rewrapped)
+        native_summary = report_native(native_results)
+        report[preset_name] = {
+            "rewrapped": rewrapped_summary,
+            "native": native_summary,
+            "by_doc": rewrapped,
+            "native_by_doc": native_results,
+        }
 
     out = base / "results" / "structured_report.json"
     out.parent.mkdir(exist_ok=True)
     with open(out, "w") as f:
-        json.dump(
-            {
-                "rewrapped": rewrapped_summary,
-                "native": native_summary,
-                "by_doc": rewrapped,
-                "native_by_doc": native_results,
-            },
-            f,
-            indent=2,
-            ensure_ascii=False,
-        )
+        json.dump(report, f, indent=2, ensure_ascii=False)
     print(f"Full results saved to {out}")
 
 

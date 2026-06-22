@@ -83,7 +83,12 @@ A small hand-written `datasets/structured_samples.json` adds realistic native
 payloads (a `send_email` call, a nested `book_appointment`, a transfers list, a
 free-text argument string, and a multimodal ID-card request).
 
-#### Latest results (64-document corpus, 5 languages, light preset)
+#### Latest results (64-document corpus, 5 languages)
+
+Both presets are run. Every structured carrier matches its own flat baseline
+exactly (0 regressions), and tool-call arguments de-anonymize back losslessly.
+
+**`light` preset** (Presidio):
 
 | Carrier | Anonymized | Leaked | Regressions vs flat | Round-trip |
 |---------|-----------|--------|---------------------|------------|
@@ -92,15 +97,23 @@ free-text argument string, and a multimodal ID-card request).
 | tool_call | 263/279 | 16 | **0** | 64/64 |
 | tool_call_nested | 263/279 | 16 | **0** | 64/64 |
 
-Every structured carrier matches the flat baseline exactly: the same 263 entities
-are anonymized and the same 16 are missed, so routing PII through tool calls or
-multimodal parts loses nothing, and tool-call arguments de-anonymize back
-losslessly. The 16 misses are the documented PERSON recall gaps above, identical
-in flat and structured form.
+**`onnx` preset** (Presidio + Privacy Filter):
 
-Native structured samples: 12/13 anonymized, round-trip 4/4. The one miss
-(`John Smith` inside a free-text argument) is a detector recall miss that leaks
-the same way in flat text, not a structured-handling issue.
+| Carrier | Anonymized | Leaked | Regressions vs flat | Round-trip |
+|---------|-----------|--------|---------------------|------------|
+| flat (baseline) | 279/279 | 0 | n/a | n/a |
+| multimodal | 279/279 | 0 | **0** | n/a |
+| tool_call | 279/279 | 0 | **0** | 64/64 |
+| tool_call_nested | 279/279 | 0 | **0** | 64/64 |
+
+Routing PII through tool calls or multimodal parts loses nothing under either
+preset. The `light` misses are the documented PERSON recall gaps; `onnx` closes
+them (279/279, no leaks).
+
+Native structured samples: `light` 12/13, `onnx` 13/13, round-trip 4/4 on both.
+The one `light` miss (`John Smith` in a free-text argument) is a detector recall
+miss that leaks the same way in flat text, not a structured-handling issue; `onnx`
+catches it.
 
 On a build without structured anonymization every carrier leaks 100%; that gap is
 the reason this benchmark exists.
