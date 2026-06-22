@@ -1,0 +1,3128 @@
+{
+  "rewrapped": {
+    "flat": {
+      "anonymized": 263,
+      "leaked": 16,
+      "regressions": [],
+      "roundtrip_failures": 0,
+      "roundtrip_checked": 0
+    },
+    "multimodal": {
+      "anonymized": 263,
+      "leaked": 16,
+      "regressions": [],
+      "roundtrip_failures": 0,
+      "roundtrip_checked": 0
+    },
+    "tool_call": {
+      "anonymized": 263,
+      "leaked": 16,
+      "regressions": [],
+      "roundtrip_failures": 0,
+      "roundtrip_checked": 64
+    },
+    "tool_call_nested": {
+      "anonymized": 263,
+      "leaked": 16,
+      "regressions": [],
+      "roundtrip_failures": 0,
+      "roundtrip_checked": 64
+    }
+  },
+  "native": {
+    "total": 13,
+    "anonymized": 12,
+    "leaked": 1
+  },
+  "by_doc": [
+    {
+      "id": "fr_full_profile",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Marie-Claire Dupont-Moretti",
+            "mc.dupont@gmail.com",
+            "+33 6 78 45 12 90",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "4111 1111 1111 1111",
+            "192.168.1.42",
+            "15 mars 1987"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Marie-Claire Dupont-Moretti",
+            "mc.dupont@gmail.com",
+            "+33 6 78 45 12 90",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "4111 1111 1111 1111",
+            "192.168.1.42",
+            "15 mars 1987"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Marie-Claire Dupont-Moretti",
+            "mc.dupont@gmail.com",
+            "+33 6 78 45 12 90",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "4111 1111 1111 1111",
+            "192.168.1.42",
+            "15 mars 1987"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Marie-Claire Dupont-Moretti",
+            "mc.dupont@gmail.com",
+            "+33 6 78 45 12 90",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "4111 1111 1111 1111",
+            "192.168.1.42",
+            "15 mars 1987"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "fr_two_persons",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Pierre-Antoine Lefebvre",
+            "pa.lefebvre@orange.fr",
+            "06 12 98 76 54"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Pierre-Antoine Lefebvre",
+            "pa.lefebvre@orange.fr",
+            "06 12 98 76 54"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Pierre-Antoine Lefebvre",
+            "pa.lefebvre@orange.fr",
+            "06 12 98 76 54"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Pierre-Antoine Lefebvre",
+            "pa.lefebvre@orange.fr",
+            "06 12 98 76 54"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "fr_lowercase_name",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "dénis navarros",
+            "06 27 43 23 54"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "dénis navarros",
+            "06 27 43 23 54"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "dénis navarros",
+            "06 27 43 23 54"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "dénis navarros",
+            "06 27 43 23 54"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "fr_contextual_suis",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "jean-paul belmondo"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "jean-paul belmondo"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "jean-paul belmondo"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "jean-paul belmondo"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "fr_mon_nom_est",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Éloïse Bérénice-Duval",
+            "eloise.bd@laposte.net"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Éloïse Bérénice-Duval",
+            "eloise.bd@laposte.net"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Éloïse Bérénice-Duval",
+            "eloise.bd@laposte.net"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Éloïse Bérénice-Duval",
+            "eloise.bd@laposte.net"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "en_full_profile",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Sarah Johnson",
+            "sarah.j@company.org",
+            "+1 212 555 0199",
+            "078-05-1120",
+            "5500 0000 0000 0004"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Sarah Johnson",
+            "sarah.j@company.org",
+            "+1 212 555 0199",
+            "078-05-1120",
+            "5500 0000 0000 0004"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Sarah Johnson",
+            "sarah.j@company.org",
+            "+1 212 555 0199",
+            "078-05-1120",
+            "5500 0000 0000 0004"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Sarah Johnson",
+            "sarah.j@company.org",
+            "+1 212 555 0199",
+            "078-05-1120",
+            "5500 0000 0000 0004"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "en_lowercase_name",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "john smith",
+            "john@test.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "john smith",
+            "john@test.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "john smith",
+            "john@test.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "john smith",
+            "john@test.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "en_multiple_people",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "alice@corp.io",
+            "Bob Wilson",
+            "bob.w@corp.io",
+            "10.0.0.42"
+          ],
+          "leaked": [
+            "Alice Martin"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "alice@corp.io",
+            "Bob Wilson",
+            "bob.w@corp.io",
+            "10.0.0.42"
+          ],
+          "leaked": [
+            "Alice Martin"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "alice@corp.io",
+            "Bob Wilson",
+            "bob.w@corp.io",
+            "10.0.0.42"
+          ],
+          "leaked": [
+            "Alice Martin"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "alice@corp.io",
+            "Bob Wilson",
+            "bob.w@corp.io",
+            "10.0.0.42"
+          ],
+          "leaked": [
+            "Alice Martin"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "de_full_profile",
+      "lang": "de",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Hans Müller",
+            "hans.mueller@web.de",
+            "+49 170 1234567"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Hans Müller",
+            "hans.mueller@web.de",
+            "+49 170 1234567"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Hans Müller",
+            "hans.mueller@web.de",
+            "+49 170 1234567"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Hans Müller",
+            "hans.mueller@web.de",
+            "+49 170 1234567"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "de_with_date",
+      "lang": "de",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Schmidt",
+            "3. März 1990"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Schmidt",
+            "3. März 1990"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Schmidt",
+            "3. März 1990"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Schmidt",
+            "3. März 1990"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "mixed_fr_en",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "François-Xavier de Villepin",
+            "fx.villepin@gmail.com",
+            "+33 6 99 88 77 66"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "François-Xavier de Villepin",
+            "fx.villepin@gmail.com",
+            "+33 6 99 88 77 66"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "François-Xavier de Villepin",
+            "fx.villepin@gmail.com",
+            "+33 6 99 88 77 66"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "François-Xavier de Villepin",
+            "fx.villepin@gmail.com",
+            "+33 6 99 88 77 66"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "iban_and_card",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "DE89 3704 0044 0532 0130 00",
+            "4111 1111 1111 1111"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "DE89 3704 0044 0532 0130 00",
+            "4111 1111 1111 1111"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "DE89 3704 0044 0532 0130 00",
+            "4111 1111 1111 1111"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "DE89 3704 0044 0532 0130 00",
+            "4111 1111 1111 1111"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "bank_transfer_order",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Jean-Philippe Moreau",
+            "Sophie Leclerc-Martini",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "+33 3 88 45 67 89",
+            "jp.moreau@wanadoo.fr",
+            "22 septembre 1975"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Jean-Philippe Moreau",
+            "Sophie Leclerc-Martini",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "+33 3 88 45 67 89",
+            "jp.moreau@wanadoo.fr",
+            "22 septembre 1975"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Jean-Philippe Moreau",
+            "Sophie Leclerc-Martini",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "+33 3 88 45 67 89",
+            "jp.moreau@wanadoo.fr",
+            "22 septembre 1975"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Jean-Philippe Moreau",
+            "Sophie Leclerc-Martini",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "+33 3 88 45 67 89",
+            "jp.moreau@wanadoo.fr",
+            "22 septembre 1975"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "bank_account_opening",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Durand-Petit",
+            "3 avril 1988",
+            "06 98 76 54 32",
+            "mf.durand@hotmail.fr"
+          ],
+          "leaked": [
+            "Marie-Françoise"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Durand-Petit",
+            "3 avril 1988",
+            "06 98 76 54 32",
+            "mf.durand@hotmail.fr"
+          ],
+          "leaked": [
+            "Marie-Françoise"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Durand-Petit",
+            "3 avril 1988",
+            "06 98 76 54 32",
+            "mf.durand@hotmail.fr"
+          ],
+          "leaked": [
+            "Marie-Françoise"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Durand-Petit",
+            "3 avril 1988",
+            "06 98 76 54 32",
+            "mf.durand@hotmail.fr"
+          ],
+          "leaked": [
+            "Marie-Françoise"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "insurance_claim_en",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "James Robert Thompson",
+            "+44 20 7946 0958",
+            "j.thompson@barclays.co.uk",
+            "GB82 WEST 1234 5698 7654 32"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "James Robert Thompson",
+            "+44 20 7946 0958",
+            "j.thompson@barclays.co.uk",
+            "GB82 WEST 1234 5698 7654 32"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "James Robert Thompson",
+            "+44 20 7946 0958",
+            "j.thompson@barclays.co.uk",
+            "GB82 WEST 1234 5698 7654 32"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "James Robert Thompson",
+            "+44 20 7946 0958",
+            "j.thompson@barclays.co.uk",
+            "GB82 WEST 1234 5698 7654 32"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "hr_employee_record",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Elizabeth Chen-Nakamura",
+            "234-56-7890",
+            "(215) 555-0147",
+            "e.chen@globalcorp.com",
+            "Michael Chen",
+            "+1 215 555 0293",
+            "r.patel@globalcorp.com",
+            "Raj Patel"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Elizabeth Chen-Nakamura",
+            "234-56-7890",
+            "(215) 555-0147",
+            "e.chen@globalcorp.com",
+            "Michael Chen",
+            "+1 215 555 0293",
+            "r.patel@globalcorp.com",
+            "Raj Patel"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Elizabeth Chen-Nakamura",
+            "234-56-7890",
+            "(215) 555-0147",
+            "e.chen@globalcorp.com",
+            "Michael Chen",
+            "+1 215 555 0293",
+            "r.patel@globalcorp.com",
+            "Raj Patel"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Elizabeth Chen-Nakamura",
+            "234-56-7890",
+            "(215) 555-0147",
+            "e.chen@globalcorp.com",
+            "Michael Chen",
+            "+1 215 555 0293",
+            "r.patel@globalcorp.com",
+            "Raj Patel"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "german_bank_letter",
+      "lang": "de",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Thomas Becker",
+            "DE89 3704 0044 0532 0130 00",
+            "+49 89 1234 5678",
+            "kundenservice@sparkasse-muenchen.de",
+            "Claudia Hoffmann",
+            "+49 170 9876543",
+            "c.hoffmann@sparkasse.de"
+          ],
+          "leaked": [
+            "Schneider-Weber"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Thomas Becker",
+            "DE89 3704 0044 0532 0130 00",
+            "+49 89 1234 5678",
+            "kundenservice@sparkasse-muenchen.de",
+            "Claudia Hoffmann",
+            "+49 170 9876543",
+            "c.hoffmann@sparkasse.de"
+          ],
+          "leaked": [
+            "Schneider-Weber"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Thomas Becker",
+            "DE89 3704 0044 0532 0130 00",
+            "+49 89 1234 5678",
+            "kundenservice@sparkasse-muenchen.de",
+            "Claudia Hoffmann",
+            "+49 170 9876543",
+            "c.hoffmann@sparkasse.de"
+          ],
+          "leaked": [
+            "Schneider-Weber"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Thomas Becker",
+            "DE89 3704 0044 0532 0130 00",
+            "+49 89 1234 5678",
+            "kundenservice@sparkasse-muenchen.de",
+            "Claudia Hoffmann",
+            "+49 170 9876543",
+            "c.hoffmann@sparkasse.de"
+          ],
+          "leaked": [
+            "Schneider-Weber"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "spanish_contract",
+      "lang": "es",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Alejandro García-López",
+            "+34 612 345 678",
+            "a.garcia@telefonica.es",
+            "Carmen Ruiz Fernández",
+            "+34 698 765 432",
+            "c.ruiz@bbva.es"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Alejandro García-López",
+            "+34 612 345 678",
+            "a.garcia@telefonica.es",
+            "Carmen Ruiz Fernández",
+            "+34 698 765 432",
+            "c.ruiz@bbva.es"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Alejandro García-López",
+            "+34 612 345 678",
+            "a.garcia@telefonica.es",
+            "Carmen Ruiz Fernández",
+            "+34 698 765 432",
+            "c.ruiz@bbva.es"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Alejandro García-López",
+            "+34 612 345 678",
+            "a.garcia@telefonica.es",
+            "Carmen Ruiz Fernández",
+            "+34 698 765 432",
+            "c.ruiz@bbva.es"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "italian_invoice",
+      "lang": "it",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Giuseppe Bianchi",
+            "+39 02 1234 5678",
+            "g.bianchi@studiobianchi.it",
+            "Francesca De Luca",
+            "f.deluca@unicredit.it"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Giuseppe Bianchi",
+            "+39 02 1234 5678",
+            "g.bianchi@studiobianchi.it",
+            "Francesca De Luca",
+            "f.deluca@unicredit.it"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Giuseppe Bianchi",
+            "+39 02 1234 5678",
+            "g.bianchi@studiobianchi.it",
+            "Francesca De Luca",
+            "f.deluca@unicredit.it"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Giuseppe Bianchi",
+            "+39 02 1234 5678",
+            "g.bianchi@studiobianchi.it",
+            "Francesca De Luca",
+            "f.deluca@unicredit.it"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "medical_referral_en",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Sarah Mitchell",
+            "+44 7911 234567",
+            "Margaret O'Brien-Sullivan",
+            "+44 7911 234568"
+          ],
+          "leaked": [
+            "s.mitchell@nhs.uk",
+            "Andrew Patel"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Sarah Mitchell",
+            "+44 7911 234567",
+            "Margaret O'Brien-Sullivan",
+            "+44 7911 234568"
+          ],
+          "leaked": [
+            "s.mitchell@nhs.uk",
+            "Andrew Patel"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Sarah Mitchell",
+            "+44 7911 234567",
+            "Margaret O'Brien-Sullivan",
+            "+44 7911 234568"
+          ],
+          "leaked": [
+            "s.mitchell@nhs.uk",
+            "Andrew Patel"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Sarah Mitchell",
+            "+44 7911 234567",
+            "Margaret O'Brien-Sullivan",
+            "+44 7911 234568"
+          ],
+          "leaked": [
+            "s.mitchell@nhs.uk",
+            "Andrew Patel"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "fr_cv",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Lefèvre-Bouchard",
+            "28 juin 1992",
+            "07 63 48 92 15",
+            "i.lefevre@protonmail.com",
+            "Marc-Antoine Girard",
+            "m.girard@bnpparibas.fr"
+          ],
+          "leaked": [
+            "Isabelle"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Lefèvre-Bouchard",
+            "28 juin 1992",
+            "07 63 48 92 15",
+            "i.lefevre@protonmail.com",
+            "Marc-Antoine Girard",
+            "m.girard@bnpparibas.fr"
+          ],
+          "leaked": [
+            "Isabelle"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Lefèvre-Bouchard",
+            "28 juin 1992",
+            "07 63 48 92 15",
+            "i.lefevre@protonmail.com",
+            "Marc-Antoine Girard",
+            "m.girard@bnpparibas.fr"
+          ],
+          "leaked": [
+            "Isabelle"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Lefèvre-Bouchard",
+            "28 juin 1992",
+            "07 63 48 92 15",
+            "i.lefevre@protonmail.com",
+            "Marc-Antoine Girard",
+            "m.girard@bnpparibas.fr"
+          ],
+          "leaked": [
+            "Isabelle"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "fr_bail",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Thierry Vasseur",
+            "+33 4 78 93 10 20",
+            "t.vasseur@gmail.com",
+            "Amandine Roche-Dupuis",
+            "14 février 1995",
+            "06 45 78 12 36",
+            "a.roche@outlook.fr",
+            "FR76 3000 6000 0112 3456 7890 189"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Thierry Vasseur",
+            "+33 4 78 93 10 20",
+            "t.vasseur@gmail.com",
+            "Amandine Roche-Dupuis",
+            "14 février 1995",
+            "06 45 78 12 36",
+            "a.roche@outlook.fr",
+            "FR76 3000 6000 0112 3456 7890 189"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Thierry Vasseur",
+            "+33 4 78 93 10 20",
+            "t.vasseur@gmail.com",
+            "Amandine Roche-Dupuis",
+            "14 février 1995",
+            "06 45 78 12 36",
+            "a.roche@outlook.fr",
+            "FR76 3000 6000 0112 3456 7890 189"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Thierry Vasseur",
+            "+33 4 78 93 10 20",
+            "t.vasseur@gmail.com",
+            "Amandine Roche-Dupuis",
+            "14 février 1995",
+            "06 45 78 12 36",
+            "a.roche@outlook.fr",
+            "FR76 3000 6000 0112 3456 7890 189"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "en_complaint",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Patricia Williams-Chen",
+            "p.williams@gmail.com",
+            "+1 415 555 0132",
+            "r.torres@company.com",
+            "+1 415 555 0198"
+          ],
+          "leaked": [
+            "David O'Connor",
+            "Rebecca Torres"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Patricia Williams-Chen",
+            "p.williams@gmail.com",
+            "+1 415 555 0132",
+            "r.torres@company.com",
+            "+1 415 555 0198"
+          ],
+          "leaked": [
+            "David O'Connor",
+            "Rebecca Torres"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Patricia Williams-Chen",
+            "p.williams@gmail.com",
+            "+1 415 555 0132",
+            "r.torres@company.com",
+            "+1 415 555 0198"
+          ],
+          "leaked": [
+            "David O'Connor",
+            "Rebecca Torres"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Patricia Williams-Chen",
+            "p.williams@gmail.com",
+            "+1 415 555 0132",
+            "r.torres@company.com",
+            "+1 415 555 0198"
+          ],
+          "leaked": [
+            "David O'Connor",
+            "Rebecca Torres"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "en_nda",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "w.fitzgerald@nexusinnovations.com",
+            "+44 20 7123 4567",
+            "Aisha Patel-Rahman",
+            "a.patel@biogenesis.co.uk",
+            "+44 7911 123456"
+          ],
+          "leaked": [
+            "William Fitzgerald"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "w.fitzgerald@nexusinnovations.com",
+            "+44 20 7123 4567",
+            "Aisha Patel-Rahman",
+            "a.patel@biogenesis.co.uk",
+            "+44 7911 123456"
+          ],
+          "leaked": [
+            "William Fitzgerald"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "w.fitzgerald@nexusinnovations.com",
+            "+44 20 7123 4567",
+            "Aisha Patel-Rahman",
+            "a.patel@biogenesis.co.uk",
+            "+44 7911 123456"
+          ],
+          "leaked": [
+            "William Fitzgerald"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "w.fitzgerald@nexusinnovations.com",
+            "+44 20 7123 4567",
+            "Aisha Patel-Rahman",
+            "a.patel@biogenesis.co.uk",
+            "+44 7911 123456"
+          ],
+          "leaked": [
+            "William Fitzgerald"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "de_mietvertrag",
+      "lang": "de",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "+49 30 9876 5432",
+            "h.brandt@gmx.de",
+            "Lena Kowalski-Braun",
+            "7. Oktober 1993",
+            "+49 176 2345 6789",
+            "l.kowalski@posteo.de",
+            "DE89 3704 0044 0532 0130 00"
+          ],
+          "leaked": [
+            "Heinrich Brandt"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "+49 30 9876 5432",
+            "h.brandt@gmx.de",
+            "Lena Kowalski-Braun",
+            "7. Oktober 1993",
+            "+49 176 2345 6789",
+            "l.kowalski@posteo.de",
+            "DE89 3704 0044 0532 0130 00"
+          ],
+          "leaked": [
+            "Heinrich Brandt"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "+49 30 9876 5432",
+            "h.brandt@gmx.de",
+            "Lena Kowalski-Braun",
+            "7. Oktober 1993",
+            "+49 176 2345 6789",
+            "l.kowalski@posteo.de",
+            "DE89 3704 0044 0532 0130 00"
+          ],
+          "leaked": [
+            "Heinrich Brandt"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "+49 30 9876 5432",
+            "h.brandt@gmx.de",
+            "Lena Kowalski-Braun",
+            "7. Oktober 1993",
+            "+49 176 2345 6789",
+            "l.kowalski@posteo.de",
+            "DE89 3704 0044 0532 0130 00"
+          ],
+          "leaked": [
+            "Heinrich Brandt"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "es_denuncia",
+      "lang": "es",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "+34 654 321 098",
+            "mc.ortega@yahoo.es",
+            "Juan Pablo Hernández Ríos",
+            "jp.hernandez@gmail.com",
+            "+34 612 987 654"
+          ],
+          "leaked": [
+            "María del Carmen Ortega Ruiz"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "+34 654 321 098",
+            "mc.ortega@yahoo.es",
+            "Juan Pablo Hernández Ríos",
+            "jp.hernandez@gmail.com",
+            "+34 612 987 654"
+          ],
+          "leaked": [
+            "María del Carmen Ortega Ruiz"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "+34 654 321 098",
+            "mc.ortega@yahoo.es",
+            "Juan Pablo Hernández Ríos",
+            "jp.hernandez@gmail.com",
+            "+34 612 987 654"
+          ],
+          "leaked": [
+            "María del Carmen Ortega Ruiz"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "+34 654 321 098",
+            "mc.ortega@yahoo.es",
+            "Juan Pablo Hernández Ríos",
+            "jp.hernandez@gmail.com",
+            "+34 612 987 654"
+          ],
+          "leaked": [
+            "María del Carmen Ortega Ruiz"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "it_preventivo",
+      "lang": "it",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Alessandro Ferretti",
+            "+39 011 567 8901",
+            "a.ferretti@libero.it",
+            "Giulia Mantovani",
+            "+39 349 876 5432",
+            "g.mantovani@pec.it"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Alessandro Ferretti",
+            "+39 011 567 8901",
+            "a.ferretti@libero.it",
+            "Giulia Mantovani",
+            "+39 349 876 5432",
+            "g.mantovani@pec.it"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Alessandro Ferretti",
+            "+39 011 567 8901",
+            "a.ferretti@libero.it",
+            "Giulia Mantovani",
+            "+39 349 876 5432",
+            "g.mantovani@pec.it"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Alessandro Ferretti",
+            "+39 011 567 8901",
+            "a.ferretti@libero.it",
+            "Giulia Mantovani",
+            "+39 349 876 5432",
+            "g.mantovani@pec.it"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "en_medical_notes",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Eleanor Whitfield-Barnes",
+            "+44 20 7946 0958",
+            "e.whitfield@btinternet.com",
+            "+44 131 555 0199",
+            "h.macleod@nhs.scot"
+          ],
+          "leaked": [
+            "Hamish MacLeod"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Eleanor Whitfield-Barnes",
+            "+44 20 7946 0958",
+            "e.whitfield@btinternet.com",
+            "+44 131 555 0199",
+            "h.macleod@nhs.scot"
+          ],
+          "leaked": [
+            "Hamish MacLeod"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Eleanor Whitfield-Barnes",
+            "+44 20 7946 0958",
+            "e.whitfield@btinternet.com",
+            "+44 131 555 0199",
+            "h.macleod@nhs.scot"
+          ],
+          "leaked": [
+            "Hamish MacLeod"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Eleanor Whitfield-Barnes",
+            "+44 20 7946 0958",
+            "e.whitfield@btinternet.com",
+            "+44 131 555 0199",
+            "h.macleod@nhs.scot"
+          ],
+          "leaked": [
+            "Hamish MacLeod"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "fr_procuration",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Catherine Beaumont-Lacroix",
+            "30 novembre 1968",
+            "Philippe Desjardins",
+            "2 mars 1970",
+            "05 61 23 45 67",
+            "p.desjardins@sfr.fr"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Catherine Beaumont-Lacroix",
+            "30 novembre 1968",
+            "Philippe Desjardins",
+            "2 mars 1970",
+            "05 61 23 45 67",
+            "p.desjardins@sfr.fr"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Catherine Beaumont-Lacroix",
+            "30 novembre 1968",
+            "Philippe Desjardins",
+            "2 mars 1970",
+            "05 61 23 45 67",
+            "p.desjardins@sfr.fr"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Catherine Beaumont-Lacroix",
+            "30 novembre 1968",
+            "Philippe Desjardins",
+            "2 mars 1970",
+            "05 61 23 45 67",
+            "p.desjardins@sfr.fr"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "en_job_application",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Christopher Nguyen-Park",
+            "c.nguyen@protonmail.ch",
+            "+1 650 555 0142",
+            "Samantha Rivera",
+            "s.rivera@techflow.io",
+            "+1 408 555 0167",
+            "Marcus Johnson-Lee",
+            "m.johnson@amazon.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Christopher Nguyen-Park",
+            "c.nguyen@protonmail.ch",
+            "+1 650 555 0142",
+            "Samantha Rivera",
+            "s.rivera@techflow.io",
+            "+1 408 555 0167",
+            "Marcus Johnson-Lee",
+            "m.johnson@amazon.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Christopher Nguyen-Park",
+            "c.nguyen@protonmail.ch",
+            "+1 650 555 0142",
+            "Samantha Rivera",
+            "s.rivera@techflow.io",
+            "+1 408 555 0167",
+            "Marcus Johnson-Lee",
+            "m.johnson@amazon.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Christopher Nguyen-Park",
+            "c.nguyen@protonmail.ch",
+            "+1 650 555 0142",
+            "Samantha Rivera",
+            "s.rivera@techflow.io",
+            "+1 408 555 0167",
+            "Marcus Johnson-Lee",
+            "m.johnson@amazon.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "de_arztbrief",
+      "lang": "de",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Maximilian Schröder-Hoffmann",
+            "15. Januar 1985",
+            "+49 89 4567 8901",
+            "m.schroeder@t-online.de",
+            "+49 89 1234 5678",
+            "f.neumann@praxis-muenchen.de"
+          ],
+          "leaked": [
+            "Franziska Neumann"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Maximilian Schröder-Hoffmann",
+            "15. Januar 1985",
+            "+49 89 4567 8901",
+            "m.schroeder@t-online.de",
+            "+49 89 1234 5678",
+            "f.neumann@praxis-muenchen.de"
+          ],
+          "leaked": [
+            "Franziska Neumann"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Maximilian Schröder-Hoffmann",
+            "15. Januar 1985",
+            "+49 89 4567 8901",
+            "m.schroeder@t-online.de",
+            "+49 89 1234 5678",
+            "f.neumann@praxis-muenchen.de"
+          ],
+          "leaked": [
+            "Franziska Neumann"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Maximilian Schröder-Hoffmann",
+            "15. Januar 1985",
+            "+49 89 4567 8901",
+            "m.schroeder@t-online.de",
+            "+49 89 1234 5678",
+            "f.neumann@praxis-muenchen.de"
+          ],
+          "leaked": [
+            "Franziska Neumann"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "fr_devis_artisan",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Sébastien Moreau-Petit",
+            "06 12 34 56 78",
+            "s.moreau@artisan-plombier.fr",
+            "Françoise Dubois",
+            "06 98 76 54 32",
+            "f.dubois@orange.fr"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Sébastien Moreau-Petit",
+            "06 12 34 56 78",
+            "s.moreau@artisan-plombier.fr",
+            "Françoise Dubois",
+            "06 98 76 54 32",
+            "f.dubois@orange.fr"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Sébastien Moreau-Petit",
+            "06 12 34 56 78",
+            "s.moreau@artisan-plombier.fr",
+            "Françoise Dubois",
+            "06 98 76 54 32",
+            "f.dubois@orange.fr"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Sébastien Moreau-Petit",
+            "06 12 34 56 78",
+            "s.moreau@artisan-plombier.fr",
+            "Françoise Dubois",
+            "06 98 76 54 32",
+            "f.dubois@orange.fr"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "en_wire_transfer",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Robert James McAllister",
+            "+44 20 7946 0123",
+            "r.mcallister@hsbc.co.uk",
+            "Yuki Tanaka-Anderson",
+            "GB29 NWBK 6016 1331 9268 19",
+            "y.tanaka@gmail.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Robert James McAllister",
+            "+44 20 7946 0123",
+            "r.mcallister@hsbc.co.uk",
+            "Yuki Tanaka-Anderson",
+            "GB29 NWBK 6016 1331 9268 19",
+            "y.tanaka@gmail.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Robert James McAllister",
+            "+44 20 7946 0123",
+            "r.mcallister@hsbc.co.uk",
+            "Yuki Tanaka-Anderson",
+            "GB29 NWBK 6016 1331 9268 19",
+            "y.tanaka@gmail.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Robert James McAllister",
+            "+44 20 7946 0123",
+            "r.mcallister@hsbc.co.uk",
+            "Yuki Tanaka-Anderson",
+            "GB29 NWBK 6016 1331 9268 19",
+            "y.tanaka@gmail.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "es_contrato_laboral",
+      "lang": "es",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Fernando José Méndez Castillo",
+            "+34 678 901 234",
+            "f.mendez@outlook.es",
+            "Ana Belén Torres Sánchez",
+            "+34 611 222 333",
+            "ab.torres@techsolutions.es"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Fernando José Méndez Castillo",
+            "+34 678 901 234",
+            "f.mendez@outlook.es",
+            "Ana Belén Torres Sánchez",
+            "+34 611 222 333",
+            "ab.torres@techsolutions.es"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Fernando José Méndez Castillo",
+            "+34 678 901 234",
+            "f.mendez@outlook.es",
+            "Ana Belén Torres Sánchez",
+            "+34 611 222 333",
+            "ab.torres@techsolutions.es"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Fernando José Méndez Castillo",
+            "+34 678 901 234",
+            "f.mendez@outlook.es",
+            "Ana Belén Torres Sánchez",
+            "+34 611 222 333",
+            "ab.torres@techsolutions.es"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "fr_lettre_resiliation",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Antoine Bernard-Lefranc",
+            "8 décembre 1983",
+            "04 72 34 56 78",
+            "a.bernard@free.fr",
+            "FR76 3000 6000 0112 3456 7890 189"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Antoine Bernard-Lefranc",
+            "8 décembre 1983",
+            "04 72 34 56 78",
+            "a.bernard@free.fr",
+            "FR76 3000 6000 0112 3456 7890 189"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Antoine Bernard-Lefranc",
+            "8 décembre 1983",
+            "04 72 34 56 78",
+            "a.bernard@free.fr",
+            "FR76 3000 6000 0112 3456 7890 189"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Antoine Bernard-Lefranc",
+            "8 décembre 1983",
+            "04 72 34 56 78",
+            "a.bernard@free.fr",
+            "FR76 3000 6000 0112 3456 7890 189"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "en_tenant_application",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Jennifer O'Sullivan-Park",
+            "078-05-1120",
+            "+1 415 555 0175",
+            "j.osullivan@icloud.com",
+            "Benjamin Okafor",
+            "b.okafor@gs.com",
+            "Margaret Chen",
+            "+1 415 555 0134",
+            "m.chen@sfrentals.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Jennifer O'Sullivan-Park",
+            "078-05-1120",
+            "+1 415 555 0175",
+            "j.osullivan@icloud.com",
+            "Benjamin Okafor",
+            "b.okafor@gs.com",
+            "Margaret Chen",
+            "+1 415 555 0134",
+            "m.chen@sfrentals.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Jennifer O'Sullivan-Park",
+            "078-05-1120",
+            "+1 415 555 0175",
+            "j.osullivan@icloud.com",
+            "Benjamin Okafor",
+            "b.okafor@gs.com",
+            "Margaret Chen",
+            "+1 415 555 0134",
+            "m.chen@sfrentals.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Jennifer O'Sullivan-Park",
+            "078-05-1120",
+            "+1 415 555 0175",
+            "j.osullivan@icloud.com",
+            "Benjamin Okafor",
+            "b.okafor@gs.com",
+            "Margaret Chen",
+            "+1 415 555 0134",
+            "m.chen@sfrentals.com"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "dlptest_row1",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Johnson White",
+            "jwhite@domain.com",
+            "408 496-7223",
+            "5270-4267-6450-5516"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Johnson White",
+            "jwhite@domain.com",
+            "408 496-7223",
+            "5270-4267-6450-5516"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Johnson White",
+            "jwhite@domain.com",
+            "408 496-7223",
+            "5270-4267-6450-5516"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Johnson White",
+            "jwhite@domain.com",
+            "408 496-7223",
+            "5270-4267-6450-5516"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "dlptest_row2",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Ashley Borden",
+            "aborden@domain.com",
+            "785-939-6046",
+            "5370-4638-8881-3020"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Ashley Borden",
+            "aborden@domain.com",
+            "785-939-6046",
+            "5370-4638-8881-3020"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Ashley Borden",
+            "aborden@domain.com",
+            "785-939-6046",
+            "5370-4638-8881-3020"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Ashley Borden",
+            "aborden@domain.com",
+            "785-939-6046",
+            "5370-4638-8881-3020"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "dlptest_row3",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Marjorie Green",
+            "mgreen@domain.com",
+            "415 986-7020",
+            "4916-9766-5240-6147"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Marjorie Green",
+            "mgreen@domain.com",
+            "415 986-7020",
+            "4916-9766-5240-6147"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Marjorie Green",
+            "mgreen@domain.com",
+            "415 986-7020",
+            "4916-9766-5240-6147"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Marjorie Green",
+            "mgreen@domain.com",
+            "415 986-7020",
+            "4916-9766-5240-6147"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "dlptest_row4",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Jerome Munsch",
+            "jmunsch@domain.com",
+            "303-901-6123",
+            "5180-3807-3679-8221"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Jerome Munsch",
+            "jmunsch@domain.com",
+            "303-901-6123",
+            "5180-3807-3679-8221"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Jerome Munsch",
+            "jmunsch@domain.com",
+            "303-901-6123",
+            "5180-3807-3679-8221"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Jerome Munsch",
+            "jmunsch@domain.com",
+            "303-901-6123",
+            "5180-3807-3679-8221"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "enedis_rse_edito",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Marianne Laigneau"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Marianne Laigneau"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Marianne Laigneau"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Marianne Laigneau"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "enedis_rse_credits",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Olivier Ulrich",
+            "Julien Goldstein",
+            "Morgan Richard",
+            "Paul Robin",
+            "Laurent Vautrin",
+            "William Beaucardet",
+            "Laurent Mayeux",
+            "Jean-Noël Dias",
+            "Olivier Guerrin",
+            "Thierry Laporte",
+            "Jean-Luc Petit",
+            "Pierre Olivier"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Olivier Ulrich",
+            "Julien Goldstein",
+            "Morgan Richard",
+            "Paul Robin",
+            "Laurent Vautrin",
+            "William Beaucardet",
+            "Laurent Mayeux",
+            "Jean-Noël Dias",
+            "Olivier Guerrin",
+            "Thierry Laporte",
+            "Jean-Luc Petit",
+            "Pierre Olivier"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Olivier Ulrich",
+            "Julien Goldstein",
+            "Morgan Richard",
+            "Paul Robin",
+            "Laurent Vautrin",
+            "William Beaucardet",
+            "Laurent Mayeux",
+            "Jean-Noël Dias",
+            "Olivier Guerrin",
+            "Thierry Laporte",
+            "Jean-Luc Petit",
+            "Pierre Olivier"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Olivier Ulrich",
+            "Julien Goldstein",
+            "Morgan Richard",
+            "Paul Robin",
+            "Laurent Vautrin",
+            "William Beaucardet",
+            "Laurent Mayeux",
+            "Jean-Noël Dias",
+            "Olivier Guerrin",
+            "Thierry Laporte",
+            "Jean-Luc Petit",
+            "Pierre Olivier"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "enedis_rse_governance_contact",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Claire Beaumont-Laforge",
+            "c.beaumont@gfe-group.eu",
+            "+33 1 45 67 89 01",
+            "Thomas Wernher-Schmidt",
+            "Isabelle Fontaine-Dubois"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Claire Beaumont-Laforge",
+            "c.beaumont@gfe-group.eu",
+            "+33 1 45 67 89 01",
+            "Thomas Wernher-Schmidt",
+            "Isabelle Fontaine-Dubois"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Claire Beaumont-Laforge",
+            "c.beaumont@gfe-group.eu",
+            "+33 1 45 67 89 01",
+            "Thomas Wernher-Schmidt",
+            "Isabelle Fontaine-Dubois"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Claire Beaumont-Laforge",
+            "c.beaumont@gfe-group.eu",
+            "+33 1 45 67 89 01",
+            "Thomas Wernher-Schmidt",
+            "Isabelle Fontaine-Dubois"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "enedis_rse_chiffres_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "enedis_rse_enr_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "enedis_rse_carbone_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "enedis_rse_biodiversite_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "enedis_rse_egapro_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "enedis_rse_achats_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "enedis_rse_numerique_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "enedis_rse_jeux_olympiques_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "rse_edito",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Marianne Laigneau"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Marianne Laigneau"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Marianne Laigneau"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Marianne Laigneau"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "rse_credits_photos",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Olivier Ulrich",
+            "Julien Goldstein",
+            "Morgan Richard",
+            "Paul Robin",
+            "Laurent Vautrin",
+            "William Beaucardet",
+            "Laurent Mayeux",
+            "Jean-Noël Dias",
+            "Olivier Guerrin",
+            "Thierry Laporte",
+            "Jean-Luc Petit",
+            "Pierre Olivier"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Olivier Ulrich",
+            "Julien Goldstein",
+            "Morgan Richard",
+            "Paul Robin",
+            "Laurent Vautrin",
+            "William Beaucardet",
+            "Laurent Mayeux",
+            "Jean-Noël Dias",
+            "Olivier Guerrin",
+            "Thierry Laporte",
+            "Jean-Luc Petit",
+            "Pierre Olivier"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Olivier Ulrich",
+            "Julien Goldstein",
+            "Morgan Richard",
+            "Paul Robin",
+            "Laurent Vautrin",
+            "William Beaucardet",
+            "Laurent Mayeux",
+            "Jean-Noël Dias",
+            "Olivier Guerrin",
+            "Thierry Laporte",
+            "Jean-Luc Petit",
+            "Pierre Olivier"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Olivier Ulrich",
+            "Julien Goldstein",
+            "Morgan Richard",
+            "Paul Robin",
+            "Laurent Vautrin",
+            "William Beaucardet",
+            "Laurent Mayeux",
+            "Jean-Noël Dias",
+            "Olivier Guerrin",
+            "Thierry Laporte",
+            "Jean-Luc Petit",
+            "Pierre Olivier"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "rse_governance_contact",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Claire Beaumont-Laforge",
+            "c.beaumont@gfe-group.eu",
+            "+33 1 45 67 89 01",
+            "Thomas Wernher-Schmidt",
+            "Isabelle Fontaine-Dubois"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Claire Beaumont-Laforge",
+            "c.beaumont@gfe-group.eu",
+            "+33 1 45 67 89 01",
+            "Thomas Wernher-Schmidt",
+            "Isabelle Fontaine-Dubois"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Claire Beaumont-Laforge",
+            "c.beaumont@gfe-group.eu",
+            "+33 1 45 67 89 01",
+            "Thomas Wernher-Schmidt",
+            "Isabelle Fontaine-Dubois"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Claire Beaumont-Laforge",
+            "c.beaumont@gfe-group.eu",
+            "+33 1 45 67 89 01",
+            "Thomas Wernher-Schmidt",
+            "Isabelle Fontaine-Dubois"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "rse_chiffres_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "rse_carbone_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "rse_ethique_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "rse_biodiversite_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "rse_investissements_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "rse_numerique_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "rse_jeux_olympiques_clean",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "fr_long_corporate",
+      "lang": "fr",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Jean-Marc Vasseur-Delacroix",
+            "Claire Beaumont-Laforge",
+            "+33 1 45 67 89 01",
+            "c.beaumont@gfe-group.eu",
+            "Sarah O'Brien-Mitchell",
+            "Pierre-Antoine Lefebvre",
+            "pa.lefebvre@gfe-group.eu",
+            "+33 1 45 67 89 02",
+            "Philippe de Montfort",
+            "Marc-Antoine Leroy",
+            "+33 1 45 67 89 04",
+            "investor.relations@gfe-group.eu",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "15 mars 2025"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Jean-Marc Vasseur-Delacroix",
+            "Claire Beaumont-Laforge",
+            "+33 1 45 67 89 01",
+            "c.beaumont@gfe-group.eu",
+            "Sarah O'Brien-Mitchell",
+            "Pierre-Antoine Lefebvre",
+            "pa.lefebvre@gfe-group.eu",
+            "+33 1 45 67 89 02",
+            "Philippe de Montfort",
+            "Marc-Antoine Leroy",
+            "+33 1 45 67 89 04",
+            "investor.relations@gfe-group.eu",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "15 mars 2025"
+          ],
+          "leaked": [],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Jean-Marc Vasseur-Delacroix",
+            "Claire Beaumont-Laforge",
+            "+33 1 45 67 89 01",
+            "c.beaumont@gfe-group.eu",
+            "Sarah O'Brien-Mitchell",
+            "Pierre-Antoine Lefebvre",
+            "pa.lefebvre@gfe-group.eu",
+            "+33 1 45 67 89 02",
+            "Philippe de Montfort",
+            "Marc-Antoine Leroy",
+            "+33 1 45 67 89 04",
+            "investor.relations@gfe-group.eu",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "15 mars 2025"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Jean-Marc Vasseur-Delacroix",
+            "Claire Beaumont-Laforge",
+            "+33 1 45 67 89 01",
+            "c.beaumont@gfe-group.eu",
+            "Sarah O'Brien-Mitchell",
+            "Pierre-Antoine Lefebvre",
+            "pa.lefebvre@gfe-group.eu",
+            "+33 1 45 67 89 02",
+            "Philippe de Montfort",
+            "Marc-Antoine Leroy",
+            "+33 1 45 67 89 04",
+            "investor.relations@gfe-group.eu",
+            "FR76 3000 6000 0112 3456 7890 189",
+            "15 mars 2025"
+          ],
+          "leaked": [],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "en_long_legal",
+      "lang": "en",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "w.fitzgerald@nexusinnovations.com",
+            "+44 20 7123 4567",
+            "Aisha Patel-Rahman",
+            "a.patel@biogenesis.co.uk",
+            "Sarah Mitchell",
+            "legal@nexusinnovations.com",
+            "+44 7911 234568",
+            "GB29 NWBK 6016 1331 9268 19"
+          ],
+          "leaked": [
+            "William Fitzgerald",
+            "+44 7911 654321"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "w.fitzgerald@nexusinnovations.com",
+            "+44 20 7123 4567",
+            "Aisha Patel-Rahman",
+            "a.patel@biogenesis.co.uk",
+            "Sarah Mitchell",
+            "legal@nexusinnovations.com",
+            "+44 7911 234568",
+            "GB29 NWBK 6016 1331 9268 19"
+          ],
+          "leaked": [
+            "William Fitzgerald",
+            "+44 7911 654321"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "w.fitzgerald@nexusinnovations.com",
+            "+44 20 7123 4567",
+            "Aisha Patel-Rahman",
+            "a.patel@biogenesis.co.uk",
+            "Sarah Mitchell",
+            "legal@nexusinnovations.com",
+            "+44 7911 234568",
+            "GB29 NWBK 6016 1331 9268 19"
+          ],
+          "leaked": [
+            "William Fitzgerald",
+            "+44 7911 654321"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "w.fitzgerald@nexusinnovations.com",
+            "+44 20 7123 4567",
+            "Aisha Patel-Rahman",
+            "a.patel@biogenesis.co.uk",
+            "Sarah Mitchell",
+            "legal@nexusinnovations.com",
+            "+44 7911 234568",
+            "GB29 NWBK 6016 1331 9268 19"
+          ],
+          "leaked": [
+            "William Fitzgerald",
+            "+44 7911 654321"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    },
+    {
+      "id": "de_long_medical",
+      "lang": "de",
+      "carriers": {
+        "flat": {
+          "anonymized": [
+            "Maximilian Schröder-Hoffmann",
+            "15. Januar 1985",
+            "+49 89 4567 8901",
+            "m.schroeder@t-online.de",
+            "+49 89 1234 5678",
+            "f.neumann@praxis-muenchen.de",
+            "12. März 2025",
+            "Klaus-Dieter Wagner",
+            "+49 89 3068 1234",
+            "k.wagner@klinikum-muenchen.de"
+          ],
+          "leaked": [
+            "Franziska Neumann"
+          ],
+          "roundtrip_ok": null
+        },
+        "multimodal": {
+          "anonymized": [
+            "Maximilian Schröder-Hoffmann",
+            "15. Januar 1985",
+            "+49 89 4567 8901",
+            "m.schroeder@t-online.de",
+            "+49 89 1234 5678",
+            "f.neumann@praxis-muenchen.de",
+            "12. März 2025",
+            "Klaus-Dieter Wagner",
+            "+49 89 3068 1234",
+            "k.wagner@klinikum-muenchen.de"
+          ],
+          "leaked": [
+            "Franziska Neumann"
+          ],
+          "roundtrip_ok": null
+        },
+        "tool_call": {
+          "anonymized": [
+            "Maximilian Schröder-Hoffmann",
+            "15. Januar 1985",
+            "+49 89 4567 8901",
+            "m.schroeder@t-online.de",
+            "+49 89 1234 5678",
+            "f.neumann@praxis-muenchen.de",
+            "12. März 2025",
+            "Klaus-Dieter Wagner",
+            "+49 89 3068 1234",
+            "k.wagner@klinikum-muenchen.de"
+          ],
+          "leaked": [
+            "Franziska Neumann"
+          ],
+          "roundtrip_ok": true
+        },
+        "tool_call_nested": {
+          "anonymized": [
+            "Maximilian Schröder-Hoffmann",
+            "15. Januar 1985",
+            "+49 89 4567 8901",
+            "m.schroeder@t-online.de",
+            "+49 89 1234 5678",
+            "f.neumann@praxis-muenchen.de",
+            "12. März 2025",
+            "Klaus-Dieter Wagner",
+            "+49 89 3068 1234",
+            "k.wagner@klinikum-muenchen.de"
+          ],
+          "leaked": [
+            "Franziska Neumann"
+          ],
+          "roundtrip_ok": true
+        }
+      }
+    }
+  ],
+  "native_by_doc": [
+    {
+      "id": "tool_send_email",
+      "lang": "en",
+      "expected_total": 3,
+      "anonymized": [
+        "Sarah Johnson",
+        "sarah.j@company.org",
+        "+1 212 555 0199"
+      ],
+      "leaked": [],
+      "roundtrip_ok": true
+    },
+    {
+      "id": "tool_book_appointment_nested",
+      "lang": "fr",
+      "expected_total": 3,
+      "anonymized": [
+        "Marie-Claire Dupont",
+        "mc.dupont@gmail.com",
+        "+33 6 78 45 12 90"
+      ],
+      "leaked": [],
+      "roundtrip_ok": true
+    },
+    {
+      "id": "tool_transfers_list",
+      "lang": "en",
+      "expected_total": 2,
+      "anonymized": [
+        "Bob Wilson",
+        "DE89 3704 0044 0532 0130 00"
+      ],
+      "leaked": [],
+      "roundtrip_ok": true
+    },
+    {
+      "id": "tool_freeform_arguments",
+      "lang": "en",
+      "expected_total": 3,
+      "anonymized": [
+        "john@test.com",
+        "10.0.0.42"
+      ],
+      "leaked": [
+        "John Smith"
+      ],
+      "roundtrip_ok": true
+    },
+    {
+      "id": "multimodal_id_card",
+      "lang": "fr",
+      "expected_total": 2,
+      "anonymized": [
+        "Jean Dupont",
+        "FR76 3000 6000 0112 3456 7890 189"
+      ],
+      "leaked": [],
+      "roundtrip_ok": null
+    }
+  ]
+}

@@ -251,8 +251,8 @@
         "Mrs"
       ],
       "fn_items": [
-        "s.mitchell@nhs.uk",
-        "Andrew Patel"
+        "Andrew Patel",
+        "s.mitchell@nhs.uk"
       ]
     },
     {
@@ -292,8 +292,8 @@
         "Dear Sir"
       ],
       "fn_items": [
-        "David O'Connor",
-        "Rebecca Torres"
+        "Rebecca Torres",
+        "David O'Connor"
       ]
     },
     {
@@ -795,8 +795,8 @@
       "detected_total": 8,
       "fp_items": [],
       "fn_items": [
-        "William Fitzgerald",
-        "+44 7911 654321"
+        "+44 7911 654321",
+        "William Fitzgerald"
       ]
     },
     {

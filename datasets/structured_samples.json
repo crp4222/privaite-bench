@@ -1,0 +1,129 @@
+[
+  {
+    "id": "tool_send_email",
+    "lang": "en",
+    "source": "Self-built — realistic function-calling payload",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "send_email",
+              "arguments": "{\"to\": \"Sarah Johnson <sarah.j@company.org>\", \"body\": \"Please call me back at +1 212 555 0199.\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Sarah Johnson": "PERSON",
+      "sarah.j@company.org": "EMAIL_ADDRESS",
+      "+1 212 555 0199": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "tool_book_appointment_nested",
+    "lang": "fr",
+    "source": "Self-built — nested JSON arguments",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "book_appointment",
+              "arguments": "{\"patient\": {\"name\": \"Marie-Claire Dupont\", \"contact\": {\"email\": \"mc.dupont@gmail.com\", \"phone\": \"+33 6 78 45 12 90\"}}, \"when\": \"next week\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Marie-Claire Dupont": "PERSON",
+      "mc.dupont@gmail.com": "EMAIL_ADDRESS",
+      "+33 6 78 45 12 90": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "tool_transfers_list",
+    "lang": "en",
+    "source": "Self-built — list of objects in arguments",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "batch_transfer",
+              "arguments": "{\"transfers\": [{\"beneficiary\": \"Bob Wilson\", \"iban\": \"DE89 3704 0044 0532 0130 00\"}]}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Bob Wilson": "PERSON",
+      "DE89 3704 0044 0532 0130 00": "IBAN_CODE"
+    }
+  },
+  {
+    "id": "tool_freeform_arguments",
+    "lang": "en",
+    "source": "Self-built — non-JSON (free-text) arguments",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "run_task",
+              "arguments": "email John Smith at john@test.com about server 10.0.0.42"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "John Smith": "PERSON",
+      "john@test.com": "EMAIL_ADDRESS",
+      "10.0.0.42": "IP_ADDRESS"
+    }
+  },
+  {
+    "id": "multimodal_id_card",
+    "lang": "fr",
+    "source": "Self-built — multimodal content with a text part",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Extrais les informations de cette carte : titulaire Jean Dupont, IBAN FR76 3000 6000 0112 3456 7890 189."
+          },
+          {
+            "type": "image_url",
+            "image_url": {"url": "https://example.com/id-card.png"}
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Jean Dupont": "PERSON",
+      "FR76 3000 6000 0112 3456 7890 189": "IBAN_CODE"
+    }
+  }
+]

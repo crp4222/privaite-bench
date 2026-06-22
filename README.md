@@ -54,6 +54,57 @@ PERSON entities that NER doesn't detect:
 
 Regex-based entities (email, phone, IBAN, credit card, IP, SSN) reach near-100%.
 
+### Structured inputs: tool calls and multimodal (`bench_structured.py`)
+
+`bench.py` and the precision/recall script send every sample as a single flat
+user message. But OpenAI-compatible clients also carry user data inside
+multimodal `content` parts and tool/function-call arguments (a JSON string,
+often nested). This benchmark re-embeds the *same* PII corpus into those shapes
+to make sure none of it bypasses anonymization.
+
+It reports two things:
+
+- **Parity:** for every PII string the flat baseline anonymizes, each structured
+  carrier (`multimodal`, `tool_call`, `tool_call_nested`) must anonymize it too.
+  A value caught flat but leaked through a carrier is a **regression** (target: 0).
+- **Round-trip:** tool-call arguments must de-anonymize back to the original on
+  the response side, without loss.
+
+Carriers exercised (the same text routed four ways):
+
+| Carrier | Shape |
+|---|---|
+| `flat` | `{"role":"user","content":"…"}` (baseline) |
+| `multimodal` | `content: [{"type":"text","text":"…"}, {"image_url":…}]` |
+| `tool_call` | `tool_calls[0].function.arguments = {"note":"…"}` |
+| `tool_call_nested` | `arguments = {"user":{"profile":{"bio":"…"}}, "tags":["…"]}` |
+
+A small hand-written `datasets/structured_samples.json` adds realistic native
+payloads (a `send_email` call, a nested `book_appointment`, a transfers list, a
+free-text argument string, and a multimodal ID-card request).
+
+#### Latest results (64-document corpus, 5 languages, light preset)
+
+| Carrier | Anonymized | Leaked | Regressions vs flat | Round-trip |
+|---------|-----------|--------|---------------------|------------|
+| flat (baseline) | 263/279 | 16 | n/a | n/a |
+| multimodal | 263/279 | 16 | **0** | n/a |
+| tool_call | 263/279 | 16 | **0** | 64/64 |
+| tool_call_nested | 263/279 | 16 | **0** | 64/64 |
+
+Every structured carrier matches the flat baseline exactly: the same 263 entities
+are anonymized and the same 16 are missed, so routing PII through tool calls or
+multimodal parts loses nothing, and tool-call arguments de-anonymize back
+losslessly. The 16 misses are the documented PERSON recall gaps above, identical
+in flat and structured form.
+
+Native structured samples: 12/13 anonymized, round-trip 4/4. The one miss
+(`John Smith` inside a free-text argument) is a detector recall miss that leaks
+the same way in flat text, not a structured-handling issue.
+
+On a build without structured anonymization every carrier leaks 100%; that gap is
+the reason this benchmark exists.
+
 ## Latency (Apple M1 Pro, light preset)
 
 Measured on real corporate documents at p50/p95/p99 over 30 runs each. Adding a language adds ~70-100ms per request.
@@ -79,6 +130,7 @@ If you only need 1-2 languages, latency is well under 250 ms even on long docume
 - `datasets/corporate_samples.json` — 8 corporate documents (bank transfers, insurance claims, HR records, contracts)
 - `datasets/batch_samples.json` — 16 additional documents (CVs, leases, complaints, NDAs, invoices, medical referrals)
 - `datasets/clean_samples.json` — 14 clean texts with zero PII (should trigger no detections)
+- `datasets/structured_samples.json` — 5 native function-call / multimodal payloads (used by `bench_structured.py`)
 
 ### External / public sources
 - `datasets/dlptest_us.json` — 4 entries from [DLP Test](https://dlptest.com/sample-data/) public sample data (US names, SSN, emails, credit cards)
@@ -96,15 +148,24 @@ If you only need 1-2 languages, latency is well under 250 ms even on long docume
 | enedis_rse_extracts | 11 | 18 | [Enedis RSE 2024](https://www.enedis.fr/) | No (public report) |
 | realworld_samples | 10 | 26 | Enedis RSE 2024 inspired | Mixed |
 | clean_samples | 14 | 0 | Self-built | Yes |
+| structured_samples | 5 | 13 | Self-built | Yes |
 
 ## Run
 
 ```bash
 cd privaite-bench
-python bench.py
+python bench.py                  # detection / miss / FP rate per preset  -> results/report.json
+python bench_precision_recall.py # entity-level P / R / F1                -> results/precision_recall_report.json
+python bench_latency.py          # latency percentiles                    -> results/latency_report.json
+python bench_structured.py       # tool-call / multimodal parity          -> results/structured_report.json
 ```
 
-Results are printed to stdout and saved to `results/report.json`.
+Each script expects the PrivAiTe checkout as a sibling directory (`../PrivAiTe`).
+Override with `PRIVAITE_PATH=/path/to/checkout python bench_structured.py` to bench
+a specific branch. Results are printed to stdout and saved under `results/`.
+
+`bench_structured.py --selftest` validates the harness with a fake detector (no
+spaCy needed) — useful in CI to catch harness regressions without model downloads.
 
 ## What it measures
 
@@ -135,6 +196,23 @@ Add entries to any dataset JSON file:
 ```
 
 For clean texts (false positive testing), add to `datasets/clean_samples.json` with `"expected": {}`.
+
+For structured inputs (tool calls / multimodal), add to `datasets/structured_samples.json`. Instead of `text`, give a ready-to-send `messages` list with the PII embedded where a real client would put it:
+
+```json
+{
+  "id": "my_tool_case",
+  "lang": "en",
+  "messages": [
+    {"role": "assistant", "content": null, "tool_calls": [
+      {"id": "call_1", "type": "function",
+       "function": {"name": "send_email",
+                    "arguments": "{\"to\": \"Sarah Johnson <sarah.j@corp.org>\"}"}}
+    ]}
+  ],
+  "expected": {"Sarah Johnson": "PERSON", "sarah.j@corp.org": "EMAIL_ADDRESS"}
+}
+```
 
 ## Contributing
 
