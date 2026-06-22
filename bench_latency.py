@@ -127,7 +127,7 @@ async def main():
             if primary_lang not in langs:
                 continue
 
-            test_langs = [primary_lang] + [l for l in langs if l != primary_lang]
+            test_langs = [primary_lang] + [x for x in langs if x != primary_lang]
             test_engine = PIIEngine(make_config(test_langs))
             await test_engine.initialize()
 

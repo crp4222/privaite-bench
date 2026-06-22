@@ -166,13 +166,13 @@ def print_report(preset: str, pii_results: list[dict], clean_results: list[dict]
     print(f"  Avg latency (clean):{avg_lat_clean:.1f}ms")
 
     if total_missed > 0:
-        print(f"\n  MISSED PII:")
+        print("\n  MISSED PII:")
         for r in pii_results:
             for text, ptype in r["missed_items"].items():
                 print(f"    [{r['id']}] {ptype}: \"{text}\"")
 
     if total_fp > 0:
-        print(f"\n  FALSE POSITIVES:")
+        print("\n  FALSE POSITIVES:")
         for r in clean_results:
             for fp in r["false_positives"]:
                 print(f"    [{r['id']}] {fp['type']}: \"{fp['text']}\"")
