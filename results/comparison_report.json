@@ -1,0 +1,114 @@
+{
+  "corpus": {
+    "pii_docs": 120,
+    "pii_items": 458,
+    "clean_docs": 14
+  },
+  "ground_truth": {
+    "dataset_sensitive_spans": 554,
+    "agent_recovered_dataset_pct": 93.1,
+    "agent_labels": 458,
+    "agent_overlap_with_dataset_pct": 93.4
+  },
+  "solutions": [
+    {
+      "solution": "privaite-light",
+      "recall": 34.5,
+      "caught": 158,
+      "total": 458,
+      "false_positives": 0,
+      "clean_docs": 14,
+      "tool_call_leak_pct": 65.5,
+      "multimodal_leak_pct": 65.5,
+      "tool_call_protection_pct": 100.0,
+      "avg_latency_ms": 99.1,
+      "by_lang": {
+        "de": 36.6,
+        "en": 34.7,
+        "fr": 29.5,
+        "it": 37.1
+      },
+      "by_type": {
+        "CREDIT_CARD": 11.1,
+        "DATE_TIME": 59.3,
+        "EMAIL_ADDRESS": 100.0,
+        "FINANCIAL": 6.5,
+        "IBAN_CODE": 85.7,
+        "IP_ADDRESS": 76.5,
+        "LOCATION": 13.2,
+        "ORGANIZATION": 0.0,
+        "PERSON": 33.9,
+        "PHONE_NUMBER": 50.0,
+        "SECRET": 0.0,
+        "URL": 0.0,
+        "US_SSN": 50.0
+      }
+    },
+    {
+      "solution": "privaite-onnx",
+      "recall": 84.5,
+      "caught": 387,
+      "total": 458,
+      "false_positives": 2,
+      "clean_docs": 14,
+      "tool_call_leak_pct": 15.5,
+      "multimodal_leak_pct": 15.5,
+      "tool_call_protection_pct": 100.0,
+      "avg_latency_ms": 749.0,
+      "by_lang": {
+        "de": 82.1,
+        "en": 76.3,
+        "fr": 89.3,
+        "it": 90.5
+      },
+      "by_type": {
+        "CREDIT_CARD": 100.0,
+        "DATE_TIME": 89.8,
+        "EMAIL_ADDRESS": 100.0,
+        "FINANCIAL": 87.1,
+        "IBAN_CODE": 100.0,
+        "IP_ADDRESS": 100.0,
+        "LOCATION": 73.7,
+        "ORGANIZATION": 61.1,
+        "PERSON": 86.6,
+        "PHONE_NUMBER": 100.0,
+        "SECRET": 71.4,
+        "URL": 42.1,
+        "US_SSN": 100.0
+      }
+    },
+    {
+      "solution": "presidio-baseline",
+      "recall": 70.3,
+      "caught": 322,
+      "total": 458,
+      "false_positives": 3,
+      "clean_docs": 14,
+      "tool_call_leak_pct": 99.1,
+      "multimodal_leak_pct": 100.0,
+      "tool_call_protection_pct": 0.6,
+      "avg_latency_ms": 11.5,
+      "by_lang": {
+        "de": 64.3,
+        "en": 81.4,
+        "fr": 69.6,
+        "it": 65.5
+      },
+      "by_type": {
+        "CREDIT_CARD": 11.1,
+        "DATE_TIME": 78.0,
+        "EMAIL_ADDRESS": 100.0,
+        "FINANCIAL": 37.1,
+        "IBAN_CODE": 100.0,
+        "IP_ADDRESS": 100.0,
+        "LOCATION": 69.7,
+        "ORGANIZATION": 72.2,
+        "PERSON": 81.2,
+        "PHONE_NUMBER": 50.0,
+        "SECRET": 28.6,
+        "URL": 100.0,
+        "US_SSN": 12.5
+      }
+    }
+  ]
+}

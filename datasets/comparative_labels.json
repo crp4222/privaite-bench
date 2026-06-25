@@ -1,0 +1,1184 @@
+{
+  "_about": "Ground-truth PII labels for the comparative benchmark. Documents are real AI4Privacy pii-masking-200k rows (not redistributed here, no declared license); text is fetched on demand by solutions/ai4privacy_loader.py keyed by id. Labels produced by 10 independent auditor agents.",
+  "source_dataset": "ai4privacy/pii-masking-200k",
+  "labels": [
+    {
+      "id": "165770",
+      "lang": "en",
+      "expected": {
+        "10:18 PM": "DATE_TIME",
+        "Human Group Coordinator": "PERSON",
+        "Cleveland": "LOCATION",
+        "Emilie_Beatty53@hotmail.com": "EMAIL_ADDRESS",
+        "63652332": "FINANCIAL",
+        "8824": "SECRET",
+        "Brown": "PERSON"
+      }
+    },
+    {
+      "id": "180344",
+      "lang": "en",
+      "expected": {
+        "181 Rosa Alley": "LOCATION",
+        "1:25pm": "DATE_TIME",
+        "8929408774693956": "FINANCIAL"
+      }
+    },
+    {
+      "id": "194978",
+      "lang": "en",
+      "expected": {
+        "Maude Heller-Nikolaus": "PERSON",
+        "88624032": "FINANCIAL",
+        "Jacky_Wuckert44@gmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "1",
+      "lang": "fr",
+      "expected": {
+        "Ms. Keebler": "PERSON",
+        "West Shemar": "LOCATION",
+        "Morissette - Russel": "ORGANIZATION",
+        "Hulda44@yahoo.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "20080",
+      "lang": "fr",
+      "expected": {
+        "19/02/1904": "DATE_TIME",
+        "Pauline Knolls, 90417, Apt. 379, 61009": "LOCATION"
+      }
+    },
+    {
+      "id": "41291",
+      "lang": "fr",
+      "expected": {
+        "Tiara Koch": "PERSON",
+        "Lydia": "PERSON",
+        "Sarai.Rath@gmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "112945",
+      "lang": "de",
+      "expected": {
+        "Ms. Keeling": "PERSON",
+        "Apt. 174": "LOCATION",
+        "+50 709-702 8790": "PHONE_NUMBER"
+      }
+    },
+    {
+      "id": "130321",
+      "lang": "de",
+      "expected": {
+        "Ellsworth Gutmann": "PERSON",
+        "756.1939.6401": "US_SSN",
+        "09/01/1947": "DATE_TIME",
+        "10:13 AM": "DATE_TIME",
+        "9063": "SECRET"
+      }
+    },
+    {
+      "id": "147820",
+      "lang": "de",
+      "expected": {
+        "Mr. Leannon-Donnelly": "PERSON",
+        "2/70": "DATE_TIME",
+        "14580338": "FINANCIAL"
+      }
+    },
+    {
+      "id": "61975",
+      "lang": "it",
+      "expected": {
+        "Kevon": "PERSON",
+        "421 di Homenick Forges": "LOCATION",
+        "Prohaskashire": "LOCATION",
+        "South East England": "LOCATION",
+        "10/61": "DATE_TIME"
+      }
+    },
+    {
+      "id": "78949",
+      "lang": "it",
+      "expected": {
+        "Durham": "LOCATION",
+        "4702, Maxwell River": "LOCATION",
+        "43.182.111.124": "IP_ADDRESS"
+      }
+    },
+    {
+      "id": "96067",
+      "lang": "it",
+      "expected": {
+        "19gRHQbTeKxMQ78Ar4GvN32JcG7DKnRAzZF": "FINANCIAL",
+        "0xfab3c9ebaddfa5b86ad95b1bffc21bdcefa84a61": "FINANCIAL",
+        "Vladimir": "PERSON",
+        "4987644411659499": "FINANCIAL"
+      }
+    },
+    {
+      "id": "167272",
+      "lang": "en",
+      "expected": {
+        "Forest Road, Building no. 920": "LOCATION",
+        "County Armagh": "LOCATION",
+        "ZIP: 03616": "LOCATION",
+        "(28)-5333-1243": "PHONE_NUMBER"
+      }
+    },
+    {
+      "id": "181909",
+      "lang": "en",
+      "expected": {
+        "Cole, Conroy and McClure": "ORGANIZATION",
+        "13th April": "DATE_TIME",
+        "Lura Mante": "PERSON",
+        "International Web Agent": "ORGANIZATION",
+        "Marlen_Cremin-Robel@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "196454",
+      "lang": "en",
+      "expected": {
+        "Thalia": "PERSON",
+        "01/03/1922": "DATE_TIME",
+        "4967, Madison Avenue, Logan County": "LOCATION",
+        "Janet.Trantow48@hotmail.com": "EMAIL_ADDRESS",
+        "11-249792-821061-9": "FINANCIAL"
+      }
+    },
+    {
+      "id": "2082",
+      "lang": "fr",
+      "expected": {
+        "Irving Tremblay": "PERSON",
+        "Grady, Maggio and Howe": "ORGANIZATION",
+        "002 832.4711": "PHONE_NUMBER",
+        "04559138": "FINANCIAL"
+      }
+    },
+    {
+      "id": "22159",
+      "lang": "fr",
+      "expected": {
+        "Nelson": "PERSON",
+        "McGlynn, King and Howell": "ORGANIZATION",
+        "Fore Street, Apt. 308": "LOCATION",
+        "aa8d:fee9:4e3b:f00a:5c6d:ad0a:7f31:eb9e": "IP_ADDRESS"
+      }
+    },
+    {
+      "id": "43300",
+      "lang": "fr",
+      "expected": {
+        "Kunze - DuBuque": "ORGANIZATION",
+        "3251 396-2787": "PHONE_NUMBER",
+        "Douglas96@hotmail.com": "EMAIL_ADDRESS",
+        "Hayden": "PERSON"
+      }
+    },
+    {
+      "id": "114736",
+      "lang": "de",
+      "expected": {
+        "Hegmann": "PERSON",
+        "08/11/1907": "DATE_TIME",
+        "059-2693.9918": "PHONE_NUMBER"
+      }
+    },
+    {
+      "id": "132118",
+      "lang": "de",
+      "expected": {
+        "Iva": "PERSON",
+        "South Gregorybury": "LOCATION",
+        "02782-357017": "PHONE_NUMBER",
+        "Lulu.Denesik16@hotmail.com": "EMAIL_ADDRESS",
+        "Clarabelle": "PERSON"
+      }
+    },
+    {
+      "id": "149850",
+      "lang": "de",
+      "expected": {
+        "Lazaro Riley": "PERSON",
+        "Carolyne_Kulas@gmail.com": "EMAIL_ADDRESS",
+        "(76)-7943 9210": "PHONE_NUMBER"
+      }
+    },
+    {
+      "id": "63776",
+      "lang": "it",
+      "expected": {
+        "Pansy Mraz": "PERSON",
+        "NO4337242007091": "IBAN_CODE",
+        "DUTCJOSWF1P": "FINANCIAL",
+        "8071290334673287": "FINANCIAL"
+      }
+    },
+    {
+      "id": "80740",
+      "lang": "it",
+      "expected": {
+        "Leonard Anderson Koch": "PERSON",
+        "Hamill Isle, Stockton": "LOCATION",
+        "Washington County": "LOCATION",
+        "2015-08-05T14:16:13.108Z": "DATE_TIME"
+      }
+    },
+    {
+      "id": "97726",
+      "lang": "it",
+      "expected": {
+        "Krystina Lehner": "PERSON",
+        "168.197.252.30": "IP_ADDRESS",
+        "https://shrill-bootie.com": "URL"
+      }
+    },
+    {
+      "id": "168512",
+      "lang": "en",
+      "expected": {
+        "building number 595": "LOCATION",
+        "Imogene Manors": "LOCATION",
+        "Jamaalhaven": "LOCATION",
+        "August 1, 1995": "DATE_TIME",
+        "Suite 717": "LOCATION"
+      }
+    },
+    {
+      "id": "183390",
+      "lang": "en",
+      "expected": {
+        "Leopoldo Kendall Rosenbaum": "PERSON",
+        "7th August at 9": "DATE_TIME",
+        "19063022": "FINANCIAL",
+        "59.95.0.108": "IP_ADDRESS"
+      }
+    },
+    {
+      "id": "197881",
+      "lang": "en",
+      "expected": {
+        "Robin": "PERSON",
+        "https://thirsty-ambulance.com/": "URL",
+        "+280.26-124 4363": "PHONE_NUMBER",
+        "Estefania_Buckridge@yahoo.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "4153",
+      "lang": "fr",
+      "expected": {
+        "27140Block Underpass": "LOCATION",
+        "Mozilla/5.0 (compatible; MSIE 7.0; Windows NT 6.3; Trident/5.0)": "SECRET",
+        "223.252.172.255": "IP_ADDRESS",
+        "71-516587-400858-1": "FINANCIAL",
+        "75691011560": "FINANCIAL"
+      }
+    },
+    {
+      "id": "24167",
+      "lang": "fr",
+      "expected": {
+        "5326372578611818": "CREDIT_CARD",
+        "Forest Avenue, 9958": "LOCATION"
+      }
+    },
+    {
+      "id": "45330",
+      "lang": "fr",
+      "expected": {
+        "Micah": "PERSON",
+        "1972-12-20T06:17:52.821Z": "DATE_TIME",
+        "Alanna_Rath87": "PERSON",
+        "rtV04s872Xpj": "SECRET"
+      }
+    },
+    {
+      "id": "116583",
+      "lang": "de",
+      "expected": {
+        "Stehr": "PERSON",
+        "10th August": "DATE_TIME",
+        "Kaelyn39@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "133765",
+      "lang": "de",
+      "expected": {
+        "Jordyn": "PERSON",
+        "1942-01-04T16:09:04.597Z": "DATE_TIME",
+        "Norfolk": "LOCATION",
+        "Yesenia24@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "151476",
+      "lang": "de",
+      "expected": {
+        "1997-11-02T06:50:20.321Z": "DATE_TIME",
+        "55776 Apt. 793": "LOCATION",
+        "Giovani.Schiller": "PERSON"
+      }
+    },
+    {
+      "id": "65368",
+      "lang": "it",
+      "expected": {
+        "Alicia": "PERSON",
+        "69-119526-465718-2": "FINANCIAL",
+        "32.234.58.114": "IP_ADDRESS"
+      }
+    },
+    {
+      "id": "82262",
+      "lang": "it",
+      "expected": {
+        "[1.3223,38.111]": "LOCATION",
+        "[-10.4544,-101.6312]": "LOCATION",
+        "Carrie": "PERSON",
+        "BA459010550400537326": "IBAN_CODE",
+        "LBRNHUYX": "FINANCIAL",
+        "431": "FINANCIAL"
+      }
+    },
+    {
+      "id": "99141",
+      "lang": "it",
+      "expected": {
+        "Chester Durgan": "PERSON",
+        "0252713031168564": "CREDIT_CARD",
+        "Labadie and Sons": "ORGANIZATION",
+        "Lloyd.Sipes15@gmail.com": "EMAIL_ADDRESS",
+        "South Glamorgan": "LOCATION"
+      }
+    },
+    {
+      "id": "170110",
+      "lang": "en",
+      "expected": {
+        "Strosinboro": "LOCATION",
+        "Mrs. Ryan": "PERSON",
+        "Trantow, Williamson and Kulas": "ORGANIZATION",
+        "https://forthright-scarecrow.com/": "URL"
+      }
+    },
+    {
+      "id": "184783",
+      "lang": "en",
+      "expected": {
+        "Yazmin Renner": "PERSON",
+        "12/05/1953": "DATE_TIME",
+        "https://lucky-hourglass.name/": "URL"
+      }
+    },
+    {
+      "id": "199267",
+      "lang": "en",
+      "expected": {
+        "Cruickshank": "PERSON",
+        "264 22 4710": "US_SSN",
+        "July 8, 1977": "DATE_TIME",
+        "32912134": "FINANCIAL"
+      }
+    },
+    {
+      "id": "5995",
+      "lang": "fr",
+      "expected": {
+        "Aglae": "PERSON",
+        "CR55706109048700301915": "IBAN_CODE",
+        "KYHXRSRKDK5": "FINANCIAL",
+        "3vQxQ8gxns9TCL7QjB8pguxmN42eYLJsdE56eU": "FINANCIAL",
+        "0x5f8ef30fd3bc8fbe0c94d3b6ff8d2b16cac3988b": "FINANCIAL"
+      }
+    },
+    {
+      "id": "26230",
+      "lang": "fr",
+      "expected": {
+        "Mr. Lesch": "PERSON",
+        "[-31.311,130.4191]": "LOCATION",
+        "South San Francisco": "LOCATION"
+      }
+    },
+    {
+      "id": "47428",
+      "lang": "fr",
+      "expected": {
+        "75611094042": "US_SSN",
+        "1w1CnZDMubLec5nVy7SpyuXHKHPp2b2qE1fiBkp": "FINANCIAL",
+        "LWPNUo1yMHHgEAPecNDUcPmiWgU": "FINANCIAL"
+      }
+    },
+    {
+      "id": "118092",
+      "lang": "de",
+      "expected": {
+        "Eunice Herzog": "PERSON",
+        "Cormier, Rosenbaum and Abbott": "ORGANIZATION",
+        "81-119934-469521-7": "FINANCIAL",
+        "6447433026119430": "CREDIT_CARD"
+      }
+    },
+    {
+      "id": "135381",
+      "lang": "de",
+      "expected": {
+        "Katlynn Lowe": "PERSON",
+        "75633671572": "US_SSN",
+        "27cd:70ea:bf3c:aea7:38ce:08ce:e915:becf": "IP_ADDRESS"
+      }
+    },
+    {
+      "id": "153371",
+      "lang": "de",
+      "expected": {
+        "28:97:93:4b:7a:6d": "IP_ADDRESS",
+        "85:1b:12:44:37:02": "IP_ADDRESS",
+        "00-674419-549142-5": "FINANCIAL",
+        "63-643340-388828-7": "FINANCIAL"
+      }
+    },
+    {
+      "id": "66886",
+      "lang": "it",
+      "expected": {
+        "Brent Effertz-Shields": "PERSON",
+        "1923-04-30T11:52:53.260Z": "DATE_TIME",
+        "478-54-4352": "US_SSN",
+        "14th March": "DATE_TIME",
+        "3/09": "DATE_TIME"
+      }
+    },
+    {
+      "id": "83863",
+      "lang": "it",
+      "expected": {
+        "Myrtis": "PERSON",
+        "Warwickshire": "LOCATION",
+        "Leschton": "PERSON",
+        "Josue": "PERSON"
+      }
+    },
+    {
+      "id": "100941",
+      "lang": "it",
+      "expected": {
+        "September 11, 1933": "DATE_TIME",
+        "677e:f2ee:7eac:c70b:da7b:aeca:f0fe:db6d": "IP_ADDRESS",
+        "Sean.McLaughlin": "PERSON",
+        "Reva Barrows": "PERSON"
+      }
+    },
+    {
+      "id": "171495",
+      "lang": "en",
+      "expected": {
+        "Schmidt": "PERSON",
+        "October 9, 1954": "DATE_TIME",
+        "(542).2414256": "PHONE_NUMBER"
+      }
+    },
+    {
+      "id": "186375",
+      "lang": "en",
+      "expected": {
+        "Joanie Shiloh Anderson": "PERSON",
+        "57372672": "FINANCIAL",
+        "(39).9436.2006": "PHONE_NUMBER",
+        "Maurice.Bosco13@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "200759",
+      "lang": "en",
+      "expected": {
+        "5340": "SECRET",
+        "713": "LOCATION",
+        "237.117.129.48": "IP_ADDRESS",
+        "a6:25:93:4d:12:f8": "IP_ADDRESS"
+      }
+    },
+    {
+      "id": "8102",
+      "lang": "fr",
+      "expected": {
+        "Nolan Glen, Clay County": "LOCATION",
+        "Manuel.Schuppe81": "PERSON",
+        "207.144.206.135": "IP_ADDRESS"
+      }
+    },
+    {
+      "id": "28485",
+      "lang": "fr",
+      "expected": {
+        "Grady": "PERSON",
+        "Wiza and Sons": "ORGANIZATION",
+        "https://mean-brand.net/": "URL",
+        "Audreanne.Langosh": "PERSON",
+        "8oMfSMCpmwrH": "SECRET"
+      }
+    },
+    {
+      "id": "49747",
+      "lang": "fr",
+      "expected": {
+        "251.66.52.248": "IP_ADDRESS",
+        "1918996255545496": "SECRET",
+        "85-888965-768664-7": "PHONE_NUMBER"
+      }
+    },
+    {
+      "id": "119728",
+      "lang": "de",
+      "expected": {
+        "Perry County": "LOCATION",
+        "13/10/1910": "DATE_TIME",
+        "336, 6th Avenue": "LOCATION"
+      }
+    },
+    {
+      "id": "137384",
+      "lang": "de",
+      "expected": {
+        "Berkshire Dental Care": "ORGANIZATION",
+        "10/10/1971": "DATE_TIME",
+        "357 25 3825": "US_SSN",
+        "86047, Henry County": "LOCATION"
+      }
+    },
+    {
+      "id": "155090",
+      "lang": "de",
+      "expected": {
+        "Joyce": "PERSON",
+        "4/48": "DATE_TIME",
+        "Apt. 151, 68965": "LOCATION"
+      }
+    },
+    {
+      "id": "68676",
+      "lang": "it",
+      "expected": {
+        "Georgette": "PERSON",
+        "52627112": "FINANCIAL",
+        "Logan_Abshire@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "85347",
+      "lang": "it",
+      "expected": {
+        "Corey": "PERSON",
+        "Lucerne": "LOCATION",
+        "072-0391804": "PHONE_NUMBER",
+        "Tess.Cruickshank": "PERSON"
+      }
+    },
+    {
+      "id": "102704",
+      "lang": "it",
+      "expected": {
+        "Renner": "PERSON",
+        "4708493479822727": "CREDIT_CARD",
+        "Leatha_Stoltenberg9@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "173012",
+      "lang": "en",
+      "expected": {
+        "Port Chandlerbury, 197, Bruen Dam": "LOCATION",
+        "Treva": "PERSON",
+        "56397069": "FINANCIAL",
+        "TFSXAGJ4": "FINANCIAL"
+      }
+    },
+    {
+      "id": "187739",
+      "lang": "en",
+      "expected": {
+        "Miss Lemke": "PERSON",
+        "Mark.Paucek": "PERSON",
+        "https://french-kinase.biz/": "URL",
+        "44860973": "FINANCIAL"
+      }
+    },
+    {
+      "id": "202103",
+      "lang": "en",
+      "expected": {
+        "Howard_Herman3": "PERSON",
+        "12/08/1909": "DATE_TIME",
+        "https://crisp-geology.name/": "URL",
+        "44539976": "FINANCIAL"
+      }
+    },
+    {
+      "id": "10101",
+      "lang": "fr",
+      "expected": {
+        "Dr. Emerson Funk": "PERSON",
+        "[-43.4591,-123.21]": "LOCATION",
+        "Bayonne": "LOCATION"
+      }
+    },
+    {
+      "id": "30624",
+      "lang": "fr",
+      "expected": {
+        "1957-10-30T21:32:13.079Z": "DATE_TIME",
+        "Miss Camden Reese Ernser": "PERSON",
+        "Schinner, Mann and Kuhlman": "ORGANIZATION",
+        "Derrick Plaza 602, Lombard, Pays de la Loire, 78808-3302": "LOCATION",
+        "09 78-49 08-29": "PHONE_NUMBER",
+        "Vivien_Bauch92@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "51759",
+      "lang": "fr",
+      "expected": {
+        "Director Anjali": "PERSON",
+        "Shana": "PERSON",
+        "103 Dejuan Fork": "LOCATION"
+      }
+    },
+    {
+      "id": "121642",
+      "lang": "de",
+      "expected": {
+        "41875": "LOCATION",
+        "Albertha Koelpin": "PERSON",
+        "18th October": "DATE_TIME"
+      }
+    },
+    {
+      "id": "139214",
+      "lang": "de",
+      "expected": {
+        "Amani Marvin": "PERSON",
+        "Straße: Borer Walk, Suite: Suite 431": "LOCATION"
+      }
+    },
+    {
+      "id": "156883",
+      "lang": "de",
+      "expected": {
+        "Drew": "PERSON",
+        "https://required-shampoo.net": "URL",
+        "08-650332-171203-6": "FINANCIAL",
+        "HLkYos1yILcR": "SECRET"
+      }
+    },
+    {
+      "id": "70366",
+      "lang": "it",
+      "expected": {
+        "Lorena": "PERSON",
+        "Keebler, West and Kuhlman": "ORGANIZATION",
+        "1932-01-25T05:08:23.296Z": "DATE_TIME",
+        "Arvel_Considine@gmail.com": "EMAIL_ADDRESS",
+        "018 4624944": "PHONE_NUMBER"
+      }
+    },
+    {
+      "id": "87182",
+      "lang": "it",
+      "expected": {
+        "Dyfed presso 460, Irving Cliff": "LOCATION",
+        "Richmond.Windler1@yahoo.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "104271",
+      "lang": "it",
+      "expected": {
+        "6765822330969148": "CREDIT_CARD",
+        "Suite 448, Hodkiewicz Crossroad, Hawaii": "LOCATION",
+        "9528224347512886": "CREDIT_CARD"
+      }
+    },
+    {
+      "id": "174548",
+      "lang": "en",
+      "expected": {
+        "Hailee Langworth": "PERSON",
+        "Alice_Strosin80@hotmail.com": "EMAIL_ADDRESS",
+        "002 363-9406": "PHONE_NUMBER"
+      }
+    },
+    {
+      "id": "189278",
+      "lang": "en",
+      "expected": {
+        "IT54E3559009131856595061936": "IBAN_CODE",
+        "0xe9fdae37f1bda29e7fe5253ab4bce95edd29b8fd": "FINANCIAL",
+        "Mo2ysvfrRVrBAF4MJy867BwfTHpTsPm": "FINANCIAL",
+        "Heaven_Zemlak@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "203574",
+      "lang": "en",
+      "expected": {
+        "https://previous-contour.net/": "URL",
+        "5/35": "DATE_TIME",
+        "O'Keefe": "PERSON"
+      }
+    },
+    {
+      "id": "12094",
+      "lang": "fr",
+      "expected": {
+        "Lucienne Crist": "PERSON",
+        "7/28": "DATE_TIME",
+        "Danika7@gmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "32696",
+      "lang": "fr",
+      "expected": {
+        "Leffler": "PERSON",
+        "East Lily": "LOCATION",
+        "Thea_Schamberger7@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "53821",
+      "lang": "fr",
+      "expected": {
+        "Konopelski": "PERSON",
+        "28th May": "DATE_TIME",
+        "AZ64RCCW40409708100680056582": "IBAN_CODE",
+        "BJQWCIPAXXX": "FINANCIAL"
+      }
+    },
+    {
+      "id": "123471",
+      "lang": "de",
+      "expected": {
+        "White": "PERSON",
+        "Cayla": "PERSON",
+        "Emanuel": "PERSON",
+        "Harvey29@hotmail.com": "EMAIL_ADDRESS",
+        "Sydney70@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "140773",
+      "lang": "de",
+      "expected": {
+        "21/03/1975": "DATE_TIME",
+        "Kingsport": "LOCATION",
+        "Jackson Avenue, Connecticut": "LOCATION",
+        "+263.08-177 3616": "PHONE_NUMBER"
+      }
+    },
+    {
+      "id": "158691",
+      "lang": "de",
+      "expected": {
+        "Crooks": "PERSON",
+        "48671316": "FINANCIAL",
+        "https://vital-league.info": "URL"
+      }
+    },
+    {
+      "id": "72028",
+      "lang": "it",
+      "expected": {
+        "Carroll County": "LOCATION",
+        "Euna_Torphy21@hotmail.com": "EMAIL_ADDRESS",
+        "https://wealthy-vet.name/": "URL"
+      }
+    },
+    {
+      "id": "88948",
+      "lang": "it",
+      "expected": {
+        "Genevieve North Strosin-Gibson": "PERSON",
+        "26/07/1900": "DATE_TIME",
+        "7855 Jenifer Pine, Beierfield, Shropshire": "LOCATION",
+        "05053 108784": "PHONE_NUMBER",
+        "Lance.Nienow45@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "105961",
+      "lang": "it",
+      "expected": {
+        "Hank": "PERSON",
+        "5/48": "DATE_TIME",
+        "0115026279241303": "CREDIT_CARD",
+        "73995-5755": "PHONE_NUMBER"
+      }
+    },
+    {
+      "id": "175955",
+      "lang": "en",
+      "expected": {
+        "Ms. Savannah": "PERSON",
+        "Arkansas Medical hospital": "ORGANIZATION",
+        "Brown Spring Port Elmer Wisconsin": "LOCATION",
+        "18:12 on 8th April": "DATE_TIME",
+        "₹506252.59": "FINANCIAL"
+      }
+    },
+    {
+      "id": "190593",
+      "lang": "en",
+      "expected": {
+        "9/29 at 1619": "DATE_TIME",
+        "Alex Springs of Appleton": "LOCATION"
+      }
+    },
+    {
+      "id": "204977",
+      "lang": "en",
+      "expected": {
+        "Robbie": "PERSON",
+        "756.2824.3940": "US_SSN",
+        "1973-05-19T21:46:28.120Z": "DATE_TIME",
+        "3c7w5FrLy8gGAU1u2eEByexx6TVAEQ4T5sQGby8": "FINANCIAL"
+      }
+    },
+    {
+      "id": "14194",
+      "lang": "fr",
+      "expected": {
+        "Dr. Purdy": "PERSON",
+        "13/05/1922": "DATE_TIME",
+        "South Bridie": "LOCATION",
+        "5:53 AM": "DATE_TIME",
+        "9683, Murphy View": "LOCATION",
+        "[-54.7652,-20.8278]": "LOCATION"
+      }
+    },
+    {
+      "id": "34836",
+      "lang": "fr",
+      "expected": {
+        "26/08/1919": "DATE_TIME",
+        "32518 Ryan Park": "LOCATION",
+        "MMKi9Gs9XJppdGEJ9LCHYfwzYtrPW": "FINANCIAL"
+      }
+    },
+    {
+      "id": "55615",
+      "lang": "fr",
+      "expected": {
+        "Ellis": "PERSON",
+        "7337, Apt. 331": "LOCATION",
+        "Maybell.Bechtelar@gmail.com": "EMAIL_ADDRESS",
+        "033-354.2297": "PHONE_NUMBER"
+      }
+    },
+    {
+      "id": "125062",
+      "lang": "de",
+      "expected": {
+        "7th June": "DATE_TIME",
+        "https://puzzling-garlic.com/": "URL",
+        "Genoveva.Collier": "PERSON"
+      }
+    },
+    {
+      "id": "142633",
+      "lang": "de",
+      "expected": {
+        "Miss Bailey": "PERSON",
+        "Blandaboro": "LOCATION",
+        "Kiarra73@yahoo.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "160504",
+      "lang": "de",
+      "expected": {
+        "Karen": "PERSON",
+        "June 30, 2001": "DATE_TIME",
+        "Joyce22": "PERSON",
+        "115.148.186.72": "IP_ADDRESS",
+        "79-503148-351304-4": "FINANCIAL"
+      }
+    },
+    {
+      "id": "73787",
+      "lang": "it",
+      "expected": {
+        "Gardner": "PERSON",
+        "006.347.4415": "PHONE_NUMBER",
+        "44783, Apt. 690": "LOCATION"
+      }
+    },
+    {
+      "id": "90737",
+      "lang": "it",
+      "expected": {
+        "Stefan": "PERSON",
+        "11/02": "DATE_TIME",
+        "e6:90:5e:57:ce:1d": "IP_ADDRESS"
+      }
+    },
+    {
+      "id": "107849",
+      "lang": "it",
+      "expected": {
+        "Deonte": "PERSON",
+        "руб0.0000b": "FINANCIAL",
+        "14692916": "FINANCIAL",
+        "Rachael_Balistreri@yahoo.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "177400",
+      "lang": "en",
+      "expected": {
+        "Christian Marquardt": "PERSON",
+        "https://french-center.biz/": "URL",
+        "Susanna_Kuhic95": "PERSON",
+        "d1bS4umJOr8G": "SECRET"
+      }
+    },
+    {
+      "id": "192096",
+      "lang": "en",
+      "expected": {
+        "Leatha Kshlerin's": "PERSON",
+        "Delpha_Jaskolski": "PERSON",
+        "42650460": "FINANCIAL",
+        "Kohler, Grady and Hamill": "ORGANIZATION"
+      }
+    },
+    {
+      "id": "206327",
+      "lang": "en",
+      "expected": {
+        "Brooklyn": "PERSON",
+        "ман3388311462721148": "FINANCIAL",
+        "0xef77dae2a982ebc2a0d95fd5cb9dc0c8ceaa79a2": "FINANCIAL",
+        "October 12, 1969": "DATE_TIME"
+      }
+    },
+    {
+      "id": "16385",
+      "lang": "fr",
+      "expected": {
+        "Mr. Torp": "PERSON",
+        "16th August": "DATE_TIME",
+        "Ernser, Davis and Kris": "ORGANIZATION",
+        "South Dudley": "LOCATION",
+        "Marlee_Gerhold27@gmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "36988",
+      "lang": "fr",
+      "expected": {
+        "Aniyah": "PERSON",
+        "Torp - Kunze": "ORGANIZATION",
+        "https://all-similarity.info/": "URL",
+        "Cleora.Hagenes": "PERSON",
+        "01/02/1985": "DATE_TIME"
+      }
+    },
+    {
+      "id": "57607",
+      "lang": "fr",
+      "expected": {
+        "Icie46": "PERSON",
+        "South Darioburgh": "LOCATION",
+        "kr4001482658070905": "FINANCIAL",
+        "3pPRxvZp7YzL8UCvApDKpW44WJ": "FINANCIAL"
+      }
+    },
+    {
+      "id": "126919",
+      "lang": "de",
+      "expected": {
+        "6009703028402533": "CREDIT_CARD",
+        "Suite 334": "LOCATION",
+        "254.70.116.34": "IP_ADDRESS",
+        "801-47-1266": "US_SSN"
+      }
+    },
+    {
+      "id": "144288",
+      "lang": "de",
+      "expected": {
+        "Benjamin": "PERSON",
+        "MZCdSLH3Ge4BCuG5JrBMa8KSzSSM4j7Q": "FINANCIAL",
+        "1Rk283YxQUUUr7VSsXCNjv8Tovh": "FINANCIAL",
+        "0xbceac02017cb9efc2b8c03fe2bedf203f2405a6a": "FINANCIAL"
+      }
+    },
+    {
+      "id": "162235",
+      "lang": "de",
+      "expected": {
+        "21/02/1997": "DATE_TIME",
+        "Wiltshire": "LOCATION",
+        "https://dull-postage.biz/": "URL",
+        "Nt6HS77A5DBx": "SECRET"
+      }
+    },
+    {
+      "id": "75587",
+      "lang": "it",
+      "expected": {
+        "Keshaun22": "PERSON",
+        "2005-03-28T16:10:55.926Z": "DATE_TIME",
+        "https://zesty-baker.name": "URL"
+      }
+    },
+    {
+      "id": "92491",
+      "lang": "it",
+      "expected": {
+        "January 19, 2011": "DATE_TIME",
+        "14535322": "FINANCIAL",
+        "7081273568774013": "CREDIT_CARD",
+        "325": "SECRET",
+        "KZ5712375167740S9190": "IBAN_CODE"
+      }
+    },
+    {
+      "id": "109288",
+      "lang": "it",
+      "expected": {
+        "Arvilla": "PERSON",
+        "28th June": "DATE_TIME",
+        "https://equatorial-elk.com/": "URL",
+        "ZpPCFd6Hmfw1": "SECRET",
+        "Marvin - Mann": "ORGANIZATION"
+      }
+    },
+    {
+      "id": "178964",
+      "lang": "en",
+      "expected": {
+        "Personal Loan Account": "FINANCIAL",
+        "[75.7812,21.0806]": "LOCATION",
+        "[-89.6797,-158.5438]": "LOCATION",
+        "[-64.6558,170.4459]": "LOCATION"
+      }
+    },
+    {
+      "id": "193556",
+      "lang": "en",
+      "expected": {
+        "Anastasia_Kertzmann": "PERSON",
+        "Tristin.Goyette-Murray73@yahoo.com": "EMAIL_ADDRESS",
+        "https://stained-solution.net": "URL",
+        "Austen.Stark@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "207852",
+      "lang": "en",
+      "expected": {
+        "Money Market Account": "FINANCIAL",
+        "64-488538-663662-1": "FINANCIAL",
+        "Skiles Divide, Apt. 646": "LOCATION"
+      }
+    },
+    {
+      "id": "18223",
+      "lang": "fr",
+      "expected": {
+        "Terry": "PERSON",
+        "SWBTIRHC": "FINANCIAL",
+        "698": "FINANCIAL",
+        "19/07/1935": "DATE_TIME"
+      }
+    },
+    {
+      "id": "39022",
+      "lang": "fr",
+      "expected": {
+        "Ruthe Anderson Dicki": "PERSON",
+        "Owen46@gmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "59715",
+      "lang": "fr",
+      "expected": {
+        "Jordan": "PERSON",
+        "North Yorkshire": "LOCATION",
+        "01758291": "FINANCIAL"
+      }
+    },
+    {
+      "id": "128670",
+      "lang": "de",
+      "expected": {
+        "Aric": "PERSON",
+        "12499865": "FINANCIAL",
+        "Rebecca.Yundt49@gmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "146158",
+      "lang": "de",
+      "expected": {
+        "East Ellsworth": "LOCATION",
+        "Hamill": "PERSON",
+        "02/03/1999": "DATE_TIME",
+        "75694914591": "FINANCIAL",
+        "https://multicolored-horn.net/": "URL",
+        "Ronny29": "PERSON",
+        "_wHh1UvnHq8e": "SECRET"
+      }
+    },
+    {
+      "id": "163965",
+      "lang": "de",
+      "expected": {
+        "Elza": "PERSON",
+        "1973-08-27T09:04:31.040Z": "DATE_TIME",
+        "19:15": "DATE_TIME",
+        "7018 Ryann Garden, Apt. 728, Spinkaport, Tessin": "LOCATION",
+        "Martin_Padberg66@yahoo.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "77266",
+      "lang": "it",
+      "expected": {
+        "Huels": "PERSON",
+        "18th April": "DATE_TIME",
+        "Reagan96@hotmail.com": "EMAIL_ADDRESS"
+      }
+    },
+    {
+      "id": "94324",
+      "lang": "it",
+      "expected": {
+        "16th September": "DATE_TIME",
+        "59646": "LOCATION",
+        "Suite 499": "LOCATION",
+        "9t35hyC4C7UQ": "SECRET"
+      }
+    },
+    {
+      "id": "110794",
+      "lang": "it",
+      "expected": {
+        "Mina Jones": "PERSON",
+        "GI33BZSA9Y2245A820TO71I": "IBAN_CODE",
+        "1eDffRGb2FTD29tsHSneaDnJSWP4hAR4GG9YgV4e": "FINANCIAL",
+        "0x3167adcc2cd957045af2d2afc6ff91f80924d3ee": "FINANCIAL"
+      }
+    }
+  ]
+}

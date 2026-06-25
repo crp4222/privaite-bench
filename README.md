@@ -4,6 +4,20 @@ PII detection benchmark suite for [PrivAiTe](https://github.com/crp4222/PrivAiTe
 
 Measures detection rate, false positive rate, and latency across languages and entity types.
 
+## Comparative benchmark (multiple solutions)
+
+[`COMPARISON.md`](COMPARISON.md) scores several PII solutions on the **same** real
+documents: PrivAiTe (light and onnx) and a vanilla Microsoft Presidio baseline,
+the engine behind LiteLLM's Presidio guardrail and most drop-in PII proxies. The
+corpus is real [AI4Privacy](https://huggingface.co/datasets/ai4privacy/pii-masking-200k)
+documents whose ground-truth PII was labeled by 10 independent auditor agents and
+cross-checked against the dataset's own mask. See [`solutions/`](solutions/) for
+the framework and how to add another tool.
+
+Headline: `privaite-onnx` leads on recall (84.5%) and removes PII from tool-call
+arguments (100% protection) where the flat-text baseline leaks about 99%, the gap
+that matters for agentic and multimodal traffic.
+
 ## Latest results
 
 ### Precision / Recall / F1 (entity-level, 64 documents, 5 languages)

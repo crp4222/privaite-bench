@@ -6,3 +6,10 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 _run_all.sh
+
+# Local AI4Privacy sample (raw third-party text, not redistributed)
+solutions/_ai4privacy_sample.json
+solutions/__pycache__/
+__pycache__/
+solutions/_batch_*.json
+solutions/_corpus.json
