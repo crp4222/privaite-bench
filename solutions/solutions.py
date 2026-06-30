@@ -66,9 +66,14 @@ class PrivAiTeSolution(Solution):
         self._engines: dict[str, PIIEngine] = {}
 
     def _config(self, lang: str) -> PIIConfig:
+        # "light"     = Presidio restricted to a 9-entity allowlist (the old shipped
+        #               example config: low recall).
+        # "light-all" = the PRODUCT's actual preset:light (full Presidio, no pin).
+        # "onnx"      = full ONNX suite (default).
+        entities = list(LIGHT_ENTITIES) if self._preset == "light" else None
         presidio = PresidioDetectorConfig(
             enabled=True, languages=_langs(lang), score_threshold=0.4,
-            entities=None if self._preset == "onnx" else list(LIGHT_ENTITIES),
+            entities=entities,
         )
         return PIIConfig(
             enabled=True,
@@ -158,6 +163,7 @@ class PresidioBaselineSolution(Solution):
 def all_solutions() -> list[Solution]:
     return [
         PrivAiTeSolution("light"),
+        PrivAiTeSolution("light-all"),
         PrivAiTeSolution("onnx"),
         PresidioBaselineSolution(),
     ]

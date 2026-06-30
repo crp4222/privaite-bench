@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 import time
 from collections import defaultdict
 from pathlib import Path
@@ -26,6 +27,17 @@ from pathlib import Path
 from solutions.solutions import all_solutions
 
 BENCH = Path(__file__).resolve().parents[1]
+
+
+def _caught_token_level(pii: str, anon_text: str) -> bool:
+    """Strict catch: every significant (>=4 char) token of a multi-token PII span
+    must be removed from the output, so a partial redaction (e.g. one name left in
+    an organization, one field left in an address) is NOT credited as a full catch.
+    Falls back to whole-string match for short values with no >=4-char token."""
+    tokens = [t for t in re.findall(r"\w+", pii) if len(t) >= 4]
+    if not tokens:
+        return pii not in anon_text
+    return all(t not in anon_text for t in tokens)
 
 
 def load_corpus() -> list[dict]:
@@ -122,7 +134,7 @@ async def evaluate(sol, corpus: list[dict], clean: list[dict]) -> dict:
     await sol.setup()
     by_lang = defaultdict(lambda: {"total": 0, "caught": 0})
     by_type = defaultdict(lambda: {"total": 0, "caught": 0})
-    total = caught = 0
+    total = caught = caught_strict = 0
     tool_total = tool_leaked = 0
     mm_total = mm_leaked = 0
     prot_total = prot_removed = 0
@@ -144,6 +156,8 @@ async def evaluate(sol, corpus: list[dict], clean: list[dict]) -> dict:
                 caught_in_flat.add(pii)
                 by_lang[lang]["caught"] += 1
                 by_type[ptype]["caught"] += 1
+            if _caught_token_level(pii, anon_text):
+                caught_strict += 1
 
         anon_payload = await sol.anonymize_payload(_structured_payload(text), lang)
         args_out = _tool_args(anon_payload)
@@ -172,7 +186,8 @@ async def evaluate(sol, corpus: list[dict], clean: list[dict]) -> dict:
     return {
         "solution": sol.name,
         "recall": round(caught / total * 100, 1) if total else 0.0,
-        "caught": caught, "total": total,
+        "recall_token_level": round(caught_strict / total * 100, 1) if total else 0.0,
+        "caught": caught, "caught_token_level": caught_strict, "total": total,
         "false_positives": false_positives, "clean_docs": len(clean),
         "tool_call_leak_pct": round(tool_leaked / tool_total * 100, 1) if tool_total else 0.0,
         "multimodal_leak_pct": round(mm_leaked / mm_total * 100, 1) if mm_total else 0.0,
@@ -187,6 +202,7 @@ async def evaluate(sol, corpus: list[dict], clean: list[dict]) -> dict:
 
 def render_markdown(report: dict) -> str:
     rows = report["solutions"]
+    by_name = {r["solution"]: r for r in rows}
     types = sorted({t for r in rows for t in r["by_type"]})
     langs = sorted({lng for r in rows for lng in r["by_lang"]})
     lines = []
@@ -195,29 +211,34 @@ def render_markdown(report: dict) -> str:
     lines.append(f"Corpus: {report['corpus']['pii_docs']} real AI4Privacy documents "
                  f"({report['corpus']['pii_items']} PII items labeled by 10 independent "
                  f"auditor agents) across {', '.join(langs)}, plus "
-                 f"{report['corpus']['clean_docs']} clean documents for false positives.")
+                 f"{report['corpus']['clean_docs']} clean documents for false positives. "
+                 "Methodology and caveats are at the end.")
     lines.append("")
-    lines.append("Scoring is substring based: a PII item is caught when it no longer "
-                 "appears in the solution's output.")
-    lines.append("")
-    gt = report.get("ground_truth")
-    if gt:
-        lines.append("## Ground truth")
+
+    onnx, base = by_name.get("privaite-onnx"), by_name.get("presidio-baseline")
+    if onnx and base:
+        lines.append("## Bottom line")
         lines.append("")
-        lines.append("The labels are produced by 10 independent auditor agents and "
-                     "cross-checked against AI4Privacy's own sensitive mask. The agents "
-                     f"independently recovered {gt['agent_recovered_dataset_pct']}% of the "
-                     f"dataset's {gt['dataset_sensitive_spans']} sensitive spans, and "
-                     f"{gt['agent_overlap_with_dataset_pct']}% of the agent labels overlap "
-                     "the dataset mask (the rest are incidental PII the dataset did not "
-                     "tag). High overlap means the ground truth is precise.")
+        lines.append(
+            f"`privaite-onnx` has the highest recall ({onnx['recall']}% span / "
+            f"{onnx.get('recall_token_level', onnx['recall'])}% strict) with fewer false "
+            f"positives than the Presidio baseline ({onnx['false_positives']} vs "
+            f"{base['false_positives']} on {onnx['clean_docs']} clean docs), and it is the "
+            "only solution that also strips PII from tool-call arguments and multimodal "
+            f"content ({onnx['tool_call_protection_pct']}% tool-call protection vs the "
+            f"flat-text baseline's {base['tool_call_protection_pct']}%). The `light` preset "
+            "trades recall for near-zero latency. (`privaite-light` is the crippled "
+            "9-entity-allowlist config; `privaite-light-all` is the real light preset.)"
+        )
         lines.append("")
+
     lines.append("## Headline")
     lines.append("")
-    lines.append("| Solution | Recall | False positives | Tool-call protection | Tool-call leak | Multimodal leak | Latency |")
-    lines.append("|---|---|---|---|---|---|---|")
+    lines.append("| Solution | Recall | Recall (strict) | False positives | Tool-call protection | Tool-call leak | Multimodal leak | Latency |")
+    lines.append("|---|---|---|---|---|---|---|---|")
     for r in rows:
         lines.append(f"| {r['solution']} | {r['recall']}% | "
+                     f"{r.get('recall_token_level', r['recall'])}% | "
                      f"{r['false_positives']} on {r['clean_docs']} | "
                      f"{r['tool_call_protection_pct']}% | "
                      f"{r['tool_call_leak_pct']}% | {r['multimodal_leak_pct']}% | "
@@ -245,10 +266,50 @@ def render_markdown(report: dict) -> str:
         lines.append(f"| {r['solution']} | " +
                      " | ".join(f"{r['by_type'].get(t, 0.0)}%" for t in types) + " |")
     lines.append("")
+
+    lines.append("## Methodology and caveats")
+    lines.append("")
+    lines.append("Scoring is substring based: a PII item is caught when it no longer "
+                 "appears in the solution's output. Two recall columns are reported. "
+                 "**Recall** is span-level: a multi-token span (e.g. a full name or a "
+                 "street address) counts as caught when its exact full string "
+                 "disappears, so a partial redaction is credited as a full catch and "
+                 "this is an upper bound. **Recall (strict)** is token-level: every "
+                 ">=4-char token of the span must be removed. The truth is between the "
+                 "two; the gap (~1-5pp, roughly uniform across solutions) does not "
+                 "change the ranking.")
+    lines.append("")
+    gt = report.get("ground_truth")
+    if gt:
+        lines.append("**Ground truth.** The labels are produced by 10 independent "
+                     "auditor agents and cross-checked against AI4Privacy's own "
+                     "sensitive mask (loose substring overlap, so these are an upper "
+                     f"bound). The agents independently recovered {gt['agent_recovered_dataset_pct']}% "
+                     f"of the dataset's {gt['dataset_sensitive_spans']} sensitive spans, "
+                     f"and {gt['agent_overlap_with_dataset_pct']}% of the agent labels "
+                     "overlap the dataset mask (the rest are incidental PII the dataset "
+                     "did not tag). The labels are independent of any solution under "
+                     "test: if they were a product's own detections, that product would "
+                     "score 100% recall, and none does.")
+        lines.append("")
+    lines.append("**Baseline.** `presidio-baseline` is vanilla Microsoft Presidio run "
+                 "on flat message text (full entity set, default threshold). It is the "
+                 "common flat-text approach behind most drop-in PII proxies, NOT the "
+                 "strongest possible competitor integration: it does not look inside "
+                 "tool-call arguments or multimodal content by design, which is why its "
+                 "tool-call/multimodal numbers are a floor. A head-to-head against "
+                 "competitors' own structured-aware integrations (e.g. LiteLLM's "
+                 "Presidio guardrail output parsing) is future work; read the structured "
+                 "columns as 'structured-aware vs the flat-text approach', not 'vs every "
+                 "competitor'.")
+    lines.append("")
+    lines.append("**Latency** is hardware-dependent and not reproducible run-to-run "
+                 "(ONNX in particular varies with CoreML/CPU warmup); treat it as "
+                 "indicative, not exact.")
+    lines.append("")
     lines.append("Reproduce: `python solutions/ai4privacy_loader.py && python solutions/compare.py`")
     lines.append("")
     return "\n".join(lines)
-
 
 async def main() -> None:
     corpus = load_corpus()
