@@ -12,7 +12,8 @@ For each solution we measure, on the same documents:
   - leakage inside tool-call arguments and multimodal parts (the structured gap)
   - average latency
 
-Run:  python solutions/compare.py
+Run:  python -m solutions.compare   (from the repo root; running the file
+directly fails because solutions/solutions.py shadows the package on sys.path)
 """
 
 from __future__ import annotations
