@@ -4,16 +4,16 @@ Corpus: 120 real documents from the open [AI4Privacy `pii-masking-200k`](https:/
 
 ## Bottom line
 
-`privaite-onnx` has the highest recall (84.5% span / 79.9% strict) with fewer false positives than the Presidio baseline (2 vs 3 on 14 clean docs), and it is the only solution that also strips PII from tool-call arguments and multimodal content (100.0% tool-call protection vs the flat-text baseline's 0.6%). The `light` preset trades recall for near-zero latency. (`privaite-light` is the crippled 9-entity-allowlist config; `privaite-light-all` is the real light preset.)
+`privaite-onnx` has the highest recall (84.5% span / 80.6% strict) with fewer false positives than the Presidio baseline (2 vs 3 on 14 clean docs), and it is the only solution that also strips PII from tool-call arguments and multimodal content (100.0% tool-call protection vs the flat-text baseline's 0.6%). The `light` preset trades recall for near-zero latency. (`privaite-light` is the crippled 9-entity-allowlist config; `privaite-light-all` is the real light preset.)
 
 ## Headline
 
 | Solution | Recall | Recall (strict) | False positives | Tool-call protection | Tool-call leak | Multimodal leak | Latency |
 |---|---|---|---|---|---|---|---|
-| privaite-light | 34.5% | 33.2% | 0 on 14 | 100.0% | 65.5% | 65.5% | 98.0ms |
-| privaite-light-all | 62.4% | 57.6% | 3 on 14 | 100.0% | 37.6% | 37.6% | 67.2ms |
-| privaite-onnx | 84.5% | 79.9% | 2 on 14 | 100.0% | 15.5% | 15.5% | 603.5ms |
-| presidio-baseline | 70.3% | 65.3% | 3 on 14 | 0.6% | 99.1% | 100.0% | 10.2ms |
+| privaite-light | 34.5% | 33.2% | 0 on 14 | 100.0% | 65.5% | 65.5% | 103.9ms |
+| privaite-light-all | 62.4% | 57.9% | 3 on 14 | 100.0% | 37.6% | 37.6% | 82.3ms |
+| privaite-onnx | 84.5% | 80.6% | 2 on 14 | 100.0% | 15.5% | 15.5% | 789.2ms |
+| presidio-baseline | 70.3% | 65.3% | 3 on 14 | 0.6% | 99.1% | 100.0% | 11.0ms |
 
 Tool-call protection is, of the PII a solution catches in plain text, how much it also removes from a tool-call argument (higher is better). Tool-call leak and multimodal leak are the share of all PII that survives inside a tool-call argument or a multimodal text part (lower is better).
 
