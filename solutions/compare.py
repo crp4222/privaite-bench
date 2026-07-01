@@ -208,11 +208,13 @@ def render_markdown(report: dict) -> str:
     lines = []
     lines.append("# Comparative benchmark")
     lines.append("")
-    lines.append(f"Corpus: {report['corpus']['pii_docs']} real AI4Privacy documents "
-                 f"({report['corpus']['pii_items']} PII items labeled by 10 independent "
-                 f"auditor agents) across {', '.join(langs)}, plus "
+    lines.append(f"Corpus: {report['corpus']['pii_docs']} real documents from the open "
+                 "[AI4Privacy `pii-masking-200k`]"
+                 "(https://huggingface.co/datasets/ai4privacy/pii-masking-200k) dataset "
+                 f"(Hugging Face), {report['corpus']['pii_items']} PII items labeled by 10 "
+                 f"independent auditor agents, across {', '.join(langs)}, plus "
                  f"{report['corpus']['clean_docs']} clean documents for false positives. "
-                 "Methodology and caveats are at the end.")
+                 "Methodology, dataset licensing, and caveats are at the end.")
     lines.append("")
 
     onnx, base = by_name.get("privaite-onnx"), by_name.get("presidio-baseline")
@@ -306,6 +308,15 @@ def render_markdown(report: dict) -> str:
     lines.append("**Latency** is hardware-dependent and not reproducible run-to-run "
                  "(ONNX in particular varies with CoreML/CPU warmup); treat it as "
                  "indicative, not exact.")
+    lines.append("")
+    lines.append("**Dataset & licensing.** The document text comes from the open "
+                 "[AI4Privacy `pii-masking-200k`]"
+                 "(https://huggingface.co/datasets/ai4privacy/pii-masking-200k) dataset on "
+                 "Hugging Face. That dataset declares no explicit license, so this repo "
+                 "does NOT redistribute its raw text: only our derived per-document labels "
+                 "are committed, and `solutions/ai4privacy_loader.py` fetches the source "
+                 "text on demand to reproduce the corpus. See the bench README's "
+                 "'Data sources transparency' section for the other (public) sources.")
     lines.append("")
     lines.append("Reproduce: `python solutions/ai4privacy_loader.py && python solutions/compare.py`")
     lines.append("")

@@ -1,6 +1,6 @@
 # Comparative benchmark
 
-Corpus: 120 real AI4Privacy documents (458 PII items labeled by 10 independent auditor agents) across de, en, fr, it, plus 14 clean documents for false positives. Methodology and caveats are at the end.
+Corpus: 120 real documents from the open [AI4Privacy `pii-masking-200k`](https://huggingface.co/datasets/ai4privacy/pii-masking-200k) dataset (Hugging Face), 458 PII items labeled by 10 independent auditor agents, across de, en, fr, it, plus 14 clean documents for false positives. Methodology, dataset licensing, and caveats are at the end.
 
 ## Bottom line
 
@@ -44,5 +44,7 @@ Scoring is substring based: a PII item is caught when it no longer appears in th
 **Baseline.** `presidio-baseline` is vanilla Microsoft Presidio run on flat message text (full entity set, default threshold). It is the common flat-text approach behind most drop-in PII proxies, NOT the strongest possible competitor integration: it does not look inside tool-call arguments or multimodal content by design, which is why its tool-call/multimodal numbers are a floor. A head-to-head against competitors' own structured-aware integrations (e.g. LiteLLM's Presidio guardrail output parsing) is future work; read the structured columns as 'structured-aware vs the flat-text approach', not 'vs every competitor'.
 
 **Latency** is hardware-dependent and not reproducible run-to-run (ONNX in particular varies with CoreML/CPU warmup); treat it as indicative, not exact.
+
+**Dataset & licensing.** The document text comes from the open [AI4Privacy `pii-masking-200k`](https://huggingface.co/datasets/ai4privacy/pii-masking-200k) dataset on Hugging Face. That dataset declares no explicit license, so this repo does NOT redistribute its raw text: only our derived per-document labels are committed, and `solutions/ai4privacy_loader.py` fetches the source text on demand to reproduce the corpus. See the bench README's 'Data sources transparency' section for the other (public) sources.
 
 Reproduce: `python solutions/ai4privacy_loader.py && python solutions/compare.py`
