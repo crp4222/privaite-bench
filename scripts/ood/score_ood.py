@@ -22,9 +22,9 @@ ROWS = [
     ("openai/privacy-filter", ["pf"]),
     ("ai4privacy-mdeberta (llm-guard)", ["mdeberta"]),
     ("gliner (independent)", ["gliner"]),
-    ("privaite-onnx = PF + presidio", ["pf", "presidio"]),
+    ("PF + Presidio (PrivAiTe onnx stack)", ["pf", "presidio"]),
     ("PF + gliner", ["pf", "gliner"]),
-    ("PF + presidio + gliner", ["pf", "presidio", "gliner"]),
+    ("PF + Presidio + GLiNER (PrivAiTe max stack)", ["pf", "presidio", "gliner"]),
     ("PF + presidio + mdeberta", ["pf", "presidio", "mdeberta"]),
     ("all four", ["pf", "presidio", "mdeberta", "gliner"]),
 ]
@@ -98,10 +98,10 @@ def main() -> None:
     L.append("")
     L.append("## What it shows")
     L.append("")
-    L.append("- **`privaite-onnx` generalizes.** Its off-distribution recall here is close "
-             "to its AI4Privacy recall in `COMPARISON.md`, because its default model "
-             "`openai/privacy-filter` was not trained on AI4Privacy. The score is not a "
-             "home-field score.")
+    L.append("- **The PrivAiTe onnx stack (`openai/privacy-filter` + Presidio) generalizes.** "
+             "Its off-distribution recall here is close to its AI4Privacy recall in "
+             "`COMPARISON.md`, because `openai/privacy-filter` was not trained on AI4Privacy. "
+             "The score is not a home-field score.")
     L.append("- **The AI4Privacy fine-tune does not.** `ai4privacy-mdeberta` (the model "
              "behind the `llm-guard` row) drops sharply off-distribution, which is the "
              "empirical signature of train/test overlap on the main bench: its AI4Privacy "
@@ -124,9 +124,13 @@ def main() -> None:
              "standard PII label set (not the Gretel taxonomy) at threshold 0.5; mDeBERTa at "
              "its defaults. Both transformer models truncate long inputs (~512 / ~384 "
              "tokens) while `openai/privacy-filter` does not; restricting to short documents "
-             "leaves the ranking unchanged. The corpus is synthetic finance-domain text, one "
-             "OOD slice, not a universal benchmark; the raw Gretel text is not redistributed "
-             "(only integer span offsets are committed).")
+             "leaves the ranking unchanged. The PrivAiTe rows here run Presidio with its full "
+             "default recognizers; the shipped `onnx`/`max` presets pin Presidio to a 9-type "
+             "allowlist (names/addresses/secrets come from the ML models), trading a little of "
+             "this recall for higher precision, so read these as the detector stacks, not the "
+             "exact preset configs. The corpus is synthetic finance-domain text, one OOD slice, "
+             "not a universal benchmark; the raw Gretel text is not redistributed (only integer "
+             "span offsets are committed).")
     L.append("")
     L.append("Reproduce: `python scripts/ood/build_gretel_corpus.py`, then "
              "`run_privaite_detectors.py` (PrivAiTe venv), `run_transformer_models.py "

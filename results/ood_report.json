@@ -57,7 +57,7 @@
         "en": 92.7,
         "it": 83.5
       },
-      "solution": "privaite-onnx = PF + presidio"
+      "solution": "PF + Presidio (PrivAiTe onnx stack)"
     },
     {
       "recall": 83.9,
@@ -77,7 +77,7 @@
         "en": 95.2,
         "it": 88.6
       },
-      "solution": "PF + presidio + gliner"
+      "solution": "PF + Presidio + GLiNER (PrivAiTe max stack)"
     },
     {
       "recall": 86.7,
