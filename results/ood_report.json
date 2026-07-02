@@ -1,0 +1,103 @@
+{
+  "corpus": {
+    "docs": 120,
+    "core_pii": 502,
+    "langs": [
+      "de",
+      "en",
+      "it"
+    ]
+  },
+  "rows": [
+    {
+      "recall": 66.7,
+      "precision": 50.6,
+      "by_lang": {
+        "de": 56.5,
+        "en": 73.9,
+        "it": 69.3
+      },
+      "solution": "presidio"
+    },
+    {
+      "recall": 73.7,
+      "precision": 75.6,
+      "by_lang": {
+        "de": 69.6,
+        "en": 80.0,
+        "it": 71.6
+      },
+      "solution": "openai/privacy-filter"
+    },
+    {
+      "recall": 62.4,
+      "precision": 48.1,
+      "by_lang": {
+        "de": 54.0,
+        "en": 67.9,
+        "it": 64.8
+      },
+      "solution": "ai4privacy-mdeberta (llm-guard)"
+    },
+    {
+      "recall": 71.1,
+      "precision": 66.2,
+      "by_lang": {
+        "de": 69.6,
+        "en": 68.5,
+        "it": 75.0
+      },
+      "solution": "gliner (independent)"
+    },
+    {
+      "recall": 84.3,
+      "precision": 59.0,
+      "by_lang": {
+        "de": 76.4,
+        "en": 92.7,
+        "it": 83.5
+      },
+      "solution": "privaite-onnx = PF + presidio"
+    },
+    {
+      "recall": 83.9,
+      "precision": 70.1,
+      "by_lang": {
+        "de": 80.1,
+        "en": 91.5,
+        "it": 80.1
+      },
+      "solution": "PF + gliner"
+    },
+    {
+      "recall": 88.6,
+      "precision": 61.3,
+      "by_lang": {
+        "de": 82.0,
+        "en": 95.2,
+        "it": 88.6
+      },
+      "solution": "PF + presidio + gliner"
+    },
+    {
+      "recall": 86.7,
+      "precision": 54.8,
+      "by_lang": {
+        "de": 78.9,
+        "en": 94.5,
+        "it": 86.4
+      },
+      "solution": "PF + presidio + mdeberta"
+    },
+    {
+      "recall": 89.8,
+      "precision": 57.3,
+      "by_lang": {
+        "de": 83.2,
+        "en": 97.0,
+        "it": 89.2
+      },
+      "solution": "all four"
+    }
+  ]
+}

@@ -355,6 +355,25 @@ def render_markdown(report: dict) -> str:
                  "identical for every solution: the same document text placed in a "
                  "multimodal text part and a `save_record` tool-call argument.")
     lines.append("")
+    lines.append("**Contamination and home-field advantage.** The corpus is AI4Privacy "
+                 "pii-masking-200k, and the pii-masking 65k/200k/300k/400k releases are one "
+                 "synthetic series (shared pipeline, subjects, taxonomy), so any model "
+                 "fine-tuned on any of them has train/test overlap here. Of the scored "
+                 "rows, exactly one does: the `llm-guard` row uses "
+                 "`Isotonic/deberta-v3-base_finetuned_ai4privacy_v2`, fine-tuned directly "
+                 "on pii-masking-200k, so its recall is an optimistic upper bound, not "
+                 "generalization. PrivAiTe's own default, `openai/privacy-filter` (behind "
+                 "`privaite-onnx`), is by contrast independent: OpenAI's model card "
+                 "(§7.2.1) states it did not train on the PII-Masking training data and "
+                 "only evaluated on the held-out test split, so `privaite-onnx`'s recall is "
+                 "a genuine number (with the honest asterisk that it is open-weights not "
+                 "open-data, and its label taxonomy is format-aligned to AI4Privacy). Net "
+                 "effect: the reported gap in PrivAiTe's favor is conservative, not "
+                 "flattered by contamination. An out-of-distribution cross-check on a "
+                 "non-AI4Privacy corpus (Gretel finance PII) confirms it: `privaite-onnx` "
+                 "holds ~84% recall off-distribution while the AI4Privacy-fine-tuned model "
+                 "drops to ~62% (see `OOD_COMPARISON.md`).")
+    lines.append("")
     lines.append("**Latency** is hardware-dependent and not reproducible run-to-run "
                  "(ONNX in particular varies with CoreML/CPU warmup); treat it as "
                  "indicative, not exact. `llm-guard` is marked `(offline)`: it cannot "
