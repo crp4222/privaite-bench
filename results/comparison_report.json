@@ -12,77 +12,8 @@
   },
   "solutions": [
     {
-      "solution": "privaite-light",
-      "recall": 34.5,
-      "recall_token_level": 33.2,
-      "caught": 158,
-      "caught_token_level": 152,
-      "total": 458,
-      "false_positives": 0,
-      "clean_docs": 14,
-      "tool_call_leak_pct": 65.5,
-      "multimodal_leak_pct": 65.5,
-      "tool_call_protection_pct": 100.0,
-      "avg_latency_ms": 103.9,
-      "by_lang": {
-        "de": 36.6,
-        "en": 34.7,
-        "fr": 29.5,
-        "it": 37.1
-      },
-      "by_type": {
-        "CREDIT_CARD": 11.1,
-        "DATE_TIME": 59.3,
-        "EMAIL_ADDRESS": 100.0,
-        "FINANCIAL": 6.5,
-        "IBAN_CODE": 85.7,
-        "IP_ADDRESS": 76.5,
-        "LOCATION": 13.2,
-        "ORGANIZATION": 0.0,
-        "PERSON": 33.9,
-        "PHONE_NUMBER": 50.0,
-        "SECRET": 0.0,
-        "URL": 0.0,
-        "US_SSN": 50.0
-      }
-    },
-    {
-      "solution": "privaite-light-all",
-      "recall": 62.4,
-      "recall_token_level": 57.9,
-      "caught": 286,
-      "caught_token_level": 265,
-      "total": 458,
-      "false_positives": 3,
-      "clean_docs": 14,
-      "tool_call_leak_pct": 37.6,
-      "multimodal_leak_pct": 37.6,
-      "tool_call_protection_pct": 100.0,
-      "avg_latency_ms": 82.3,
-      "by_lang": {
-        "de": 60.7,
-        "en": 68.6,
-        "fr": 64.3,
-        "it": 56.0
-      },
-      "by_type": {
-        "CREDIT_CARD": 11.1,
-        "DATE_TIME": 64.4,
-        "EMAIL_ADDRESS": 100.0,
-        "FINANCIAL": 38.7,
-        "IBAN_CODE": 100.0,
-        "IP_ADDRESS": 100.0,
-        "LOCATION": 67.1,
-        "ORGANIZATION": 44.4,
-        "PERSON": 58.9,
-        "PHONE_NUMBER": 50.0,
-        "SECRET": 28.6,
-        "URL": 100.0,
-        "US_SSN": 50.0
-      }
-    },
-    {
       "solution": "privaite-onnx",
+      "latency_offline": false,
       "recall": 84.5,
       "recall_token_level": 80.6,
       "caught": 387,
@@ -93,7 +24,7 @@
       "tool_call_leak_pct": 15.5,
       "multimodal_leak_pct": 15.5,
       "tool_call_protection_pct": 100.0,
-      "avg_latency_ms": 789.2,
+      "avg_latency_ms": 647.2,
       "by_lang": {
         "de": 82.1,
         "en": 76.3,
@@ -117,7 +48,80 @@
       }
     },
     {
-      "solution": "presidio-baseline",
+      "solution": "privaite-light-all",
+      "latency_offline": false,
+      "recall": 62.4,
+      "recall_token_level": 57.9,
+      "caught": 286,
+      "caught_token_level": 265,
+      "total": 458,
+      "false_positives": 3,
+      "clean_docs": 14,
+      "tool_call_leak_pct": 37.6,
+      "multimodal_leak_pct": 37.6,
+      "tool_call_protection_pct": 100.0,
+      "avg_latency_ms": 67.6,
+      "by_lang": {
+        "de": 60.7,
+        "en": 68.6,
+        "fr": 64.3,
+        "it": 56.0
+      },
+      "by_type": {
+        "CREDIT_CARD": 11.1,
+        "DATE_TIME": 64.4,
+        "EMAIL_ADDRESS": 100.0,
+        "FINANCIAL": 38.7,
+        "IBAN_CODE": 100.0,
+        "IP_ADDRESS": 100.0,
+        "LOCATION": 67.1,
+        "ORGANIZATION": 44.4,
+        "PERSON": 58.9,
+        "PHONE_NUMBER": 50.0,
+        "SECRET": 28.6,
+        "URL": 100.0,
+        "US_SSN": 50.0
+      }
+    },
+    {
+      "solution": "privaite-light",
+      "latency_offline": false,
+      "recall": 34.5,
+      "recall_token_level": 33.2,
+      "caught": 158,
+      "caught_token_level": 152,
+      "total": 458,
+      "false_positives": 0,
+      "clean_docs": 14,
+      "tool_call_leak_pct": 65.5,
+      "multimodal_leak_pct": 65.5,
+      "tool_call_protection_pct": 100.0,
+      "avg_latency_ms": 64.4,
+      "by_lang": {
+        "de": 36.6,
+        "en": 34.7,
+        "fr": 29.5,
+        "it": 37.1
+      },
+      "by_type": {
+        "CREDIT_CARD": 11.1,
+        "DATE_TIME": 59.3,
+        "EMAIL_ADDRESS": 100.0,
+        "FINANCIAL": 6.5,
+        "IBAN_CODE": 85.7,
+        "IP_ADDRESS": 76.5,
+        "LOCATION": 13.2,
+        "ORGANIZATION": 0.0,
+        "PERSON": 33.9,
+        "PHONE_NUMBER": 50.0,
+        "SECRET": 0.0,
+        "URL": 0.0,
+        "US_SSN": 50.0
+      }
+    },
+    {
+      "solution": "litellm-presidio",
+      "latency_offline": false,
       "recall": 70.3,
       "recall_token_level": 65.3,
       "caught": 322,
@@ -126,9 +130,9 @@
       "false_positives": 3,
       "clean_docs": 14,
       "tool_call_leak_pct": 99.1,
-      "multimodal_leak_pct": 100.0,
+      "multimodal_leak_pct": 29.7,
       "tool_call_protection_pct": 0.6,
-      "avg_latency_ms": 11.0,
+      "avg_latency_ms": 10.7,
       "by_lang": {
         "de": 64.3,
         "en": 81.4,
@@ -149,6 +153,42 @@
         "SECRET": 28.6,
         "URL": 100.0,
         "US_SSN": 12.5
+      }
+    },
+    {
+      "solution": "llm-guard",
+      "latency_offline": true,
+      "recall": 76.9,
+      "recall_token_level": 74.9,
+      "caught": 352,
+      "caught_token_level": 343,
+      "total": 458,
+      "false_positives": 5,
+      "clean_docs": 14,
+      "tool_call_leak_pct": 99.1,
+      "multimodal_leak_pct": 100.0,
+      "tool_call_protection_pct": 0.6,
+      "avg_latency_ms": 88.5,
+      "by_lang": {
+        "de": 83.9,
+        "en": 71.2,
+        "fr": 73.2,
+        "it": 79.3
+      },
+      "by_type": {
+        "CREDIT_CARD": 33.3,
+        "DATE_TIME": 93.2,
+        "EMAIL_ADDRESS": 100.0,
+        "FINANCIAL": 40.3,
+        "IBAN_CODE": 85.7,
+        "IP_ADDRESS": 76.5,
+        "LOCATION": 88.2,
+        "ORGANIZATION": 11.1,
+        "PERSON": 88.4,
+        "PHONE_NUMBER": 100.0,
+        "SECRET": 0.0,
+        "URL": 100.0,
+        "US_SSN": 75.0
       }
     }
   ]

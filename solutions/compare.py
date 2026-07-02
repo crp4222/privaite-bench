@@ -182,10 +182,12 @@ async def evaluate(sol, corpus: list[dict], clean: list[dict]) -> dict:
         _, originals = await sol.anonymize_text(doc["text"], doc.get("lang", "en"))
         false_positives += len(originals)
 
+    offline_latency = getattr(sol, "offline_latency_ms", None)
     await sol.teardown()
 
     return {
         "solution": sol.name,
+        "latency_offline": offline_latency is not None,
         "recall": round(caught / total * 100, 1) if total else 0.0,
         "recall_token_level": round(caught_strict / total * 100, 1) if total else 0.0,
         "caught": caught, "caught_token_level": caught_strict, "total": total,
@@ -193,7 +195,8 @@ async def evaluate(sol, corpus: list[dict], clean: list[dict]) -> dict:
         "tool_call_leak_pct": round(tool_leaked / tool_total * 100, 1) if tool_total else 0.0,
         "multimodal_leak_pct": round(mm_leaked / mm_total * 100, 1) if mm_total else 0.0,
         "tool_call_protection_pct": round(prot_removed / prot_total * 100, 1) if prot_total else 0.0,
-        "avg_latency_ms": round(sum(latencies) / len(latencies), 1) if latencies else 0.0,
+        "avg_latency_ms": offline_latency if offline_latency is not None
+                          else (round(sum(latencies) / len(latencies), 1) if latencies else 0.0),
         "by_lang": {k: round(v["caught"] / v["total"] * 100, 1) if v["total"] else 0.0
                     for k, v in sorted(by_lang.items())},
         "by_type": {k: round(v["caught"] / v["total"] * 100, 1) if v["total"] else 0.0
@@ -218,20 +221,32 @@ def render_markdown(report: dict) -> str:
                  "Methodology, dataset licensing, and caveats are at the end.")
     lines.append("")
 
-    onnx, base = by_name.get("privaite-onnx"), by_name.get("presidio-baseline")
-    if onnx and base:
+    onnx = by_name.get("privaite-onnx")
+    litellm = by_name.get("litellm-presidio")
+    llmg = by_name.get("llm-guard")
+    if onnx and litellm:
+        others = "LiteLLM's Presidio guardrail" + (" and LLM Guard" if llmg else "")
+        comp_leaks = f"{litellm['tool_call_leak_pct']}%"
+        if llmg:
+            comp_leaks = f"{litellm['tool_call_leak_pct']}% and {llmg['tool_call_leak_pct']}%"
         lines.append("## Bottom line")
         lines.append("")
         lines.append(
-            f"`privaite-onnx` has the highest recall ({onnx['recall']}% span / "
-            f"{onnx.get('recall_token_level', onnx['recall'])}% strict) with fewer false "
-            f"positives than the Presidio baseline ({onnx['false_positives']} vs "
-            f"{base['false_positives']} on {onnx['clean_docs']} clean docs), and it is the "
-            "only solution that also strips PII from tool-call arguments and multimodal "
-            f"content ({onnx['tool_call_protection_pct']}% tool-call protection vs the "
-            f"flat-text baseline's {base['tool_call_protection_pct']}%). The `light` preset "
-            "trades recall for near-zero latency. (`privaite-light` is the crippled "
-            "9-entity-allowlist config; `privaite-light-all` is the real light preset.)"
+            f"`privaite-onnx` (the default full ONNX preset) has the highest recall "
+            f"({onnx['recall']}% span / {onnx.get('recall_token_level', onnx['recall'])}% "
+            f"strict) and is the only solution that also strips PII from tool-call "
+            f"arguments: it removes {onnx['tool_call_protection_pct']}% of the PII it "
+            f"catches from a tool-call argument, while {others} remove "
+            f"{litellm['tool_call_protection_pct']}%"
+            + (f" and {llmg['tool_call_protection_pct']}%" if llmg else "")
+            + f". Those tools scan message text (LiteLLM's guardrail also scrubs "
+            f"multimodal text parts, so its multimodal leak is "
+            f"{litellm['multimodal_leak_pct']}%) but never parse the tool-call JSON, so "
+            f"{comp_leaks} of all PII survives inside a tool call. `privaite-onnx` also "
+            f"keeps false positives low ({onnx['false_positives']} on {onnx['clean_docs']} "
+            "clean docs). (`privaite-light-all` is the fast Presidio-only preset; "
+            "`privaite-light` is the crippled 9-entity-allowlist config, shown for "
+            "reference.)"
         )
         lines.append("")
 
@@ -240,12 +255,13 @@ def render_markdown(report: dict) -> str:
     lines.append("| Solution | Recall | Recall (strict) | False positives | Tool-call protection | Tool-call leak | Multimodal leak | Latency |")
     lines.append("|---|---|---|---|---|---|---|---|")
     for r in rows:
+        lat = f"{r['avg_latency_ms']}ms" + (" (offline)" if r.get("latency_offline") else "")
         lines.append(f"| {r['solution']} | {r['recall']}% | "
                      f"{r.get('recall_token_level', r['recall'])}% | "
                      f"{r['false_positives']} on {r['clean_docs']} | "
                      f"{r['tool_call_protection_pct']}% | "
                      f"{r['tool_call_leak_pct']}% | {r['multimodal_leak_pct']}% | "
-                     f"{r['avg_latency_ms']}ms |")
+                     f"{lat} |")
     lines.append("")
     lines.append("Tool-call protection is, of the PII a solution catches in plain text, "
                  "how much it also removes from a tool-call argument (higher is better). "
@@ -295,20 +311,57 @@ def render_markdown(report: dict) -> str:
                      "test: if they were a product's own detections, that product would "
                      "score 100% recall, and none does.")
         lines.append("")
-    lines.append("**Baseline.** `presidio-baseline` is vanilla Microsoft Presidio run "
-                 "on flat message text (full entity set, default threshold). It is the "
-                 "common flat-text approach behind most drop-in PII proxies, NOT the "
-                 "strongest possible competitor integration: it does not look inside "
-                 "tool-call arguments or multimodal content by design, which is why its "
-                 "tool-call/multimodal numbers are a floor. A head-to-head against "
-                 "competitors' own structured-aware integrations (e.g. LiteLLM's "
-                 "Presidio guardrail output parsing) is future work; read the structured "
-                 "columns as 'structured-aware vs the flat-text approach', not 'vs every "
-                 "competitor'.")
+    lines.append("**Competitors.** The two competitor rows are faithful integrations "
+                 "of the real tools, configured at their genuine best, not strawmen:")
+    lines.append("")
+    lines.append("- `litellm-presidio` reproduces LiteLLM's built-in Presidio guardrail. "
+                 "LiteLLM POSTs message text to a Presidio analyzer/anonymizer service; "
+                 "we run the same Presidio engine in-process (per-document language, full "
+                 "default entity set, default threshold, `<ENTITY_TYPE>` replacement). Its "
+                 "request path scrubs message string content AND multimodal text parts "
+                 "(so its multimodal leak is low), but it never sends tool-call arguments "
+                 "to Presidio, so those leak. Its detection therefore equals Presidio; the "
+                 "differentiator is architectural. In production its latency also includes "
+                 "an HTTP sidecar hop, not counted here.")
+    lines.append("- `llm-guard` is protectai/llm-guard's Anonymize scanner (its own "
+                 "DeBERTa AI4Privacy v2 model + Presidio + regex), run in an isolated "
+                 "environment and cached (`scripts/build_llm_guard_cache.py`). Its "
+                 "language is set to `en` (its supported language), but the DeBERTa model "
+                 "is multilingual and the regex recognizers are language-agnostic, so it "
+                 "detects well across all four corpus languages (see the per-language "
+                 "table) and actually out-recalls the Presidio guardrail on flat text. "
+                 "Its blind spot is structural, not linguistic: as a flat-string scanner "
+                 "with no message/multimodal/tool-call awareness, everything structured "
+                 "leaks.")
+    lines.append("")
+    lines.append("**How each competitor is configured** (so \"you crippled it\" cannot be "
+                 "argued):")
+    lines.append("")
+    lines.append("| Row | Engine | Language | Entities | Threshold | Structured handling |")
+    lines.append("|---|---|---|---|---|---|")
+    lines.append("| litellm-presidio | Presidio analyzer + anonymizer | per-doc "
+                 "(en/fr/de/it) | all default recognizers | Presidio default | message "
+                 "text + multimodal text parts; tool-call JSON NOT parsed |")
+    lines.append("| llm-guard | DeBERTa AI4Privacy v2 + Presidio + regex | en (its "
+                 "supported language) | its default list expanded with "
+                 "DATE_TIME/LOCATION/URL | 0.5 (its default) | flat string only |")
+    lines.append("| privaite-onnx | Presidio + ONNX privacy-filter | per-doc | full "
+                 "(onnx preset) | 0.4 | message text + multimodal + tool-call JSON leaf "
+                 "values |")
+    lines.append("")
+    lines.append("The structured columns are an ARCHITECTURAL claim about how each "
+                 "component handles a request payload, scoped to that component, not a "
+                 "verdict on those products overall. The `_structured_payload` probe is "
+                 "identical for every solution: the same document text placed in a "
+                 "multimodal text part and a `save_record` tool-call argument.")
     lines.append("")
     lines.append("**Latency** is hardware-dependent and not reproducible run-to-run "
                  "(ONNX in particular varies with CoreML/CPU warmup); treat it as "
-                 "indicative, not exact.")
+                 "indicative, not exact. `llm-guard` is marked `(offline)`: it cannot "
+                 "share this environment, so its number is its real inference latency "
+                 "measured in the isolated venv, not a live in-process call; "
+                 "`litellm-presidio` is in-process here but adds an HTTP sidecar hop in "
+                 "production.")
     lines.append("")
     lines.append("**Dataset & licensing.** The document text comes from the open "
                  "[AI4Privacy `pii-masking-200k`]"
@@ -319,7 +372,11 @@ def render_markdown(report: dict) -> str:
                  "text on demand to reproduce the corpus. See the bench README's "
                  "'Data sources transparency' section for the other (public) sources.")
     lines.append("")
-    lines.append("Reproduce: `python solutions/ai4privacy_loader.py && python solutions/compare.py`")
+    lines.append("Reproduce: `python solutions/ai4privacy_loader.py && python -m "
+                 "solutions.compare`. The `llm-guard` row additionally needs its "
+                 "isolated-venv cache (`scripts/build_llm_guard_cache.py`, which stores "
+                 "raw corpus text and is not committed); without that cache the runner "
+                 "omits the row.")
     lines.append("")
     return "\n".join(lines)
 

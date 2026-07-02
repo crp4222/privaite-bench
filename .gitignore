@@ -13,3 +13,6 @@ solutions/__pycache__/
 __pycache__/
 solutions/_batch_*.json
 solutions/_corpus.json
+
+# LLM Guard competitor cache: stores raw third-party corpus text, not redistributed
+results/llm_guard_cache.json
