@@ -31,9 +31,9 @@
       }
     },
     "native": {
-      "total": 13,
-      "anonymized": 12,
-      "leaked": 1
+      "total": 57,
+      "anonymized": 50,
+      "leaked": 7
     },
     "by_doc": [
       {
@@ -3124,6 +3124,164 @@
         ],
         "leaked": [],
         "roundtrip_ok": null
+      },
+      {
+        "id": "tool_send_email_cc",
+        "lang": "en",
+        "expected_total": 5,
+        "anonymized": [
+          "marie.dupont@acme.com",
+          "john.smith@acme.com",
+          "Marie Dupont",
+          "Marie",
+          "415-555-0132"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_create_invoice",
+        "lang": "en",
+        "expected_total": 4,
+        "anonymized": [
+          "Robert Johnson",
+          "r.johnson@example.org",
+          "GB29NWBK60161331926819"
+        ],
+        "leaked": [
+          "742 Evergreen Terrace, Springfield"
+        ],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_book_appointment_medical",
+        "lang": "en",
+        "expected_total": 4,
+        "anonymized": [
+          "Sarah Connor",
+          "1985-03-14",
+          "+1 213 555 0198",
+          "532-84-1726"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_transfer_funds_fr",
+        "lang": "fr",
+        "expected_total": 2,
+        "anonymized": [
+          "Jean-Michel Bernard",
+          "FR7630006000011234567890189"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_save_contact_de",
+        "lang": "de",
+        "expected_total": 4,
+        "anonymized": [
+          "Anna Müller",
+          "anna.mueller@firma.de",
+          "+49 30 123456"
+        ],
+        "leaked": [
+          "Hauptstraße 12, Berlin"
+        ],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_update_profile_card",
+        "lang": "en",
+        "expected_total": 4,
+        "anonymized": [
+          "David Kim",
+          "david.kim@mail.com",
+          "4111 1111 1111 1111",
+          "1990-11-02"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_file_claim",
+        "lang": "en",
+        "expected_total": 3,
+        "anonymized": [
+          "Patricia Gomez",
+          "628-555-7712"
+        ],
+        "leaked": [
+          "88 Market St, Apt 4B, San Francisco"
+        ],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_register_user_it",
+        "lang": "it",
+        "expected_total": 4,
+        "anonymized": [
+          "Giulia Ricci",
+          "giulia.ricci@posta.it",
+          "+39 06 12345678"
+        ],
+        "leaked": [
+          "Roma"
+        ],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_schedule_delivery",
+        "lang": "en",
+        "expected_total": 3,
+        "anonymized": [
+          "Michael O'Brien",
+          "650-253-0000"
+        ],
+        "leaked": [
+          "1600 Amphitheatre Parkway, Mountain View"
+        ],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_open_account",
+        "lang": "en",
+        "expected_total": 4,
+        "anonymized": [
+          "Emma Watson",
+          "emma.w@bank.com",
+          "078-05-1120",
+          "021000021"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_add_dependent_fr",
+        "lang": "fr",
+        "expected_total": 4,
+        "anonymized": [
+          "Sophie Lefèvre",
+          "Lucas Lefèvre",
+          "2015-06-30"
+        ],
+        "leaked": [
+          "2 85 06 75 116 001 42"
+        ],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_log_incident_ip",
+        "lang": "en",
+        "expected_total": 3,
+        "anonymized": [
+          "Kevin Brown",
+          "kevin.brown@corp.com",
+          "192.168.14.201"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
       }
     ]
   },
@@ -3159,9 +3317,9 @@
       }
     },
     "native": {
-      "total": 13,
-      "anonymized": 13,
-      "leaked": 0
+      "total": 57,
+      "anonymized": 54,
+      "leaked": 3
     },
     "by_doc": [
       {
@@ -6199,6 +6357,161 @@
         ],
         "leaked": [],
         "roundtrip_ok": null
+      },
+      {
+        "id": "tool_send_email_cc",
+        "lang": "en",
+        "expected_total": 5,
+        "anonymized": [
+          "marie.dupont@acme.com",
+          "john.smith@acme.com",
+          "Marie Dupont",
+          "Marie",
+          "415-555-0132"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_create_invoice",
+        "lang": "en",
+        "expected_total": 4,
+        "anonymized": [
+          "Robert Johnson",
+          "r.johnson@example.org",
+          "742 Evergreen Terrace, Springfield",
+          "GB29NWBK60161331926819"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_book_appointment_medical",
+        "lang": "en",
+        "expected_total": 4,
+        "anonymized": [
+          "Sarah Connor",
+          "1985-03-14",
+          "+1 213 555 0198",
+          "532-84-1726"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_transfer_funds_fr",
+        "lang": "fr",
+        "expected_total": 2,
+        "anonymized": [
+          "Jean-Michel Bernard",
+          "FR7630006000011234567890189"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_save_contact_de",
+        "lang": "de",
+        "expected_total": 4,
+        "anonymized": [
+          "Anna Müller",
+          "anna.mueller@firma.de",
+          "+49 30 123456",
+          "Hauptstraße 12, Berlin"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_update_profile_card",
+        "lang": "en",
+        "expected_total": 4,
+        "anonymized": [
+          "David Kim",
+          "david.kim@mail.com",
+          "4111 1111 1111 1111",
+          "1990-11-02"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_file_claim",
+        "lang": "en",
+        "expected_total": 3,
+        "anonymized": [
+          "Patricia Gomez",
+          "88 Market St, Apt 4B, San Francisco",
+          "628-555-7712"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_register_user_it",
+        "lang": "it",
+        "expected_total": 4,
+        "anonymized": [
+          "Giulia Ricci",
+          "giulia.ricci@posta.it",
+          "+39 06 12345678"
+        ],
+        "leaked": [
+          "Roma"
+        ],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_schedule_delivery",
+        "lang": "en",
+        "expected_total": 3,
+        "anonymized": [
+          "Michael O'Brien",
+          "650-253-0000"
+        ],
+        "leaked": [
+          "1600 Amphitheatre Parkway, Mountain View"
+        ],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_open_account",
+        "lang": "en",
+        "expected_total": 4,
+        "anonymized": [
+          "Emma Watson",
+          "emma.w@bank.com",
+          "078-05-1120",
+          "021000021"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_add_dependent_fr",
+        "lang": "fr",
+        "expected_total": 4,
+        "anonymized": [
+          "Sophie Lefèvre",
+          "Lucas Lefèvre",
+          "2015-06-30"
+        ],
+        "leaked": [
+          "2 85 06 75 116 001 42"
+        ],
+        "roundtrip_ok": true
+      },
+      {
+        "id": "tool_log_incident_ip",
+        "lang": "en",
+        "expected_total": 3,
+        "anonymized": [
+          "Kevin Brown",
+          "kevin.brown@corp.com",
+          "192.168.14.201"
+        ],
+        "leaked": [],
+        "roundtrip_ok": true
       }
     ]
   }

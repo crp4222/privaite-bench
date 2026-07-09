@@ -22,6 +22,13 @@ that matters for agentic and multimodal traffic.
 
 ### Precision / Recall / F1 (entity-level, 64 documents, 5 languages)
 
+> Read these as an internal upper bound: this corpus is self-built and its expected
+> list is self-authored, so the tool is partly graded against our own labeling. The
+> independent numbers are the ones to trust for generalization: the AI4Privacy
+> comparison (84.5% recall, third-party masks) in [`COMPARISON.md`](COMPARISON.md),
+> and the two out-of-distribution cross-checks (Gretel and Nemotron-PII) in
+> [`OOD_COMPARISON.md`](OOD_COMPARISON.md).
+
 We measure at the entity level:
 - **TP** = entity correctly flagged (matches expected)
 - **FP** = entity flagged but not in expected list
@@ -93,9 +100,11 @@ Carriers exercised (the same text routed four ways):
 | `tool_call` | `tool_calls[0].function.arguments = {"note":"…"}` |
 | `tool_call_nested` | `arguments = {"user":{"profile":{"bio":"…"}}, "tags":["…"]}` |
 
-A small hand-written `datasets/structured_samples.json` adds realistic native
-payloads (a `send_email` call, a nested `book_appointment`, a transfers list, a
-free-text argument string, and a multimodal ID-card request).
+A hand-written `datasets/structured_samples.json` adds 17 realistic native
+payloads: the 5 originals (a `send_email` call, a nested `book_appointment`, a
+transfers list, a free-text argument string, a multimodal ID-card request) plus 12
+typed-field function calls where the PII sits in individual arguments (customer
+name, IBAN, SSN, address, phone) rather than one free-text blob, across EN/FR/DE/IT.
 
 #### Latest results (64-document corpus, 5 languages)
 
@@ -124,10 +133,13 @@ Routing PII through tool calls or multimodal parts loses nothing under either
 preset. The `light` misses are the documented PERSON recall gaps; `onnx` closes
 them (279/279, no leaks).
 
-Native structured samples: `light` 12/13, `onnx` 13/13, round-trip 4/4 on both.
-The one `light` miss (`John Smith` in a free-text argument) is a detector recall
-miss that leaks the same way in flat text, not a structured-handling issue; `onnx`
-catches it.
+Native structured samples (17): `light` 50/57, `onnx` 54/57, round-trip 16/16 on
+both, 0 parity regressions. The 12 added payloads put PII in individual typed
+arguments (name, IBAN, SSN, address, phone); `onnx` catches 41/44 of their values.
+Its 3 misses are hard cases that leak the same way in flat text, not
+structured-handling gaps: a bare city (`Roma`), one street address the model
+splits, and a French SSN. `light` additionally leaks every street address because
+its 9-entity allowlist has no LOCATION type.
 
 On a build without structured anonymization every carrier leaks 100%; that gap is
 the reason this benchmark exists.
@@ -157,7 +169,7 @@ If you only need 1-2 languages, latency is well under 250 ms even on long docume
 - `datasets/corporate_samples.json` — 8 corporate documents (bank transfers, insurance claims, HR records, contracts)
 - `datasets/batch_samples.json` — 16 additional documents (CVs, leases, complaints, NDAs, invoices, medical referrals)
 - `datasets/clean_samples.json` — 14 clean texts with zero PII (should trigger no detections)
-- `datasets/structured_samples.json` — 5 native function-call / multimodal payloads (used by `bench_structured.py`)
+- `datasets/structured_samples.json`: 17 native function-call / multimodal payloads used by `bench_structured.py` (5 original plus 12 realistic typed-field tool calls: send_email, create_invoice, book_appointment, transfer_funds and more, across EN/FR/DE/IT)
 
 ### External / public sources
 - `datasets/dlptest_us.json` — 4 entries from [DLP Test](https://dlptest.com/sample-data/) public sample data (US names, SSN, emails, credit cards)
@@ -175,7 +187,7 @@ If you only need 1-2 languages, latency is well under 250 ms even on long docume
 | enedis_rse_extracts | 11 | 18 | [Enedis RSE 2024](https://www.enedis.fr/) | No (public report) |
 | realworld_samples | 10 | 26 | Enedis RSE 2024 inspired | Mixed |
 | clean_samples | 14 | 0 | Self-built | Yes |
-| structured_samples | 5 | 13 | Self-built | Yes |
+| structured_samples | 17 | 57 | Self-built | Yes |
 
 ## Run
 

@@ -1,0 +1,61 @@
+{
+  "corpus": {
+    "docs": 292,
+    "entities": 1190,
+    "excluded_labels": {
+      "company_name": 127,
+      "occupation": 80,
+      "biometric_identifier": 40,
+      "customer_id": 32,
+      "license_plate": 32,
+      "education_level": 30,
+      "vehicle_identifier": 25,
+      "account_number": 25,
+      "certificate_license_number": 24,
+      "employee_id": 23,
+      "medical_record_number": 22,
+      "employment_status": 19,
+      "race_ethnicity": 19,
+      "health_plan_beneficiary_number": 19,
+      "swift_bic": 18,
+      "pin": 18,
+      "mac_address": 18,
+      "user_name": 18,
+      "bank_routing_number": 15,
+      "religious_belief": 15,
+      "blood_type": 14,
+      "password": 14,
+      "language": 14,
+      "gender": 13,
+      "device_identifier": 13,
+      "http_cookie": 13,
+      "age": 12,
+      "political_view": 10,
+      "cvv": 9,
+      "api_key": 9,
+      "sexuality": 7,
+      "unique_id": 6,
+      "tax_id": 3
+    }
+  },
+  "presets": {
+    "onnx": {
+      "recall": 73.4,
+      "recall_token_level": 70.8,
+      "caught": 873,
+      "total": 1190
+    },
+    "light": {
+      "recall": 57.3,
+      "recall_token_level": 53.8,
+      "caught": 682,
+      "total": 1190
+    },
+    "max": {
+      "recall": 81.9,
+      "recall_token_level": 79.5,
+      "caught": 975,
+      "total": 1190
+    }
+  }
+}

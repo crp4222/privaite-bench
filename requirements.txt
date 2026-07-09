@@ -1,0 +1,24 @@
+# Pinned versions used to produce the committed benchmark results.
+# Reproduce: pip install -r requirements.txt, then install the spaCy models below.
+# PrivAiTe itself is imported from ../PrivAiTe at commit 48e9c7f (v0.3.0).
+
+# Core detection stack (privaite onnx/light + litellm-presidio rows, structured suite)
+presidio-analyzer==2.2.362
+presidio-anonymizer==2.2.362
+spacy==3.8.14
+transformers==5.12.1
+onnxruntime==1.27.0
+huggingface-hub==1.20.1
+litellm==1.89.3
+faker==40.23.0
+
+# spaCy models (install separately; not on PyPI as pinned wheels):
+#   python -m spacy download en_core_web_lg   # 3.8.0
+#   python -m spacy download fr_core_news_md  # 3.8.0
+#   python -m spacy download de_core_news_md  # 3.8.0
+#   python -m spacy download it_core_news_md  # 3.8.0
+
+# Isolated venvs (dependency conflicts prevent a single environment):
+#   llm-guard row:  llm-guard==0.3.16   (transformers pinned by llm-guard; run offline, cached)
+#   privaite max/full presets + gliner OOD row:
+#       gliner==0.2.27, torch==2.12.1, transformers==5.6.2  (gliner needs transformers <5.7)

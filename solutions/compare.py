@@ -110,7 +110,7 @@ def _structured_payload(text: str) -> list[dict]:
         {"role": "assistant", "content": None, "tool_calls": [
             {"id": "call_1", "type": "function", "function": {
                 "name": "save_record",
-                "arguments": json.dumps({"note": text}),
+                "arguments": json.dumps({"note": text}, ensure_ascii=False),
             }},
         ]},
     ]

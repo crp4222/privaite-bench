@@ -70,6 +70,7 @@ class PrivAiTeSolution(Solution):
         #               example config: low recall).
         # "light-all" = the PRODUCT's actual preset:light (full Presidio, no pin).
         # "onnx"      = full ONNX suite (default).
+        # "max"/"standard"/"full" = the matching shipped preset (adds GLiNER / BERT).
         entities = list(LIGHT_ENTITIES) if self._preset == "light" else None
         presidio = PresidioDetectorConfig(
             enabled=True, languages=_langs(lang), score_threshold=0.4,
@@ -77,7 +78,7 @@ class PrivAiTeSolution(Solution):
         )
         return PIIConfig(
             enabled=True,
-            preset="onnx" if self._preset == "onnx" else None,
+            preset=None if self._preset in ("light", "light-all") else self._preset,
             detectors=DetectorsConfig(presidio=presidio),
             anonymization=AnonymizationConfig(method="placeholder", faker_locale=["en_US"]),
             deanonymization=DeanonymizationConfig(enabled=True),

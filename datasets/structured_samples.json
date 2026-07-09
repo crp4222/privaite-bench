@@ -116,7 +116,9 @@
           },
           {
             "type": "image_url",
-            "image_url": {"url": "https://example.com/id-card.png"}
+            "image_url": {
+              "url": "https://example.com/id-card.png"
+            }
           }
         ]
       }
@@ -124,6 +126,326 @@
     "expected": {
       "Jean Dupont": "PERSON",
       "FR76 3000 6000 0112 3456 7890 189": "IBAN_CODE"
+    }
+  },
+  {
+    "id": "tool_send_email_cc",
+    "lang": "en",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "send_email",
+              "arguments": "{\"to\": \"marie.dupont@acme.com\", \"cc\": \"john.smith@acme.com\", \"subject\": \"Follow-up for Marie Dupont\", \"body\": \"Hi Marie, please confirm your number 415-555-0132.\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "marie.dupont@acme.com": "EMAIL_ADDRESS",
+      "john.smith@acme.com": "EMAIL_ADDRESS",
+      "Marie Dupont": "PERSON",
+      "Marie": "PERSON",
+      "415-555-0132": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "tool_create_invoice",
+    "lang": "en",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "create_invoice",
+              "arguments": "{\"customer_name\": \"Robert Johnson\", \"customer_email\": \"r.johnson@example.org\", \"billing_address\": \"742 Evergreen Terrace, Springfield\", \"amount\": \"1240.50\", \"iban\": \"GB29NWBK60161331926819\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Robert Johnson": "PERSON",
+      "r.johnson@example.org": "EMAIL_ADDRESS",
+      "742 Evergreen Terrace, Springfield": "LOCATION",
+      "GB29NWBK60161331926819": "IBAN_CODE"
+    }
+  },
+  {
+    "id": "tool_book_appointment_medical",
+    "lang": "en",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "book_appointment",
+              "arguments": "{\"patient_name\": \"Sarah Connor\", \"date_of_birth\": \"1985-03-14\", \"phone\": \"+1 213 555 0198\", \"ssn\": \"532-84-1726\", \"reason\": \"annual checkup\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Sarah Connor": "PERSON",
+      "1985-03-14": "DATE_TIME",
+      "+1 213 555 0198": "PHONE_NUMBER",
+      "532-84-1726": "US_SSN"
+    }
+  },
+  {
+    "id": "tool_transfer_funds_fr",
+    "lang": "fr",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "transfer_funds",
+              "arguments": "{\"beneficiaire\": \"Jean-Michel Bernard\", \"iban\": \"FR7630006000011234567890189\", \"montant\": \"3500\", \"reference\": \"Loyer avril\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Jean-Michel Bernard": "PERSON",
+      "FR7630006000011234567890189": "IBAN_CODE"
+    }
+  },
+  {
+    "id": "tool_save_contact_de",
+    "lang": "de",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "save_contact",
+              "arguments": "{\"name\": \"Anna Müller\", \"email\": \"anna.mueller@firma.de\", \"telefon\": \"+49 30 123456\", \"adresse\": \"Hauptstraße 12, Berlin\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Anna Müller": "PERSON",
+      "anna.mueller@firma.de": "EMAIL_ADDRESS",
+      "+49 30 123456": "PHONE_NUMBER",
+      "Hauptstraße 12, Berlin": "LOCATION"
+    }
+  },
+  {
+    "id": "tool_update_profile_card",
+    "lang": "en",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "update_profile",
+              "arguments": "{\"full_name\": \"David Kim\", \"email\": \"david.kim@mail.com\", \"credit_card\": \"4111 1111 1111 1111\", \"date_of_birth\": \"1990-11-02\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "David Kim": "PERSON",
+      "david.kim@mail.com": "EMAIL_ADDRESS",
+      "4111 1111 1111 1111": "CREDIT_CARD",
+      "1990-11-02": "DATE_TIME"
+    }
+  },
+  {
+    "id": "tool_file_claim",
+    "lang": "en",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "file_claim",
+              "arguments": "{\"claimant\": \"Patricia Gomez\", \"policy_number\": \"POL-99213\", \"address\": \"88 Market St, Apt 4B, San Francisco\", \"phone\": \"628-555-7712\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Patricia Gomez": "PERSON",
+      "88 Market St, Apt 4B, San Francisco": "LOCATION",
+      "628-555-7712": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "tool_register_user_it",
+    "lang": "it",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "register_user",
+              "arguments": "{\"nome\": \"Giulia Ricci\", \"email\": \"giulia.ricci@posta.it\", \"telefono\": \"+39 06 12345678\", \"citta\": \"Roma\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Giulia Ricci": "PERSON",
+      "giulia.ricci@posta.it": "EMAIL_ADDRESS",
+      "+39 06 12345678": "PHONE_NUMBER",
+      "Roma": "LOCATION"
+    }
+  },
+  {
+    "id": "tool_schedule_delivery",
+    "lang": "en",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "schedule_delivery",
+              "arguments": "{\"recipient\": \"Michael O'Brien\", \"address\": \"1600 Amphitheatre Parkway, Mountain View\", \"phone\": \"650-253-0000\", \"note\": \"leave at door\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Michael O'Brien": "PERSON",
+      "1600 Amphitheatre Parkway, Mountain View": "LOCATION",
+      "650-253-0000": "PHONE_NUMBER"
+    }
+  },
+  {
+    "id": "tool_open_account",
+    "lang": "en",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "open_account",
+              "arguments": "{\"applicant_name\": \"Emma Watson\", \"email\": \"emma.w@bank.com\", \"ssn\": \"078-05-1120\", \"routing_number\": \"021000021\", \"initial_deposit\": \"500\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Emma Watson": "PERSON",
+      "emma.w@bank.com": "EMAIL_ADDRESS",
+      "078-05-1120": "US_SSN",
+      "021000021": "US_BANK_NUMBER"
+    }
+  },
+  {
+    "id": "tool_add_dependent_fr",
+    "lang": "fr",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "add_dependent",
+              "arguments": "{\"titulaire\": \"Sophie Lefèvre\", \"enfant\": \"Lucas Lefèvre\", \"date_naissance\": \"2015-06-30\", \"numero_secu\": \"2 85 06 75 116 001 42\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Sophie Lefèvre": "PERSON",
+      "Lucas Lefèvre": "PERSON",
+      "2015-06-30": "DATE_TIME",
+      "2 85 06 75 116 001 42": "FR_SSN"
+    }
+  },
+  {
+    "id": "tool_log_incident_ip",
+    "lang": "en",
+    "source": "Self-built, realistic typed-field function call",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_1",
+            "type": "function",
+            "function": {
+              "name": "log_incident",
+              "arguments": "{\"reporter\": \"Kevin Brown\", \"email\": \"kevin.brown@corp.com\", \"ip_address\": \"192.168.14.201\", \"description\": \"login from unknown host\"}"
+            }
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "Kevin Brown": "PERSON",
+      "kevin.brown@corp.com": "EMAIL_ADDRESS",
+      "192.168.14.201": "IP_ADDRESS"
     }
   }
 ]

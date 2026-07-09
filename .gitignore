@@ -18,3 +18,7 @@ solutions/_corpus.json
 results/llm_guard_cache.json
 
 solutions/_gretel_ood_corpus.json
+
+# Nemotron-PII OOD corpus: raw third-party text, not redistributed (offsets/labels
+# are derived at build time; only integer stats land in results/).
+solutions/_nemotron_ood_corpus.json
