@@ -20,28 +20,11 @@ Adding another solution (another repo) is just another subclass here.
 from __future__ import annotations
 
 import copy
-import sys
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "PrivAiTe"))
+from benchlib.config import LIGHT_ENTITIES, PIIConfig, langs_for, pii_config
+from benchlib.paths import RESULTS
 
-from privaite.config.schema import (  # noqa: E402
-    AnonymizationConfig,
-    DeanonymizationConfig,
-    DetectorsConfig,
-    PIIConfig,
-    PresidioDetectorConfig,
-)
-from privaite.pii.engine import PIIEngine  # noqa: E402
-
-LIGHT_ENTITIES = [
-    "PERSON", "EMAIL_ADDRESS", "PHONE_NUMBER", "CREDIT_CARD", "IBAN_CODE",
-    "IP_ADDRESS", "DATE_TIME", "US_SSN", "UK_NHS",
-]
-
-
-def _langs(lang: str) -> list[str]:
-    return [lang] if lang == "en" else [lang, "en"]
+from privaite.pii.engine import PIIEngine
 
 
 class Solution:
@@ -71,17 +54,12 @@ class PrivAiTeSolution(Solution):
         # "light-all" = the PRODUCT's actual preset:light (full Presidio, no pin).
         # "onnx"      = full ONNX suite (default).
         # "max"/"standard"/"full" = the matching shipped preset (adds GLiNER / BERT).
-        entities = list(LIGHT_ENTITIES) if self._preset == "light" else None
-        presidio = PresidioDetectorConfig(
-            enabled=True, languages=_langs(lang), score_threshold=0.4,
+        entities = LIGHT_ENTITIES if self._preset == "light" else None
+        return pii_config(
+            languages=langs_for(lang),
             entities=entities,
-        )
-        return PIIConfig(
-            enabled=True,
+            faker_locale=["en_US"],
             preset=None if self._preset in ("light", "light-all") else self._preset,
-            detectors=DetectorsConfig(presidio=presidio),
-            anonymization=AnonymizationConfig(method="placeholder", faker_locale=["en_US"]),
-            deanonymization=DeanonymizationConfig(enabled=True),
         )
 
     async def _engine(self, lang: str) -> PIIEngine:
@@ -187,7 +165,7 @@ class LLMGuardSolution(Solution):
     """
 
     name = "llm-guard"
-    CACHE = Path(__file__).resolve().parents[1] / "results" / "llm_guard_cache.json"
+    CACHE = RESULTS / "llm_guard_cache.json"
 
     def __init__(self) -> None:
         self._by_text: dict[str, dict] = {}

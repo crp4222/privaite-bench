@@ -30,19 +30,22 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
-import os
 import sys
-from pathlib import Path
 
-os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+# bootstrap honors PRIVAITE_PATH, so the suite can still run against any checkout
+# (e.g. a feature branch) without moving directories.
+from benchlib.paths import RESULTS, bootstrap
 
-# The other scripts hardcode ../PrivAiTe; allow an override so the suite can run
-# against any checkout (e.g. a feature branch) without moving directories.
-_PRIVAITE_PATH = os.environ.get("PRIVAITE_PATH") or str(
-    Path(__file__).parent.parent / "PrivAiTe"
+bootstrap()
+
+from benchlib.config import LIGHT_ENTITIES, pii_config  # noqa: E402
+from benchlib.data import PR_DATASETS, load_dataset, load_datasets  # noqa: E402
+from benchlib.payloads import (  # noqa: E402
+    flatten_messages,
+    multimodal_content,
+    tool_call_message,
 )
-sys.path.insert(0, _PRIVAITE_PATH)
-
+from benchlib.report import pct, rule  # noqa: E402
 from privaite.config.schema import (  # noqa: E402
     AnonymizationConfig,
     DeanonymizationConfig,
@@ -54,15 +57,7 @@ from privaite.pii.engine import PIIEngine  # noqa: E402
 
 CARRIERS = ["flat", "multimodal", "tool_call", "tool_call_nested"]
 
-DATASETS = [
-    "pii_samples.json",
-    "corporate_samples.json",
-    "batch_samples.json",
-    "dlptest_us.json",
-    "enedis_rse_extracts.json",
-    "realworld_samples.json",
-    "long_texts.json",
-]
+DATASETS = PR_DATASETS
 
 
 def wrap(text: str, carrier: str) -> list[dict]:
@@ -70,74 +65,13 @@ def wrap(text: str, carrier: str) -> list[dict]:
     if carrier == "flat":
         return [{"role": "user", "content": text}]
     if carrier == "multimodal":
-        return [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "text", "text": text},
-                    {
-                        "type": "image_url",
-                        "image_url": {"url": "https://example.com/scan.png"},
-                    },
-                ],
-            }
-        ]
+        return [{"role": "user", "content": multimodal_content(text)}]
     if carrier == "tool_call":
-        return [
-            {
-                "role": "assistant",
-                "content": None,
-                "tool_calls": [
-                    {
-                        "id": "call_1",
-                        "type": "function",
-                        "function": {
-                            "name": "save_note",
-                            "arguments": json.dumps({"note": text}, ensure_ascii=False),
-                        },
-                    }
-                ],
-            }
-        ]
+        return [tool_call_message("save_note", {"note": text})]
     if carrier == "tool_call_nested":
-        return [
-            {
-                "role": "assistant",
-                "content": None,
-                "tool_calls": [
-                    {
-                        "id": "call_1",
-                        "type": "function",
-                        "function": {
-                            "name": "save_profile",
-                            "arguments": json.dumps(
-                                {"user": {"profile": {"bio": text}}, "tags": [text]},
-                                ensure_ascii=False,
-                            ),
-                        },
-                    }
-                ],
-            }
-        ]
+        return [tool_call_message(
+            "save_profile", {"user": {"profile": {"bio": text}}, "tags": [text]})]
     raise ValueError(f"unknown carrier: {carrier}")
-
-
-def flatten_messages(messages: list[dict]) -> str:
-    """Collect every string a provider would actually receive, across shapes."""
-    chunks: list[str] = []
-    for message in messages:
-        content = message.get("content")
-        if isinstance(content, str):
-            chunks.append(content)
-        elif isinstance(content, list):
-            for part in content:
-                if isinstance(part, dict) and isinstance(part.get("text"), str):
-                    chunks.append(part["text"])
-        for call in message.get("tool_calls") or []:
-            function = call.get("function") if isinstance(call, dict) else None
-            if isinstance(function, dict) and isinstance(function.get("arguments"), str):
-                chunks.append(function["arguments"])
-    return "\n".join(chunks)
 
 
 def score_leaks(expected: dict, flattened: str) -> tuple[list[str], list[str]]:
@@ -198,9 +132,9 @@ async def eval_native(engine: PIIEngine, sample: dict) -> dict:
 
 
 def report_rewrapped(results: list[dict]) -> dict:
-    print("=" * 72)
+    print(rule(72))
     print("  STRUCTURED CARRIERS vs FLAT BASELINE  (parity on re-wrapped corpus)")
-    print("=" * 72)
+    print(rule(72))
 
     flat_total = sum(len(r["carriers"]["flat"]["anonymized"]) for r in results)
     summary: dict[str, dict] = {}
@@ -249,15 +183,15 @@ def report_rewrapped(results: list[dict]) -> dict:
 def report_native(results: list[dict]) -> dict:
     if not results:
         return {}
-    print("=" * 72)
+    print(rule(72))
     print("  NATIVE STRUCTURED SAMPLES  (hand-written function-call / multimodal)")
-    print("=" * 72)
+    print(rule(72))
     total = sum(r["expected_total"] for r in results)
     anonymized = sum(len(r["anonymized"]) for r in results)
     leaked = sum(len(r["leaked"]) for r in results)
     rt = [r["roundtrip_ok"] for r in results]
     rt_checked = [x for x in rt if x is not None]
-    rate = anonymized / total * 100 if total else 0.0
+    rate = pct(anonymized, total)
     print(f"  Anonymized: {anonymized}/{total} ({rate:.1f}%)   Leaked: {leaked}")
     print(f"  Round-trip restored: {sum(1 for x in rt_checked if x)}/{len(rt_checked)}")
     if leaked:
@@ -271,22 +205,11 @@ def report_native(results: list[dict]) -> dict:
 
 # Multi-language light preset, same detector config as bench_precision_recall.py.
 def _real_config() -> PIIConfig:
-    return PIIConfig(
-        enabled=True,
-        preset=None,
-        detectors=DetectorsConfig(
-            presidio=PresidioDetectorConfig(
-                enabled=True,
-                languages=["fr", "en", "de", "es", "it"],
-                score_threshold=0.4,
-                entities=[
-                    "PERSON", "EMAIL_ADDRESS", "PHONE_NUMBER", "CREDIT_CARD",
-                    "IBAN_CODE", "IP_ADDRESS", "DATE_TIME", "US_SSN", "UK_NHS",
-                ],
-            ),
-        ),
-        anonymization=AnonymizationConfig(method="placeholder", faker_locale=["en_US"]),
-        deanonymization=DeanonymizationConfig(enabled=True, fuzzy_matching=False),
+    return pii_config(
+        languages=["fr", "en", "de", "es", "it"],
+        entities=LIGHT_ENTITIES,
+        faker_locale=["en_US"],
+        fuzzy_matching=False,
     )
 
 
@@ -297,21 +220,9 @@ def _onnx_config() -> PIIConfig:
     return config
 
 
-def _load(base: Path, name: str) -> list[dict]:
-    path = base / "datasets" / name
-    if not path.exists():
-        return []
-    with open(path) as f:
-        return json.load(f)
-
-
 async def main(presets: list[str]) -> None:
-    base = Path(__file__).parent
-
-    corpus: list[dict] = []
-    for name in DATASETS:
-        corpus.extend(_load(base, name))
-    native = _load(base, "structured_samples.json")
+    corpus = load_datasets(DATASETS)
+    native = load_dataset("structured_samples.json")
 
     print(f"Loaded {len(corpus)} flat samples (re-wrapped into {len(CARRIERS)} carriers), "
           f"{len(native)} native structured samples")
@@ -319,7 +230,7 @@ async def main(presets: list[str]) -> None:
     builders = {"light": _real_config, "onnx": _onnx_config}
     report: dict = {}
     for preset_name in presets:
-        print(f"\n{'#' * 72}\n# PRESET: {preset_name}\n{'#' * 72}")
+        print(f"\n{rule(72, '#')}\n# PRESET: {preset_name}\n{rule(72, '#')}")
         engine = PIIEngine(builders[preset_name]())
         try:
             await engine.initialize()
@@ -341,11 +252,43 @@ async def main(presets: list[str]) -> None:
             "native_by_doc": native_results,
         }
 
-    out = base / "results" / "structured_report.json"
+    out = RESULTS / "structured_report.json"
     out.parent.mkdir(exist_ok=True)
     with open(out, "w") as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
     print(f"Full results saved to {out}")
+
+
+async def _check_rewrapped(engine: PIIEngine, corpus: list[dict]) -> int:
+    """Every re-wrapped carrier must match its flat baseline with zero leaks."""
+    failures = 0
+    for sample in corpus:
+        result = await eval_rewrapped(engine, sample)
+        flat_ok = set(result["carriers"]["flat"]["anonymized"])
+        assert flat_ok == set(sample["expected"]), f"flat baseline incomplete: {result}"
+        for carrier in CARRIERS:
+            c = result["carriers"][carrier]
+            if c["leaked"]:
+                print(f"  FAIL [{carrier}] leaked {c['leaked']}")
+                failures += 1
+            if carrier.startswith("tool_call") and c["roundtrip_ok"] is not True:
+                print(f"  FAIL [{carrier}] round-trip not restored")
+                failures += 1
+    return failures
+
+
+async def _check_native(engine: PIIEngine, native: list[dict]) -> int:
+    """Every native structured sample must anonymize with no leaks and round-trip."""
+    failures = 0
+    for sample in native:
+        result = await eval_native(engine, sample)
+        if result["leaked"]:
+            print(f"  FAIL [native {result['id']}] leaked {result['leaked']}")
+            failures += 1
+        if result["roundtrip_ok"] is False:
+            print(f"  FAIL [native {result['id']}] round-trip not restored")
+            failures += 1
+    return failures
 
 
 # Validate the harness with a deterministic fake detector (no spaCy needed).
@@ -373,8 +316,7 @@ async def selftest() -> int:
                     start = idx + len(term)
             return ents
 
-    base = Path(__file__).parent
-    native = _load(base, "structured_samples.json")
+    native = load_dataset("structured_samples.json")
     corpus = [
         {
             "id": "st_inline",
@@ -405,29 +347,7 @@ async def selftest() -> int:
     engine.detectors = [FakeDetector(terms)]
     engine._ready = True
 
-    failures = 0
-
-    for sample in corpus:
-        result = await eval_rewrapped(engine, sample)
-        flat_ok = set(result["carriers"]["flat"]["anonymized"])
-        assert flat_ok == set(sample["expected"]), f"flat baseline incomplete: {result}"
-        for carrier in CARRIERS:
-            c = result["carriers"][carrier]
-            if c["leaked"]:
-                print(f"  FAIL [{carrier}] leaked {c['leaked']}")
-                failures += 1
-            if carrier.startswith("tool_call") and c["roundtrip_ok"] is not True:
-                print(f"  FAIL [{carrier}] round-trip not restored")
-                failures += 1
-
-    for sample in native:
-        result = await eval_native(engine, sample)
-        if result["leaked"]:
-            print(f"  FAIL [native {result['id']}] leaked {result['leaked']}")
-            failures += 1
-        if result["roundtrip_ok"] is False:
-            print(f"  FAIL [native {result['id']}] round-trip not restored")
-            failures += 1
+    failures = await _check_rewrapped(engine, corpus) + await _check_native(engine, native)
 
     if failures == 0:
         print(f"SELFTEST PASSED: {len(corpus)} re-wrapped x {len(CARRIERS)} carriers + "

@@ -13,45 +13,32 @@ from __future__ import annotations
 
 import asyncio
 import json
-import os
-import sys
 import time
-from pathlib import Path
 
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
+from benchlib.paths import RESULTS, bootstrap
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "PrivAiTe"))
+bootstrap()
 
-from privaite.config.schema import (
+from benchlib.config import LIGHT_ENTITIES, langs_for, pii_config  # noqa: E402
+from benchlib.data import load_dataset  # noqa: E402
+from benchlib.report import rule  # noqa: E402
+from privaite.config.schema import (  # noqa: E402
     AnonymizationConfig,
     DeanonymizationConfig,
     DetectorsConfig,
     PIIConfig,
     PresidioDetectorConfig,
 )
-from privaite.pii.engine import PIIEngine
+from privaite.pii.engine import PIIEngine  # noqa: E402
 
 
 PRESETS = {
-    "light": PIIConfig(
-        enabled=True,
-        preset=None,
-        detectors=DetectorsConfig(
-            presidio=PresidioDetectorConfig(
-                enabled=True,
-                languages=["fr", "en"],
-                score_threshold=0.4,
-                entities=[
-                    "PERSON", "EMAIL_ADDRESS", "PHONE_NUMBER", "CREDIT_CARD",
-                    "IBAN_CODE", "IP_ADDRESS", "DATE_TIME",
-                    "US_SSN", "UK_NHS",
-                ],
-            ),
-        ),
-        anonymization=AnonymizationConfig(
-            method="placeholder", faker_locale=["fr_FR", "en_US"]
-        ),
-        deanonymization=DeanonymizationConfig(enabled=True),
+    # Presidio pinned to the 9-entity allowlist. onnx keeps the preset expansion
+    # (its detector set comes from preset="onnx"), so it stays an explicit config.
+    "light": pii_config(
+        languages=["fr", "en"],
+        entities=LIGHT_ENTITIES,
+        faker_locale=["fr_FR", "en_US"],
     ),
     "onnx": PIIConfig(
         enabled=True,
@@ -64,22 +51,14 @@ PRESETS = {
 }
 
 
-def load_dataset(path: str) -> list[dict]:
-    with open(path) as f:
-        return json.load(f)
-
-
 def _config_for_lang(base: PIIConfig, lang: str) -> PIIConfig:
-    langs = [lang]
-    if lang != "en":
-        langs.append("en")
     return PIIConfig(
         enabled=base.enabled,
         preset=base.preset,
         detectors=DetectorsConfig(
             presidio=PresidioDetectorConfig(
                 enabled=base.detectors.presidio.enabled,
-                languages=langs,
+                languages=langs_for(lang),
                 score_threshold=base.detectors.presidio.score_threshold,
                 entities=base.detectors.presidio.entities,
             ),
@@ -142,7 +121,7 @@ async def run_preset(preset_name: str, config: PIIConfig, samples: list[dict]):
     return results
 
 
-def print_report(preset: str, pii_results: list[dict], clean_results: list[dict]):
+def _print_totals(preset, pii_results, clean_results):
     total_expected = sum(r["total_expected"] for r in pii_results)
     total_detected = sum(r["detected"] for r in pii_results)
     total_missed = sum(r["missed"] for r in pii_results)
@@ -156,29 +135,32 @@ def print_report(preset: str, pii_results: list[dict], clean_results: list[dict]
     avg_lat_pii = sum(r["latency_ms"] for r in pii_results) / len(pii_results)
     avg_lat_clean = sum(r["latency_ms"] for r in clean_results) / len(clean_results)
 
-    print(f"\n{'=' * 60}")
+    print(f"\n{rule(60)}")
     print(f"  PRESET: {preset}")
-    print(f"{'=' * 60}")
+    print(f"{rule(60)}")
     print(f"  Detection rate:     {total_detected}/{total_expected} ({det_rate:.1f}%)")
     print(f"  Miss rate:          {total_missed}/{total_expected} ({miss_rate:.1f}%)")
     print(f"  False positives:    {total_fp}/{total_clean} clean texts ({fp_rate:.1f}%)")
     print(f"  Avg latency (PII):  {avg_lat_pii:.1f}ms")
     print(f"  Avg latency (clean):{avg_lat_clean:.1f}ms")
+    return total_missed, total_fp
 
-    if total_missed > 0:
-        print("\n  MISSED PII:")
-        for r in pii_results:
-            for text, ptype in r["missed_items"].items():
-                print(f"    [{r['id']}] {ptype}: \"{text}\"")
 
-    if total_fp > 0:
-        print("\n  FALSE POSITIVES:")
-        for r in clean_results:
-            for fp in r["false_positives"]:
-                print(f"    [{r['id']}] {fp['type']}: \"{fp['text']}\"")
+def _print_missed(pii_results):
+    print("\n  MISSED PII:")
+    for r in pii_results:
+        for text, ptype in r["missed_items"].items():
+            print(f"    [{r['id']}] {ptype}: \"{text}\"")
 
-    print()
 
+def _print_false_positives(clean_results):
+    print("\n  FALSE POSITIVES:")
+    for r in clean_results:
+        for fp in r["false_positives"]:
+            print(f"    [{r['id']}] {fp['type']}: \"{fp['text']}\"")
+
+
+def _print_by_language(pii_results):
     by_lang = {}
     for r in pii_results:
         lang = r["lang"]
@@ -192,12 +174,9 @@ def print_report(preset: str, pii_results: list[dict], clean_results: list[dict]
         rate = stats["detected"] / stats["expected"] * 100 if stats["expected"] else 0
         print(f"    {lang}: {stats['detected']}/{stats['expected']} ({rate:.0f}%)")
 
+
+def _print_by_type(pii_results, pii_samples):
     by_type = {}
-    for r in pii_results:
-        for text, ptype in {**dict.fromkeys(
-            [t for t in r.get("missed_items", {}).values()], "missed"
-        )}.items():
-            pass
     for r in pii_results:
         sample = next(s for s in pii_samples if s["id"] == r["id"])
         for text, ptype in sample.get("expected", {}).items():
@@ -214,22 +193,27 @@ def print_report(preset: str, pii_results: list[dict], clean_results: list[dict]
         print(f"    {ptype:20} {stats['detected']}/{stats['total']} ({rate:.0f}%) {status}")
 
 
-async def main():
-    global pii_samples
-    base = Path(__file__).parent
+def print_report(preset, pii_results, clean_results, pii_samples):
+    total_missed, total_fp = _print_totals(preset, pii_results, clean_results)
+    if total_missed > 0:
+        _print_missed(pii_results)
+    if total_fp > 0:
+        _print_false_positives(clean_results)
+    print()
+    _print_by_language(pii_results)
+    _print_by_type(pii_results, pii_samples)
 
-    pii_samples = load_dataset(base / "datasets" / "pii_samples.json")
-    clean_samples = load_dataset(base / "datasets" / "clean_samples.json")
+
+async def main():
+    pii_samples = load_dataset("pii_samples.json")
+    clean_samples = load_dataset("clean_samples.json")
 
     for extra in [
         "corporate_samples.json", "batch_samples.json",
         "realworld_samples.json", "dlptest_us.json",
         "enedis_rse_extracts.json",
     ]:
-        path = base / "datasets" / extra
-        if path.exists():
-            extra_data = load_dataset(path)
-            pii_samples = pii_samples + extra_data
+        pii_samples = pii_samples + load_dataset(extra)
 
     print(f"Loaded {len(pii_samples)} PII samples, {len(clean_samples)} clean samples")
 
@@ -241,14 +225,14 @@ async def main():
         pii_results = await run_preset(preset_name, config, pii_samples)
         clean_results = await run_preset(preset_name, config, clean_samples)
 
-        print_report(preset_name, pii_results, clean_results)
+        print_report(preset_name, pii_results, clean_results, pii_samples)
 
         all_results[preset_name] = {
             "pii": pii_results,
             "clean": clean_results,
         }
 
-    output = base / "results" / "report.json"
+    output = RESULTS / "report.json"
     with open(output, "w") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
     print(f"Full results saved to {output}")

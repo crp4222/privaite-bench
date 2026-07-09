@@ -8,9 +8,9 @@ Two competitor/candidate detectors, each needing torch (so NOT the PrivAiTe env)
     synthetic PII (NOT AI4Privacy) -> a clean generalization candidate to ADD.
 
 Writes results/ood_spans_mdeberta.json and results/ood_spans_gliner.json (char spans,
-no PII text -> committable). Run each with the matching venv:
-    ~/.venvs/llm-guard/bin/python scripts/ood/run_transformer_models.py mdeberta
-    ~/.venvs/gliner/bin/python    scripts/ood/run_transformer_models.py gliner
+no PII text -> committable). Run each (from the repo root) with the matching venv:
+    ~/.venvs/llm-guard/bin/python -m scripts.ood.run_transformer_models mdeberta
+    ~/.venvs/gliner/bin/python    -m scripts.ood.run_transformer_models gliner
 
 Both models truncate long inputs (mDeBERTa ~512 tok, GLiNER ~384 tok); PrivAiTe's
 onnx detector does not. That truncation is their real behavior and is noted in
@@ -19,9 +19,9 @@ OOD_COMPARISON.md; the ranking is unchanged when scoring only short docs.
 
 import json
 import sys
-from pathlib import Path
 
-BENCH = Path(__file__).resolve().parents[2]
+from benchlib.data import load_json
+from benchlib.paths import RESULTS, SOLUTIONS
 
 GLINER_LABELS = [
     "person", "first name", "last name", "email", "phone number", "address",
@@ -63,13 +63,13 @@ def run_gliner(corpus: list) -> dict:
 
 def main() -> None:
     which = sys.argv[1] if len(sys.argv) > 1 else ""
-    corpus = json.loads((BENCH / "solutions" / "_gretel_ood_corpus.json").read_text("utf-8"))
+    corpus = load_json(SOLUTIONS / "_gretel_ood_corpus.json")
     runner = {"mdeberta": run_mdeberta, "gliner": run_gliner}.get(which)
     if runner is None:
-        raise SystemExit("usage: run_transformer_models.py {mdeberta|gliner}")
+        raise SystemExit("usage: python -m scripts.ood.run_transformer_models {mdeberta|gliner}")
     out = runner(corpus)
-    (BENCH / "results").mkdir(exist_ok=True)
-    (BENCH / "results" / f"ood_spans_{which}.json").write_text(json.dumps(out), "utf-8")
+    RESULTS.mkdir(exist_ok=True)
+    (RESULTS / f"ood_spans_{which}.json").write_text(json.dumps(out), "utf-8")
     print(f"{which} spans:", sum(len(v) for v in out.values()))
 
 

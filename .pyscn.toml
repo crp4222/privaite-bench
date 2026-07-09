@@ -1,0 +1,56 @@
+# pyscn configuration for privaite-bench.
+#
+# This repo is a set of standalone benchmark runners that share one helper package.
+# The layers below declare that intended architecture so pyscn checks the real rule
+# (runners/scripts/solutions may use the shared lib; the lib depends on nothing here)
+# instead of treating every module as an "unknown layer".
+
+[architecture]
+enabled = true
+validate_layers = true
+strict_mode = true
+
+# benchlib/: the shared helper library. A leaf; it must not import the runners.
+[[architecture.layers]]
+name = "lib"
+packages = ["benchlib"]
+
+# solutions/: solution adapters + the comparative runner and cross-checks.
+[[architecture.layers]]
+name = "solutions"
+packages = ["solutions"]
+
+# scripts/: OOD corpus builders, competitor runners and the OOD scorer.
+[[architecture.layers]]
+name = "scripts"
+packages = ["scripts"]
+
+# top-level bench_*.py entrypoints.
+[[architecture.layers]]
+name = "runners"
+packages = ["bench", "bench_latency", "bench_precision_recall", "bench_structured"]
+
+[[architecture.rules]]
+from = "runners"
+allow = ["runners", "solutions", "lib"]
+
+[[architecture.rules]]
+from = "scripts"
+allow = ["scripts", "solutions", "lib"]
+
+[[architecture.rules]]
+from = "solutions"
+allow = ["solutions", "lib"]
+
+[[architecture.rules]]
+from = "lib"
+allow = ["lib"]
+
+# Clone detection: flag only real copy-paste (type-1 identical, type-2 renamed), not
+# type-3/4 "structurally similar" matches. The benchmark runners deliberately share a
+# shape (load corpus, loop, score, report) while measuring different things; that
+# shape similarity is not duplication to remove, and the literal duplication (config
+# builders, path setup, payload shapes, loaders) has been extracted into benchlib.
+[clones]
+min_lines = 10
+enabled_clone_types = ["type1", "type2"]

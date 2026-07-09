@@ -3,18 +3,20 @@
 Writes char-span caches results/ood_spans_pf.json and results/ood_spans_presidio.json
 (each {doc_id: [[start, end], ...]}). Spans are integer offsets only, no PII text, so
 these are safe to commit. Run from the repo root with the PrivAiTe venv:
-    <privaite venv>/bin/python scripts/ood/run_privaite_detectors.py
+    <privaite venv>/bin/python -m scripts.ood.run_privaite_detectors
 """
 
 import asyncio
 import json
-from pathlib import Path
 
-BENCH = Path(__file__).resolve().parents[2]
+from benchlib.data import load_json
+from benchlib.paths import RESULTS, SOLUTIONS, bootstrap
+
+bootstrap()
 
 
 async def main() -> None:
-    corpus = json.loads((BENCH / "solutions" / "_gretel_ood_corpus.json").read_text("utf-8"))
+    corpus = load_json(SOLUTIONS / "_gretel_ood_corpus.json")
 
     from privaite.config.schema import OnnxDetectorConfig
     from privaite.pii.detector_onnx import OnnxPrivacyFilterDetector
@@ -39,9 +41,9 @@ async def main() -> None:
         results = analyzer.analyze(text=doc["text"], language=doc["lang"])
         pres_out[doc["id"]] = [[r.start, r.end] for r in results]
 
-    (BENCH / "results").mkdir(exist_ok=True)
-    (BENCH / "results" / "ood_spans_pf.json").write_text(json.dumps(pf_out), "utf-8")
-    (BENCH / "results" / "ood_spans_presidio.json").write_text(json.dumps(pres_out), "utf-8")
+    RESULTS.mkdir(exist_ok=True)
+    (RESULTS / "ood_spans_pf.json").write_text(json.dumps(pf_out), "utf-8")
+    (RESULTS / "ood_spans_presidio.json").write_text(json.dumps(pres_out), "utf-8")
     print("pf spans:", sum(len(v) for v in pf_out.values()),
           "| presidio spans:", sum(len(v) for v in pres_out.values()))
     await pf.shutdown()

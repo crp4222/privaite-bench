@@ -9,43 +9,24 @@ from __future__ import annotations
 
 import asyncio
 import json
-import os
-import sys
 import time
-from pathlib import Path
 from statistics import median
 
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
+from benchlib.paths import RESULTS, bootstrap
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "PrivAiTe"))
+bootstrap()
 
-from privaite.config.schema import (
-    AnonymizationConfig,
-    DeanonymizationConfig,
-    DetectorsConfig,
-    PIIConfig,
-    PresidioDetectorConfig,
-)
-from privaite.pii.engine import PIIEngine
+from benchlib.config import LIGHT_ENTITIES, PIIConfig, pii_config  # noqa: E402
+from benchlib.data import load_dataset  # noqa: E402
+from benchlib.report import rule  # noqa: E402
+from privaite.pii.engine import PIIEngine  # noqa: E402
 
 
 def make_config(languages: list[str]) -> PIIConfig:
-    return PIIConfig(
-        enabled=True,
-        preset=None,
-        detectors=DetectorsConfig(
-            presidio=PresidioDetectorConfig(
-                enabled=True,
-                languages=languages,
-                score_threshold=0.4,
-                entities=[
-                    "PERSON", "EMAIL_ADDRESS", "PHONE_NUMBER", "CREDIT_CARD",
-                    "IBAN_CODE", "IP_ADDRESS", "DATE_TIME", "US_SSN", "UK_NHS",
-                ],
-            ),
-        ),
-        anonymization=AnonymizationConfig(method="placeholder", faker_locale=["en_US"]),
-        deanonymization=DeanonymizationConfig(enabled=True),
+    return pii_config(
+        languages=languages,
+        entities=LIGHT_ENTITIES,
+        faker_locale=["en_US"],
     )
 
 
@@ -82,17 +63,12 @@ async def measure_latency(engine: PIIEngine, text: str, runs: int = 30) -> dict:
 
 
 async def main():
-    base = Path(__file__).parent
+    long_texts = load_dataset("long_texts.json")
+    long_texts.extend(load_dataset("long_1000_tokens.json"))
 
-    with open(base / "datasets" / "long_texts.json") as f:
-        long_texts = json.load(f)
-
-    with open(base / "datasets" / "long_1000_tokens.json") as f:
-        long_texts.extend(json.load(f))
-
-    print("=" * 80)
+    print(rule(80))
     print("LATENCY BENCHMARK — long texts × multi-language configurations")
-    print("=" * 80)
+    print(rule(80))
     print()
 
     print("Document sizes:")
@@ -149,7 +125,7 @@ async def main():
         await engine.shutdown()
         print()
 
-    output = base / "results" / "latency_report.json"
+    output = RESULTS / "latency_report.json"
     output.parent.mkdir(exist_ok=True)
     with open(output, "w") as f:
         json.dump(results, f, indent=2)

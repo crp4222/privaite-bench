@@ -15,27 +15,15 @@ from __future__ import annotations
 
 import asyncio
 import json
-import os
-import sys
-from pathlib import Path
 
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
+from benchlib.paths import RESULTS, bootstrap
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "PrivAiTe"))
+bootstrap()
 
-from privaite.config.schema import (
-    AnonymizationConfig,
-    DeanonymizationConfig,
-    DetectorsConfig,
-    PIIConfig,
-    PresidioDetectorConfig,
-)
-from privaite.pii.engine import PIIEngine
-
-
-def load_dataset(path: Path) -> list[dict]:
-    with open(path) as f:
-        return json.load(f)
+from benchlib.config import LIGHT_ENTITIES, pii_config  # noqa: E402
+from benchlib.data import PR_DATASETS, load_datasets  # noqa: E402
+from benchlib.report import rule  # noqa: E402
+from privaite.pii.engine import PIIEngine  # noqa: E402
 
 
 def _spans_overlap(a_text: str, b_text: str) -> bool:
@@ -98,34 +86,15 @@ def aggregate(results: list[dict]) -> dict:
 
 
 async def main():
-    base = Path(__file__).parent
-
-    datasets = []
-    for name in ["pii_samples.json", "corporate_samples.json", "batch_samples.json",
-                 "dlptest_us.json", "enedis_rse_extracts.json", "realworld_samples.json",
-                 "long_texts.json"]:
-        path = base / "datasets" / name
-        if path.exists():
-            datasets.extend(load_dataset(path))
+    datasets = load_datasets(PR_DATASETS)
 
     print(f"Loaded {len(datasets)} PII samples")
     print()
 
-    config = PIIConfig(
-        enabled=True, preset=None,
-        detectors=DetectorsConfig(
-            presidio=PresidioDetectorConfig(
-                enabled=True,
-                languages=["fr", "en", "de", "es", "it"],
-                score_threshold=0.4,
-                entities=[
-                    "PERSON", "EMAIL_ADDRESS", "PHONE_NUMBER", "CREDIT_CARD",
-                    "IBAN_CODE", "IP_ADDRESS", "DATE_TIME", "US_SSN", "UK_NHS",
-                ],
-            ),
-        ),
-        anonymization=AnonymizationConfig(method="placeholder", faker_locale=["en_US"]),
-        deanonymization=DeanonymizationConfig(enabled=True),
+    config = pii_config(
+        languages=["fr", "en", "de", "es", "it"],
+        entities=LIGHT_ENTITIES,
+        faker_locale=["en_US"],
     )
 
     engine = PIIEngine(config)
@@ -136,9 +105,9 @@ async def main():
         result = await evaluate_sample(engine, sample)
         results.append(result)
 
-    print("=" * 80)
+    print(rule(80))
     print("PRECISION / RECALL — entity-level evaluation")
-    print("=" * 80)
+    print(rule(80))
     print()
 
     agg = aggregate(results)
@@ -183,7 +152,7 @@ async def main():
                 print(f"    - {fn!r}")
     print()
 
-    output = base / "results" / "precision_recall_report.json"
+    output = RESULTS / "precision_recall_report.json"
     output.parent.mkdir(exist_ok=True)
     with open(output, "w") as f:
         json.dump({"aggregate": agg, "by_doc": results}, f, indent=2, ensure_ascii=False)

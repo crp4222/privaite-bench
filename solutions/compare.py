@@ -23,11 +23,17 @@ import json
 import re
 import time
 from collections import defaultdict
-from pathlib import Path
 
+from benchlib.data import load_json
+from benchlib.paths import BENCH, DATASETS, RESULTS, SOLUTIONS
+from benchlib.payloads import (
+    first_multimodal_text,
+    first_tool_args,
+    multimodal_content,
+    tool_call_message,
+)
+from benchlib.report import pct
 from solutions.solutions import all_solutions
-
-BENCH = Path(__file__).resolve().parents[1]
 
 
 def _caught_token_level(pii: str, anon_text: str) -> bool:
@@ -43,10 +49,10 @@ def _caught_token_level(pii: str, anon_text: str) -> bool:
 
 def load_corpus() -> list[dict]:
     """Prefer the local corpus (with text); else rebuild from committed labels."""
-    local = BENCH / "solutions" / "_corpus.json"
+    local = SOLUTIONS / "_corpus.json"
     if local.exists():
-        return json.loads(local.read_text(encoding="utf-8"))
-    data = json.loads((BENCH / "datasets" / "comparative_labels.json").read_text("utf-8"))
+        return load_json(local)  # type: ignore[return-value]
+    data = load_json(DATASETS / "comparative_labels.json")
     labels = data["labels"] if isinstance(data, dict) else data
     from solutions.ai4privacy_loader import load_text_by_id
 
@@ -63,7 +69,7 @@ def load_corpus() -> list[dict]:
 
 
 def load_clean() -> list[dict]:
-    return json.loads((BENCH / "datasets" / "clean_samples.json").read_text("utf-8"))
+    return load_json(DATASETS / "clean_samples.json")  # type: ignore[return-value]
 
 
 def ground_truth_quality(corpus: list[dict]) -> dict | None:
@@ -72,10 +78,10 @@ def ground_truth_quality(corpus: list[dict]) -> dict | None:
     High overlap means the agent labels are precise; the agent-only items are
     incidental PII the dataset mask did not tag.
     """
-    sample_path = BENCH / "solutions" / "_ai4privacy_sample.json"
+    sample_path = SOLUTIONS / "_ai4privacy_sample.json"
     if not sample_path.exists():
         return None
-    gold_by_id = {d["id"]: d.get("gold", []) for d in json.loads(sample_path.read_text("utf-8"))}
+    gold_by_id = {d["id"]: d.get("gold", []) for d in load_json(sample_path)}
 
     def overlaps(a: str, b: str) -> bool:
         return a in b or b in a
@@ -94,41 +100,18 @@ def ground_truth_quality(corpus: list[dict]) -> dict | None:
                 agent_in_gold += 1
     return {
         "dataset_sensitive_spans": gold_total,
-        "agent_recovered_dataset_pct": round(gold_caught / gold_total * 100, 1) if gold_total else 0.0,
+        "agent_recovered_dataset_pct": pct(gold_caught, gold_total, 1),
         "agent_labels": agent_total,
-        "agent_overlap_with_dataset_pct": round(agent_in_gold / agent_total * 100, 1) if agent_total else 0.0,
+        "agent_overlap_with_dataset_pct": pct(agent_in_gold, agent_total, 1),
     }
 
 
 def _structured_payload(text: str) -> list[dict]:
     """Same PII placed in a multimodal text part and a tool-call argument."""
     return [
-        {"role": "user", "content": [
-            {"type": "text", "text": text},
-            {"type": "image_url", "image_url": {"url": "https://example.com/scan.png"}},
-        ]},
-        {"role": "assistant", "content": None, "tool_calls": [
-            {"id": "call_1", "type": "function", "function": {
-                "name": "save_record",
-                "arguments": json.dumps({"note": text}, ensure_ascii=False),
-            }},
-        ]},
+        {"role": "user", "content": multimodal_content(text)},
+        tool_call_message("save_record", {"note": text}),
     ]
-
-
-def _tool_args(messages: list[dict]) -> str:
-    for msg in messages:
-        for call in (msg.get("tool_calls") or []):
-            return call.get("function", {}).get("arguments", "")
-    return ""
-
-
-def _multimodal_text(messages: list[dict]) -> str:
-    for msg in messages:
-        content = msg.get("content")
-        if isinstance(content, list):
-            return " ".join(p.get("text", "") for p in content if isinstance(p, dict))
-    return ""
 
 
 async def evaluate(sol, corpus: list[dict], clean: list[dict]) -> dict:
@@ -161,8 +144,8 @@ async def evaluate(sol, corpus: list[dict], clean: list[dict]) -> dict:
                 caught_strict += 1
 
         anon_payload = await sol.anonymize_payload(_structured_payload(text), lang)
-        args_out = _tool_args(anon_payload)
-        mm_out = _multimodal_text(anon_payload)
+        args_out = first_tool_args(anon_payload)
+        mm_out = first_multimodal_text(anon_payload)
         for pii in expected:
             tool_total += 1
             mm_total += 1
@@ -188,18 +171,18 @@ async def evaluate(sol, corpus: list[dict], clean: list[dict]) -> dict:
     return {
         "solution": sol.name,
         "latency_offline": offline_latency is not None,
-        "recall": round(caught / total * 100, 1) if total else 0.0,
-        "recall_token_level": round(caught_strict / total * 100, 1) if total else 0.0,
+        "recall": pct(caught, total, 1),
+        "recall_token_level": pct(caught_strict, total, 1),
         "caught": caught, "caught_token_level": caught_strict, "total": total,
         "false_positives": false_positives, "clean_docs": len(clean),
-        "tool_call_leak_pct": round(tool_leaked / tool_total * 100, 1) if tool_total else 0.0,
-        "multimodal_leak_pct": round(mm_leaked / mm_total * 100, 1) if mm_total else 0.0,
-        "tool_call_protection_pct": round(prot_removed / prot_total * 100, 1) if prot_total else 0.0,
+        "tool_call_leak_pct": pct(tool_leaked, tool_total, 1),
+        "multimodal_leak_pct": pct(mm_leaked, mm_total, 1),
+        "tool_call_protection_pct": pct(prot_removed, prot_total, 1),
         "avg_latency_ms": offline_latency if offline_latency is not None
                           else (round(sum(latencies) / len(latencies), 1) if latencies else 0.0),
-        "by_lang": {k: round(v["caught"] / v["total"] * 100, 1) if v["total"] else 0.0
+        "by_lang": {k: pct(v["caught"], v["total"], 1)
                     for k, v in sorted(by_lang.items())},
-        "by_type": {k: round(v["caught"] / v["total"] * 100, 1) if v["total"] else 0.0
+        "by_type": {k: pct(v["caught"], v["total"], 1)
                     for k, v in sorted(by_type.items())},
     }
 
@@ -415,8 +398,8 @@ async def main() -> None:
         "ground_truth": ground_truth_quality(corpus),
         "solutions": rows,
     }
-    (BENCH / "results").mkdir(exist_ok=True)
-    (BENCH / "results" / "comparison_report.json").write_text(
+    RESULTS.mkdir(exist_ok=True)
+    (RESULTS / "comparison_report.json").write_text(
         json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
     (BENCH / "COMPARISON.md").write_text(render_markdown(report), encoding="utf-8")
 

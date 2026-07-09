@@ -12,7 +12,7 @@ Run as a module from the repo root (running the file directly fails because
 solutions/solutions.py shadows the package on sys.path, same as compare.py):
     <privaite venv>/bin/python -m solutions.nemotron_crosscheck --preset onnx --preset light
     <gliner venv>/bin/python  -m solutions.nemotron_crosscheck --preset max
-Build the corpus first: python scripts/ood/build_nemotron_corpus.py
+Build the corpus first: python -m scripts.ood.build_nemotron_corpus
 """
 
 from __future__ import annotations
@@ -20,8 +20,9 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
-from pathlib import Path
 
+from benchlib.data import load_json
+from benchlib.paths import RESULTS, SOLUTIONS
 from solutions.compare import evaluate
 from solutions.solutions import PrivAiTeSolution
 
@@ -46,12 +47,12 @@ MAP = {
     "ipv4": "IP_ADDRESS", "ipv6": "IP_ADDRESS",
 }
 
-CORPUS = Path(__file__).resolve().parent / "_nemotron_ood_corpus.json"
-REPORT = Path(__file__).resolve().parents[1] / "results" / "nemotron_ood_report.json"
+CORPUS = SOLUTIONS / "_nemotron_ood_corpus.json"
+REPORT = RESULTS / "nemotron_ood_report.json"
 
 
 def load_eval_corpus() -> tuple[list[dict], dict]:
-    raw = json.loads(CORPUS.read_text("utf-8"))
+    raw = load_json(CORPUS)
     corpus, excluded = [], {}
     for doc in raw:
         expected = {}
@@ -76,7 +77,7 @@ async def main(presets: list[str]) -> None:
     print(f"Nemotron OOD corpus: {stats['docs']} docs, {stats['entities']} targeted PII "
           f"entities ({len(stats['excluded_labels'])} label types excluded)")
 
-    report = json.loads(REPORT.read_text("utf-8")) if REPORT.exists() else {}
+    report = load_json(REPORT) if REPORT.exists() else {}
     report["corpus"] = stats
     for preset in presets:
         sol = PrivAiTeSolution(preset)
