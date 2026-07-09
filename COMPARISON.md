@@ -4,17 +4,17 @@ Corpus: 120 real documents from the open [AI4Privacy `pii-masking-200k`](https:/
 
 ## Bottom line
 
-`privaite-onnx` (the default full ONNX preset) has the highest recall (84.5% span / 80.6% strict) and is the only solution that also strips PII from tool-call arguments: it removes 100.0% of the PII it catches from a tool-call argument, while LiteLLM's Presidio guardrail and LLM Guard remove 0.6% and 0.6%. Those tools scan message text (LiteLLM's guardrail also scrubs multimodal text parts, so its multimodal leak is 29.7%) but never parse the tool-call JSON, so 99.1% and 99.1% of all PII survives inside a tool call. `privaite-onnx` also keeps false positives low (2 on 14 clean docs). (`privaite-light-all` is the fast Presidio-only preset; `privaite-light` is the crippled 9-entity-allowlist config, shown for reference.)
+`privaite-onnx` (the default full ONNX preset) has the highest recall (84.5% span / 80.6% strict) and is the only solution that also strips PII from tool-call arguments: it removes 100.0% of the PII it catches from a tool-call argument, while LiteLLM's Presidio guardrail and LLM Guard remove 0.0% and 0.0%. Those tools scan message text (LiteLLM's guardrail also scrubs multimodal text parts, so its multimodal leak is 29.7%) but never parse the tool-call JSON, so 100.0% and 100.0% of all PII survives inside a tool call. `privaite-onnx` also keeps false positives low (2 on 14 clean docs). (`privaite-light-all` is the fast Presidio-only preset; `privaite-light` is the crippled 9-entity-allowlist config, shown for reference.)
 
 ## Headline
 
 | Solution | Recall | Recall (strict) | False positives | Tool-call protection | Tool-call leak | Multimodal leak | Latency |
 |---|---|---|---|---|---|---|---|
-| privaite-onnx | 84.5% | 80.6% | 2 on 14 | 100.0% | 15.5% | 15.5% | 647.2ms |
-| privaite-light-all | 62.4% | 57.9% | 3 on 14 | 100.0% | 37.6% | 37.6% | 67.6ms |
-| privaite-light | 34.5% | 33.2% | 0 on 14 | 100.0% | 65.5% | 65.5% | 64.4ms |
-| litellm-presidio | 70.3% | 65.3% | 3 on 14 | 0.6% | 99.1% | 29.7% | 10.7ms |
-| llm-guard | 76.9% | 74.9% | 5 on 14 | 0.6% | 99.1% | 100.0% | 88.5ms (offline) |
+| privaite-onnx | 84.5% | 80.6% | 2 on 14 | 100.0% | 15.5% | 15.5% | 542.8ms |
+| privaite-light-all | 62.4% | 57.9% | 3 on 14 | 100.0% | 37.6% | 37.6% | 63.1ms |
+| privaite-light | 34.5% | 33.2% | 0 on 14 | 100.0% | 65.5% | 65.5% | 62.7ms |
+| litellm-presidio | 70.3% | 65.3% | 3 on 14 | 0.0% | 100.0% | 29.7% | 10.5ms |
+| llm-guard | 76.9% | 74.9% | 5 on 14 | 0.0% | 100.0% | 100.0% | 88.5ms (offline) |
 
 Tool-call protection is, of the PII a solution catches in plain text, how much it also removes from a tool-call argument (higher is better). Tool-call leak and multimodal leak are the share of all PII that survives inside a tool-call argument or a multimodal text part (lower is better).
 

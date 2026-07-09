@@ -24,7 +24,7 @@
       "tool_call_leak_pct": 15.5,
       "multimodal_leak_pct": 15.5,
       "tool_call_protection_pct": 100.0,
-      "avg_latency_ms": 647.2,
+      "avg_latency_ms": 542.8,
       "by_lang": {
         "de": 82.1,
         "en": 76.3,
@@ -60,7 +60,7 @@
       "tool_call_leak_pct": 37.6,
       "multimodal_leak_pct": 37.6,
       "tool_call_protection_pct": 100.0,
-      "avg_latency_ms": 67.6,
+      "avg_latency_ms": 63.1,
       "by_lang": {
         "de": 60.7,
         "en": 68.6,
@@ -96,7 +96,7 @@
       "tool_call_leak_pct": 65.5,
       "multimodal_leak_pct": 65.5,
       "tool_call_protection_pct": 100.0,
-      "avg_latency_ms": 64.4,
+      "avg_latency_ms": 62.7,
       "by_lang": {
         "de": 36.6,
         "en": 34.7,
@@ -129,10 +129,10 @@
       "total": 458,
       "false_positives": 3,
       "clean_docs": 14,
-      "tool_call_leak_pct": 99.1,
+      "tool_call_leak_pct": 100.0,
       "multimodal_leak_pct": 29.7,
-      "tool_call_protection_pct": 0.6,
-      "avg_latency_ms": 10.7,
+      "tool_call_protection_pct": 0.0,
+      "avg_latency_ms": 10.5,
       "by_lang": {
         "de": 64.3,
         "en": 81.4,
@@ -165,9 +165,9 @@
       "total": 458,
       "false_positives": 5,
       "clean_docs": 14,
-      "tool_call_leak_pct": 99.1,
+      "tool_call_leak_pct": 100.0,
       "multimodal_leak_pct": 100.0,
-      "tool_call_protection_pct": 0.6,
+      "tool_call_protection_pct": 0.0,
       "avg_latency_ms": 88.5,
       "by_lang": {
         "de": 83.9,
