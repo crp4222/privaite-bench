@@ -18,6 +18,12 @@ Headline: `privaite-onnx` leads on recall (84.5%) and removes PII from tool-call
 arguments (100% protection) where the flat-text baseline leaks about 99%, the gap
 that matters for agentic and multimodal traffic.
 
+That tool-call protection now reaches the agent CLIs directly: PrivAiTe's gateway
+mode scrubs and restores the Anthropic Messages and OpenAI Responses protocols
+(Claude Code and Codex), tool-call arguments included, whether the CLI signs in by
+subscription or API key. Runnable proof, no credentials:
+[`examples/demo_gateway.py`](https://github.com/crp4222/PrivAiTe/blob/main/examples/demo_gateway.py).
+
 ## Latest results
 
 ### Precision / Recall / F1 (entity-level, 64 documents, 5 languages)
