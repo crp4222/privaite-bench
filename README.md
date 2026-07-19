@@ -18,11 +18,30 @@ Headline: `privaite-onnx` leads on recall (84.5%) and removes PII from tool-call
 arguments (100% protection) where the flat-text baseline leaks about 99%, the gap
 that matters for agentic and multimodal traffic.
 
-That tool-call protection now reaches the agent CLIs directly: PrivAiTe's gateway
-mode scrubs and restores the Anthropic Messages and OpenAI Responses protocols
-(Claude Code and Codex), tool-call arguments included, whether the CLI signs in by
-subscription or API key. Runnable proof, no credentials:
-[`examples/demo_gateway.py`](https://github.com/crp4222/PrivAiTe/blob/main/examples/demo_gateway.py).
+## Agent workflow leak benchmark (gateway, live CLIs)
+
+[`agent_workflow/`](agent_workflow/) measures the end-to-end question behind
+gateway mode: when a real coding agent (Claude Code, Codex) reads a repo
+containing secrets and PII, what reaches the provider's wire, with and without
+PrivAiTe in the path? Wire-level substring scan of every captured
+provider-bound body, validity-guarded (a cell only publishes a leak count if
+the traffic provably went through the gateway), measured against the gateway
+of the local PrivAiTe checkout (the gateway is not part of a released PrivAiTe
+package yet).
+
+Headline from the 2026-07-17 live runs, stated honestly:
+
+- Small fixture: direct baselines leak 24/24 (Claude Code) and 20/24 (Codex)
+  planted values; through the gateway (onnx presets) both drop to **0/24**,
+  detection cache on and off. [`agent_workflow/RESULTS.md`](agent_workflow/RESULTS.md)
+- Realistic big session (73 KB repo with a 69 KB log, 20-40 turns): every
+  gateway cell leaks **2/24**, two secrets in key=value log lines that the
+  detector misses at full-log scale (reproduced offline; a recall gap, not a
+  routing bug). The honest claim is "0/24 small, 2/24 big", never a blanket
+  zero. [`agent_workflow/RESULTS_BIG.md`](agent_workflow/RESULTS_BIG.md)
+- Cost: with the opt-in detection cache the median per-request scrub stays
+  around 1 s even on the big session; without it, it grows to ~50 s per
+  request late in the session. Enable the cache for agent sessions.
 
 ## Latest results
 
