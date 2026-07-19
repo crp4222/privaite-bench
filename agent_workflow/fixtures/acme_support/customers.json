@@ -1,0 +1,34 @@
+{
+  "export_version": 3,
+  "purpose": "billing reconciliation input, sample rows",
+  "customers": [
+    {
+      "id": "cus_1042",
+      "name": "Tomas Alvarez",
+      "email": "tomas.alvarez84@gmail.com",
+      "iban": "DE89370400440532013000",
+      "card_on_file": null,
+      "ssn": null,
+      "plan": "pro-annual"
+    },
+    {
+      "id": "cus_1043",
+      "name": "Ingrid Bergstrom",
+      "email": "ingrid.bergstrom@nordmail.se",
+      "iban": "GB29NWBK60161331926819",
+      "card_on_file": "4111111111111111",
+      "card_exp": "09/27",
+      "ssn": null,
+      "plan": "starter-monthly"
+    },
+    {
+      "id": "cus_1044",
+      "name": "Kenji Morita",
+      "email": "k.morita@outlook.com",
+      "iban": null,
+      "card_on_file": null,
+      "ssn": "536-90-4399",
+      "plan": "pro-monthly"
+    }
+  ]
+}
