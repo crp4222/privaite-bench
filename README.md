@@ -26,8 +26,7 @@ containing secrets and PII, what reaches the provider's wire, with and without
 PrivAiTe in the path? Wire-level substring scan of every captured
 provider-bound body, validity-guarded (a cell only publishes a leak count if
 the traffic provably went through the gateway), measured against the gateway
-of the local PrivAiTe checkout (the gateway is not part of a released PrivAiTe
-package yet).
+of the local PrivAiTe checkout (the gateway shipped in PrivAiTe 0.4.0).
 
 Headline from the 2026-07-17 live runs, stated honestly:
 

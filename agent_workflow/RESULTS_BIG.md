@@ -12,8 +12,7 @@ All numbers below come from `results/agent_workflow_big/report.json`,
 generated from live captures on 2026-07-17 (harness logs
 `results/big_live_0717.log` and `results/big_live_0717_codex_finish.log`).
 Real Claude Code and Codex CLIs, real providers, the PrivAiTe gateway from the
-local sibling checkout (this gateway is not part of a released PrivAiTe
-package yet; these numbers describe that local build). PrivAiTe presets under
+local sibling checkout (this gateway shipped in PrivAiTe 0.4.0; these numbers describe that build). PrivAiTe presets under
 test: `onnx-auto` (onnx preset, `device: auto`, detection cache off) and
 `onnx-auto-cache` (same plus the opt-in detection cache). No cell in this run
 failed the validity guard; every privaite leak count below is backed by a
