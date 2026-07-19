@@ -22,3 +22,9 @@ solutions/_gretel_ood_corpus.json
 # Nemotron-PII OOD corpus: raw third-party text, not redistributed (offsets/labels
 # are derived at build time; only integer stats land in results/).
 solutions/_nemotron_ood_corpus.json
+
+# Agent workflow benchmark runtime artifacts: the generated fake secrets and
+# the raw provider-bound request captures (they contain those secrets).
+agent_workflow/fixtures/acme_support/.env
+results/agent_workflow/
+results/agent_workflow_big/
