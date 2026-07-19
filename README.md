@@ -35,10 +35,11 @@ Headline from the 2026-07-17 live runs, stated honestly:
   planted values; through the gateway (onnx presets) both drop to **0/24**,
   detection cache on and off. [`agent_workflow/RESULTS.md`](agent_workflow/RESULTS.md)
 - Realistic big session (73 KB repo with a 69 KB log, 20-40 turns): every
-  gateway cell leaks **2/24**, two secrets in key=value log lines that the
-  detector misses at full-log scale (reproduced offline; a recall gap, not a
-  routing bug). The honest claim is "0/24 small, 2/24 big", never a blanket
-  zero. [`agent_workflow/RESULTS_BIG.md`](agent_workflow/RESULTS_BIG.md)
+  gateway cell leaks **2/24**, two secrets the detector misses only at
+  full-log scale (the same lines scrub clean in isolation; reproduced
+  offline; a recall gap, not a routing bug). The honest claim is "0/24
+  small, 2/24 big", never a blanket zero.
+  [`agent_workflow/RESULTS_BIG.md`](agent_workflow/RESULTS_BIG.md)
 - Cost: with the opt-in detection cache the median per-request scrub stays
   around 1 s even on the big session; without it, it grows to ~50 s per
   request late in the session. Enable the cache for agent sessions.

@@ -25,8 +25,8 @@ gateway handled-request count that matches the captured request count
 **Every privaite cell leaked 2 of the 24 planted values: the same two
 secrets, in both agents, with the detection cache on and off.** The gateway
 reduced the leak from 24/24 (claude direct) and 23/24 (codex direct) to 2/24,
-and the 2 is a detection-recall gap on one specific text shape, not a routing
-bug (evidence below). The honest agent-CLI headline for a realistic session
+and the 2 is a detection-recall gap at full-log scale, not a routing bug and
+not a log-line problem (evidence below). The honest agent-CLI headline for a realistic session
 is "2/24", not the small fixture's "0/24".
 
 ## Setup
@@ -216,7 +216,8 @@ signal, as in the small run.)
 - The leak scan is an exact substring match on the planted values;
   paraphrased or partially masked values do not count as leaks.
 - Detection is best-effort. This very page documents a real miss class
-  (secrets in key=value log lines). Treat the privaite arm as a strong,
+  (a detector recall gap at full-log scale on a single very large input).
+  Treat the privaite arm as a strong,
   measured reduction, never as a guarantee.
 - Raw captures (`results/agent_workflow_big/`, gitignored) contain the
   generated fake secrets and full request bodies; only counts, types and

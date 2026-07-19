@@ -28,3 +28,6 @@ solutions/_nemotron_ood_corpus.json
 agent_workflow/fixtures/acme_support/.env
 results/agent_workflow/
 results/agent_workflow_big/
+
+# Harness stdout logs from live runs (cited by RESULTS*.md for provenance, kept local)
+results/*.log
