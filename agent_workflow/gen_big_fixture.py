@@ -11,10 +11,11 @@ The planted ground truth is exactly the same 24 values as the small fixture:
 static PII comes from `gen_fixture.STATIC_VALUES`, the 4 secrets are generated
 into the fixture `.env` by `gen_fixture.generate` (fixed seed, never
 committed). The log additionally repeats two of the secrets in key=value
-log-line form (`presented_key=...`, `smtp_secret=...`); at full-log scale the
-onnx SECRET detector misses exactly those two (see RESULTS_BIG.md), so keeping
-this shape in the fixture keeps that gap measurable. Nothing sensitive is
-printed to stdout.
+log-line form (`presented_key=...`, `smtp_secret=...`); the onnx SECRET
+detector catches those two on their own but misses them once roughly one
+preceding line of log-shaped context sits in front of them (see
+RESULTS_BIG.md), so keeping this shape in the fixture keeps that gap
+measurable. Nothing sensitive is printed to stdout.
 
 Usage:
     python3 agent_workflow/gen_big_fixture.py OUTDIR [--manifest PATH]

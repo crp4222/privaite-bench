@@ -15,8 +15,9 @@ cross-checked against the dataset's own mask. See [`solutions/`](solutions/) for
 the framework and how to add another tool.
 
 Headline: `privaite-onnx` leads on recall (84.5%) and removes PII from tool-call
-arguments (100% protection) where the flat-text baseline leaks about 99%, the gap
-that matters for agentic and multimodal traffic.
+arguments (100% protection) where the flat-text baselines leak 100% of the PII
+placed in a tool-call argument, the gap that matters for agentic and multimodal
+traffic.
 
 ## Agent workflow leak benchmark (gateway, live CLIs)
 
@@ -34,10 +35,13 @@ Headline from the 2026-07-17 live runs, stated honestly:
   planted values; through the gateway (onnx presets) both drop to **0/24**,
   detection cache on and off. [`agent_workflow/RESULTS.md`](agent_workflow/RESULTS.md)
 - Realistic big session (73 KB repo with a 69 KB log, 20-40 turns): every
-  gateway cell leaks **2/24**, two secrets the detector misses only at
-  full-log scale (the same lines scrub clean in isolation; reproduced
-  offline; a recall gap, not a routing bug). The honest claim is "0/24
-  small, 2/24 big", never a blanket zero.
+  gateway cell leaks **2/24**, two secrets the detector catches on their own
+  and in `.env` form but misses once roughly one preceding line of log-shaped
+  context sits in front of them (reproduced offline down to a 7-line, ~1 KB
+  excerpt; order dependent; a detector property, not a routing bug, so it
+  affects every surface that runs the engine and not only the gateway). The
+  honest claim is "0/24 small, 2/24 big", never a blanket zero, and 2/24 is a
+  floor rather than a ceiling.
   [`agent_workflow/RESULTS_BIG.md`](agent_workflow/RESULTS_BIG.md)
 - Cost: with the opt-in detection cache the median per-request scrub stays
   around 1 s even on the big session; without it, it grows to ~50 s per

@@ -35,7 +35,7 @@ agent labels overlap it), so the ground truth is precise rather than asserted.
 
 See [../COMPARISON.md](../COMPARISON.md). Headline: `privaite-onnx` leads on recall
 and removes PII from tool-call arguments (100% protection) where the flat-text
-baseline leaks about 99%.
+baselines leak 100% of the PII placed in a tool-call argument.
 
 ## Reproduce
 

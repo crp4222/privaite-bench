@@ -1213,15 +1213,17 @@ def write_results(report: dict) -> None:
     add("### Scrub cost model")
     add("")
     add("The gateway is stateless per request: it scrubs the full conversation "
-        "it receives on every turn, with no scrub cache over the unchanged "
-        "prefix. Since agents resend the whole conversation each turn, per-turn "
-        "scrub cost grows roughly linearly with context size and the cumulative "
-        "cost of a session is roughly quadratic in its final length (O(n) per "
-        "turn, O(n^2) per session). The per-turn tables above are the "
+        "it receives on every turn. With the detection cache off, per-turn "
+        "scrub cost therefore grows roughly linearly with context size and the "
+        "cumulative cost of a session is roughly quadratic in its final length "
+        "(O(n) per turn, O(n^2) per session). The per-turn tables above are the "
         "measurement of that model: body size and privaite-arm gap rise "
-        "together within a conversation while the direct arm stays flat. A "
-        "prefix-aware scrub cache in PrivAiTe would cut the repeat cost; that "
-        "is an engine roadmap item, not a harness artifact.")
+        "together within a conversation while the direct arm stays flat. The "
+        "fix for that repeat cost is PrivAiTe's opt-in detection cache, which "
+        "caches the merged detection result per exact text leaf so a resent "
+        "leaf skips the detectors entirely. It is not a roadmap item: it "
+        "shipped alongside the gateway in PrivAiTe 0.4.0 and it is active in "
+        "the onnx-auto-cache cells measured in this very document.")
     add("")
     add("### Provider prompt cache")
     add("")

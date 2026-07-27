@@ -24,9 +24,12 @@ gateway handled-request count that matches the captured request count
 **Every privaite cell leaked 2 of the 24 planted values: the same two
 secrets, in both agents, with the detection cache on and off.** The gateway
 reduced the leak from 24/24 (claude direct) and 23/24 (codex direct) to 2/24,
-and the 2 is a detection-recall gap at full-log scale, not a routing bug and
-not a log-line problem (evidence below). The honest agent-CLI headline for a realistic session
-is "2/24", not the small fixture's "0/24".
+and the 2 is a detection miss, not a routing bug: the gateway scrubbed the very
+lines those values sit on. What defeats the detector is the log-shaped context
+in front of the value, not the size of the input, and the effect is a property
+of the detector rather than of the gateway (evidence below). The honest
+agent-CLI headline for a realistic session is "2/24", not the small fixture's
+"0/24", and 2/24 is a **floor**, not a ceiling: see "Why 2/24 is a floor".
 
 ## Setup
 
@@ -93,20 +96,49 @@ protection.
 - The same two secret values in `.env` assignment form were scrubbed in every
   cell (and all 4 secrets are caught in the small-fixture run, 0/4 leaked).
 - The miss reproduces offline, deterministically, with the engine loaded from
-  this run's exact `gateway.yaml`: the raw `.env`, a single
-  `key_rotation_failed` log line, and a 40-line log window are all fully
-  scrubbed, but on the full 69,068-byte log the same two values survive the
-  scrub. So the gap is detector recall at full-log scale (a single input far
-  above the model's inference window, scanned in multiple windows), not the
-  log-line shape per se, and not a gateway routing bug or a cache regression
-  (identical 2/24 cache on and off, in both agents). The onnx preset's
+  this run's exact `gateway.yaml`, and the offline sweep locates the trigger
+  precisely. It is **not** input size:
+  - The raw `.env` assignment form is fully scrubbed, and so is a single
+    `key_rotation_failed` log line on its own. Both values are detected when
+    they stand alone.
+  - Roughly **one preceding line of log-shaped context is enough to break
+    it**. A 7-line, ~1 KB excerpt of the same log already reproduces the miss:
+    the API key survives 5 of its 5 occurrences in that excerpt, the SMTP
+    password 4 of 5. 41-line windows leak 4 of 5 and 3 of 5.
+  - The effect is **order dependent**: text appended *after* the line never
+    triggers it. Only text placed in front of the value does.
+  - The earlier statement on this page, that only the full 69,068-byte log
+    reproduces the miss and that a 40-line window is clean, was measured to be
+    wrong and is corrected here.
+
+  So this is not a gateway routing bug and not a cache regression (identical
+  2/24 cache on and off, in both agents): it is a detector property, which
+  means **every surface that runs the PrivAiTe engine leaks these values on
+  this input**, the OpenAI-compatible proxy and the Open WebUI filter and the
+  LiteLLM guardrail alike, not only the agent CLI gateway. The onnx preset's
   measured SECRET recall, 71.4% on the independent comparison corpus (see
   [`COMPARISON.md`](../COMPARISON.md)), already says secret detection is the
   weakest entity type; this is where that weakness lands in practice.
 
+## Why 2/24 is a floor, not a ceiling
+
+2/24 is the best-case reading of this run. One of the four occurrences of the
+database-URL password is held back only by a **false positive**: Presidio's
+`EMAIL_ADDRESS` recognizer scores 1.0 over the userinfo part of the connection
+URI and wins the overlap, so that occurrence is removed as an email rather than
+as a secret. Fix that recognizer's precision, as it should be fixed, and the
+count on this fixture becomes 3/24 with no change in detector recall.
+
+That same false positive has a second consequence worth stating plainly: under
+the shipped configs, `SECRET` is redacted (irreversible) while `EMAIL_ADDRESS`
+gets a reversible placeholder. A database password typed as an email therefore
+leaves the machine as a reversible placeholder and is restored in the reply,
+which is not the handling an operator who redacts secrets is expecting.
+
 Treat this as the calibration for any claim about agent traffic: the gateway
 removes what the detector detects, at the request level, reliably (validity
-guarded); the residual risk is the detector's recall on unusual shapes.
+guarded); the residual risk is the detector's recall, and the count published
+here is a floor.
 
 ## Timing
 
@@ -215,9 +247,10 @@ signal, as in the small run.)
 - The leak scan is an exact substring match on the planted values;
   paraphrased or partially masked values do not count as leaks.
 - Detection is best-effort. This very page documents a real miss class
-  (a detector recall gap at full-log scale on a single very large input).
-  Treat the privaite arm as a strong,
-  measured reduction, never as a guarantee.
+  (a secret on a log line, missed once about one preceding line of log-shaped
+  context sits in front of it, on every surface that runs the engine). Treat
+  the privaite arm as a strong, measured reduction, never as a guarantee, and
+  read the leak count as a floor.
 - Raw captures (`results/agent_workflow_big/`, gitignored) contain the
   generated fake secrets and full request bodies; only counts, types and
   variable-name labels appear in this document.

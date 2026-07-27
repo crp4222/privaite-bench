@@ -98,7 +98,7 @@ overrides shown in [`RESULTS_BIG.md`](RESULTS_BIG.md).
 
 Two results documents carry the live tables, both from 2026-07-17 runs with
 the real CLIs, the real providers, and the gateway from the local PrivAiTe
-checkout (the gateway is not part of a released PrivAiTe package yet):
+checkout; that gateway shipped in PrivAiTe 0.4.0:
 
 - [`RESULTS.md`](RESULTS.md): the small-fixture matrix (5 files, ~3 KB).
 - [`RESULTS_BIG.md`](RESULTS_BIG.md): a realistic big session (11 files,
@@ -114,11 +114,18 @@ Headline, stated carefully:
   validity-guarded.
 - Big session: every gateway cell leaked **2/24**, the same two secrets in
   key=value log lines. Offline reproduction with the run's exact config shows
-  the detector catches those values in `.env` form, as an isolated log line,
-  and in a 40-line window, but misses them at full-log scale, so this is a
-  detection-recall limit on very large single inputs, not a routing bug. The
-  honest agent-CLI claim is therefore "0/24 small, 2/24 big", never a blanket
-  zero. Details and evidence in `RESULTS_BIG.md`.
+  the detector catches those values on their own, in `.env` assignment form
+  and as an isolated log line, and misses them once roughly one preceding line
+  of log-shaped context sits in front of them: a 7-line, ~1 KB excerpt of that
+  log already reproduces the miss (the API key survives 5 of 5 occurrences
+  there, the SMTP password 4 of 5), and 41-line windows leak 4 of 5 and 3 of 5.
+  The effect is order dependent, since text appended after the line never
+  triggers it, and it is a property of the detector rather than of the gateway,
+  so every surface that runs the engine (the OpenAI-compatible proxy, the
+  Open WebUI filter, the LiteLLM guardrail) is affected the same way. Not a
+  routing bug. The honest agent-CLI claim is therefore "0/24 small, 2/24 big",
+  never a blanket zero, and the 2 is a floor rather than a ceiling. Details and
+  evidence in `RESULTS_BIG.md`.
 - `device: auto` survived 300 KB+ bodies live (no process death, peak RSS
   roughly 3 to 4 GB), which is exactly what the `onnx-auto*` cells verify.
 
