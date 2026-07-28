@@ -108,7 +108,7 @@ def _nemotron_lines() -> list[str]:
         "- **The default `onnx` preset holds up on a second independent dataset.** 73.4% "
         "recall over a broad standard-PII set, no distribution collapse, on data from a "
         "different author than both its training set and AI4Privacy. Consistent with the "
-        "Gretel result; the gap to the 84.5% AI4Privacy headline is a broader, harder type "
+        "Gretel result; the gap to the 84.9% AI4Privacy headline is a broader, harder type "
         "set (see caveats), not a home-field effect.",
         "- **Independent GLiNER adds recall again (+8.5pp).** `max` reaches 81.9%: the same "
         "\"add an independent model, gain a few points honestly\" pattern the Gretel table "
@@ -134,7 +134,7 @@ def _nemotron_lines() -> list[str]:
         "honest caveats: the train-split head is entirely us-locale English, so this is an "
         "English slice, not a multilingual result; and the type set is broader than the "
         "AI4Privacy corpus emphasises (it counts bare times, URLs, fax numbers and GPS "
-        "coordinates, all hard), which is why onnx sits below its 84.5% headline here, so "
+        "coordinates, all hard), which is why onnx sits below its 84.9% headline here, so "
         "read 73.4% as a floor. Raw Nemotron text is not redistributed; only integer and "
         "label-derived stats are committed.",
         "",
