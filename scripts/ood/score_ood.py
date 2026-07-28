@@ -105,15 +105,15 @@ def _nemotron_lines() -> list[str]:
         "",
         "### What it shows",
         "",
-        "- **The default `onnx` preset holds up on a second independent dataset.** 73.4% "
+        "- **The default `onnx` preset holds up on a second independent dataset.** 74.3% "
         "recall over a broad standard-PII set, no distribution collapse, on data from a "
         "different author than both its training set and AI4Privacy. Consistent with the "
         "Gretel result; the gap to the 84.9% AI4Privacy headline is a broader, harder type "
         "set (see caveats), not a home-field effect.",
-        "- **Independent GLiNER adds recall again (+8.5pp).** `max` reaches 81.9%: the same "
+        "- **Independent GLiNER adds recall again (+8.0pp).** `max` reaches 82.3%: the same "
         "\"add an independent model, gain a few points honestly\" pattern the Gretel table "
         "shows, on a completely separate corpus.",
-        "- **Presidio-only (`light`) is the floor.** 57.3%: on out-of-distribution text the "
+        "- **Presidio-only (`light`) is the floor.** 58.2%: on out-of-distribution text the "
         "ML models are what carry recall.",
         "",
         "### Methodology and caveats",
@@ -135,7 +135,8 @@ def _nemotron_lines() -> list[str]:
         "English slice, not a multilingual result; and the type set is broader than the "
         "AI4Privacy corpus emphasises (it counts bare times, URLs, fax numbers and GPS "
         "coordinates, all hard), which is why onnx sits below its 84.9% headline here, so "
-        "read 73.4% as a floor. Raw Nemotron text is not redistributed; only integer and "
+        "read 74.3% as a floor. All three preset rows were measured against PrivAiTe 0.4.1 "
+        "on 2026-07-28. Raw Nemotron text is not redistributed; only integer and "
         "label-derived stats are committed.",
         "",
         "Reproduce: `python -m scripts.ood.build_nemotron_corpus`, then (from the repo root) "
@@ -215,7 +216,11 @@ def main() -> None:
              "standard PII label set (not the Gretel taxonomy) at threshold 0.5; mDeBERTa at "
              "its defaults. Both transformer models truncate long inputs (~512 / ~384 "
              "tokens) while `openai/privacy-filter` does not; restricting to short documents "
-             "leaves the ranking unchanged. The PrivAiTe rows here run Presidio with its full "
+             "leaves the ranking unchanged. The two PrivAiTe-side caches "
+             "(`openai/privacy-filter`, Presidio) were re-measured against PrivAiTe 0.4.1 on "
+             "2026-07-28; the mDeBERTa and GLiNER caches are unchanged from 2026-07-02, "
+             "because neither model runs any PrivAiTe code and so cannot move with it. "
+             "The PrivAiTe rows here run Presidio with its full "
              "default recognizers; the shipped `onnx`/`max` presets pin Presidio to a 9-type "
              "allowlist (names/addresses/secrets come from the ML models), trading a little of "
              "this recall for higher precision, so read these as the detector stacks, not the "
