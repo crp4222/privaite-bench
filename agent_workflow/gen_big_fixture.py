@@ -20,17 +20,21 @@ measurable. Nothing sensitive is printed to stdout.
 Usage:
     python3 agent_workflow/gen_big_fixture.py OUTDIR [--manifest PATH]
 
-Then point the harness at it:
+Then point the harness at it, with the big-session audit prompt (kept in
+`agent_workflow/prompt_big.txt` so a run stays reproducible from the repo
+alone; it used to live only in the gitignored report and was lost once):
     AGENT_WORKFLOW_FIXTURE=OUTDIR \
     AGENT_WORKFLOW_OUT=results/agent_workflow_big \
     AGENT_WORKFLOW_RESULTS=results/agent_workflow_big/RESULTS.md \
     AGENT_WORKFLOW_TIMEOUT=1800 \
+    AGENT_WORKFLOW_PROMPT="$(cat agent_workflow/prompt_big.txt)" \
     python3 agent_workflow/run.py --presets onnx-auto,onnx-auto-cache
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import random
 import shutil
 import sys
@@ -185,6 +189,28 @@ def build(outdir: Path, manifest_path: Path) -> None:
         f"Requested by: {people[2]} ({emails[2]}, {phones[1]})\n"
         f"New mailing address: {address}\n"
         "Status: pending_review\n"
+    )
+
+    # Coverage markers for the files this fixture adds, written NEXT TO the
+    # fixture so the agent's own file listing stays clean. run.py merges them into
+    # its own FILE_MARKERS, so a cell only publishes a leak count when the agent
+    # actually put the big files on the wire. The log line marker is the point of
+    # the whole fixture: a cell that never sent `key_rotation_failed` lines
+    # cannot leak the two secrets they carry, and its zero would otherwise read
+    # as protection.
+    (outdir.parent / f"{outdir.name}.markers.json").write_text(
+        json.dumps(
+            {
+                "docs/runbook.md": "Never restart the exporter during the nightly billing window",
+                "docs/oncall.md": "Handover notes live in tickets/",
+                "logs/ingest_batch.log": "event=key_rotation_failed",
+                "tickets/t-10412.md": "recurring webhook timeouts",
+                "tickets/t-10555.md": "mandate verification",
+                "tickets/t-10600.md": "address correction",
+            },
+            indent=2,
+        )
+        + "\n"
     )
 
     files = [p for p in outdir.rglob("*") if p.is_file()]

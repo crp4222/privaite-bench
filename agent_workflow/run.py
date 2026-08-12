@@ -62,9 +62,20 @@ REPO = HERE.parent
 # Env overrides exist so a side experiment (bigger fixture, different prompt,
 # separate output dir) can reuse the whole harness without touching the main
 # matrix's captures or RESULTS.md. Defaults are the historical paths.
-FIXTURE = Path(os.environ.get("AGENT_WORKFLOW_FIXTURE", str(HERE / "fixtures" / "acme_support")))
-OUT = Path(os.environ.get("AGENT_WORKFLOW_OUT", str(REPO / "results" / "agent_workflow")))
-RESULTS_PATH = Path(os.environ.get("AGENT_WORKFLOW_RESULTS", str(HERE / "RESULTS.md")))
+# Resolved to absolute paths: the agent and the gateway are launched with the
+# fixture directory as their cwd, so a relative override (which is what the big
+# fixture's documented invocation passes) would not resolve for them. It failed
+# closed rather than silently, but only after a whole run: the gateway could not
+# find its config and every gateway cell recorded nothing.
+FIXTURE = Path(
+    os.environ.get("AGENT_WORKFLOW_FIXTURE", str(HERE / "fixtures" / "acme_support"))
+).resolve()
+OUT = Path(
+    os.environ.get("AGENT_WORKFLOW_OUT", str(REPO / "results" / "agent_workflow"))
+).resolve()
+RESULTS_PATH = Path(
+    os.environ.get("AGENT_WORKFLOW_RESULTS", str(HERE / "RESULTS.md"))
+).resolve()
 PRIVAITE_ROOT = Path(os.environ.get("PRIVAITE_PATH", REPO.parent / "PrivAiTe"))
 PRIVAITE_PYTHON = PRIVAITE_ROOT / ".venv" / "bin" / "python"
 
@@ -85,6 +96,14 @@ MAX_ATTEMPTS = 2
 
 MATRIX_AGENTS = ("claude", "codex")
 DEFAULT_PRESETS = ("light", "full", "onnx")
+
+# Which model each agent CLI is pinned to. These are not cosmetic: a model the
+# account cannot use is rejected upstream, the agent exits 1 having read nothing,
+# and every cell of the matrix reports zero leaks. Pinning beats inheriting the
+# developer's own CLI config, because an arm-to-arm comparison is only meaningful
+# when both arms ran the same model.
+CLAUDE_MODEL = os.environ.get("AGENT_WORKFLOW_CLAUDE_MODEL", "claude-opus-5")
+CODEX_MODEL = os.environ.get("AGENT_WORKFLOW_CODEX_MODEL", "gpt-5.6-terra")
 
 # Captures taken on or before this date predate the PrivAiTe fix for
 # Responses-API tool-output scrubbing (custom_tool_call_output carriers); the
@@ -159,6 +178,17 @@ FILE_MARKERS = {
     "customers.json": "cus_1043",
     ".env": "SMTP_HOST",
 }
+
+# A fixture may add its own markers in a sibling `<name>.markers.json` (same
+# shape: path -> neutral string). Sibling, not inside: the fixture directory is
+# what the agent is asked to read, and harness metadata in there would show up
+# in the agent's own file listing. Without this, the big fixture scored a full 5/5 coverage
+# while the agent had never sent the 69 KB log that the whole big session
+# exists to exercise, and a cell that skipped it published a zero-leak count
+# indistinguishable from real protection.
+_extra_markers = FIXTURE.parent / f"{FIXTURE.name}.markers.json"
+if _extra_markers.exists():
+    FILE_MARKERS.update(json.loads(_extra_markers.read_text()))
 
 # Provider cache counters extracted from captured response streams: the proof
 # that the provider prompt cache survives (or does not survive) the gateway.
@@ -244,7 +274,7 @@ def agent_command(agent: str, base_url: str) -> tuple[list[str], dict[str, str]]
     env = dict(os.environ)
     if agent == "claude":
         env["ANTHROPIC_BASE_URL"] = base_url
-        return ["claude", "-p", PROMPT], env
+        return ["claude", "-p", "--model", CLAUDE_MODEL, PROMPT], env
     if agent == "codex":
         cmd = [
             "codex",
@@ -261,7 +291,7 @@ def agent_command(agent: str, base_url: str) -> tuple[list[str], dict[str, str]]
             "-c",
             "model_providers.privaite.requires_openai_auth=true",
             "-c",
-            "model=gpt-5.6-sol",
+            f"model={CODEX_MODEL}",
             PROMPT,
         ]
         return cmd, env
@@ -375,6 +405,23 @@ def gateway_handled_count(log_path: Path | None) -> int | None:
     return sum(1 for line in log_path.read_text().splitlines() if _GATEWAY_HANDLED.search(line))
 
 
+def fixture_files_on_wire(capture: Path) -> int:
+    """How many fixture files the agent demonstrably put on the wire, counted
+    from the same file markers the report's coverage column uses. Read during
+    the attempt loop, so a run that read nothing can be retried rather than
+    published as a zero-leak cell."""
+    if not capture.exists():
+        return 0
+    bodies = []
+    for line in capture.read_text().splitlines():
+        try:
+            bodies.append(json.loads(line)["body"])
+        except (json.JSONDecodeError, KeyError, TypeError):
+            continue
+    joined = "\n".join(bodies)
+    return sum(1 for marker in FILE_MARKERS.values() if marker in joined)
+
+
 def captured_request_count(capture: Path) -> int:
     """Provider-bound request bodies in a capture file. Probe and response
     records do not count: only records carrying a `body` are agent traffic."""
@@ -412,6 +459,7 @@ def classify_validity(
     requests: int,
     gateway_handled: int | None,
     probe_failure: str | None = None,
+    files_on_wire: int | None = None,
 ) -> str | None:
     """Reason the cell's leak measurement is invalid, or None when it can be
     trusted. Fail closed: a privaite cell whose captured traffic cannot be
@@ -422,6 +470,12 @@ def classify_validity(
         return f"pre-flight probe failed: {probe_failure}"
     if requests == 0:
         return "no provider-bound traffic captured"
+    if files_on_wire == 0:
+        # The agent never put a fixture file on the wire, so nothing it was
+        # supposed to leak was ever in play. Zero leaks here measures a failed
+        # agent run, not protection, and on the direct arm it is self-evidently
+        # impossible. Publishing it once produced a full matrix of false zeros.
+        return "agent put no fixture file on the wire: nothing was measured"
     if arm != "privaite":
         return None
     if gateway_handled is None:
@@ -431,6 +485,46 @@ def classify_validity(
             f"gateway handled {gateway_handled} request(s) but the recorder captured "
             f"{requests}: traffic did not traverse the gateway"
         )
+    return None
+
+
+def preflight_agent(agent: str) -> str | None:
+    """Run one trivial turn of the agent CLI against its OWN provider, before any
+    cell is set up. Returns None on success, else the failure reason.
+
+    This checks the half `preflight_probe` cannot see. That probe proves the
+    plumbing carries a request, but it answers from the recorder and never
+    contacts the real provider, so an agent that cannot run at all still looks
+    fine until the matrix is over. That is not hypothetical: a pinned Codex model
+    the account was no longer allowed to use made the CLI exit 1 having read
+    nothing, in every cell, and the run published five zero-leak cells including
+    on the unprotected arm. Catching it here costs one trivial turn per agent.
+    """
+    if agent == "claude":
+        cmd = ["claude", "-p", "--model", CLAUDE_MODEL, "Reply with exactly: OK"]
+    else:
+        cmd = [
+            "codex",
+            "exec",
+            "--skip-git-repo-check",
+            "-c",
+            f"model={CODEX_MODEL}",
+            "Reply with exactly: OK",
+        ]
+    try:
+        proc = subprocess.run(cmd, capture_output=True, timeout=180, check=False)
+    except subprocess.TimeoutExpired:
+        return f"{agent} CLI did not answer a trivial prompt within 180s"
+    if proc.returncode != 0:
+        tail = filter_noise(_as_text(proc.stderr) or _as_text(proc.stdout))
+        return f"{agent} CLI exited {proc.returncode} on a trivial prompt: {tail[-300:].strip()}"
+    combined = _as_text(proc.stdout) + _as_text(proc.stderr)
+    if "ERROR:" in combined:
+        error_line = next(
+            (ln for ln in combined.splitlines() if "ERROR:" in ln), ""
+        )
+        # Codex prints the upstream rejection and still exits 0 in some paths.
+        return f"{agent} CLI reported an error on a trivial prompt: {error_line[:300].strip()}"
     return None
 
 
@@ -589,10 +683,17 @@ def run_cell(agent: str, arm: str, preset: str | None) -> dict:
                 )
                 break
             requests_seen = captured_request_count(capture) > 0
-            if result.get("exit_code") == 0 and requests_seen:
+            # An agent that exits 0 having read none of the fixture measured
+            # nothing, so the cell would be discarded as invalid anyway. Codex
+            # does this when its model-catalog refresh times out: it stops
+            # trusting its own workspace and wanders the filesystem instead.
+            # Treat it like any other failed attempt and retry.
+            files_seen = fixture_files_on_wire(capture) > 0
+            if result.get("exit_code") == 0 and requests_seen and files_seen:
                 break
             result["notes"].append(
-                f"attempt {attempt}: exit={result.get('exit_code')}, requests_recorded={requests_seen}"
+                f"attempt {attempt}: exit={result.get('exit_code')}, "
+                f"requests_recorded={requests_seen}, fixture_files_on_wire={files_seen}"
             )
             if gateway is not None and gateway.poll() is not None:
                 # Retrying against a dead gateway can only produce refused
@@ -860,6 +961,14 @@ def write_results(report: dict) -> None:
         "pending; nothing in this document is extrapolated."
     )
     add("")
+    add(
+        f"Models: claude runs `{report.get('claude_model', CLAUDE_MODEL)}` and codex "
+        f"runs `{report.get('codex_model', CODEX_MODEL)}`, pinned by the harness so "
+        "both arms of a comparison are the same model. What an agent reads, and "
+        "therefore what can leak, depends on the model, so leak counts are not "
+        "portable across models."
+    )
+    add("")
     add("Prompt given to both agents, run from inside the fixture directory:")
     add("")
     add(f"> {report['prompt']}")
@@ -873,21 +982,30 @@ def write_results(report: dict) -> None:
         "any body the provider received. This measures the wire, not what the "
         "agent chose to display.")
     add("")
-    add("Validity guard: before each privaite cell a synthetic pre-flight probe "
+    add("Validity guard: three checks, each of which exists because skipping it "
+        "once published a false number. Before the matrix, every agent CLI must "
+        "complete one trivial turn against its own provider, so an agent that "
+        "cannot run at all is skipped instead of filling its row with cells that "
+        "measured nothing. Before each privaite cell a synthetic pre-flight probe "
         "must traverse the whole chain (agent entry point, tap, gateway, "
-        "recorder) or the agent is never launched; after each cell the gateway's "
+        "recorder) or the agent is never launched. After each cell the gateway's "
         "own handled-request log is compared against the request bodies the "
-        "recorder captured. A cell that fails either check is marked invalid "
-        "below and publishes no leak count at all: a number measured without "
-        "the gateway provably in the path would be a false leak report.")
+        "recorder captured, and the cell must show that the agent actually put "
+        "the fixture files on the wire: zero leaks from an agent that read "
+        "nothing measures a failed run, not protection. A cell that fails any "
+        "check is marked invalid below and publishes no leak count at all.")
     add("")
 
     # Leak table ---------------------------------------------------------------
     add("## Values that reached the provider (leaked/planted)")
     add("")
     cats = [c for c in CATEGORIES if c in cat_counts]
-    add("| Agent | Arm | Preset | " + " | ".join(cats) + " | Total |")
-    add("|" + "---|" * (len(cats) + 4))
+    # Files on wire sits next to the total on purpose: a leak count is only
+    # comparable across cells when the same carriers were actually sent. A cell
+    # that skipped half the fixture can show a low total without the gateway
+    # having done anything, and that read as protection until it was surfaced.
+    add("| Agent | Arm | Preset | " + " | ".join(cats) + " | Files on wire | Total |")
+    add("|" + "---|" * (len(cats) + 5))
     for slot in matrix:
         cell = cell_of(slot["agent"], slot["arm"], slot["preset"])
         preset_txt = slot["preset"] or "-"
@@ -895,14 +1013,14 @@ def write_results(report: dict) -> None:
             add(
                 f"| {slot['agent']} | {slot['arm']} | {preset_txt} | "
                 + " | ".join("-" for _ in cats)
-                + " | pending live run |"
+                + " | - | pending live run |"
             )
             continue
         if cell.get("invalid"):
             add(
                 f"| {slot['agent']} | {slot['arm']} | {preset_txt} | "
                 + " | ".join("-" for _ in cats)
-                + " | invalid, not measured |"
+                + " | - | invalid, not measured |"
             )
             continue
         pc = cell["per_category"]
@@ -914,6 +1032,9 @@ def write_results(report: dict) -> None:
             total_hit += hit
             total_n += n
             row.append(f"{hit}/{n}")
+        cov = cell.get("coverage") or {}
+        n_cov = sum(1 for v in cov.values() if v)
+        row.append(f"{n_cov}/{len(cov)}" if cov else "-")
         row.append(f"**{total_hit}/{total_n}**")
         add("| " + " | ".join(row) + " |")
     add("")
@@ -1098,6 +1219,17 @@ def write_results(report: dict) -> None:
                 )
             if _is_pre_fix(cell):
                 notes.append("pre-fix capture")
+            # Wall-clock only compares across arms when the agent took a similar
+            # number of provider turns. A negative overhead is never PrivAiTe
+            # being faster (the scrub is pure added work on the same provider
+            # path), it means the agent took fewer turns that run, so those rows
+            # are always annotated and the per-turn table carries the real cost.
+            n_priv, n_direct = cell.get("requests"), (direct or {}).get("requests")
+            if n_priv and n_direct and (added < 0 or abs(n_priv - n_direct) / n_direct > 0.25):
+                notes.append(
+                    f"not comparable: {n_priv} provider turns vs {n_direct} direct, "
+                    "agent turn count drives this delta (see per-turn table)"
+                )
             add(f"| {agent} | {preset} | {base} | {dur} | {added:+} | {pct:+}% | "
                 f"{'; '.join(notes) or 'clean run'} |")
     add("")
@@ -1522,6 +1654,37 @@ def _selftest() -> None:
         assert classify_validity("direct", 0, None) == "no provider-bound traffic captured"
         probe_reason = classify_validity("privaite", 8, 8, "gateway never saw the probe")
         assert probe_reason is not None and probe_reason.startswith("pre-flight probe failed")
+        # An agent that put no fixture file on the wire measured nothing, on
+        # either arm. Publishing that as zero leaks once produced a full matrix
+        # of false zeros, on the unprotected arm included.
+        for arm_name in ("direct", "privaite"):
+            no_files = classify_validity(arm_name, 8, 8, None, 0)
+            assert no_files is not None and "no fixture file on the wire" in no_files, no_files
+        # A run that did read the fixture stays measurable.
+        assert classify_validity("privaite", 8, 8, None, 5) is None
+        assert classify_validity("direct", 8, None, None, 5) is None
+        # Unknown coverage must not invalidate: older captures predate the count.
+        assert classify_validity("privaite", 8, 8, None, None) is None
+
+        # fixture_files_on_wire drives the attempt loop's retry decision, so
+        # it must count markers in request bodies only, never in probe or
+        # response records, and must survive a missing capture.
+        fw = base / "onwire.jsonl"
+        fw.write_text(
+            "\n".join(
+                json.dumps(r)
+                for r in [
+                    {"seq": 1, "ts": 1.0, "path": "/v1/messages", "body": "cus_1043 and SMTP_HOST"},
+                    {"seq": 1, "kind": "response", "response": "docs/team.md primary pages secondary after 15 minutes"},
+                ]
+            )
+            + "\n"
+        )
+        assert fixture_files_on_wire(fw) == 2, fixture_files_on_wire(fw)
+        assert fixture_files_on_wire(base / "absent.jsonl") == 0
+        empty = base / "nofiles.jsonl"
+        empty.write_text(json.dumps({"seq": 1, "ts": 1.0, "body": "no marker here"}) + "\n")
+        assert fixture_files_on_wire(empty) == 0
 
         # gateway_handled_count reads only the gateway's own handled lines,
         # ignoring health checks and uvicorn access noise.
@@ -1645,6 +1808,12 @@ def main() -> None:
 
     if not args.rescan:
         for agent in agents:
+            # One trivial turn first: an agent that cannot run at all would
+            # otherwise fill its whole row with cells that measured nothing.
+            agent_failure = preflight_agent(agent)
+            if agent_failure is not None:
+                print(f"=== {agent}: SKIPPED, {agent_failure} ===", flush=True)
+                continue
             for arm in arms:
                 for preset in presets if arm == "privaite" else [None]:
                     label = f"{agent} / {arm}" + (f" / {preset}" if preset else "")
@@ -1698,7 +1867,11 @@ def main() -> None:
                     else max(gateway_handled, stats_handled)
                 )
         invalid_reason = classify_validity(
-            arm, n_requests, gateway_handled, cell.get("probe_failure")
+            arm,
+            n_requests,
+            gateway_handled,
+            cell.get("probe_failure"),
+            sum(coverage.values()) if coverage else 0,
         )
         if invalid_reason is not None:
             cell.update(
@@ -1740,6 +1913,8 @@ def main() -> None:
     report = {
         "date": date.today().isoformat(),
         "prompt": PROMPT,
+        "claude_model": CLAUDE_MODEL,
+        "codex_model": CODEX_MODEL,
         "timeout_s": AGENT_TIMEOUT,
         "presets": report_presets,
         "matrix": matrix,

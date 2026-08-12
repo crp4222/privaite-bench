@@ -104,6 +104,12 @@ class RecorderHandler(BaseHTTPRequestHandler):
     log_path: str = "capture.jsonl"
     anthropic_base: str = ANTHROPIC_BASE
     codex_base: str = CODEX_BASE
+    # Where GET /v1/models is answered from. It must stay the real backend even
+    # on the privaite arm, where codex_base is the gateway: the gateway is an
+    # OpenAI-compatible proxy, so its own /v1/models lists the providers IT is
+    # configured with (none, here) and Codex cannot parse that as a model
+    # catalog. The route carries no user text, so it is never recorded.
+    models_base: str = CODEX_BASE
 
     def log_message(self, fmt: str, *args) -> None:  # quiet the default access log
         pass
@@ -131,8 +137,43 @@ class RecorderHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         if self.path == "/health":
             self._json(200, {"status": "ok", "role": "recorder"})
+            return
+        # Codex refreshes its model list over GET /v1/models before it will run.
+        # A 404 there makes the CLI exit 1, which produced a whole matrix of
+        # cells that recorded nothing and still published 0/24. Relay it. It
+        # carries no user text, so it is proxied without being recorded.
+        if self.path.split("?", 1)[0].endswith("/models"):
+            self._relay_get(self.models_base + "/models")
+            return
+        self._json(404, {"error": "recorder only proxies known POST routes"})
+
+    def _relay_get(self, upstream: str) -> None:
+        headers = {k: v for k, v in self.headers.items() if k.lower() not in _SKIP_REQUEST}
+        headers["Accept-Encoding"] = "identity"
+        parts = urlsplit(upstream)
+        query = self.path.split("?", 1)
+        target = parts.path + ("?" + query[1] if len(query) == 2 else "")
+        if parts.scheme == "https":
+            conn = http.client.HTTPSConnection(
+                parts.netloc, context=ssl.create_default_context(), timeout=60
+            )
         else:
-            self._json(404, {"error": "recorder only proxies known POST routes"})
+            conn = http.client.HTTPConnection(parts.netloc, timeout=60)
+        try:
+            conn.request("GET", target, headers=headers)
+            resp = conn.getresponse()
+            payload = resp.read()
+            self.send_response(resp.status)
+            for key, value in resp.getheaders():
+                if key.lower() not in _SKIP_RESPONSE:
+                    self.send_header(key, value)
+            self.send_header("Content-Length", str(len(payload)))
+            self.end_headers()
+            self.wfile.write(payload)
+        except (OSError, http.client.HTTPException) as exc:
+            self._json(502, {"error": f"recorder upstream GET failed: {exc}"})
+        finally:
+            conn.close()
 
     def do_POST(self) -> None:
         upstream = _route(self.path.split("?", 1)[0], self.anthropic_base, self.codex_base)
@@ -273,6 +314,22 @@ def _selftest() -> None:
         got = _route(path, a, c)
         assert got == expected, f"route {path}: {got!r} != {expected!r}"
 
+    def _records_when(path: Path, done) -> list[dict]:
+        """Read the capture until `done` accepts it, or give up after 5s.
+
+        The response record is written by the relay after the client already
+        holds the body, so reading the log the instant urlopen returns is a
+        race: it failed about one run in eight.
+        """
+        deadline = time.time() + 5
+        records: list[dict] = []
+        while time.time() < deadline:
+            records = [json.loads(line) for line in path.read_text().splitlines()]
+            if done(records):
+                return records
+            time.sleep(0.05)
+        return records
+
     # Loopback relay: dummy upstream + recorder on ephemeral ports, one POST,
     # then check both JSONL records (body before relay, timing + response
     # after) and that the relayed body reaches the client intact.
@@ -291,6 +348,14 @@ def _selftest() -> None:
             self.end_headers()
             self.wfile.write(upstream_payload)
 
+        def do_GET(self) -> None:
+            body = json.dumps({"models": ["from-models-base"]}).encode()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
     upstream_srv = ThreadingHTTPServer(("127.0.0.1", 0), _Upstream)
     threading.Thread(target=upstream_srv.serve_forever, daemon=True).start()
     up_port = upstream_srv.server_address[1]
@@ -301,6 +366,7 @@ def _selftest() -> None:
         class _H(RecorderHandler):
             log_path = str(log)
             codex_base = f"http://127.0.0.1:{up_port}/backend"
+            models_base = f"http://127.0.0.1:{up_port}/backend"
 
         rec_srv = ThreadingHTTPServer(("127.0.0.1", 0), _H)
         threading.Thread(target=rec_srv.serve_forever, daemon=True).start()
@@ -316,7 +382,9 @@ def _selftest() -> None:
             relayed = resp.read()
         assert relayed == upstream_payload, "relayed body must be byte-identical"
 
-        records = [json.loads(line) for line in log.read_text().splitlines()]
+        records = _records_when(
+            log, lambda rs: any(r.get("kind") == "response" for r in rs)
+        )
         reqs = [r for r in records if "body" in r]
         resps = [r for r in records if r.get("kind") == "response"]
         assert len(reqs) == 1 and len(resps) == 1, records
@@ -329,6 +397,19 @@ def _selftest() -> None:
         assert '"cache_read_input_tokens":42' in resps[0]["response"]
         assert resps[0]["ts_done"] >= reqs[0]["ts"]
 
+        # GET /v1/models is relayed (Codex refuses to run without it) and is
+        # answered from models_base, never from codex_base: on the privaite arm
+        # codex_base is the gateway, whose own /v1/models lists the gateway's
+        # providers and is not a Codex model catalog. It is never recorded.
+        with urllib.request.urlopen(
+            f"http://127.0.0.1:{rec_port}/v1/models", timeout=10
+        ) as resp:
+            listed = json.loads(resp.read())
+        assert listed == {"models": ["from-models-base"]}, listed
+        assert len(
+            [r for r in (json.loads(x) for x in log.read_text().splitlines()) if "body" in r]
+        ) == 1, "the models route must not be recorded"
+
         # Probe, tap role (http upstream): forwarded through the chain, logged
         # only as probe records, never as scannable request bodies.
         probe_req = urllib.request.Request(
@@ -339,7 +420,9 @@ def _selftest() -> None:
         )
         with urllib.request.urlopen(probe_req, timeout=10) as resp:
             assert resp.read() == upstream_payload
-        records = [json.loads(line) for line in log.read_text().splitlines()]
+        records = _records_when(
+            log, lambda rs: any(r.get("kind") == "probe_response" for r in rs)
+        )
         assert len([r for r in records if "body" in r]) == 1, "probe must not add a scannable body"
         probes = [r for r in records if r.get("kind") == "probe"]
         assert len(probes) == 1 and probes[0]["absorbed"] is False, probes
@@ -412,6 +495,12 @@ def main() -> None:
     parser.add_argument("--log", help="JSONL file for forwarded request bodies")
     parser.add_argument("--anthropic-base", default=ANTHROPIC_BASE)
     parser.add_argument("--codex-base", default=CODEX_BASE)
+    parser.add_argument(
+        "--models-base",
+        default=CODEX_BASE,
+        help="backend answering GET /v1/models; keep it the real provider even "
+             "when --codex-base points at the gateway",
+    )
     args = parser.parse_args()
 
     if args.selftest:
@@ -422,6 +511,7 @@ def main() -> None:
     RecorderHandler.log_path = args.log
     RecorderHandler.anthropic_base = args.anthropic_base.rstrip("/")
     RecorderHandler.codex_base = args.codex_base.rstrip("/")
+    RecorderHandler.models_base = args.models_base.rstrip("/")
     server = ThreadingHTTPServer(("127.0.0.1", args.port), RecorderHandler)
     print(f"recorder on 127.0.0.1:{args.port}, logging to {args.log}", flush=True)
     server.serve_forever()
