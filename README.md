@@ -27,25 +27,26 @@ containing secrets and PII, what reaches the provider's wire, with and without
 PrivAiTe in the path? Wire-level substring scan of every captured
 provider-bound body, validity-guarded (a cell only publishes a leak count if
 the traffic provably went through the gateway), measured against the gateway
-of the local PrivAiTe checkout (the gateway shipped in PrivAiTe 0.4.0).
+of the local PrivAiTe checkout (the gateway shipped in PrivAiTe 0.4.1).
 
-Headline from the 2026-07-17 live runs, stated honestly:
+Headline from the 2026-08-12 live runs, stated honestly:
 
 - Small fixture: direct baselines leak 24/24 (Claude Code) and 20/24 (Codex)
   planted values; through the gateway (onnx presets) both drop to **0/24**,
   detection cache on and off. [`agent_workflow/RESULTS.md`](agent_workflow/RESULTS.md)
-- Realistic big session (73 KB repo with a 69 KB log, 20-40 turns): every
-  gateway cell leaks **2/24**, two secrets the detector catches on their own
-  and in `.env` form but misses once roughly one preceding line of log-shaped
-  context sits in front of them (reproduced offline down to a 7-line, ~1 KB
-  excerpt; order dependent; a detector property, not a routing bug, so it
-  affects every surface that runs the engine and not only the gateway). The
-  honest claim is "0/24 small, 2/24 big", never a blanket zero, and 2/24 is a
-  floor rather than a ceiling.
+- Realistic big session (73 KB repo with a 69 KB log, 8-19 turns): the gateway
+  cells that exercised the whole fixture leak **2/24**, two secrets the
+  detector catches on their own and in `.env` form but misses once roughly one
+  preceding line of log-shaped context sits in front of them (reproduced
+  offline down to a 7-line, ~1 KB excerpt; order dependent; a detector
+  property, not a routing bug, so it affects every surface that runs the engine
+  and not only the gateway). The honest claim is "0/24 small, 2/24 big", never
+  a blanket zero, and 2/24 is a floor rather than a ceiling.
   [`agent_workflow/RESULTS_BIG.md`](agent_workflow/RESULTS_BIG.md)
 - Cost: with the opt-in detection cache the median per-request scrub stays
-  around 1 s even on the big session; without it, it grows to ~50 s per
-  request late in the session. Enable the cache for agent sessions.
+  between 1 and 3 s even on the big session; without it, the maximum reaches
+  42 s (Claude Code) and 72 s (Codex) late in the session. Enable the cache for
+  agent sessions.
 
 ## Latest results
 

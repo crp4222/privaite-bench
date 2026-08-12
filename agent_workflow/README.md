@@ -96,13 +96,13 @@ overrides shown in [`RESULTS_BIG.md`](RESULTS_BIG.md).
 
 ## What the runs found
 
-Two results documents carry the live tables, both from 2026-07-17 runs with
+Two results documents carry the live tables, both from 2026-08-12 runs with
 the real CLIs, the real providers, and the gateway from the local PrivAiTe
-checkout; that gateway shipped in PrivAiTe 0.4.0:
+checkout; that gateway shipped in PrivAiTe 0.4.1:
 
 - [`RESULTS.md`](RESULTS.md): the small-fixture matrix (5 files, ~3 KB).
 - [`RESULTS_BIG.md`](RESULTS_BIG.md): a realistic big session (11 files,
-  ~73 KB including a 69 KB ingest log, 20 to 40 provider round-trips). Build
+  ~73 KB including a 69 KB ingest log, 8 to 19 provider round-trips). Build
   that fixture with [`gen_big_fixture.py`](gen_big_fixture.py); it
   regenerates byte-identically from fixed seeds.
 
@@ -112,8 +112,10 @@ Headline, stated carefully:
   and Codex `direct` 20/24; through the gateway with the onnx presets both
   agents drop to **0/24**, detection cache on and off, every cell
   validity-guarded.
-- Big session: every gateway cell leaked **2/24**, the same two secrets in
-  key=value log lines. Offline reproduction with the run's exact config shows
+- Big session: every gateway cell that exercised the whole fixture leaked
+  **2/24**, the same two secrets in key=value log lines. (One codex cell put
+  only 5 of the 11 files on the wire and never sent a log line carrying them;
+  its 0/24 is reported with its coverage and excluded from the headline.) Offline reproduction with the run's exact config shows
   the detector catches those values on their own, in `.env` assignment form
   and as an isolated log line, and misses them once roughly one preceding line
   of log-shaped context sits in front of them: a 7-line, ~1 KB excerpt of that
@@ -146,8 +148,8 @@ not a gateway catch.
 
 PrivAiTe then gained a fix that scrubs tool-output carriers
 (`custom_tool_call_output`, `function_call_output`) the same way it scrubs
-`message` content, and the 2026-07-17 rerun validated it live: Codex via the
-gateway now measures 0/24 on the small fixture. One caveat stands: the Codex
+`message` content, and the 2026-08-12 rerun validated it live again: Codex via
+the gateway measures 0/24 on the small fixture. One caveat stands: the Codex
 (Responses API) path has had fewer live hours against the gateway than the
 Claude Code path; treat it as the less battle-tested of the two even though
 its current numbers match.
@@ -168,7 +170,8 @@ scrub, `device: auto`):
 | big | claude | 15.22 s | 1.02 s |
 | big | codex | 24.68 s | 0.98 s |
 
-Without the cache the big session degrades to ~50 s per request by the time
+Without the cache the big session degrades to a 42 s (Claude Code) to 72 s
+(Codex) maximum per request by the time
 bodies reach 330 KB; with the cache it stays around 1 s per request, and the
 leak counts are identical either way. The practical guidance is to enable
 the detection cache for agent sessions. RESULTS carries the per-turn tables
