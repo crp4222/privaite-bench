@@ -10,10 +10,10 @@ Corpus: 120 real documents from the open [AI4Privacy `pii-masking-200k`](https:/
 
 | Solution | Recall | Recall (strict) | False positives | Tool-call protection | Tool-call leak | Multimodal leak | Latency |
 |---|---|---|---|---|---|---|---|
-| privaite-onnx | 84.9% | 81.0% | 2 on 14 | 100.0% | 15.1% | 15.1% | 577.1ms |
-| privaite-light-all | 62.4% | 57.9% | 3 on 14 | 100.0% | 37.6% | 37.6% | 67.4ms |
-| privaite-light | 36.5% | 35.2% | 0 on 14 | 100.0% | 63.5% | 63.5% | 63.7ms |
-| litellm-presidio | 70.3% | 65.3% | 3 on 14 | 0.0% | 100.0% | 29.7% | 10.6ms |
+| privaite-onnx | 84.9% | 81.0% | 2 on 14 | 100.0% | 15.1% | 15.1% | 629.7ms |
+| privaite-light-all | 62.4% | 57.9% | 3 on 14 | 100.0% | 37.6% | 37.6% | 105.1ms |
+| privaite-light | 36.5% | 35.2% | 0 on 14 | 100.0% | 63.5% | 63.5% | 92.8ms |
+| litellm-presidio | 70.3% | 65.3% | 3 on 14 | 0.0% | 100.0% | 29.7% | 27.1ms |
 | llm-guard | 76.9% | 74.9% | 5 on 14 | 0.0% | 100.0% | 100.0% | 88.5ms (offline) |
 
 Tool-call protection is, of the PII a solution catches in plain text, how much it also removes from a tool-call argument (higher is better). Tool-call leak and multimodal leak are the share of all PII that survives inside a tool-call argument or a multimodal text part (lower is better).
