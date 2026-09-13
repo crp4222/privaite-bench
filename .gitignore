@@ -25,6 +25,7 @@ solutions/_nemotron_ood_corpus.json
 
 # Raw Privy protocol traces; publish only selection IDs and numeric measurements.
 solutions/_privy_corpus.json
+results/kiji_privy_replay/
 
 # Agent workflow benchmark runtime artifacts: the generated fake secrets and
 # the raw provider-bound request captures (they contain those secrets).

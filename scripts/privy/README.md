@@ -14,15 +14,41 @@ loader is needed.
 # Downloads the public ZIP; reads test-large.json directly without extraction.
 python -m scripts.privy.build_corpus
 
+# Resolve the existing AI4Privacy labels and warm the current ONNX model once.
+# This preparation may download public corpus/model files; it is outside timing.
+python - <<'PY'
+import asyncio
+from solutions.compare import load_corpus
+from scripts.privy.evaluate import EngineRunner
+assert len(load_corpus()) == 120
+async def prepare():
+    runner = EngineRunner("onnx")
+    try:
+        await runner.get("en")
+    finally:
+        await runner.close()
+asyncio.run(prepare())
+PY
+
 # Download only the model/tokenizer data needed by the adapter, once.
 python -c 'import asyncio; from solutions.kiji import KijiDetector; asyncio.run(KijiDetector(offline=False).initialize())'
 
-# Each row gets its own process; run sequentially to compare latency and peak RSS.
-for solution in light onnx kiji kiji-argmax kiji-presidio onnx-kiji; do
-  HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
-    python -m scripts.privy.evaluate --solution "$solution"
-done
+# Fresh, sequential processes; offline, with a 600-second deadline per candidate.
+# Choose a new output directory each time to avoid stale results after a failure.
+python -m scripts.run_kiji_privy --output-dir results/kiji_privy_replay
+
+# Rebuild the published tables from the committed numeric measurements.
+python -m scripts.render_kiji_privy
 ```
+
+The watchdog records completion/failure independently of detection scores,
+kills a timed-out child process, and discards its partial report. A failed
+candidate makes the matrix command exit nonzero. Increase `--timeout` on slower
+hardware; this is a benchmark deadline, not a PrivAiTe network timeout setting.
+The measured matrix used the evaluator directly; the combined candidate's
+initial stall and fresh-process retry are retained in the report. The watchdog
+wrapper was added afterward to make future repetitions bounded. Preparation
+and model downloads are excluded from the deadline and latency measurements.
 
 The generated corpus is gitignored. The committed selection manifest contains
 the pinned dataset revision, archive/corpus hashes, row IDs, counts and seed.
@@ -85,6 +111,10 @@ DistilBERT tokenizer (28,996 vocabulary entries) and exposes 53 PII outputs and
 `model_manifest.json`; the adapter checks the observed hash of the pinned
 artifact and reports hashes for every file used. Results apply to this artifact,
 not to the separately described DeBERTa/CRF model.
+
+The four-language AI4Privacy cross-check retains Italian, which is outside the
+Kiji ONNX card's six advertised languages. Read the per-language breakdown
+before generalizing the aggregate result.
 
 ## Metrics and limitations
 

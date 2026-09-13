@@ -4,6 +4,16 @@ PII detection benchmark suite for [PrivAiTe](https://github.com/crp4222/PrivAiTe
 
 Measures detection rate, false positive rate, and latency across languages and entity types.
 
+## Privy protocol traces and Kiji ONNX evaluation
+
+[`KIJI_PRIVY.md`](KIJI_PRIVY.md) evaluates the current PrivAiTe source and Kiji
+candidates on 300 synthetic protocol traces, 120 AI4Privacy documents, clean
+controls, structured payloads, and repeated long-log regressions. The current
+`onnx` stack fully covers 258/491 Privy spans; replacing Privacy Filter with Kiji
+and keeping Presidio lowers this to 147/491 despite a large speed gain. The
+report includes excessive redaction, remaining password misses, and failed runs.
+Kiji stays experimental. [Reproduction and sampling](scripts/privy/README.md).
+
 ## Comparative benchmark (multiple solutions)
 
 [`COMPARISON.md`](COMPARISON.md) scores several PII solutions on the **same** real

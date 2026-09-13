@@ -1,0 +1,33 @@
+{
+  "solution": "onnx-kiji",
+  "status": "manually_terminated",
+  "reason": "No completion after more than ten minutes; native sample showed QMoE thread-pool spin",
+  "last_progress_documents": 400,
+  "expected_documents": 420,
+  "last_progress_utc": "2026-09-13T13:07:36.371955+00:00",
+  "sampled_at_utc": "2026-09-13T13:14:19+00:00",
+  "observed_cpu_pct": 99.3,
+  "sampled_native_frames": [
+    "QMoECPU<MLFloat16>::ComputeCommon",
+    "ThreadPool::RunInParallel",
+    "EndParallelSectionInternal",
+    "SpinPause"
+  ],
+  "root_cause_established": false,
+  "complete_measurements_available": false,
+  "privaite_source": "7a66b372eda2dd9f4d02b839ed58de84899ddce0",
+  "benchmark_source": "d9239d5ee5fde9c6b1c7bb9f65b238669c48c0de",
+  "benchmark_files_sha256": {
+    "scripts/privy/build_corpus.py": "37dd79d5558d201984634574f4fa904e17c97c361fd68379347d9f990c7707e0",
+    "scripts/privy/metrics.py": "4053d2b005f135a90a6d42cbe2b3c1b19b203fd3bb9e8a258c3fce6d995efbc6",
+    "scripts/privy/evaluate.py": "b5f1e0adf92918d15c16084676e1a7b4a900ced9267d90d8f682e8fd26c00d18",
+    "solutions/kiji.py": "561f599b0d34e7704e075a3ec2b7c336c468e09933da4d057b549ce0da4ba72a"
+  },
+  "dependencies": {
+    "onnxruntime": "1.27.0",
+    "transformers": "5.12.1",
+    "presidio-analyzer": "2.2.362",
+    "numpy": "2.5.0",
+    "tokenizers": "0.22.2"
+  }
+}
