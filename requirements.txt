@@ -1,6 +1,7 @@
 # Pinned versions used to produce the committed benchmark results.
 # Reproduce: pip install -r requirements.txt, then install the spaCy models below.
-# PrivAiTe itself is imported from ../PrivAiTe at commit 48e9c7f (v0.3.0).
+# PrivAiTe is imported from ../PrivAiTe (or PRIVAITE_PATH). New experiment reports
+# record the exact source revision and installed dependency versions.
 
 # Core detection stack (privaite onnx/light + litellm-presidio rows, structured suite)
 presidio-analyzer==2.2.362
@@ -9,6 +10,7 @@ spacy==3.8.14
 transformers==5.12.1
 onnxruntime==1.27.0
 huggingface-hub==1.20.1
+numpy==2.5.0
 litellm==1.89.3
 faker==40.23.0
 

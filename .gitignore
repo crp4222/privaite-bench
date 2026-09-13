@@ -23,6 +23,9 @@ solutions/_gretel_ood_corpus.json
 # are derived at build time; only integer stats land in results/).
 solutions/_nemotron_ood_corpus.json
 
+# Raw Privy protocol traces; publish only selection IDs and numeric measurements.
+solutions/_privy_corpus.json
+
 # Agent workflow benchmark runtime artifacts: the generated fake secrets and
 # the raw provider-bound request captures (they contain those secrets).
 agent_workflow/fixtures/acme_support/.env
