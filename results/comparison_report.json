@@ -24,7 +24,7 @@
       "tool_call_leak_pct": 15.1,
       "multimodal_leak_pct": 15.1,
       "tool_call_protection_pct": 100.0,
-      "avg_latency_ms": 629.7,
+      "avg_latency_ms": 671.9,
       "by_lang": {
         "de": 82.1,
         "en": 76.3,
@@ -50,22 +50,22 @@
     {
       "solution": "privaite-light-all",
       "latency_offline": false,
-      "recall": 62.4,
-      "recall_token_level": 57.9,
-      "caught": 286,
-      "caught_token_level": 265,
+      "recall": 62.7,
+      "recall_token_level": 58.1,
+      "caught": 287,
+      "caught_token_level": 266,
       "total": 458,
       "false_positives": 3,
       "clean_docs": 14,
-      "tool_call_leak_pct": 37.6,
-      "multimodal_leak_pct": 37.6,
+      "tool_call_leak_pct": 37.3,
+      "multimodal_leak_pct": 37.3,
       "tool_call_protection_pct": 100.0,
-      "avg_latency_ms": 105.1,
+      "avg_latency_ms": 108.9,
       "by_lang": {
         "de": 60.7,
         "en": 68.6,
         "fr": 64.3,
-        "it": 56.0
+        "it": 56.9
       },
       "by_type": {
         "CREDIT_CARD": 11.1,
@@ -78,7 +78,7 @@
         "ORGANIZATION": 44.4,
         "PERSON": 58.9,
         "PHONE_NUMBER": 50.0,
-        "SECRET": 28.6,
+        "SECRET": 35.7,
         "URL": 100.0,
         "US_SSN": 50.0
       }
@@ -86,22 +86,22 @@
     {
       "solution": "privaite-light",
       "latency_offline": false,
-      "recall": 36.5,
-      "recall_token_level": 35.2,
-      "caught": 167,
-      "caught_token_level": 161,
+      "recall": 36.7,
+      "recall_token_level": 35.4,
+      "caught": 168,
+      "caught_token_level": 162,
       "total": 458,
       "false_positives": 0,
       "clean_docs": 14,
-      "tool_call_leak_pct": 63.5,
-      "multimodal_leak_pct": 63.5,
+      "tool_call_leak_pct": 63.3,
+      "multimodal_leak_pct": 63.3,
       "tool_call_protection_pct": 100.0,
-      "avg_latency_ms": 92.8,
+      "avg_latency_ms": 97.3,
       "by_lang": {
         "de": 36.6,
         "en": 34.7,
         "fr": 37.5,
-        "it": 37.1
+        "it": 37.9
       },
       "by_type": {
         "CREDIT_CARD": 11.1,
@@ -114,7 +114,7 @@
         "ORGANIZATION": 0.0,
         "PERSON": 35.7,
         "PHONE_NUMBER": 50.0,
-        "SECRET": 0.0,
+        "SECRET": 7.1,
         "URL": 0.0,
         "US_SSN": 50.0
       }
@@ -132,7 +132,7 @@
       "tool_call_leak_pct": 100.0,
       "multimodal_leak_pct": 29.7,
       "tool_call_protection_pct": 0.0,
-      "avg_latency_ms": 27.1,
+      "avg_latency_ms": 27.2,
       "by_lang": {
         "de": 64.3,
         "en": 81.4,
