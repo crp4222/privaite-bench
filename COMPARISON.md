@@ -10,10 +10,10 @@ Corpus: 120 real documents from the open [AI4Privacy `pii-masking-200k`](https:/
 
 | Solution | Recall | Recall (strict) | False positives | Tool-call protection | Tool-call leak | Multimodal leak | Latency |
 |---|---|---|---|---|---|---|---|
-| privaite-onnx | 84.9% | 81.0% | 2 on 14 | 100.0% | 15.1% | 15.1% | 671.9ms |
-| privaite-light-all | 62.7% | 58.1% | 3 on 14 | 100.0% | 37.3% | 37.3% | 108.9ms |
-| privaite-light | 36.7% | 35.4% | 0 on 14 | 100.0% | 63.3% | 63.3% | 97.3ms |
-| litellm-presidio | 70.3% | 65.3% | 3 on 14 | 0.0% | 100.0% | 29.7% | 27.2ms |
+| privaite-onnx | 84.9% | 81.0% | 2 on 14 | 100.0% | 15.1% | 15.1% | 609.8ms |
+| privaite-light-all | 62.7% | 58.1% | 3 on 14 | 100.0% | 37.3% | 37.3% | 75.8ms |
+| privaite-light | 36.5% | 35.2% | 0 on 14 | 100.0% | 63.5% | 63.5% | 74.7ms |
+| litellm-presidio | 70.3% | 65.3% | 3 on 14 | 0.0% | 100.0% | 29.7% | 13.4ms |
 | llm-guard | 76.9% | 74.9% | 5 on 14 | 0.0% | 100.0% | 100.0% | 88.5ms (offline) |
 
 Tool-call protection is, of the PII a solution catches in plain text, how much it also removes from a tool-call argument (higher is better). Tool-call leak and multimodal leak are the share of all PII that survives inside a tool-call argument or a multimodal text part (lower is better).
@@ -24,7 +24,7 @@ Tool-call protection is, of the PII a solution catches in plain text, how much i
 |---|---|---|---|---|
 | privaite-onnx | 82.1% | 76.3% | 91.1% | 90.5% |
 | privaite-light-all | 60.7% | 68.6% | 64.3% | 56.9% |
-| privaite-light | 36.6% | 34.7% | 37.5% | 37.9% |
+| privaite-light | 36.6% | 34.7% | 36.6% | 37.9% |
 | litellm-presidio | 64.3% | 81.4% | 69.6% | 65.5% |
 | llm-guard | 83.9% | 71.2% | 73.2% | 79.3% |
 
@@ -34,7 +34,7 @@ Tool-call protection is, of the PII a solution catches in plain text, how much i
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | privaite-onnx | 100.0% | 89.8% | 100.0% | 87.1% | 100.0% | 100.0% | 76.3% | 61.1% | 86.6% | 100.0% | 71.4% | 42.1% | 100.0% |
 | privaite-light-all | 11.1% | 64.4% | 100.0% | 38.7% | 100.0% | 100.0% | 67.1% | 44.4% | 58.9% | 50.0% | 35.7% | 100.0% | 50.0% |
-| privaite-light | 11.1% | 59.3% | 100.0% | 9.7% | 85.7% | 76.5% | 19.7% | 0.0% | 35.7% | 50.0% | 7.1% | 0.0% | 50.0% |
+| privaite-light | 11.1% | 59.3% | 100.0% | 8.1% | 85.7% | 76.5% | 19.7% | 0.0% | 35.7% | 50.0% | 7.1% | 0.0% | 50.0% |
 | litellm-presidio | 11.1% | 78.0% | 100.0% | 37.1% | 100.0% | 100.0% | 69.7% | 72.2% | 81.2% | 50.0% | 28.6% | 100.0% | 12.5% |
 | llm-guard | 33.3% | 93.2% | 100.0% | 40.3% | 85.7% | 76.5% | 88.2% | 11.1% | 88.4% | 100.0% | 0.0% | 100.0% | 75.0% |
 
