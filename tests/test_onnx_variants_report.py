@@ -69,3 +69,10 @@ def test_result_table_reports_each_variant_as_measured(written) -> None:
 def test_the_reference_is_not_compared_with_itself(written) -> None:
     agreement = written.split("## Agreement with `q4f16`", 1)[1].split("##", 1)[0]
     assert "`q4f16`" not in agreement.split("|---|---|---|---|", 1)[1]
+
+
+def test_provenance_names_the_release_the_measured_engine_shipped_as() -> None:
+    measured_before_bump = {"privaite": "0.6.1", "engine_released_as": "0.7.0"}
+    line = report.provenance(measured_before_bump)
+    assert "released as privaite 0.7.0" in line and "still read 0.6.1" in line
+    assert report.provenance({"privaite": "0.7.0"}).endswith("with privaite 0.7.0.")

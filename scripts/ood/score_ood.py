@@ -135,7 +135,7 @@ def _nemotron_lines() -> list[str]:
         "English slice, not a multilingual result; and the type set is broader than the "
         "AI4Privacy corpus emphasises (it counts bare times, URLs, fax numbers and GPS "
         "coordinates, all hard), which is why onnx sits below its 85.2% headline here, so "
-        "read 74.3% as a floor. All three preset rows were measured against PrivAiTe 0.6.1 "
+        "read 74.3% as a floor. All three preset rows were measured against PrivAiTe 0.7.0 "
         "(ONNX export `q4`) on 2026-10-02. Raw Nemotron text is not redistributed; only integer and "
         "label-derived stats are committed.",
         "",
@@ -217,7 +217,7 @@ def main() -> None:
              "its defaults. Both transformer models truncate long inputs (~512 / ~384 "
              "tokens) while `openai/privacy-filter` does not; restricting to short documents "
              "leaves the ranking unchanged. The two PrivAiTe-side caches "
-             "(`openai/privacy-filter`, Presidio) were re-measured against PrivAiTe 0.6.1 (ONNX export `q4`) on "
+             "(`openai/privacy-filter`, Presidio) were re-measured against PrivAiTe 0.7.0 (ONNX export `q4`) on "
              "2026-10-02; the mDeBERTa and GLiNER caches are unchanged from 2026-07-02, "
              "because neither model runs any PrivAiTe code and so cannot move with it. "
              "The PrivAiTe rows here run Presidio with its full "
