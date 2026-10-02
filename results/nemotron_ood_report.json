@@ -41,7 +41,7 @@
   "presets": {
     "onnx": {
       "recall": 74.3,
-      "recall_token_level": 71.8,
+      "recall_token_level": 71.7,
       "caught": 884,
       "total": 1190
     },
@@ -53,7 +53,7 @@
     },
     "max": {
       "recall": 82.3,
-      "recall_token_level": 79.9,
+      "recall_token_level": 79.8,
       "caught": 979,
       "total": 1190
     }

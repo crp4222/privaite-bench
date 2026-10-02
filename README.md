@@ -24,10 +24,12 @@ documents whose ground-truth PII was labeled by 10 independent auditor agents an
 cross-checked against the dataset's own mask. See [`solutions/`](solutions/) for
 the framework and how to add another tool.
 
-Headline: `privaite-onnx` leads on recall (84.9%) and removes PII from tool-call
+Headline: `privaite-onnx` leads on recall (85.2%) and removes PII from tool-call
 arguments (100% protection) where the flat-text baselines leak 100% of the PII
 placed in a tool-call argument, the gap that matters for agentic and multimodal
 traffic.
+
+[`ONNX_VARIANTS.md`](ONNX_VARIANTS.md) compares the exports of the Privacy Filter that PrivAiTe's `onnx` preset can load (`q4`, `q4f16`, int8) on the same corpora: recall, false positives, cost per window, memory, and how many outputs differ. Regenerate it with `scripts/onnx_variants/`.
 
 ## Agent workflow leak benchmark (gateway, live CLIs)
 
@@ -65,7 +67,7 @@ Headline from the 2026-08-12 live runs, stated honestly:
 > Read these as an internal upper bound: this corpus is self-built and its expected
 > list is self-authored, so the tool is partly graded against our own labeling. The
 > independent numbers are the ones to trust for generalization: the AI4Privacy
-> comparison (84.9% recall, third-party masks) in [`COMPARISON.md`](COMPARISON.md),
+> comparison (85.2% recall, third-party masks) in [`COMPARISON.md`](COMPARISON.md),
 > and the two out-of-distribution cross-checks (Gretel and Nemotron-PII) in
 > [`OOD_COMPARISON.md`](OOD_COMPARISON.md).
 

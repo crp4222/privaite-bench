@@ -1,0 +1,35 @@
+{
+ "rounds": 15,
+ "variants": {
+  "q4": {
+   "512": {
+    "median_s": 0.425,
+    "ratio_vs_q4f16": 1.63
+   },
+   "1024": {
+    "median_s": 0.776,
+    "ratio_vs_q4f16": 1.44
+   }
+  },
+  "q4f16": {
+   "512": {
+    "median_s": 0.693,
+    "ratio_vs_q4f16": 1.0
+   },
+   "1024": {
+    "median_s": 1.118,
+    "ratio_vs_q4f16": 1.0
+   }
+  },
+  "quantized": {
+   "512": {
+    "median_s": 0.383,
+    "ratio_vs_q4f16": 1.81
+   },
+   "1024": {
+    "median_s": 0.707,
+    "ratio_vs_q4f16": 1.58
+   }
+  }
+ }
+}

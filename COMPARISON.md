@@ -4,16 +4,16 @@ Corpus: 120 real documents from the open [AI4Privacy `pii-masking-200k`](https:/
 
 ## Bottom line
 
-`privaite-onnx` (the default full ONNX preset) has the highest recall (84.9% span / 81.0% strict) and is the only solution that also strips PII from tool-call arguments: it removes 100.0% of the PII it catches from a tool-call argument, while LiteLLM's Presidio guardrail and LLM Guard remove 0.0% and 0.0%. Those tools scan message text (LiteLLM's guardrail also scrubs multimodal text parts, so its multimodal leak is 29.7%) but never parse the tool-call JSON, so 100.0% and 100.0% of all PII survives inside a tool call. `privaite-onnx` also keeps false positives low (2 on 14 clean docs). (`privaite-light-all` is the fast Presidio-only preset; `privaite-light` is the crippled 9-entity-allowlist config, shown for reference.)
+`privaite-onnx` (the default full ONNX preset) has the highest recall (85.2% span / 81.7% strict) and is the only solution that also strips PII from tool-call arguments: it removes 100.0% of the PII it catches from a tool-call argument, while LiteLLM's Presidio guardrail and LLM Guard remove 0.0% and 0.0%. Those tools scan message text (LiteLLM's guardrail also scrubs multimodal text parts, so its multimodal leak is 29.7%) but never parse the tool-call JSON, so 100.0% and 100.0% of all PII survives inside a tool call. `privaite-onnx` also keeps false positives low (2 on 14 clean docs). (`privaite-light-all` is the fast Presidio-only preset; `privaite-light` is the crippled 9-entity-allowlist config, shown for reference.)
 
 ## Headline
 
 | Solution | Recall | Recall (strict) | False positives | Tool-call protection | Tool-call leak | Multimodal leak | Latency |
 |---|---|---|---|---|---|---|---|
-| privaite-onnx | 84.9% | 81.0% | 2 on 14 | 100.0% | 15.1% | 15.1% | 609.8ms |
-| privaite-light-all | 62.7% | 58.1% | 3 on 14 | 100.0% | 37.3% | 37.3% | 75.8ms |
-| privaite-light | 36.5% | 35.2% | 0 on 14 | 100.0% | 63.5% | 63.5% | 74.7ms |
-| litellm-presidio | 70.3% | 65.3% | 3 on 14 | 0.0% | 100.0% | 29.7% | 13.4ms |
+| privaite-onnx | 85.2% | 81.7% | 2 on 14 | 100.0% | 14.8% | 14.8% | 459.2ms |
+| privaite-light-all | 62.7% | 58.1% | 3 on 14 | 100.0% | 37.3% | 37.3% | 81.4ms |
+| privaite-light | 36.5% | 35.2% | 0 on 14 | 100.0% | 63.5% | 63.5% | 79.7ms |
+| litellm-presidio | 70.3% | 65.3% | 3 on 14 | 0.0% | 100.0% | 29.7% | 14.3ms |
 | llm-guard | 76.9% | 74.9% | 5 on 14 | 0.0% | 100.0% | 100.0% | 88.5ms (offline) |
 
 Tool-call protection is, of the PII a solution catches in plain text, how much it also removes from a tool-call argument (higher is better). Tool-call leak and multimodal leak are the share of all PII that survives inside a tool-call argument or a multimodal text part (lower is better).
@@ -22,7 +22,7 @@ Tool-call protection is, of the PII a solution catches in plain text, how much i
 
 | Solution | de | en | fr | it |
 |---|---|---|---|---|
-| privaite-onnx | 82.1% | 76.3% | 91.1% | 90.5% |
+| privaite-onnx | 83.0% | 76.3% | 91.1% | 90.5% |
 | privaite-light-all | 60.7% | 68.6% | 64.3% | 56.9% |
 | privaite-light | 36.6% | 34.7% | 36.6% | 37.9% |
 | litellm-presidio | 64.3% | 81.4% | 69.6% | 65.5% |
@@ -32,7 +32,7 @@ Tool-call protection is, of the PII a solution catches in plain text, how much i
 
 | Solution | CREDIT_CARD | DATE_TIME | EMAIL_ADDRESS | FINANCIAL | IBAN_CODE | IP_ADDRESS | LOCATION | ORGANIZATION | PERSON | PHONE_NUMBER | SECRET | URL | US_SSN |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| privaite-onnx | 100.0% | 89.8% | 100.0% | 87.1% | 100.0% | 100.0% | 76.3% | 61.1% | 86.6% | 100.0% | 71.4% | 42.1% | 100.0% |
+| privaite-onnx | 100.0% | 89.8% | 100.0% | 88.7% | 100.0% | 100.0% | 76.3% | 61.1% | 86.6% | 100.0% | 71.4% | 42.1% | 100.0% |
 | privaite-light-all | 11.1% | 64.4% | 100.0% | 38.7% | 100.0% | 100.0% | 67.1% | 44.4% | 58.9% | 50.0% | 35.7% | 100.0% | 50.0% |
 | privaite-light | 11.1% | 59.3% | 100.0% | 8.1% | 85.7% | 76.5% | 19.7% | 0.0% | 35.7% | 50.0% | 7.1% | 0.0% | 50.0% |
 | litellm-presidio | 11.1% | 78.0% | 100.0% | 37.1% | 100.0% | 100.0% | 69.7% | 72.2% | 81.2% | 50.0% | 28.6% | 100.0% | 12.5% |
