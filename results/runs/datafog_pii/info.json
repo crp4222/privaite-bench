@@ -1,0 +1,30 @@
+{
+ "system": "datafog_pii",
+ "title": "DataFog 4.9 (+ its LiteLLM guardrail)",
+ "started": "2026-10-23T13:16:00+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "datafog": "4.9.0",
+  "litellm": "1.104.2"
+ },
+ "engine": "regex",
+ "entity_types": [
+  "EMAIL",
+  "PHONE",
+  "SSN",
+  "CREDIT_CARD",
+  "IP_ADDRESS",
+  "DATE",
+  "ZIP_CODE"
+ ],
+ "changed_from_default": {
+  "entity_types": "all regex types (default: EMAIL, PHONE, CREDIT_CARD, SSN)",
+  "fail_policy": "closed"
+ }
+}

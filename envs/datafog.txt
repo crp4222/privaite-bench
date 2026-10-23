@@ -1,0 +1,4 @@
+# DataFog regex engine and its own LiteLLM guardrail integration.
+datafog==4.9.0
+litellm==1.104.2
+fastapi

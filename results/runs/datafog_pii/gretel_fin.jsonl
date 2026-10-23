@@ -1,0 +1,180 @@
+{"id": "gretel_fin-37469", "sha256": "dec34a4daebe7581191262f51b6f468f95fb7ff13b745f47b7e6417ef3ea63ed", "spans": [], "ms": 0.184}
+{"id": "gretel_fin-37976", "sha256": "69f5f109354d12cd1dd7e1bf90c3daa8b2b3df65da37a10dc45a99d67d7f885a", "spans": [[64, 69, "ZIP_CODE"], [118, 128, "DATE"], [136, 145, "SSN"], [153, 158, "ZIP_CODE"], [177, 187, "DATE"], [316, 326, "DATE"], [456, 466, "DATE"]], "ms": 0.215}
+{"id": "gretel_fin-35663", "sha256": "773ffcbb9a31848aa51061e43a499553e388657e75fde3ef0f1d3c3be3ba34be", "spans": [], "ms": 0.095}
+{"id": "gretel_fin-49173", "sha256": "3851ffc730271a6a1e1195dfe2042284cde81bea403e646674cf6cefd327f404", "spans": [[602, 612, "DATE"], [832, 842, "DATE"]], "ms": 0.305}
+{"id": "gretel_fin-41532", "sha256": "f1c57263d1593410c6a967c950e279db8ba821760e84f0969083f2c4044d06eb", "spans": [[214, 228, "PHONE"], [236, 253, "EMAIL"], [269, 278, "SSN"], [341, 351, "DATE"], [733, 747, "PHONE"], [957, 967, "DATE"]], "ms": 0.452}
+{"id": "gretel_fin-36995", "sha256": "7daf698056801583e37faf3e484cf76fbb62ee3bb27bd4b2e9093ddb1221f2f9", "spans": [[180, 199, "EMAIL"], [208, 227, "EMAIL"], [270, 275, "ZIP_CODE"], [1143, 1158, "PHONE"]], "ms": 0.515}
+{"id": "gretel_fin-50684", "sha256": "5f5682929d8c8e2a8b88cf1422e67460d2f147331576413258a6589c28648b39", "spans": [[1180, 1189, "SSN"]], "ms": 0.519}
+{"id": "gretel_fin-42118", "sha256": "3a4421873e83264ea9fe1745a68db4c7c5120a9a74f6b6dc3105776953ae3bd9", "spans": [[767, 782, "DATE"], [786, 803, "DATE"], [1171, 1186, "DATE"], [1190, 1207, "DATE"]], "ms": 0.461}
+{"id": "gretel_fin-6936", "sha256": "9f55f3a5d20f6c0007f94f989891d36b17304912c1b1ce11426efe6384f2d4e3", "spans": [], "ms": 0.273}
+{"id": "gretel_fin-43869", "sha256": "62976a08c78ea4730ba671e35e4e1bf5568e8b2e687ddb4ca876c16ae851e8cd", "spans": [[505, 515, "DATE"]], "ms": 0.5}
+{"id": "gretel_fin-22801", "sha256": "8a1c03246c4c2dcad8cd5350c1e99269c53ac6226b66e0b16998e8cd5b20697b", "spans": [], "ms": 0.129}
+{"id": "gretel_fin-43568", "sha256": "76b58c545561d7c3784a130a9a62e883ecfa5aa1cb2785bd374f66458341dbfd", "spans": [], "ms": 0.52}
+{"id": "gretel_fin-35714", "sha256": "d0962f3500bd6f3d1efad273b465dacaa8928d0f9dc753efbe4c2db8466113e3", "spans": [[667, 672, "ZIP_CODE"], [1223, 1238, "CREDIT_CARD"]], "ms": 0.333}
+{"id": "gretel_fin-39931", "sha256": "40a8e8afa2bcf4f866f616ecdb52d3c866c39452e068b075c58713d3e86d6bd3", "spans": [], "ms": 0.532}
+{"id": "gretel_fin-41220", "sha256": "931dceb009ddbd1d7ed93505ecac05e5d971caf1eed4818483d61b1f077f31eb", "spans": [[2066, 2077, "IP_ADDRESS"]], "ms": 0.597}
+{"id": "gretel_fin-39306", "sha256": "974fd2af8039d1c07e5240a24752fb3e03c6c3a68f174d336bba316292039b59", "spans": [], "ms": 0.517}
+{"id": "gretel_fin-51307", "sha256": "b6be5727bc5c7099fe0d5ce1296c69ad39bcee665f24d4d2081abcdb3484837e", "spans": [], "ms": 0.511}
+{"id": "gretel_fin-37747", "sha256": "1f220bfc67b31b745a55952650431081a613355ef31205fa21bd0ce6b08045ff", "spans": [[189, 199, "DATE"], [393, 403, "DATE"], [437, 447, "DATE"], [459, 469, "DATE"], [503, 513, "DATE"], [810, 820, "DATE"], [899, 909, "DATE"], [910, 920, "DATE"]], "ms": 0.328}
+{"id": "gretel_fin-50817", "sha256": "68cd817bfebc3e5556f659638f285b9d8af83c777462391cdb8608e42dc730e7", "spans": [[118, 123, "ZIP_CODE"], [142, 147, "ZIP_CODE"]], "ms": 0.39}
+{"id": "gretel_fin-41579", "sha256": "7fa73529a17af38c40d2f6e4c954664c0d855827b4b3d66cdf9761a15d78fa2b", "spans": [[121, 131, "DATE"], [207, 217, "DATE"], [293, 303, "DATE"], [379, 389, "DATE"], [465, 475, "DATE"], [554, 564, "DATE"], [638, 648, "DATE"]], "ms": 0.204}
+{"id": "gretel_fin-12728", "sha256": "da4b468ff4f45df7138da9d9184514b7e65da26b1fcc9d6c1f92f5201a1d3bf7", "spans": [[256, 266, "DATE"], [751, 761, "DATE"], [1175, 1185, "DATE"]], "ms": 0.42}
+{"id": "gretel_fin-50411", "sha256": "230435ed45fc5c8e67f704ed74073dd8653aeab21bf9066ffc3dc36ff671d838", "spans": [[280, 292, "DATE"], [376, 390, "PHONE"], [476, 490, "PHONE"], [625, 639, "PHONE"]], "ms": 0.373}
+{"id": "gretel_fin-43725", "sha256": "0828d8477fd62b9ce8a91fa46c65f8edd38ae41ff9add7588bdb8fc338eee30b", "spans": [[230, 235, "ZIP_CODE"], [473, 478, "ZIP_CODE"]], "ms": 0.203}
+{"id": "gretel_fin-5771", "sha256": "e1a77161bac68fb5af2d051deaa1c8d97e0a7b74efa666fd3225015429445c3f", "spans": [[82, 92, "PHONE"], [93, 103, "PHONE"]], "ms": 0.211}
+{"id": "gretel_fin-33165", "sha256": "d5d1932f8c8a77b1da80b64b94ec3ccb3fbd8c03c6d35f7aac8e1c3fb87c7948", "spans": [[63, 80, "DATE"], [147, 164, "DATE"], [455, 472, "DATE"], [729, 746, "DATE"]], "ms": 0.313}
+{"id": "gretel_fin-45880", "sha256": "b5360125e7cf1abac3c78182f0f6cc784bc7ce6a062e161ee42fbe626a1a1b75", "spans": [[270, 280, "PHONE"]], "ms": 0.342}
+{"id": "gretel_fin-51485", "sha256": "80dc5fae762abafcc695b33da3a40779d9a2ca750cc0161ba7716b7ad467517d", "spans": [[166, 180, "PHONE"], [191, 207, "EMAIL"], [216, 232, "EMAIL"]], "ms": 0.267}
+{"id": "gretel_fin-42528", "sha256": "d2b5beaffb0b0e63d47bee501220af18b8173c2aff9376a3530cb156ee1b132f", "spans": [[73, 90, "DATE"], [120, 125, "ZIP_CODE"]], "ms": 0.318}
+{"id": "gretel_fin-33318", "sha256": "0d1a4c33a9126a3e77f4dc8749fb5e6880c6074de17c6c7d1e10ad0ee1a6d1fd", "spans": [], "ms": 0.347}
+{"id": "gretel_fin-39119", "sha256": "4d96888aa1c8fab7aace91129c8660b286886666e9a9fdc5bbe99e1f6b9c2b1d", "spans": [[252, 257, "ZIP_CODE"], [568, 577, "SSN"]], "ms": 0.469}
+{"id": "gretel_fin-30576", "sha256": "87136ab19979fbdf30c16efecd9ca8438ce64c101a7951eff7577926655ee046", "spans": [[286, 296, "DATE"], [337, 347, "DATE"], [392, 402, "DATE"], [461, 471, "DATE"], [542, 552, "DATE"], [645, 655, "DATE"], [684, 694, "DATE"], [703, 713, "DATE"], [744, 754, "DATE"], [781, 791, "DATE"], [798, 808, "DATE"], [841, 851, "DATE"]], "ms": 0.302}
+{"id": "gretel_fin-2273", "sha256": "493f4307aed41227f7954b241d1c069baf3808f5f90fcef8ebc5a0c500de54c8", "spans": [[24, 34, "PHONE"], [40, 50, "PHONE"], [133, 138, "ZIP_CODE"], [156, 166, "PHONE"], [241, 251, "PHONE"], [252, 262, "PHONE"], [525, 542, "DATE"], [602, 607, "ZIP_CODE"], [643, 653, "PHONE"]], "ms": 0.228}
+{"id": "gretel_fin-10592", "sha256": "0fd0fb8142581e34495877734d4aded51d7fc5993a69fbc4bb9ee47c13d49456", "spans": [[1559, 1569, "DATE"]], "ms": 0.371}
+{"id": "gretel_fin-8241", "sha256": "5ab2c199d5f940ba53d72729966f0a7466287cf462dda8358740a265a37676c9", "spans": [], "ms": 0.418}
+{"id": "gretel_fin-23974", "sha256": "d9af881bb34b8562c49b83e67825a0890d9be6b0dc6b28443a79e58b08e56151", "spans": [[449, 459, "DATE"], [565, 575, "DATE"], [681, 691, "DATE"], [797, 807, "DATE"], [913, 923, "DATE"], [1029, 1039, "DATE"]], "ms": 0.344}
+{"id": "gretel_fin-15922", "sha256": "22c5e28d10ac5e357e06bf7cd3a68d53bd2559d9ca368b68dd6617c506c285ec", "spans": [[278, 288, "PHONE"], [936, 946, "DATE"], [1232, 1242, "DATE"]], "ms": 0.343}
+{"id": "gretel_fin-9932", "sha256": "f763b3999275a1653b2c211cca34c38aa5efd032201c4bc56710f5bc3721d55c", "spans": [[426, 431, "ZIP_CODE"], [530, 540, "DATE"], [755, 765, "DATE"]], "ms": 0.289}
+{"id": "gretel_fin-14395", "sha256": "a427a7d9d9983d768c34ab04fc4e0b83fe60efb8a42792fb869b951af9568df1", "spans": [[125, 130, "ZIP_CODE"]], "ms": 0.133}
+{"id": "gretel_fin-29243", "sha256": "0ca377793877b5385dafc280f6f34519ae56ac71951f2e50cfa8c98c339b81e2", "spans": [[87, 96, "SSN"]], "ms": 0.107}
+{"id": "gretel_fin-12331", "sha256": "50088dfc7cc1af2470defeaf84cddc71df09b7e7b61f69c8328926c1b934c35e", "spans": [[84, 94, "DATE"], [161, 166, "ZIP_CODE"], [192, 206, "PHONE"], [282, 287, "ZIP_CODE"], [362, 367, "ZIP_CODE"], [971, 981, "DATE"], [1143, 1153, "DATE"]], "ms": 0.365}
+{"id": "gretel_fin-1576", "sha256": "bca60d708b095bf88687154d024f5841128eccbd74383f8b1288f6e6399e7cdf", "spans": [[189, 194, "ZIP_CODE"]], "ms": 0.402}
+{"id": "gretel_fin-23558", "sha256": "859466bdaea6f55546afa6f232944e8091d3316da51c0247a8c20650c160eedb", "spans": [], "ms": 0.148}
+{"id": "gretel_fin-1000", "sha256": "fecfb9b5533f28c8749f646e7c5f45c411acc73bde8365783ce0cbc1f57792ea", "spans": [[338, 347, "SSN"], [400, 405, "ZIP_CODE"]], "ms": 0.393}
+{"id": "gretel_fin-29474", "sha256": "529abfb8f25c7520d149889203d510063768450cbd6fd350b29888419af6fa85", "spans": [[781, 786, "ZIP_CODE"], [788, 793, "ZIP_CODE"], [810, 837, "EMAIL"], [846, 873, "EMAIL"], [1042, 1047, "ZIP_CODE"], [1104, 1109, "ZIP_CODE"], [1111, 1116, "ZIP_CODE"], [1126, 1153, "EMAIL"], [1162, 1189, "EMAIL"], [1246, 1257, "PHONE"], [1272, 1299, "EMAIL"], [1308, 1335, "EMAIL"]], "ms": 0.395}
+{"id": "gretel_fin-10406", "sha256": "ff6f9a59cfbbbacc54ff471e5238390512ed6ff8e69895dc5c47aa2dad88b5b7", "spans": [], "ms": 0.331}
+{"id": "gretel_fin-9313", "sha256": "dcfc15f708d5dce6c5d7304219d0e76ad05fef9ff7f5481fe9ed6f2e89337d0c", "spans": [], "ms": 0.413}
+{"id": "gretel_fin-31287", "sha256": "1725099fb6b507278d61e6d340cf2a5d11bc9ca72ae0021ef2f4b1469aa48976", "spans": [[647, 669, "EMAIL"]], "ms": 0.212}
+{"id": "gretel_fin-27911", "sha256": "7d99db414f832ad885e6ee9520c0e68a6814e2d7e3bfcb5b4a33f1e3b7d6bc08", "spans": [], "ms": 0.307}
+{"id": "gretel_fin-5929", "sha256": "d35a85de69faada236f4a6266d805dda0ff93a5269f9043f64504e3782dfd3fe", "spans": [[58, 68, "PHONE"], [87, 97, "DATE"], [183, 188, "ZIP_CODE"], [215, 229, "PHONE"], [242, 264, "EMAIL"], [365, 370, "ZIP_CODE"], [388, 403, "PHONE"], [413, 439, "EMAIL"]], "ms": 0.315}
+{"id": "gretel_fin-29660", "sha256": "49679de519c1bf973b70e2eea9f3bbbf7c433f3069dbb8663b7efa5d63b1730a", "spans": [[209, 214, "ZIP_CODE"]], "ms": 0.386}
+{"id": "gretel_fin-21640", "sha256": "4612923ed978a7923b792d556f60ce9efd0f01066ae2ded3e76cce6d27601054", "spans": [[21, 30, "SSN"], [31, 40, "SSN"], [366, 375, "SSN"], [376, 385, "SSN"]], "ms": 0.221}
+{"id": "gretel_fin-25747", "sha256": "06a9b92cb06ef1b5fc3ede18657a79ddb10b1e207968f4e72758c8caece85e1b", "spans": [[167, 172, "ZIP_CODE"]], "ms": 0.361}
+{"id": "gretel_fin-28594", "sha256": "f880ed4df48454218dff982cbd1d111b9b39d3f3a4d3c9beaa5e759b5ba0614b", "spans": [[166, 176, "DATE"], [242, 247, "ZIP_CODE"]], "ms": 0.37}
+{"id": "gretel_fin-20544", "sha256": "0d9763a7b4481e9008ffe3dd4fb134b1b1e271fc2c96c6effa5abc1893e2824a", "spans": [[330, 340, "DATE"], [588, 598, "DATE"], [1011, 1016, "ZIP_CODE"]], "ms": 0.3}
+{"id": "gretel_fin-25234", "sha256": "64f438147384083b3afa6c1ea210bbe53ad97a1589bf17c8e82534b2f8402933", "spans": [[75, 80, "ZIP_CODE"], [402, 407, "ZIP_CODE"]], "ms": 0.359}
+{"id": "gretel_fin-24075", "sha256": "e2aa13eca62001acc91165580d06661414ef5972e40befcaf5a04b70141ab84d", "spans": [], "ms": 0.398}
+{"id": "gretel_fin-27329", "sha256": "4b1910f935fab547b723e2cf4d85ffbe0eda2f7f1a5247b8f951e07c8690e601", "spans": [[48, 58, "PHONE"], [121, 134, "IP_ADDRESS"], [784, 797, "IP_ADDRESS"]], "ms": 0.273}
+{"id": "gretel_fin-8825", "sha256": "5855517a294c9e4aa489a15b4aea0447c0482902d39b3b88c819577feada7d37", "spans": [], "ms": 0.411}
+{"id": "gretel_fin-12187", "sha256": "9f17a85fd5067c1800f47e3cfc92fc3aca58ea109a539ec416dc16790a95e964", "spans": [[53, 63, "PHONE"], [64, 74, "PHONE"], [126, 136, "PHONE"], [137, 147, "PHONE"], [176, 186, "PHONE"], [187, 197, "PHONE"], [224, 234, "PHONE"], [235, 245, "PHONE"]], "ms": 0.191}
+{"id": "gretel_fin-21926", "sha256": "d8770e12bb9a1becd89a6a87eccb3abacbfbab142b0636239d8dfba306bcfbad", "spans": [[171, 181, "DATE"], [1074, 1083, "SSN"], [1313, 1327, "PHONE"]], "ms": 0.374}
+{"id": "gretel_fin-27951", "sha256": "88edba0585868d38aea9d2eb6037f41f2d308a6ec8e8d187711358a1ff6c3a52", "spans": [[107, 112, "ZIP_CODE"], [157, 169, "PHONE"]], "ms": 0.304}
+{"id": "gretel_fin-10927", "sha256": "7fd21dafb247aef5b634465bd4f6d3a5a247923c5540ad8ba83bd46f8229cb66", "spans": [], "ms": 0.356}
+{"id": "gretel_fin-12001", "sha256": "fb7f5123dd55a30cd9f6e28633c4384a93fb9734d469da5359a40eaa2b30c36c", "spans": [], "ms": 0.404}
+{"id": "gretel_fin-29246", "sha256": "e9affce90d10bfedb0dd894ad257bcb0ad145ca2196fe3907b96fac1f3de0658", "spans": [[269, 278, "SSN"]], "ms": 0.44}
+{"id": "gretel_fin-26487", "sha256": "4e71d338c46ba114f2534f5bb0dbec1564cae56840b131fbcb0e8151b616371a", "spans": [[275, 293, "CREDIT_CARD"], [349, 368, "CREDIT_CARD"]], "ms": 0.192}
+{"id": "gretel_fin-13983", "sha256": "16894b974c5743f8c7248b08268fb81dfeb12e83d28d2091cdf3de378fe2f9a2", "spans": [], "ms": 0.365}
+{"id": "gretel_fin-913", "sha256": "acab4c7e71e8360d72e5baa9875251fd41f23a9ff19794bfe441c855ff5fc3cc", "spans": [[225, 230, "ZIP_CODE"], [266, 280, "PHONE"], [295, 304, "SSN"]], "ms": 0.322}
+{"id": "gretel_fin-11296", "sha256": "ba3e9ac2059cb1ad84dccb61ee3f775785a93e9d4584dd7aa997cac373761a6b", "spans": [], "ms": 0.261}
+{"id": "gretel_fin-29588", "sha256": "fce57b2395f7fecd4f59ef5dce38272c7e79b1fadc0c5fa306bdedefe96d1aa8", "spans": [], "ms": 0.151}
+{"id": "gretel_fin-26146", "sha256": "c8c95a12612cacdacfd908f6dba5c83b5f6f12a24a3be670247eca60c2169b41", "spans": [], "ms": 0.364}
+{"id": "gretel_fin-5803", "sha256": "1d1cc1997a36e1ec9116e52f88210a6bd699c28df1fb038df410332c75e3c2ff", "spans": [[105, 114, "SSN"]], "ms": 0.237}
+{"id": "gretel_fin-30965", "sha256": "546fa52bd67bae96249479e15e5d47f4f61885351a342cb820853b290ba4f34f", "spans": [[225, 230, "ZIP_CODE"], [270, 288, "EMAIL"], [298, 308, "PHONE"]], "ms": 0.305}
+{"id": "gretel_fin-8874", "sha256": "27a8fecdcc4bce3a3e2a3e2ae6523673ce48f6c7c3e9dd7ca6b7e5f66c58ce6f", "spans": [[869, 874, "ZIP_CODE"], [913, 918, "ZIP_CODE"]], "ms": 0.275}
+{"id": "gretel_fin-7703", "sha256": "037ac40c2557f74f4ca1246981b23a9d0d4f124badd31b931659b9f8cc641ef9", "spans": [[359, 369, "DATE"], [549, 559, "DATE"], [602, 607, "ZIP_CODE"], [833, 843, "DATE"], [920, 925, "ZIP_CODE"], [1065, 1075, "DATE"], [1148, 1153, "ZIP_CODE"], [1347, 1357, "DATE"], [1430, 1435, "ZIP_CODE"], [1632, 1642, "DATE"]], "ms": 0.434}
+{"id": "gretel_fin-3593", "sha256": "72e61c352ab4579a6f13d2348c77d2ed4b671aa8b46f60d9432003a01159c63d", "spans": [[865, 875, "DATE"], [958, 968, "DATE"]], "ms": 0.302}
+{"id": "gretel_fin-1326", "sha256": "a71c0569da58b907906b391f13da034856121c07118534c55e5dc91e0cc96097", "spans": [[196, 201, "ZIP_CODE"], [525, 530, "ZIP_CODE"], [704, 709, "ZIP_CODE"]], "ms": 0.262}
+{"id": "gretel_fin-30463", "sha256": "2c85eb69c4a1a208910753d08b71131fed5dfb536d17f49e4065a91f47326fcb", "spans": [], "ms": 0.254}
+{"id": "gretel_fin-12547", "sha256": "d7f08e5305f381688bae15c852718ac232f2aca5854ee0523a0fdc84fa3818ef", "spans": [], "ms": 0.379}
+{"id": "gretel_fin-30404", "sha256": "ef68ef2c5b90eb96e51554a36dc5c1e365f2e25bd43e5df98d6a99de68fa79aa", "spans": [[184, 189, "ZIP_CODE"], [277, 282, "ZIP_CODE"]], "ms": 0.168}
+{"id": "gretel_fin-22824", "sha256": "8179fb61edc8c2c4c27204bc20f308f9a55b616e206019a3bbf0cbc0d253b132", "spans": [], "ms": 0.358}
+{"id": "gretel_fin-26642", "sha256": "4d32eebe75eacece539a6767687e1d736e165e88199b4d7ff8c035a7936347f4", "spans": [], "ms": 0.346}
+{"id": "gretel_fin-5847", "sha256": "e58ef23aff89f7a607e6ae4855d9e7071522707ac86f40e2005813ebaa18efe0", "spans": [[109, 120, "PHONE"], [136, 152, "PHONE"], [168, 178, "DATE"]], "ms": 0.201}
+{"id": "gretel_fin-24481", "sha256": "bba99205ff2c930938c10aa1e3e4d6ebbf80f4abb7322fb16454ada862e6c7d9", "spans": [[222, 241, "CREDIT_CARD"]], "ms": 0.155}
+{"id": "gretel_fin-22596", "sha256": "18889947ec156d9f5a5c02ff4495302c81c56d31183bd76032f8957c9b78e586", "spans": [], "ms": 0.339}
+{"id": "gretel_fin-1406", "sha256": "0901b53c5fa0a09fa333b678fb193584f6c7155db4fa611ca924d967bf18f927", "spans": [[115, 125, "PHONE"], [145, 155, "DATE"], [262, 267, "ZIP_CODE"]], "ms": 0.107}
+{"id": "gretel_fin-27162", "sha256": "9d110e120a0c50e866103ccb4db886f341f0204cd61f9f048e68a14a4aa23bc5", "spans": [[119, 143, "EMAIL"], [146, 160, "PHONE"], [195, 205, "DATE"], [217, 227, "DATE"], [258, 282, "EMAIL"], [285, 299, "PHONE"], [335, 345, "DATE"], [357, 367, "DATE"], [395, 416, "EMAIL"], [419, 433, "PHONE"], [470, 480, "DATE"], [492, 502, "DATE"], [533, 557, "EMAIL"], [560, 574, "PHONE"], [620, 630, "DATE"], [642, 652, "DATE"], [686, 713, "EMAIL"], [716, 730, "PHONE"], [768, 778, "DATE"], [790, 800, "DATE"], [831, 855, "EMAIL"], [858, 872, "PHONE"]], "ms": 0.34}
+{"id": "gretel_fin-21308", "sha256": "8c5e34e2116ff67e1a723d51e0fa326210c2c6c354b26ff644434fdfeaf7504f", "spans": [], "ms": 0.359}
+{"id": "gretel_fin-7401", "sha256": "74f48a930ceef06995b5afc7bf01bdfd0721d7374cae1aaeaa144f2beb0a3456", "spans": [], "ms": 0.349}
+{"id": "gretel_fin-697", "sha256": "5bb98721f8456112ec3a0853be458e8685558b87a702cfcfcf46b05bb9c6dcab", "spans": [], "ms": 0.319}
+{"id": "gretel_fin-31231", "sha256": "5da55706a2b9fe5e068f928168d2f82112dbc11a41d4fc7944309f29e6f3ffba", "spans": [], "ms": 0.387}
+{"id": "gretel_fin-6788", "sha256": "3cf4065dff5c36289dd6a7e7b1271796c3708e87f2769f2bf1fc7542cbc2b8d6", "spans": [], "ms": 0.37}
+{"id": "gretel_fin-23310", "sha256": "222a9b0884f9bbf0e552508b8f6266fc7b2380b965b48b1309f99fac3ee08141", "spans": [[146, 155, "SSN"], [256, 266, "DATE"], [318, 323, "ZIP_CODE"], [387, 409, "EMAIL"], [624, 629, "ZIP_CODE"], [1013, 1023, "PHONE"], [1047, 1057, "DATE"]], "ms": 0.324}
+{"id": "gretel_fin-24572", "sha256": "5df864089341da2d29db6144383287b28807e76006a49f8c1264f08b82cf6631", "spans": [], "ms": 0.336}
+{"id": "gretel_fin-2493", "sha256": "4cc88bdb900b5f5833569236286df9b63d8ba7e9b0fda550702a075e3323f899", "spans": [[181, 186, "ZIP_CODE"], [237, 242, "ZIP_CODE"], [344, 349, "ZIP_CODE"], [370, 381, "SSN"]], "ms": 0.365}
+{"id": "gretel_fin-23728", "sha256": "a53d13c79c8d5a050dc524e785d3bba94705a101fa4b6c79955649794b4222ef", "spans": [], "ms": 0.272}
+{"id": "gretel_fin-3940", "sha256": "5f29fe3d7be044022c4e299a1bc0d8df645dc00924d7f126c28bf26fb8f849e6", "spans": [[213, 223, "DATE"], [273, 282, "SSN"]], "ms": 0.224}
+{"id": "gretel_fin-10430", "sha256": "8f168e7ed04c3991e5ef3b6560b7cd7b9ae81d011ab603472267a3c3c44d7e66", "spans": [], "ms": 0.36}
+{"id": "gretel_fin-8919", "sha256": "cb567b8deb260d4ac82c22b38d900b2d37771979c39ab8f74cb0994ff67d88fb", "spans": [], "ms": 0.137}
+{"id": "gretel_fin-28061", "sha256": "80111d6703ff6a9173260bea29968370ebfdc7d4e0663fb16bc59904a392b110", "spans": [[42, 52, "DATE"], [193, 198, "ZIP_CODE"], [382, 392, "DATE"], [502, 512, "DATE"], [661, 666, "ZIP_CODE"], [778, 788, "DATE"], [893, 903, "DATE"], [1163, 1173, "DATE"]], "ms": 0.313}
+{"id": "gretel_fin-25740", "sha256": "182162ea77f1d877ad59e9285606cb0f483770053eac4595101cfd37d308b5e3", "spans": [], "ms": 0.405}
+{"id": "gretel_fin-9126", "sha256": "e66c2db85abe0f2cc0321641fb8b1aaa58db68ea154e4e946b3bf610c8fa6ac6", "spans": [], "ms": 0.388}
+{"id": "gretel_fin-1246", "sha256": "50769b535dbba04f631af06f47d302b128fcae91d73e90265efcb760d403ffc6", "spans": [], "ms": 0.299}
+{"id": "gretel_fin-14759", "sha256": "0df0d218c1cad444cc7a8fb80fdb6077e82b3db6e3e74fc36d51190ad1bfec59", "spans": [], "ms": 0.334}
+{"id": "gretel_fin-13048", "sha256": "48acddaa55f979f0e2be37145b6df68bd676e41e0c2e8d043e0faf0c30f6a513", "spans": [[926, 931, "ZIP_CODE"]], "ms": 0.391}
+{"id": "gretel_fin-16962", "sha256": "c773eedcfc5724d0b6198c3d7983195e5b0d0f8b197eacdc425ae071f391b1e5", "spans": [[217, 233, "PHONE"], [255, 280, "EMAIL"], [289, 314, "EMAIL"]], "ms": 0.345}
+{"id": "gretel_fin-12400", "sha256": "7820688d87d1949489a7ed1a9c470c932a655565d7a5b91dc852a09610795ab8", "spans": [], "ms": 0.348}
+{"id": "gretel_fin-17248", "sha256": "a1207af5be4693bd8e510352d220c0979e583a59e9f2f8f9f0f12befabd615d7", "spans": [], "ms": 0.399}
+{"id": "gretel_fin-12102", "sha256": "412f8f47ab87334653327ecd9749548cb653492583a7bc372506ae0e4511d9b7", "spans": [[157, 167, "PHONE"], [595, 600, "ZIP_CODE"]], "ms": 0.201}
+{"id": "gretel_fin-2408", "sha256": "963e918aca98c25073225eb0fed294e756b350437abb865fa48014f38cda8430", "spans": [[192, 197, "ZIP_CODE"]], "ms": 0.414}
+{"id": "gretel_fin-20867", "sha256": "1d4fbd492c1f9d07a573474810fd60982ecdfdbcc00aebf74273d6acf47c1000", "spans": [], "ms": 0.406}
+{"id": "gretel_fin-30799", "sha256": "ec2541e0a506c36a32bb8b99fe06787d53a2257cb8a50fea375acf0bf6715085", "spans": [], "ms": 0.379}
+{"id": "gretel_fin-5090", "sha256": "171e3c38e18cadeaed8d56636c2a9c405631fdd6ca662ac87cc49d0c4e48382a", "spans": [[586, 591, "ZIP_CODE"]], "ms": 0.379}
+{"id": "gretel_fin-22989", "sha256": "cd84d065b3b0a3733f3de08bdd18d247ad5f284fd5872c80fe870d082bba2fd6", "spans": [], "ms": 0.062}
+{"id": "gretel_fin-10250", "sha256": "b16ad1e2ca0c7a9ad648332d64a539dd74305c03a524fffa65534670e4f62c02", "spans": [[214, 219, "ZIP_CODE"]], "ms": 0.362}
+{"id": "gretel_fin-4077", "sha256": "73cbaf57f286a78963b4ae513aab3da91153d75801c59dffba08350f5ab350fb", "spans": [], "ms": 0.38}
+{"id": "gretel_fin-5246", "sha256": "76fa5a225a1bfa24e246633427df0991ee94f1732df585f2008b0b341e6ef4ce", "spans": [[548, 553, "ZIP_CODE"]], "ms": 0.388}
+{"id": "gretel_fin-15517", "sha256": "c54f3ac1dc6a8c6f6d5be739dd79a44de23c19345c9c20dc0ef02f7c5dc97504", "spans": [[155, 160, "ZIP_CODE"], [1083, 1098, "PHONE"], [1120, 1142, "EMAIL"], [1151, 1173, "EMAIL"]], "ms": 0.353}
+{"id": "gretel_fin-7743", "sha256": "fb828db1383418685c13e6ad4e1f894bdf2876e07ac896db21733f58a343de36", "spans": [], "ms": 0.311}
+{"id": "gretel_fin-13719", "sha256": "506562f46bb511000782c0827d66d2fb75e6058fd5aceba634eccc72ba4995b2", "spans": [], "ms": 0.432}
+{"id": "gretel_fin-17448", "sha256": "0f1164c6b5343f35e326da8e61faaf7388eb4d5afaf25cac40a7aba3006914d7", "spans": [[82, 87, "ZIP_CODE"], [128, 133, "ZIP_CODE"], [170, 175, "ZIP_CODE"], [212, 217, "ZIP_CODE"], [258, 263, "ZIP_CODE"], [305, 310, "ZIP_CODE"]], "ms": 0.136}
+{"id": "gretel_fin-22651", "sha256": "c3971b193737fb2049a0dbb9f14017b8e2b302bf758c40dde5ba5fc1e30359c5", "spans": [[764, 769, "ZIP_CODE"], [771, 776, "ZIP_CODE"], [811, 826, "EMAIL"], [835, 850, "EMAIL"]], "ms": 0.325}
+{"id": "gretel_fin-18813", "sha256": "75abb636ca24dda131335e8bbbec33e68eb56649107aa9f4fff59ad84a07a960", "spans": [[30, 39, "SSN"], [199, 219, "EMAIL"]], "ms": 0.162}
+{"id": "gretel_fin-1003", "sha256": "f73a3bcb0f1da0552a1c623dfbccdff0dd030ff9bfb45e2979552467ef7749b9", "spans": [], "ms": 0.376}
+{"id": "gretel_fin-27978", "sha256": "34ade33d967c0d123fc29616b97e5f88ba7a7158f1997ca2399269ec156df7e9", "spans": [[118, 128, "DATE"]], "ms": 0.408}
+{"id": "gretel_fin-7682", "sha256": "5a3a7f4559a78b19907fca292974b7d9804ea74245a1492990f25f356d82a741", "spans": [[349, 359, "DATE"], [563, 573, "DATE"], [826, 836, "DATE"], [876, 886, "DATE"]], "ms": 0.295}
+{"id": "gretel_fin-5692", "sha256": "88e860031ca444a9b43051dd310d0248a2e5569272b26875c02fd738cc030b20", "spans": [], "ms": 0.42}
+{"id": "gretel_fin-23307", "sha256": "940e9e2a0fecfccb4fd0e454436cd92873523dad88743690d1632fa6f41b34b4", "spans": [[159, 173, "EMAIL"], [381, 392, "PHONE"], [445, 455, "DATE"], [960, 969, "SSN"]], "ms": 0.307}
+{"id": "gretel_fin-19327", "sha256": "50a3a182f276a0d09ce42fa7c258182b7c2fcce7235c565966b3318b58761208", "spans": [[128, 138, "DATE"], [184, 193, "SSN"]], "ms": 0.127}
+{"id": "gretel_fin-24314", "sha256": "ee548d675bdace17c3bda4bc00e7eac9bdbffe241fe123a48388c00d22862c27", "spans": [[1378, 1387, "SSN"]], "ms": 0.409}
+{"id": "gretel_fin-9712", "sha256": "cd94377934283eb0c9e5457894396ded179a725c5247add32050cb4bcc9f688c", "spans": [], "ms": 0.186}
+{"id": "gretel_fin-12349", "sha256": "f68d318a65894cce8a12dfea476a25ea8470db80eaa9063c7940f87611dbb008", "spans": [[61, 66, "ZIP_CODE"]], "ms": 0.111}
+{"id": "gretel_fin-1270", "sha256": "5225a13f2a4125c97dcdd8df49c00b5629cc58adfbc387e344fb3dc8193a02ab", "spans": [[161, 166, "ZIP_CODE"], [214, 219, "ZIP_CODE"], [311, 321, "DATE"], [383, 393, "DATE"], [399, 409, "DATE"], [506, 516, "PHONE"]], "ms": 0.213}
+{"id": "gretel_fin-10221", "sha256": "b836c32c780704f6bdbe6815a6fd3f1c0acabc1de939d1254948c889ffecd75a", "spans": [], "ms": 0.315}
+{"id": "gretel_fin-23994", "sha256": "49c4b9f32193bf714e047c446655d94eea418428621864536878cf7d3edc01a3", "spans": [[215, 225, "DATE"]], "ms": 0.387}
+{"id": "gretel_fin-6890", "sha256": "934a31bc70c23d7e328545b0e8409a06737cfba5f88c022c2a006905f0095383", "spans": [[405, 415, "DATE"], [438, 448, "DATE"], [772, 782, "DATE"]], "ms": 0.346}
+{"id": "gretel_fin-26659", "sha256": "e8463c6e73bbd757506412f0b0e748caf4cbf3a46aefa09711d57a71663dbae9", "spans": [[94, 104, "DATE"]], "ms": 0.382}
+{"id": "gretel_fin-12955", "sha256": "42cbba30218ed775b86fd07ee4a954f704762b55e4ee4f185c73523e9a34b862", "spans": [[26, 36, "DATE"], [109, 114, "ZIP_CODE"], [208, 213, "ZIP_CODE"], [281, 286, "ZIP_CODE"]], "ms": 0.239}
+{"id": "gretel_fin-18737", "sha256": "ec52f5239e9474b9328f66f6ef780bbb1397d26f624cf324e796ecaa54cfd076", "spans": [[35, 45, "DATE"], [550, 560, "DATE"], [717, 727, "DATE"], [860, 870, "DATE"]], "ms": 0.31}
+{"id": "gretel_fin-6927", "sha256": "82b7cdfdc04755a3508a92886c06dff761606d3fb61c8f9de6bc41440ee8eba7", "spans": [], "ms": 0.338}
+{"id": "gretel_fin-14543", "sha256": "429c49cf9d287afc703c60f795827947f2a6fbf83e42dbb85de23d2d3f55fcf0", "spans": [[250, 260, "DATE"], [461, 471, "DATE"], [762, 772, "DATE"]], "ms": 0.294}
+{"id": "gretel_fin-19067", "sha256": "9095d45ecc9cd7bde59c260c9541d07c28cc072a2a8e72041569223dcce26afa", "spans": [[92, 102, "DATE"], [777, 787, "DATE"], [1099, 1109, "DATE"]], "ms": 0.321}
+{"id": "gretel_fin-3638", "sha256": "88f0c5f418cae15e2a2b45f6da1f98da056f7c7590f2b1dafd406768c01e2398", "spans": [], "ms": 0.397}
+{"id": "gretel_fin-23006", "sha256": "44139d5d7a92f79d2db52845810c11bb4b5d01a5b9c0aaf9f545088ad0fadbad", "spans": [[76, 85, "SSN"]], "ms": 0.258}
+{"id": "gretel_fin-26226", "sha256": "5971550493e4be4e6e9331e5507f518c80789ec33b33360d3b8c93a848a908ff", "spans": [[107, 112, "ZIP_CODE"]], "ms": 0.406}
+{"id": "gretel_fin-8745", "sha256": "e1ff9358202d62bb014ca83826c18fa201adf031cfb9476d342ef209704dc469", "spans": [[163, 173, "DATE"], [448, 458, "DATE"], [502, 512, "DATE"]], "ms": 0.359}
+{"id": "gretel_fin-15109", "sha256": "57aa0b1831f43b2955efa96eab098bc010e7d62e782443a800723ec82418b7b7", "spans": [], "ms": 0.392}
+{"id": "gretel_fin-6939", "sha256": "cb934b299fd67886713fe916b90a275ba2fcacff23bc0d104d8d2cff278c95bd", "spans": [[139, 144, "ZIP_CODE"]], "ms": 0.36}
+{"id": "gretel_fin-15423", "sha256": "5aa055347ce330c5c6dd73f26dd17b5617574dea80af7bc264f61c01c7fb94ee", "spans": [], "ms": 0.393}
+{"id": "gretel_fin-18360", "sha256": "eafc038a660b6619d8af579e43dfb65c3012a6ffc02920b71ef17905b64b12da", "spans": [[105, 110, "ZIP_CODE"]], "ms": 0.401}
+{"id": "gretel_fin-29537", "sha256": "4bffcba39e526c3e2718cbc5869122c908332b3776bbe16157df96ba33b580d3", "spans": [[54, 64, "DATE"], [200, 205, "ZIP_CODE"], [209, 214, "ZIP_CODE"]], "ms": 0.151}
+{"id": "gretel_fin-1118", "sha256": "f1c0c4e0225bd1e0c287c0fe4f15866e2091e4e56af1daaea469f4cb38c440de", "spans": [[307, 312, "ZIP_CODE"], [340, 345, "ZIP_CODE"], [842, 847, "ZIP_CODE"]], "ms": 0.236}
+{"id": "gretel_fin-22292", "sha256": "0c836106a71ec1737a87e535830a2a4fa3c2fba8ec86a1c25d253d6689f5d341", "spans": [[401, 411, "PHONE"], [424, 434, "DATE"]], "ms": 0.389}
+{"id": "gretel_fin-28122", "sha256": "62bb3d0809effba1e28a2b87e2245f826f2b650118cb973b302b190793d1f60a", "spans": [[904, 914, "DATE"]], "ms": 0.264}
+{"id": "gretel_fin-21279", "sha256": "3a0b71560fd7696870c11bf63439ba0c667bc941bc93a8df9c48dc7bc7c4fbe7", "spans": [], "ms": 0.343}
+{"id": "gretel_fin-21835", "sha256": "1a97bd7bd8b3cc58301fb9f9b316a9fa9655d0d2046e61a53f8beb4a3f827a34", "spans": [[132, 161, "EMAIL"]], "ms": 0.383}
+{"id": "gretel_fin-1090", "sha256": "94b9a306193ac38305bc97f639a06f9c34b07f776d20dd895d39f20899a8b22c", "spans": [[344, 354, "DATE"], [535, 545, "DATE"]], "ms": 0.23}
+{"id": "gretel_fin-15118", "sha256": "6181536bfbbc788d0582ebfa9e5890b1e023df8cded4e962819c671c1c72d368", "spans": [], "ms": 0.343}
+{"id": "gretel_fin-16842", "sha256": "cdc302485498a5ee983335b8d9c95354e21cd60c1904e583ac2c20ce770b486c", "spans": [[188, 198, "PHONE"]], "ms": 0.273}
+{"id": "gretel_fin-1053", "sha256": "56f3929e292b1a60ad2f0c9a9e10399df42b5a8f90be34146bc38802325153f3", "spans": [[107, 112, "ZIP_CODE"], [121, 131, "DATE"], [176, 181, "ZIP_CODE"], [190, 200, "DATE"], [244, 249, "ZIP_CODE"], [258, 268, "DATE"], [314, 319, "ZIP_CODE"], [328, 338, "DATE"], [384, 389, "ZIP_CODE"], [398, 408, "DATE"], [453, 458, "ZIP_CODE"], [522, 527, "ZIP_CODE"], [590, 595, "ZIP_CODE"], [657, 662, "ZIP_CODE"], [726, 731, "ZIP_CODE"], [873, 885, "PHONE"]], "ms": 0.344}
+{"id": "gretel_fin-4168", "sha256": "37693b8ee6e487cbd8637f9358815f378f4ee3914a9001d34b8c7e323a12d4c7", "spans": [], "ms": 0.129}
+{"id": "gretel_fin-22865", "sha256": "578f63ce48f0fc7a0fd8e32774947ab1e9c4b77d808389ad6ac4c8481e4d2726", "spans": [[566, 576, "PHONE"], [577, 587, "PHONE"]], "ms": 0.169}
+{"id": "gretel_fin-17342", "sha256": "23492b9bd7b8ede9ba79aa1ab53722b2358d9fae5df03b56f6ef7e7374bafec4", "spans": [], "ms": 0.364}
+{"id": "gretel_fin-1618", "sha256": "7fa1e42b94a7e1e0439e55d63e018cb542736c28f2fe9f2ab98151723a5c06d1", "spans": [], "ms": 0.295}
+{"id": "gretel_fin-9195", "sha256": "98a09459e77f20308c0a6a3786d5c02ab8b829eead5e25cecb030347bc58d820", "spans": [], "ms": 0.497}
+{"id": "gretel_fin-14791", "sha256": "59a784d1dfa12096b8e6dae3ae5c5803a7193b47dbf830d04b867aa86fab1e81", "spans": [[337, 347, "DATE"], [380, 390, "DATE"]], "ms": 0.215}
+{"id": "gretel_fin-11607", "sha256": "564ab3217c8d6cfe0b241eb1aefcb3135a5ff7a45b584955411a67b99a7e3c51", "spans": [], "ms": 0.414}
+{"id": "gretel_fin-27511", "sha256": "37b903f5883163a86f2f1a2206935f4e5b9bfcc488aad7e5be38a72b5febbee2", "spans": [], "ms": 0.344}
+{"id": "gretel_fin-19724", "sha256": "b833d020d54869602baf7ef7dde1c7876df4cd6e3ab963bedf6dafb4e2675b7f", "spans": [], "ms": 0.369}
+{"id": "gretel_fin-27931", "sha256": "3869caca8f2c1f3b3eb2c40129b085055a721616a66a98ec9301cee36162d901", "spans": [[400, 410, "DATE"]], "ms": 0.368}
+{"id": "gretel_fin-9785", "sha256": "d935a7155a44e2e2dc4bc655c0bc7443f2edcc5cd7c64690e8cebd982df8af48", "spans": [], "ms": 0.318}
+{"id": "gretel_fin-19759", "sha256": "f8b51649899d346b56c6959d0850ca7ad7390db007c88ec9bed95b9e9194a7dc", "spans": [[90, 100, "PHONE"], [280, 290, "PHONE"], [576, 586, "PHONE"]], "ms": 0.213}
+{"id": "gretel_fin-8440", "sha256": "dd12f1919162ba63afb4f9f1fa1a1250fed90bb2b07847e51d3686781bb07761", "spans": [[165, 175, "PHONE"], [480, 490, "PHONE"]], "ms": 0.199}
+{"id": "gretel_fin-30822", "sha256": "7131c00902b14b328b4d82b031cf000fda403f25cd4f60949bc0dcbbd9f5d9c4", "spans": [], "ms": 0.257}
+{"id": "gretel_fin-27743", "sha256": "a11fd6d48ce8e4111509111d44e68939534b5bf8ed5a5d3a3aca7a1d9315a3fb", "spans": [[93, 103, "DATE"]], "ms": 0.267}
+{"id": "gretel_fin-3649", "sha256": "bc80c0544e05ab31c786c16db87f13b7d7066219df25bec9f9618526bd861551", "spans": [], "ms": 0.126}
+{"id": "gretel_fin-15944", "sha256": "1b26cade85a25a0bd03d99a8822c65575439e0ea71adfea38a4691d4333f2baf", "spans": [[86, 96, "DATE"]], "ms": 0.156}
+{"id": "gretel_fin-8972", "sha256": "46bd9dd80243edb20cb242ab27514d14c171c7437c253387cecad7761eff9107", "spans": [[102, 112, "DATE"], [171, 181, "DATE"], [240, 250, "DATE"], [309, 319, "DATE"], [373, 378, "ZIP_CODE"], [379, 389, "DATE"], [448, 458, "DATE"]], "ms": 0.226}
+{"id": "gretel_fin-30972", "sha256": "4c0e11e000b81105ad6851036e077e0cbed6f594323e6d97e55c21f66ed9c1f0", "spans": [[8, 35, "EMAIL"], [87, 92, "ZIP_CODE"], [140, 150, "DATE"], [190, 195, "ZIP_CODE"], [199, 204, "ZIP_CODE"]], "ms": 0.198}
+{"id": "gretel_fin-3840", "sha256": "46e1cb2820dd35bc239013d8f07c8f12cf4139ed933c2e42cad6d926515adf48", "spans": [], "ms": 0.132}
+{"id": "gretel_fin-10821", "sha256": "77eb5fb924494faedd5d6a1d2abbc2f5c1e7bb15f91900cf456593badd35a5fc", "spans": [], "ms": 0.311}

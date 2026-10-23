@@ -1,0 +1,47 @@
+{
+ "system": "gliner_pii",
+ "title": "GLiNER multi PII v1",
+ "started": "2026-10-23T13:19:35+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "gliner": "0.2.29",
+  "torch": "2.12.1",
+  "transformers": "5.16.1"
+ },
+ "model": "urchade/gliner_multi_pii-v1@1fcf13e85f4eef5394e1fcd406cf2ca9ea82351d",
+ "labels": [
+  "person",
+  "email",
+  "phone number",
+  "street address",
+  "city",
+  "postal code",
+  "date of birth",
+  "date",
+  "social security number",
+  "national id number",
+  "passport number",
+  "driver's license number",
+  "tax id",
+  "credit card number",
+  "bank account number",
+  "iban",
+  "ip address",
+  "username",
+  "password",
+  "api key",
+  "medical record number",
+  "customer id",
+  "organization",
+  "age",
+  "url"
+ ],
+ "threshold": 0.5,
+ "window_chars": 1000
+}

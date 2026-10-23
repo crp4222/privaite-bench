@@ -1,0 +1,30 @@
+{
+ "system": "privaite_max",
+ "title": "PrivAiTe 0.7.2 (max)",
+ "started": "2026-10-23T13:03:28+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "privaite": "0.7.2",
+  "presidio-analyzer": "2.2.364",
+  "onnxruntime": "1.31.0",
+  "spacy": "3.8.16",
+  "transformers": "5.16.1",
+  "gliner": "0.2.29",
+  "torch": "2.14.1"
+ },
+ "preset": "max",
+ "onnx_model": "openai/privacy-filter@7ffa9a043d54d1be65afb281eddf0ffbe629385b",
+ "onnx_variant": "q4",
+ "changed_from_default": {
+  "presidio.languages": "document language only",
+  "onnx.device": "cpu",
+  "gliner.device": "cpu"
+ },
+ "threads": 8
+}

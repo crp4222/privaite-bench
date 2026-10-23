@@ -1,0 +1,8 @@
+# The harness itself: corpus selection, the runner, scoring and the report.
+# Systems never run here; each has its own env (see envs/build.sh).
+numpy
+pandas
+pyarrow
+pytest
+pytest-cov
+ruff

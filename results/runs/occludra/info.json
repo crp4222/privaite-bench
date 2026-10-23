@@ -1,0 +1,42 @@
+{
+ "system": "occludra",
+ "title": "occludra/AISG gateway (e948e23)",
+ "started": "2026-10-23T13:16:09+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "occludra": "e948e230d78f83852c5662d312ed846c32520c17",
+  "litellm": "1.56.10",
+  "presidio-analyzer": "2.2.362",
+  "spacy": "3.8.16"
+ },
+ "dlp": {
+  "action": "redact",
+  "confidence_threshold": 0.4,
+  "entities": [
+   "EMAIL_ADDRESS",
+   "PHONE_NUMBER",
+   "CREDIT_CARD",
+   "US_SSN",
+   "PERSON",
+   "LOCATION",
+   "IP_ADDRESS",
+   "API_KEY",
+   "AWS_ACCESS_KEY",
+   "PRIVATE_KEY",
+   "GITHUB_TOKEN",
+   "SLACK_WEBHOOK",
+   "PROMPT_INJECTION"
+  ]
+ },
+ "path": "occludra proxy-api -> occludra presidio -> capturing fake provider",
+ "changed_from_default": {
+  "rate_limit_rps": 100000,
+  "provider api_key": "unused"
+ }
+}

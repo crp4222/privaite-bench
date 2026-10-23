@@ -1,0 +1,23 @@
+{
+ "system": "kiji_proxy",
+ "title": "Kiji Privacy Proxy 1.6.4 (Dataiku)",
+ "started": "2026-10-23T13:15:55+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "kiji-proxy": "1.6.4"
+ },
+ "model": "quantized (bundled)",
+ "model_sha256": "2b657df1f9a2ce0c65070266908a207165d6ee4f4f2ced2a47c3f3ca94e09f9e",
+ "path": "kiji-proxy forward proxy -> capturing fake provider",
+ "changed_from_default": {
+  "transparent_proxy": false,
+  "serve_ui": false,
+  "home": "temporary directory"
+ }
+}

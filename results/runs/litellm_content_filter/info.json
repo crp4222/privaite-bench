@@ -1,0 +1,356 @@
+{
+ "system": "litellm_content_filter",
+ "title": "LiteLLM 1.104 content filter",
+ "started": "2026-10-23T13:15:09+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "litellm": "1.104.2"
+ },
+ "guardrail": {
+  "guardrail_name": "content-filter-pii",
+  "litellm_params": {
+   "guardrail": "litellm_content_filter",
+   "mode": "pre_call",
+   "default_on": true,
+   "patterns": [
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "us_ssn",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "us_ssn_no_dash",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "email",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "us_phone",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "visa",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "mastercard",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "amex",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "discover",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "credit_card",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "aws_access_key",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "aws_secret_key",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "github_token",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "slack_token",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "generic_api_key",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "ipv4",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "ipv6",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "url",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "passport_us",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "passport_uk",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "passport_germany",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "passport_france",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "passport_netherlands",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "passport_canada",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "passport_india",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "passport_australia",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "passport_china",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "passport_japan",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "nl_bsn_contextual",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "br_cpf",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "br_cpf_unformatted",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "br_phone_landline",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "br_phone_mobile",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "br_cep",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "br_cnpj",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "br_rg",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "au_tfn",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "au_abn",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "au_medicare",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "iban",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "fr_nir",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "eu_iban_enhanced",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "fr_phone",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "eu_vat",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "eu_passport_generic",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "fr_postal_code",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "street_address",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "airline_pnr",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "skywards_number",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "uae_emirates_id",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "uae_phone",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "flight_number",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "sg_nric",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "sg_phone",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "sg_postal_code",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "passport_singapore",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "sg_uen",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "sg_bank_account",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "ca_sin",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "ca_ohip",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "ca_on_drivers_licence",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "ca_immigration_doc",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "ca_bank_account",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "ca_postal_code",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "uoft_student_id",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "uoft_utorid",
+     "action": "MASK"
+    },
+    {
+     "pattern_type": "prebuilt",
+     "pattern_name": "uoft_tcard",
+     "action": "MASK"
+    }
+   ]
+  }
+ },
+ "path": "litellm --config (real proxy) -> capturing fake provider"
+}

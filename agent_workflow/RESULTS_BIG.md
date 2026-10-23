@@ -132,7 +132,8 @@ agent that skipped the log, not a gateway that removed more.
   engine leaks these values on this input**, the OpenAI-compatible proxy and
   the Open WebUI filter and the LiteLLM guardrail alike, not only the agent CLI
   gateway. The onnx preset's measured SECRET recall, 71.4% on the independent
-  comparison corpus (see [`COMPARISON.md`](../COMPARISON.md)), already says
+  comparison corpus of the time (the AI4Privacy comparison, since replaced by
+  the unified benchmark in the [README](../README.md)), already says
   secret detection is the weakest entity type; this is where that weakness
   lands in practice.
 

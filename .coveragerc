@@ -1,0 +1,4 @@
+[run]
+source = pbench
+# Workers run in subprocesses; measure them too.
+patch = subprocess

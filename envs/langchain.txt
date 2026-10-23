@@ -1,0 +1,3 @@
+# LangChain v1 agent PIIMiddleware.
+langchain==1.4.4
+langchain-core==1.6.9

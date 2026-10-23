@@ -14,15 +14,17 @@ import contextlib
 import io
 import json
 import logging
+import os
 import re
 import statistics
+import sys
 import tempfile
 import time
 from pathlib import Path
 
-from benchlib.paths import ensure_privaite_path
-
-ensure_privaite_path()
+# The PrivAiTe checkout to measure: PRIVAITE_PATH, else the sibling ../PrivAiTe.
+sys.path.insert(0, os.environ.get("PRIVAITE_PATH")
+                or str(Path(__file__).resolve().parents[2] / "PrivAiTe"))
 
 from privaite.config.schema import PIIConfig
 from privaite.pii.engine import PIIEngine

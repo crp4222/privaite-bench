@@ -1,0 +1,43 @@
+{
+ "system": "nemo_guardrails",
+ "title": "NeMo Guardrails 0.24 (sensitive data)",
+ "started": "2026-10-23T13:22:47+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "nemoguardrails": "0.24.1",
+  "presidio-analyzer": "2.2.364",
+  "langchain-openai": "1.7.2"
+ },
+ "rails": [
+  "mask sensitive data on input",
+  "mask sensitive data on output"
+ ],
+ "entities": [
+  "CREDIT_CARD",
+  "CRYPTO",
+  "DATE_TIME",
+  "EMAIL_ADDRESS",
+  "IBAN_CODE",
+  "IP_ADDRESS",
+  "LOCATION",
+  "MAC_ADDRESS",
+  "MEDICAL_LICENSE",
+  "NRP",
+  "PERSON",
+  "PHONE_NUMBER",
+  "UK_NHS",
+  "URL",
+  "US_BANK_NUMBER",
+  "US_DRIVER_LICENSE",
+  "US_ITIN",
+  "US_PASSPORT",
+  "US_SSN"
+ ],
+ "passthrough": true
+}

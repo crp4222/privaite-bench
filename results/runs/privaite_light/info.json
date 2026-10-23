@@ -1,0 +1,30 @@
+{
+ "system": "privaite_light",
+ "title": "PrivAiTe 0.7.2 (light)",
+ "started": "2026-10-23T13:02:22+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "privaite": "0.7.2",
+  "presidio-analyzer": "2.2.364",
+  "onnxruntime": "1.31.0",
+  "spacy": "3.8.16",
+  "transformers": "5.16.1",
+  "gliner": "0.2.29",
+  "torch": "2.14.1"
+ },
+ "preset": "light",
+ "onnx_model": null,
+ "onnx_variant": "q4",
+ "changed_from_default": {
+  "presidio.languages": "document language only",
+  "onnx.device": "cpu",
+  "gliner.device": "cpu"
+ },
+ "threads": 8
+}

@@ -1,0 +1,4 @@
+# LLM Guard Anonymize scanner (protectai). Pins its own transformers/torch.
+llm-guard==0.3.16
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
+zh_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/zh_core_web_sm-3.8.0/zh_core_web_sm-3.8.0-py3-none-any.whl

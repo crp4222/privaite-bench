@@ -1,0 +1,23 @@
+{
+ "system": "openmed_pii",
+ "title": "OpenMed 3.0 (privacy-filter-multilingual)",
+ "started": "2026-10-23T13:19:15+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "openmed": "3.0.0",
+  "torch": "2.14.1",
+  "transformers": "5.20.2"
+ },
+ "model": "OpenMed/privacy-filter-multilingual@f914f18d909d541d288dfda44a4d0b6bdb638d57",
+ "confidence_threshold": 0.5,
+ "changed_from_default": {
+  "lang": "document language",
+  "preserve_whitespace": true
+ }
+}

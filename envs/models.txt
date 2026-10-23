@@ -1,0 +1,9 @@
+# Standalone PII models: GLiNER PII, GLiNER2-PII, OpenMed PF multilingual, piiranha.
+torch==2.12.1
+gliner==0.2.29
+gliner2==1.3.2
+transformers
+numpy
+huggingface-hub
+sentencepiece
+protobuf

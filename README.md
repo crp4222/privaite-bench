@@ -1,300 +1,147 @@
 # privaite-bench
 
-PII detection benchmark suite for [PrivAiTe](https://github.com/crp4222/PrivAiTe).
+An open, reproducible benchmark of PII redaction for LLM traffic. 22 systems
+(proxies, gateways, guardrails, agent middleware, libraries and standalone
+models) on 8
+public corpora, three of them real human-written documents labeled by humans,
+plus the places agents actually put personal data: tool-call arguments, tool
+results, system prompts and multimodal parts.
 
-Measures detection rate, false positive rate, and latency across languages and entity types.
+Maintained by the author of [PrivAiTe](https://github.com/crp4222/PrivAiTe),
+which is one of the systems measured: every choice that could favor it is listed
+in [METHODOLOGY.md](METHODOLOGY.md#conflict-of-interest), and everything needed to
+rerun and audit the numbers is in this repo.
 
-## Privy protocol traces and Kiji ONNX evaluation
+## Leaderboard: text
 
-[`KIJI_PRIVY.md`](KIJI_PRIVY.md) evaluates the current PrivAiTe source and Kiji
-candidates on 300 synthetic protocol traces, 120 AI4Privacy documents, clean
-controls, structured payloads, and repeated long-log regressions. The current
-`onnx` stack fully covers 258/491 Privy spans; replacing Privacy Filter with Kiji
-and keeping Presidio lowers this to 147/491 despite a large speed gain. The
-report includes excessive redaction, remaining password misses, and failed runs.
-Kiji stays experimental. [Reproduction and sampling](scripts/privy/README.md).
+Macro average over the 8 corpora (each corpus weighs the same). Ranked by the
+share of **direct identifiers** (names, emails, phone numbers, ID, card and
+account numbers, secrets, addresses...) whose every character was masked, with
+its 95% bootstrap interval. `=` marks a system statistically tied with #1.
 
-## Comparative benchmark (multiple solutions)
+<!-- HEADLINE:START -->
+| # | System | Kind | Direct identifiers fully masked | Real text only | Char recall | Precision | F2 | Latency p50 |
+|---:|---|---|---|---|---|---|---|---|
+| 1 | [PrivAiTe 0.7.2 (max)](https://github.com/crp4222/PrivAiTe) | request integration | 87.5% <sub>[86%, 89%]</sub> | 80.7% <sub>[78%, 83%]</sub> | 74.2% | 65.9% | 70.2% | 335 ms |
+| 2 | [NVIDIA GLiNER-PII](https://huggingface.co/nvidia/gliner-PII) | model | 80.2% <sub>[79%, 82%]</sub> | 83.3% <sub>[81%, 86%]</sub> | 79.5% | 71.9% | 76.1% | 413 ms |
+| 3 | [GLiNER multi PII v1](https://huggingface.co/urchade/gliner_multi_pii-v1) | model | 78.0% <sub>[76%, 80%]</sub> | 79.0% <sub>[76%, 81%]</sub> | 77.8% | 63.7% | 72.1% | 185 ms |
+| 4 | [GLiNER2 PII (fastino)](https://huggingface.co/fastino/gliner2-privacy-filter-PII-multi) | model | 75.5% <sub>[74%, 77%]</sub> | 67.9% <sub>[65%, 71%]</sub> | 67.2% | 78.7% | 67.0% | 218 ms |
+| 5 | [PrivAiTe 0.7.2 (onnx, default)](https://github.com/crp4222/PrivAiTe) | request integration | 72.3% <sub>[70%, 75%]</sub> | 56.3% <sub>[51%, 61%]</sub> | 67.0% | 75.3% | 66.3% | 121 ms |
+| 6 | [openai/privacy-filter (model alone)](https://huggingface.co/openai/privacy-filter) | model | 66.6% <sub>[64%, 69%]</sub> | 47.7% <sub>[43%, 52%]</sub> | 56.9% | 78.5% | 56.7% | 135 ms |
+| 7 | [Microsoft Presidio 2.2.364](https://github.com/microsoft/presidio) | library | 61.6% <sub>[60%, 63%]</sub> | 71.3% <sub>[68%, 74%]</sub> | 61.5% | 70.4% | 59.5% | 28 ms |
+| 8 | [Guardrails AI GuardrailsPII 1.0.8](https://github.com/guardrails-ai/guardrails_pii) | library | 60.6% <sub>[59%, 63%]</sub> | 47.3% <sub>[43%, 52%]</sub> | 52.5% | 68.2% | 50.8% | 137 ms |
+| 9 | [OpenMed 3.0 (privacy-filter-multilingual)](https://huggingface.co/OpenMed/privacy-filter-multilingual) | library | 54.7% <sub>[53%, 56%]</sub> | 58.1% <sub>[55%, 61%]</sub> | 61.6% | 77.4% | 61.0% | 3610 ms |
+| 10 | [Piiranha v1](https://huggingface.co/iiiorg/piiranha-v1-detect-personal-information) | model | 52.9% <sub>[51%, 55%]</sub> | 48.6% <sub>[45%, 53%]</sub> | 39.3% | 86.1% | 42.2% | 113 ms |
+| 11 | [occludra/AISG gateway (e948e23)](https://github.com/occludra/gateway) | request integration | 50.8% <sub>[49%, 53%]</sub> | 64.5% <sub>[61%, 68%]</sub> | 36.7% | 59.0% | 32.9% | 32 ms |
+| 12 | [Kiji Privacy Proxy 1.6.4 (Dataiku)](https://github.com/dataiku/kiji-proxy) | request integration | 49.6% <sub>[48%, 51%]</sub> | 30.2% <sub>[27%, 34%]</sub> | 43.5% | 82.3% | 47.4% | 351 ms |
+| 13 | [PrivAiTe 0.7.2 (light)](https://github.com/crp4222/PrivAiTe) | request integration | 47.7% <sub>[46%, 50%]</sub> | 48.3% <sub>[44%, 53%]</sub> | 61.3% | 63.1% | 60.4% | 30 ms |
+| 14 | [LLM Guard 0.3.16 Anonymize](https://github.com/protectai/llm-guard) | library | 43.3% <sub>[41%, 46%]</sub> | 38.5% <sub>[33%, 44%]</sub> | 33.0% | 60.6% | 30.4% | 145 ms |
+| 15 | [Kiji PII (Dataiku, ONNX)](https://huggingface.co/DataikuNLP/kiji-pii-model-onnx) | model | 32.9% <sub>[31%, 35%]</sub> | 27.6% <sub>[24%, 31%]</sub> | 40.9% | 68.6% | 40.0% | 37 ms |
+| 16 | [DataFog 4.9 (+ its LiteLLM guardrail)](https://github.com/DataFog/datafog-python) | request integration | 15.7% <sub>[15%, 17%]</sub> | 0.7% <sub>[0%, 1%]</sub> | 15.7% | 87.9% | 20.3% | 0.2 ms |
+| 17 | [scrubadub 2.0.1](https://github.com/LeapBeyond/scrubadub) | library | 9.4% <sub>[8%, 10%]</sub> | 2.6% <sub>[1%, 4%]</sub> | 12.7% | 65.9% | 13.5% | 0.3 ms |
+| 18 | [LangChain 1.4 PIIMiddleware](https://docs.langchain.com/oss/python/langchain/middleware) | request integration | 7.0% <sub>[6%, 8%]</sub> | 2.5% <sub>[1%, 4%]</sub> | 11.5% | 72.4% | 12.0% | 0.1 ms |
+<!-- HEADLINE:END -->
 
-[`COMPARISON.md`](COMPARISON.md) scores several PII solutions on the **same** real
-documents: PrivAiTe (light and onnx) and a vanilla Microsoft Presidio baseline,
-the engine behind LiteLLM's Presidio guardrail and most drop-in PII proxies. The
-corpus is real [AI4Privacy](https://huggingface.co/datasets/ai4privacy/pii-masking-200k)
-documents whose ground-truth PII was labeled by 10 independent auditor agents and
-cross-checked against the dataset's own mask. See [`solutions/`](solutions/) for
-the framework and how to add another tool.
+**Char recall**: share of direct and quasi identifier characters masked.
+**Precision**: share of masked characters that belong to a labeled entity, on the
+7 exhaustively labeled corpora. **F2**: weights recall four times precision.
+**Latency**: median per document, CPU only (Apple M1 Pro).
+Per-corpus, per-type and per-language tables: [RESULTS.md](RESULTS.md).
 
-Headline: `privaite-onnx` leads on recall (85.2%) and removes PII from tool-call
-arguments (100% protection) where the flat-text baselines leak 100% of the PII
-placed in a tool-call argument, the gap that matters for agentic and multimodal
-traffic.
+## Agent traffic: where the record sits in the request
 
-[`ONNX_VARIANTS.md`](ONNX_VARIANTS.md) compares the exports of the Privacy Filter that PrivAiTe's `onnx` preset can load (`q4`, `q4f16`, int8) on the same corpora: recall, false positives, cost per window, memory, and how many outputs differ. Regenerate it with `scripts/onnx_variants/`.
+Share of direct identifiers still present in what reaches the model provider,
+when the same public record sits in each part of an OpenAI-style request (lower
+is better). **Requests kept intact** guards against the cheap way to score well:
+a gateway that drops tool calls leaks nothing from them but breaks the agent.
+Such a cell reads "(breaks it)", and "fails closed" when the system answered
+every request there with its own error; rows sort those places as fully leaked.
+Only systems that ship a request-level integration can be scored here;
+detection libraries and models have no notion of a request.
 
-## Agent workflow leak benchmark (gateway, live CLIs)
+<!-- STRUCTURED:START -->
+| System | User message | Multimodal part | System prompt | Tool-call arguments | Nested arguments | Tool result | Requests kept intact | Blocked | Failed closed |
+|---|---|---|---|---|---|---|---|---|---|
+| [PrivAiTe 0.7.2 (max)](https://github.com/crp4222/PrivAiTe) | 5.6% | 5.6% | 4.8% | 6.1% | 5.3% | 5.6% | 100.0% | 0 | 0 |
+| [PrivAiTe 0.7.2 (onnx, default)](https://github.com/crp4222/PrivAiTe) | 10.3% | 10.3% | 9.2% | 10.7% | 10.3% | 10.3% | 100.0% | 0 | 0 |
+| [PrivAiTe 0.7.2 (light)](https://github.com/crp4222/PrivAiTe) | 38.5% | 38.5% | 38.8% | 38.2% | 37.0% | 38.5% | 100.0% | 0 | 0 |
+| [LiteLLM 1.104 Presidio guardrail](https://docs.litellm.ai/docs/proxy/guardrails/pii_masking_v2) | 27.0% | 27.0% | 26.7% | 100.0% | 99.9% | 27.0% | 100.0% | 0 | 0 |
+| [Kiji Privacy Proxy 1.6.4 (Dataiku)](https://github.com/dataiku/kiji-proxy) | 22.3% | 100.0% | 22.4% | 100.0% | 99.9% | 22.3% | 100.0% | 0 | 0 |
+| [LiteLLM 1.104 content filter](https://docs.litellm.ai/docs/proxy/guardrails/litellm_content_filter) | 64.6% | 64.6% | 64.6% | 64.6% | 64.5% | 64.6% | 100.0% | 0 | 0 |
+| [DataFog 4.9 (+ its LiteLLM guardrail)](https://github.com/DataFog/datafog-python) | 68.9% | 68.9% | 68.9% | 100.0% | 99.9% | 68.9% | 100.0% | 0 | 0 |
+| [agentgateway 1.6.0 (prompt guard)](https://github.com/agentgateway/agentgateway) | 63.9% | 63.9% | 63.9% | 100.0% | 99.9% | 100.0% | 100.0% | 0 | 0 |
+| [occludra/AISG gateway (e948e23)](https://github.com/occludra/gateway) | 48.9% | 48.9% (breaks it) | 48.6% | 0.0% (breaks it) | 0.0% (breaks it) | 48.9% (breaks it) | 36.1% | 0 | 0 |
+| [NeMo Guardrails 0.24 (sensitive data)](https://github.com/NVIDIA/NeMo-Guardrails) | 40.4% | fails closed | 100.0% | 100.0% | 99.9% | 100.0% | 100.0% | 0 | 212 |
+| [LangChain 1.4 PIIMiddleware](https://docs.langchain.com/oss/python/langchain/middleware) | 89.2% | 89.2% | 100.0% | 100.0% | 99.9% | 89.2% | 100.0% | 0 | 0 |
+<!-- STRUCTURED:END -->
 
-[`agent_workflow/`](agent_workflow/) measures the end-to-end question behind
-gateway mode: when a real coding agent (Claude Code, Codex) reads a repo
-containing secrets and PII, what reaches the provider's wire, with and without
-PrivAiTe in the path? Wire-level substring scan of every captured
-provider-bound body, validity-guarded (a cell only publishes a leak count if
-the traffic provably went through the gateway), measured against the gateway
-of the local PrivAiTe checkout (the gateway shipped in PrivAiTe 0.4.1).
+## What stands out
 
-Headline from the 2026-08-12 live runs, stated honestly:
+PrivAiTe's max preset masks the most direct identifiers, ahead of NVIDIA
+GLiNER-PII; PrivAiTe's default preset sits behind three GLiNER models.
+Pattern-based layers (DataFog, LangChain's middleware, scrubadub) mask under 16%
+of direct identifiers, and almost nothing in real text.
 
-- Small fixture: direct baselines leak 24/24 (Claude Code) and 20/24 (Codex)
-  planted values; through the gateway (onnx presets) both drop to **0/24**,
-  detection cache on and off. [`agent_workflow/RESULTS.md`](agent_workflow/RESULTS.md)
-- Realistic big session (73 KB repo with a 69 KB log, 8-19 turns): the gateway
-  cells that exercised the whole fixture leak **2/24**, two secrets the
-  detector catches on their own and in `.env` form but misses once roughly one
-  preceding line of log-shaped context sits in front of them (reproduced
-  offline down to a 7-line, ~1 KB excerpt; order dependent; a detector
-  property, not a routing bug, so it affects every surface that runs the engine
-  and not only the gateway). The honest claim is "0/24 small, 2/24 big", never
-  a blanket zero, and 2/24 is a floor rather than a ceiling.
-  [`agent_workflow/RESULTS_BIG.md`](agent_workflow/RESULTS_BIG.md)
-- Cost: with the opt-in detection cache the median per-request scrub stays
-  between 1 and 3 s even on the big session; without it, the maximum reaches
-  42 s (Claude Code) and 72 s (Codex) late in the session. Enable the cache for
-  agent sessions.
+In agent traffic, most request integrations never look at tool calls: LiteLLM's
+Presidio guardrail, DataFog, agentgateway, LangChain, NeMo Guardrails and Kiji
+forward tool-call arguments untouched. occludra leaks none of them because it
+drops the tool calls, which breaks the agent. NeMo Guardrails answers every
+multimodal request with an internal error. Only PrivAiTe and LiteLLM's content
+filter give every part of the request the same protection.
 
-## Latest results
+## What is measured
 
-### Precision / Recall / F1 (entity-level, 64 documents, 5 languages)
+- **Corpora**: [TAB](https://huggingface.co/datasets/ildpil/text-anonymization-benchmark)
+  (European Court of Human Rights judgments), [MAPA](https://huggingface.co/datasets/joelniklaus/mapa)
+  (EU court decisions in 7 languages), [PIILO](https://www.kaggle.com/datasets/lburleigh/piilo-dataset)
+  (student essays): real text, human labels. [OpenPII](https://huggingface.co/datasets/ai4privacy/pii-masking-openpii-1m),
+  [Nemotron-PII](https://huggingface.co/datasets/nvidia/Nemotron-PII), [Gretel EN](https://huggingface.co/datasets/gretelai/gretel-pii-masking-en-v1),
+  [Gretel finance](https://huggingface.co/datasets/gretelai/synthetic_pii_finance_multilingual),
+  [Privy](https://huggingface.co/datasets/beki/privy): synthetic, from four
+  independent generators. 1,607 documents, 2.84M characters, en fr de es it pt nl.
+  Nothing was written or labeled for this benchmark.
+- **Systems** run at their documented defaults, each in its own pinned
+  environment, with two changes for all of them: the document's language is
+  passed in, and inference runs on CPU. Request integrations get every surface
+  they offer switched on. Proxies run for real (LiteLLM behind `litellm
+  --config`, Kiji, agentgateway and occludra as their own processes, NeMo through
+  `LLMRails`), in front of a fake provider that records what it receives.
+- **Scoring** is label-agnostic and character-based: a name half masked is a
+  leak. Intervals resample documents, not spans. Models trained on a corpus's
+  generator family are marked in RESULTS.md.
 
-> Read these as an internal upper bound: this corpus is self-built and its expected
-> list is self-authored, so the tool is partly graded against our own labeling. The
-> independent numbers are the ones to trust for generalization: the AI4Privacy
-> comparison (85.2% recall, third-party masks) in [`COMPARISON.md`](COMPARISON.md),
-> and the two out-of-distribution cross-checks (Gretel and Nemotron-PII) in
-> [`OOD_COMPARISON.md`](OOD_COMPARISON.md).
+Full definitions, corpus handling, configuration of every system and known
+limits: [METHODOLOGY.md](METHODOLOGY.md).
 
-We measure at the entity level:
-- **TP** = entity correctly flagged (matches expected)
-- **FP** = entity flagged but not in expected list
-- **FN** = entity in expected list but not flagged
+## Reproduce
 
-| Metric | Value |
-|--------|-------|
-| **Precision** | **84.8%** (of what we flag, how much is real PII) |
-| **Recall** | **94.3%** (of real PII, how much we catch) |
-| **F1** | **89.3%** |
-| TP / FP / FN | 263 / 47 / 16 |
-
-**By language:**
-
-| Lang | Precision | Recall | F1 |
-|------|-----------|--------|----|
-| FR | 91.0% | 98.2% | 94.5% |
-| EN | 75.4% | 90.8% | 82.4% |
-| DE | 89.7% | 89.7% | 89.7% |
-| ES | 89.5% | 94.4% | 91.9% |
-| IT | 91.7% | 100.0% | 95.7% |
-
-### Honest analysis of false positives
-
-Many "false positives" are actually real PII we forgot to include in the expected list:
-- DLP test SSNs we didn't annotate ("172-32-1176", "514-14-8905", etc.)
-- Dates in expected docs ("23 décembre 2025", "14/03/1958")
-- Account numbers ("9876543210", "0012345678901")
-
-Genuine over-anonymization (model errors) is limited to:
-- Field labels: "Name", "Email", "Nombre"
-- Honorifics / titles: "Dr", "Mrs"
-- Salutations: "Dear Sir"
-- Short alphanumeric IDs misread as account numbers
-
-EN has the lowest precision because we annotated less rigorously and the English dataset has more form-style documents (more labels like "Name:", "Dear Dr.").
-
-### Known recall misses (16 FN out of 279 expected)
-
-PERSON entities that NER doesn't detect:
-- Single-word names without context ("Schmidt", "Isabelle", "Schneider-Weber")
-- Long multi-part Spanish names ("María del Carmen Ortega Ruiz")
-- Compound names with particle ("Francesca De Luca")
-
-Regex-based entities (email, phone, IBAN, credit card, IP, SSN) reach near-100%.
-
-### Structured inputs: tool calls and multimodal (`bench_structured.py`)
-
-`bench.py` and the precision/recall script send every sample as a single flat
-user message. But OpenAI-compatible clients also carry user data inside
-multimodal `content` parts and tool/function-call arguments (a JSON string,
-often nested). This benchmark re-embeds the *same* PII corpus into those shapes
-to make sure none of it bypasses anonymization.
-
-It reports two things:
-
-- **Parity:** for every PII string the flat baseline anonymizes, each structured
-  carrier (`multimodal`, `tool_call`, `tool_call_nested`) must anonymize it too.
-  A value caught flat but leaked through a carrier is a **regression** (target: 0).
-- **Round-trip:** tool-call arguments must de-anonymize back to the original on
-  the response side, without loss.
-
-Carriers exercised (the same text routed four ways):
-
-| Carrier | Shape |
-|---|---|
-| `flat` | `{"role":"user","content":"…"}` (baseline) |
-| `multimodal` | `content: [{"type":"text","text":"…"}, {"image_url":…}]` |
-| `tool_call` | `tool_calls[0].function.arguments = {"note":"…"}` |
-| `tool_call_nested` | `arguments = {"user":{"profile":{"bio":"…"}}, "tags":["…"]}` |
-
-A hand-written `datasets/structured_samples.json` adds 17 realistic native
-payloads: the 5 originals (a `send_email` call, a nested `book_appointment`, a
-transfers list, a free-text argument string, a multimodal ID-card request) plus 12
-typed-field function calls where the PII sits in individual arguments (customer
-name, IBAN, SSN, address, phone) rather than one free-text blob, across EN/FR/DE/IT.
-
-#### Latest results (64-document corpus, 5 languages)
-
-Both presets are run. Every structured carrier matches its own flat baseline
-exactly (0 regressions), and tool-call arguments de-anonymize back losslessly.
-
-**`light` preset** (Presidio):
-
-| Carrier | Anonymized | Leaked | Regressions vs flat | Round-trip |
-|---------|-----------|--------|---------------------|------------|
-| flat (baseline) | 263/279 | 16 | n/a | n/a |
-| multimodal | 263/279 | 16 | **0** | n/a |
-| tool_call | 263/279 | 16 | **0** | 64/64 |
-| tool_call_nested | 263/279 | 16 | **0** | 64/64 |
-
-**`onnx` preset** (Presidio + Privacy Filter):
-
-| Carrier | Anonymized | Leaked | Regressions vs flat | Round-trip |
-|---------|-----------|--------|---------------------|------------|
-| flat (baseline) | 279/279 | 0 | n/a | n/a |
-| multimodal | 279/279 | 0 | **0** | n/a |
-| tool_call | 279/279 | 0 | **0** | 64/64 |
-| tool_call_nested | 279/279 | 0 | **0** | 64/64 |
-
-Routing PII through tool calls or multimodal parts loses nothing under either
-preset. The `light` misses are the documented PERSON recall gaps; `onnx` closes
-them (279/279, no leaks).
-
-Native structured samples (17): `light` 50/57, `onnx` 54/57, round-trip 16/16 on
-both, 0 parity regressions. The 12 added payloads put PII in individual typed
-arguments (name, IBAN, SSN, address, phone); `onnx` catches 41/44 of their values.
-Its 3 misses are hard cases that leak the same way in flat text, not
-structured-handling gaps: a bare city (`Roma`), one street address the model
-splits, and a French SSN. `light` additionally leaks every street address because
-its 9-entity allowlist has no LOCATION type.
-
-On a build without structured anonymization every carrier leaks 100%; that gap is
-the reason this benchmark exists.
-
-## Latency (Apple M1 Pro, light preset)
-
-Measured on real corporate documents at p50/p95/p99 over 30 runs each. Adding a language adds ~70-100ms per request.
-
-| Languages active | ~500 tokens p50 | ~1000 tokens p50 |
-|------------------|-----------------|------------------|
-| 1 (en or fr) | 62 ms | 113 ms |
-| 2 (fr + en) | 129 ms | 232 ms |
-| 3 (fr + en + de) | 199 ms | 356 ms |
-| 5 (fr + en + de + es + it) | 326 ms | 587 ms |
-| 7 (+ pt + nl) | 460 ms | 814 ms |
-
-p95 stays within 2-5% of p50. p99 spikes occasionally to 1s on the largest configurations (cold spaCy state).
-
-Boot time: 6.3 s for 1 language, ~4.2 s for 7 languages (cached spaCy models).
-
-If you only need 1-2 languages, latency is well under 250 ms even on long documents. Enabling 7 languages is meant for multi-lingual SaaS use cases and triples the cost.
-
-## Datasets
-
-### Synthetic (self-built)
-- `datasets/pii_samples.json` — 12 base PII samples (FR, EN, DE, mixed)
-- `datasets/corporate_samples.json` — 8 corporate documents (bank transfers, insurance claims, HR records, contracts)
-- `datasets/batch_samples.json` — 16 additional documents (CVs, leases, complaints, NDAs, invoices, medical referrals)
-- `datasets/clean_samples.json` — 14 clean texts with zero PII (should trigger no detections)
-- `datasets/structured_samples.json`: 17 native function-call / multimodal payloads used by `bench_structured.py` (5 original plus 12 realistic typed-field tool calls: send_email, create_invoice, book_appointment, transfer_funds and more, across EN/FR/DE/IT)
-
-### External / public sources
-- `datasets/dlptest_us.json` — 4 entries from [DLP Test](https://dlptest.com/sample-data/) public sample data (US names, SSN, emails, credit cards)
-- `datasets/enedis_rse_extracts.json` — 11 extracts from the [Enedis RSE 2024 report](https://www.enedis.fr/) (public corporate document, 105 pages). Includes PII samples (photographer names, executive contacts) and clean business text (financial figures, carbon metrics, biodiversity data). Each entry cites the source page.
-- `datasets/realworld_samples.json` — 10 additional real-world inspired samples from the same report
-
-### Data sources transparency
-
-| Dataset | Documents | PII count | Source | Synthetic? |
-|---------|-----------|-----------|--------|------------|
-| pii_samples | 12 | 37 | Self-built | Yes |
-| corporate_samples | 8 | 48 | Self-built | Yes |
-| batch_samples | 16 | 99 | Self-built | Yes |
-| dlptest_us | 4 | 16 | [dlptest.com](https://dlptest.com/sample-data/) | No (public test data) |
-| enedis_rse_extracts | 11 | 18 | [Enedis RSE 2024](https://www.enedis.fr/) | No (public report) |
-| realworld_samples | 10 | 26 | Enedis RSE 2024 inspired | Mixed |
-| clean_samples | 14 | 0 | Self-built | Yes |
-| structured_samples | 17 | 57 | Self-built | Yes |
-
-## Run
-
-```bash
-cd privaite-bench
-python bench.py                  # detection / miss / FP rate per preset  -> results/report.json
-python bench_precision_recall.py # entity-level P / R / F1                -> results/precision_recall_report.json
-python bench_latency.py          # latency percentiles                    -> results/latency_report.json
-python bench_structured.py       # tool-call / multimodal parity          -> results/structured_report.json
+```sh
+envs/build.sh harness privaite presidio litellm llmguard langchain scrubadub \
+  datafog nemo models openmed guardrails occludra
+envs/tools.sh                                     # agentgateway, occludra and Kiji, pinned
+.venvs/harness/bin/python -m pbench.sources      # download pinned corpora, select documents
+.venvs/harness/bin/python -m pbench.structured   # build the agent-traffic requests
+.venvs/harness/bin/python -m pbench.run          # every system, one at a time (hours on CPU)
+.venvs/harness/bin/python -m pbench.report       # results/summary.json, RESULTS.md, the tables above
+.venvs/harness/bin/python -m pytest tests
 ```
 
-Each script expects the PrivAiTe checkout as a sibling directory (`../PrivAiTe`).
-Override with `PRIVAITE_PATH=/path/to/checkout python bench_structured.py` to bench
-a specific branch. Results are printed to stdout and saved under `results/`.
+PIILO is distributed through Kaggle only: download it with
+`kaggle datasets download lburleigh/piilo-dataset` into
+`~/.cache/privaite-bench/raw/piilo/` first. `results/runs/` holds every
+system's raw outcome as offsets and booleans (no corpus text), so
+`pbench.report` reproduces every number without rerunning a model.
 
-`bench_structured.py --selftest` validates the harness with a fake detector (no
-spaCy needed) — useful in CI to catch harness regressions without model downloads.
+To add a system: one module in `pbench/systems/` (see its `__init__.py` for the
+four methods), one entry in `pbench/registry.py`, one `envs/<name>.txt`.
 
-## What it measures
+## Other studies in this repo
 
-| Metric | Description |
-|--------|-------------|
-| Detection rate | % of known PII correctly anonymized |
-| Miss rate | % of known PII that leaked through |
-| False positive rate | % of clean texts where something was incorrectly flagged |
-| Latency | ms per request, PII vs clean |
-| By language | Detection rate per language (FR, EN, DE, ES, IT) |
-| By entity type | Detection rate per type (PERSON, EMAIL, PHONE, etc.) |
+[`agent_workflow/`](agent_workflow/) runs real coding agents (Claude Code, Codex)
+over a repository holding planted secrets, with and without the PrivAiTe gateway,
+and counts what reaches the provider on the wire.
 
-## Adding test cases
+## License
 
-Add entries to any dataset JSON file:
-
-```json
-{
-  "id": "my_test_case",
-  "lang": "fr",
-  "source": "where this data comes from",
-  "text": "The input text with PII",
-  "expected": {
-    "the PII value": "ENTITY_TYPE"
-  },
-  "must_preserve": ["business terms that should NOT be anonymized"]
-}
-```
-
-For clean texts (false positive testing), add to `datasets/clean_samples.json` with `"expected": {}`.
-
-For structured inputs (tool calls / multimodal), add to `datasets/structured_samples.json`. Instead of `text`, give a ready-to-send `messages` list with the PII embedded where a real client would put it:
-
-```json
-{
-  "id": "my_tool_case",
-  "lang": "en",
-  "messages": [
-    {"role": "assistant", "content": null, "tool_calls": [
-      {"id": "call_1", "type": "function",
-       "function": {"name": "send_email",
-                    "arguments": "{\"to\": \"Sarah Johnson <sarah.j@corp.org>\"}"}}
-    ]}
-  ],
-  "expected": {"Sarah Johnson": "PERSON", "sarah.j@corp.org": "EMAIL_ADDRESS"}
-}
-```
-
-## Contributing
-
-Found a document type that breaks PrivAiTe? Add it as a test case and open a PR. Every false positive or missed detection reported here directly improves the project.
+Code: MIT. The corpora keep their own licenses (MIT, CC BY 4.0, Apache 2.0) and
+are downloaded from their publishers, never redistributed here.

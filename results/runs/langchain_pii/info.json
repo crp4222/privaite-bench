@@ -1,0 +1,28 @@
+{
+ "system": "langchain_pii",
+ "title": "LangChain 1.4 PIIMiddleware",
+ "started": "2026-10-23T13:15:57+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "langchain": "1.4.4",
+  "langchain-core": "1.6.9"
+ },
+ "types": [
+  "email",
+  "credit_card",
+  "ip",
+  "mac_address",
+  "url"
+ ],
+ "strategy": "redact",
+ "changed_from_default": {
+  "apply_to_output": true,
+  "apply_to_tool_results": true
+ }
+}

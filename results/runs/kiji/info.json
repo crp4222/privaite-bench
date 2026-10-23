@@ -1,0 +1,20 @@
+{
+ "system": "kiji",
+ "title": "Kiji PII (Dataiku, ONNX)",
+ "started": "2026-10-23T13:20:08+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "onnxruntime": "1.31.0",
+  "transformers": "5.16.1",
+  "privaite": "0.7.2"
+ },
+ "model": "DataikuNLP/kiji-pii-model-onnx@a0c9dd2ff9023b63378f67bafa50e33925663219",
+ "threshold": 0.5,
+ "decoder": "PrivAiTe decode_bioes_spans + refine_boundary"
+}

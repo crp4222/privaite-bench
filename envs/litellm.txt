@@ -1,0 +1,4 @@
+# LiteLLM proxy guardrails (Presidio guardrail + built-in content filter), run through
+# LiteLLM's own hook code. The Presidio guardrail talks HTTP to a Presidio service, which
+# runs from the presidio env (pbench/presidio_service.py), as in a real deployment.
+litellm[proxy]==1.104.2

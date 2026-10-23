@@ -1,0 +1,43 @@
+{
+ "system": "guardrails_pii",
+ "title": "Guardrails AI GuardrailsPII 1.0.8",
+ "started": "2026-10-23T13:18:49+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "guardrails-ai": "0.11.0",
+  "guardrails_pii": "1.0.8",
+  "gliner": "0.2.29",
+  "presidio-analyzer": "2.2.364"
+ },
+ "model": "urchade/gliner_small-v2.1",
+ "entities": [
+  "EMAIL_ADDRESS",
+  "PHONE_NUMBER",
+  "DOMAIN_NAME",
+  "IP_ADDRESS",
+  "DATE_TIME",
+  "LOCATION",
+  "PERSON",
+  "URL",
+  "CREDIT_CARD",
+  "CRYPTO",
+  "IBAN_CODE",
+  "NRP",
+  "MEDICAL_LICENSE",
+  "US_BANK_NUMBER",
+  "US_DRIVER_LICENSE",
+  "US_ITIN",
+  "US_PASSPORT",
+  "US_SSN"
+ ],
+ "language": "en (hard-coded)",
+ "changed_from_default": {
+  "entities": "pii + spi"
+ }
+}

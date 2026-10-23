@@ -1,0 +1,38 @@
+{
+ "system": "llm_guard",
+ "title": "LLM Guard 0.3.16 Anonymize",
+ "started": "2026-10-23T13:18:57+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "llm-guard": "0.3.16",
+  "presidio-analyzer": "2.2.358",
+  "transformers": "4.51.3",
+  "torch": "2.14.1"
+ },
+ "language": "en",
+ "entity_types": [
+  "CREDIT_CARD",
+  "CRYPTO",
+  "EMAIL_ADDRESS",
+  "IBAN_CODE",
+  "IP_ADDRESS",
+  "PERSON",
+  "PHONE_NUMBER",
+  "US_SSN",
+  "US_BANK_NUMBER",
+  "CREDIT_CARD_RE",
+  "UUID",
+  "EMAIL_ADDRESS_RE",
+  "US_SSN_RE",
+  "CUSTOM"
+ ],
+ "threshold": 0.5,
+ "recognizer_conf": "default (DeBERTa AI4Privacy v2)",
+ "changed_from_default": {}
+}

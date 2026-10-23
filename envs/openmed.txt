@@ -1,0 +1,2 @@
+# OpenMed SDK (extract_pii with its BIOES Viterbi decoding) on OpenMed/privacy-filter-multilingual.
+openmed[hf]==3.0.0

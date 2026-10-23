@@ -1,0 +1,21 @@
+{
+ "system": "piiranha",
+ "title": "Piiranha v1",
+ "started": "2026-10-23T14:08:29+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "transformers": "5.16.1",
+  "torch": "2.12.1"
+ },
+ "model": "iiiorg/piiranha-v1-detect-personal-information@255acde67a2f34cf452eb42e365b24d2957352fc",
+ "aggregation": "simple",
+ "window_chars": 1000,
+ "context_tokens": 256,
+ "stride_tokens": 32
+}

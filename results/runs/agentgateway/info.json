@@ -1,0 +1,30 @@
+{
+ "system": "agentgateway",
+ "title": "agentgateway 1.6.0 (prompt guard)",
+ "started": "2026-10-23T13:16:02+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "jobs": 1,
+ "versions": {
+  "agentgateway": "1.6.0"
+ },
+ "prompt_guard": {
+  "request": {
+   "regex": {
+    "action": "mask",
+    "builtins": [
+     "ssn",
+     "creditCard",
+     "phoneNumber",
+     "email",
+     "caSin"
+    ]
+   }
+  }
+ },
+ "path": "agentgateway binary -> capturing fake provider"
+}

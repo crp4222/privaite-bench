@@ -5,27 +5,9 @@ __pycache__/
 .DS_Store
 .pytest_cache/
 .ruff_cache/
-_run_all.sh
 
-# Local AI4Privacy sample (raw third-party text, not redistributed)
-solutions/_ai4privacy_sample.json
-solutions/__pycache__/
-__pycache__/
-solutions/_batch_*.json
-solutions/_corpus.json
-
-# LLM Guard competitor cache: stores raw third-party corpus text, not redistributed
-results/llm_guard_cache.json
-
-solutions/_gretel_ood_corpus.json
-
-# Nemotron-PII OOD corpus: raw third-party text, not redistributed (offsets/labels
-# are derived at build time; only integer stats land in results/).
-solutions/_nemotron_ood_corpus.json
-
-# Raw Privy protocol traces; publish only selection IDs and numeric measurements.
-solutions/_privy_corpus.json
-results/kiji_privy_replay/
+# Corpus text never lands in the repo: raw downloads and selected documents live
+# in ~/.cache/privaite-bench. results/runs/ holds offsets and booleans only.
 
 # Agent workflow benchmark runtime artifacts: the generated fake secrets and
 # the raw provider-bound request captures (they contain those secrets).
@@ -35,3 +17,5 @@ results/agent_workflow_big/
 
 # Harness stdout logs from live runs (cited by RESULTS*.md for provenance, kept local)
 results/*.log
+.coverage
+.coverage.*
