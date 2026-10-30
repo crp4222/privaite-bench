@@ -135,7 +135,8 @@ every system:
 4. **CPU only**, one system at a time, after an untimed warm-up call in every
    language. `OMP_NUM_THREADS=8`, and torch-based adapters set 8 intra-op
    threads; libraries with their own thread pools (onnxruntime, spaCy) keep
-   their defaults.
+   their defaults. The one exception is PrivAiTe's `ultrafast` preset, which
+   exists to run on the Apple Neural Engine; its CPU twin is the `minilm` row.
 5. **Pinned environments.** Each system runs in its own virtualenv built from
    `envs/<name>.txt`, where the system's own package is pinned to a release at
    least two weeks old at the time of the run; its dependencies are resolved by
@@ -185,6 +186,14 @@ Per-system notes that go beyond the rules:
   that drops the block and brings organizations back as PII (tested in
   `tests/test_adapters.py`). NeMo Guardrails builds its own English analyzer from
   the same file.
+- **PrivAiTe MiniLM** (0.8.0) is PrivAiTe's own model, trained by its author on
+  the train splits of five scored corpora (Nemotron-PII, OpenPII, the two
+  Gretel sets, MAPA), with every scored document removed from the training
+  data. Those five cells are marked in the contamination table; TAB, PIILO and
+  Privy are the corpora it never saw. Three rows: the `minilm` and `ultrafast`
+  presets as shipped, and the model alone through the detector PrivAiTe ships
+  (ONNX on CPU). Its own scores on test sets from sources it never saw are on
+  its model card.
 - **No telemetry**: every adapter sets the opt-out switches its library offers
   (`HF_HUB_DISABLE_TELEMETRY`, `DATAFOG_NO_TELEMETRY`, `DO_NOT_TRACK`, Guardrails
   metrics off; Kiji, LiteLLM and DataFog are opt-in already).

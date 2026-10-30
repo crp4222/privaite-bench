@@ -30,6 +30,12 @@ SYSTEMS = [
            "https://github.com/crp4222/PrivAiTe"),
     System("privaite_max", "PrivAiTe 0.7.2 (max)", "privaite", "integration", True, True,
            "https://github.com/crp4222/PrivAiTe"),
+    System("privaite_minilm", "PrivAiTe 0.8.0 (minilm, opt-in)", "privaite_minilm", "integration", True, True,
+           "https://github.com/crp4222/PrivAiTe",
+           "PrivAiTe's own model in place of the Privacy Filter"),
+    System("privaite_ultrafast", "PrivAiTe 0.8.0 (ultrafast, opt-in)", "privaite_minilm", "integration", True, True,
+           "https://github.com/crp4222/PrivAiTe",
+           "PrivAiTe's own model on the Apple Neural Engine, Presidio without spaCy"),
     System("litellm_presidio", "LiteLLM 1.104 Presidio guardrail", "litellm", "integration", False, True,
            "https://docs.litellm.ai/docs/proxy/guardrails/pii_masking_v2",
            "detection is Presidio's (see the Presidio row)"),
@@ -70,6 +76,8 @@ SYSTEMS = [
            "https://huggingface.co/iiiorg/piiranha-v1-detect-personal-information"),
     System("kiji", "Kiji PII (Dataiku, ONNX)", "privaite", "model", True, False,
            "https://huggingface.co/DataikuNLP/kiji-pii-model-onnx"),
+    System("privaite_pii_minilm", "PrivAiTe MiniLM (model alone, ONNX)", "privaite_minilm", "model", True, False,
+           "https://huggingface.co/crp4222/privaite-pii-minilm"),
 ]
 BY_NAME = {s.name: s for s in SYSTEMS}
 
@@ -81,6 +89,11 @@ CONTAMINATION = {
     "piiranha": {"openpii"},           # ai4privacy pii-masking-400k
     "openmed_pii": {"openpii"},        # ai4privacy 200k, 400k, open-pii-masking-500k
     "nvidia_gliner_pii": {"nemotron"},  # trained on nvidia/Nemotron-PII
+    # PrivAiTe's MiniLM: the train splits of these corpora (their test splits are
+    # scored here), deduplicated against every scored document.
+    "privaite_pii_minilm": {"nemotron", "openpii", "gretel_en", "gretel_fin", "mapa"},
+    "privaite_minilm": {"nemotron", "openpii", "gretel_en", "gretel_fin", "mapa"},
+    "privaite_ultrafast": {"nemotron", "openpii", "gretel_en", "gretel_fin", "mapa"},
 }
 
 # Tested on purpose and left out, with the reason, so absence is never silent.

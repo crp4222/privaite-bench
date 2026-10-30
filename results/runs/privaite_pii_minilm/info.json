@@ -1,0 +1,19 @@
+{
+ "system": "privaite_pii_minilm",
+ "title": "PrivAiTe MiniLM (model alone, ONNX)",
+ "started": "2026-10-30T20:27:22+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "versions": {
+  "privaite": "0.8.0",
+  "onnxruntime": "1.31.1",
+  "transformers": "5.22.1"
+ },
+ "model": "crp4222/privaite-pii-minilm@e7ea9dd38cd6d03198aeba57174a1d6d3a95618d",
+ "backend": "onnx",
+ "threads": 8
+}

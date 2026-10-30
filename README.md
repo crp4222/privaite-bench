@@ -1,6 +1,6 @@
 # privaite-bench
 
-An open, reproducible benchmark of PII redaction for LLM traffic. 22 systems
+An open, reproducible benchmark of PII redaction for LLM traffic. 25 systems
 (proxies, gateways, guardrails, agent middleware, libraries and standalone
 models) on 8
 public corpora, three of them real human-written documents labeled by humans,
@@ -22,24 +22,27 @@ its 95% bootstrap interval. `=` marks a system statistically tied with #1.
 <!-- HEADLINE:START -->
 | # | System | Kind | Direct identifiers fully masked | Real text only | Char recall | Precision | F2 | Latency p50 |
 |---:|---|---|---|---|---|---|---|---|
-| 1 | [PrivAiTe 0.7.2 (max)](https://github.com/crp4222/PrivAiTe) | request integration | 87.5% <sub>[86%, 89%]</sub> | 80.7% <sub>[78%, 83%]</sub> | 74.2% | 65.9% | 70.2% | 335 ms |
-| 2 | [NVIDIA GLiNER-PII](https://huggingface.co/nvidia/gliner-PII) | model | 80.2% <sub>[79%, 82%]</sub> | 83.3% <sub>[81%, 86%]</sub> | 79.5% | 71.9% | 76.1% | 413 ms |
-| 3 | [GLiNER multi PII v1](https://huggingface.co/urchade/gliner_multi_pii-v1) | model | 78.0% <sub>[76%, 80%]</sub> | 79.0% <sub>[76%, 81%]</sub> | 77.8% | 63.7% | 72.1% | 185 ms |
-| 4 | [GLiNER2 PII (fastino)](https://huggingface.co/fastino/gliner2-privacy-filter-PII-multi) | model | 75.5% <sub>[74%, 77%]</sub> | 67.9% <sub>[65%, 71%]</sub> | 67.2% | 78.7% | 67.0% | 218 ms |
-| 5 | [PrivAiTe 0.7.2 (onnx, default)](https://github.com/crp4222/PrivAiTe) | request integration | 72.3% <sub>[70%, 75%]</sub> | 56.3% <sub>[51%, 61%]</sub> | 67.0% | 75.3% | 66.3% | 121 ms |
-| 6 | [openai/privacy-filter (model alone)](https://huggingface.co/openai/privacy-filter) | model | 66.6% <sub>[64%, 69%]</sub> | 47.7% <sub>[43%, 52%]</sub> | 56.9% | 78.5% | 56.7% | 135 ms |
-| 7 | [Microsoft Presidio 2.2.364](https://github.com/microsoft/presidio) | library | 61.6% <sub>[60%, 63%]</sub> | 71.3% <sub>[68%, 74%]</sub> | 61.5% | 70.4% | 59.5% | 28 ms |
-| 8 | [Guardrails AI GuardrailsPII 1.0.8](https://github.com/guardrails-ai/guardrails_pii) | library | 60.6% <sub>[59%, 63%]</sub> | 47.3% <sub>[43%, 52%]</sub> | 52.5% | 68.2% | 50.8% | 137 ms |
-| 9 | [OpenMed 3.0 (privacy-filter-multilingual)](https://huggingface.co/OpenMed/privacy-filter-multilingual) | library | 54.7% <sub>[53%, 56%]</sub> | 58.1% <sub>[55%, 61%]</sub> | 61.6% | 77.4% | 61.0% | 3610 ms |
-| 10 | [Piiranha v1](https://huggingface.co/iiiorg/piiranha-v1-detect-personal-information) | model | 52.9% <sub>[51%, 55%]</sub> | 48.6% <sub>[45%, 53%]</sub> | 39.3% | 86.1% | 42.2% | 113 ms |
-| 11 | [occludra/AISG gateway (e948e23)](https://github.com/occludra/gateway) | request integration | 50.8% <sub>[49%, 53%]</sub> | 64.5% <sub>[61%, 68%]</sub> | 36.7% | 59.0% | 32.9% | 32 ms |
-| 12 | [Kiji Privacy Proxy 1.6.4 (Dataiku)](https://github.com/dataiku/kiji-proxy) | request integration | 49.6% <sub>[48%, 51%]</sub> | 30.2% <sub>[27%, 34%]</sub> | 43.5% | 82.3% | 47.4% | 351 ms |
-| 13 | [PrivAiTe 0.7.2 (light)](https://github.com/crp4222/PrivAiTe) | request integration | 47.7% <sub>[46%, 50%]</sub> | 48.3% <sub>[44%, 53%]</sub> | 61.3% | 63.1% | 60.4% | 30 ms |
-| 14 | [LLM Guard 0.3.16 Anonymize](https://github.com/protectai/llm-guard) | library | 43.3% <sub>[41%, 46%]</sub> | 38.5% <sub>[33%, 44%]</sub> | 33.0% | 60.6% | 30.4% | 145 ms |
-| 15 | [Kiji PII (Dataiku, ONNX)](https://huggingface.co/DataikuNLP/kiji-pii-model-onnx) | model | 32.9% <sub>[31%, 35%]</sub> | 27.6% <sub>[24%, 31%]</sub> | 40.9% | 68.6% | 40.0% | 37 ms |
-| 16 | [DataFog 4.9 (+ its LiteLLM guardrail)](https://github.com/DataFog/datafog-python) | request integration | 15.7% <sub>[15%, 17%]</sub> | 0.7% <sub>[0%, 1%]</sub> | 15.7% | 87.9% | 20.3% | 0.2 ms |
-| 17 | [scrubadub 2.0.1](https://github.com/LeapBeyond/scrubadub) | library | 9.4% <sub>[8%, 10%]</sub> | 2.6% <sub>[1%, 4%]</sub> | 12.7% | 65.9% | 13.5% | 0.3 ms |
-| 18 | [LangChain 1.4 PIIMiddleware](https://docs.langchain.com/oss/python/langchain/middleware) | request integration | 7.0% <sub>[6%, 8%]</sub> | 2.5% <sub>[1%, 4%]</sub> | 11.5% | 72.4% | 12.0% | 0.1 ms |
+| 1 | [PrivAiTe 0.8.0 (minilm, opt-in)](https://github.com/crp4222/PrivAiTe) | request integration | 90.6% <sub>[89%, 92%]</sub> | 83.3% <sub>[81%, 86%]</sub> | 90.6% | 86.0% | 89.8% | 37 ms |
+| 2 | [PrivAiTe MiniLM (model alone, ONNX)](https://huggingface.co/crp4222/privaite-pii-minilm) | model | 90.4% <sub>[89%, 92%]</sub> | 83.2% <sub>[81%, 86%]</sub> | 89.8% | 91.2% | 90.1% | 34 ms |
+| 3 | [PrivAiTe 0.8.0 (ultrafast, opt-in)](https://github.com/crp4222/PrivAiTe) | request integration | 90.3% <sub>[89%, 91%]</sub> | 83.0% <sub>[80%, 85%]</sub> | 89.9% | 89.4% | 89.8% | 10 ms |
+| 4 | [PrivAiTe 0.7.2 (max)](https://github.com/crp4222/PrivAiTe) | request integration | 87.5% <sub>[86%, 89%]</sub> | 80.7% <sub>[78%, 83%]</sub> | 74.2% | 65.9% | 70.2% | 335 ms |
+| 5 | [NVIDIA GLiNER-PII](https://huggingface.co/nvidia/gliner-PII) | model | 80.2% <sub>[79%, 82%]</sub> | 83.3% <sub>[81%, 86%]</sub> | 79.5% | 71.9% | 76.1% | 413 ms |
+| 6 | [GLiNER multi PII v1](https://huggingface.co/urchade/gliner_multi_pii-v1) | model | 78.0% <sub>[76%, 80%]</sub> | 79.0% <sub>[76%, 81%]</sub> | 77.8% | 63.7% | 72.1% | 185 ms |
+| 7 | [GLiNER2 PII (fastino)](https://huggingface.co/fastino/gliner2-privacy-filter-PII-multi) | model | 75.5% <sub>[74%, 77%]</sub> | 67.9% <sub>[65%, 71%]</sub> | 67.2% | 78.7% | 67.0% | 218 ms |
+| 8 | [PrivAiTe 0.7.2 (onnx, default)](https://github.com/crp4222/PrivAiTe) | request integration | 72.3% <sub>[70%, 75%]</sub> | 56.3% <sub>[51%, 61%]</sub> | 67.0% | 75.3% | 66.3% | 121 ms |
+| 9 | [openai/privacy-filter (model alone)](https://huggingface.co/openai/privacy-filter) | model | 66.6% <sub>[64%, 69%]</sub> | 47.7% <sub>[43%, 52%]</sub> | 56.9% | 78.5% | 56.7% | 135 ms |
+| 10 | [Microsoft Presidio 2.2.364](https://github.com/microsoft/presidio) | library | 61.6% <sub>[60%, 63%]</sub> | 71.3% <sub>[68%, 74%]</sub> | 61.5% | 70.4% | 59.5% | 28 ms |
+| 11 | [Guardrails AI GuardrailsPII 1.0.8](https://github.com/guardrails-ai/guardrails_pii) | library | 60.6% <sub>[59%, 63%]</sub> | 47.3% <sub>[43%, 52%]</sub> | 52.5% | 68.2% | 50.8% | 137 ms |
+| 12 | [OpenMed 3.0 (privacy-filter-multilingual)](https://huggingface.co/OpenMed/privacy-filter-multilingual) | library | 54.7% <sub>[53%, 56%]</sub> | 58.1% <sub>[55%, 61%]</sub> | 61.6% | 77.4% | 61.0% | 3610 ms |
+| 13 | [Piiranha v1](https://huggingface.co/iiiorg/piiranha-v1-detect-personal-information) | model | 52.9% <sub>[51%, 55%]</sub> | 48.6% <sub>[45%, 53%]</sub> | 39.3% | 86.1% | 42.2% | 113 ms |
+| 14 | [occludra/AISG gateway (e948e23)](https://github.com/occludra/gateway) | request integration | 50.8% <sub>[49%, 53%]</sub> | 64.5% <sub>[61%, 68%]</sub> | 36.7% | 59.0% | 32.9% | 32 ms |
+| 15 | [Kiji Privacy Proxy 1.6.4 (Dataiku)](https://github.com/dataiku/kiji-proxy) | request integration | 49.6% <sub>[48%, 51%]</sub> | 30.2% <sub>[27%, 34%]</sub> | 43.5% | 82.3% | 47.4% | 351 ms |
+| 16 | [PrivAiTe 0.7.2 (light)](https://github.com/crp4222/PrivAiTe) | request integration | 47.7% <sub>[46%, 50%]</sub> | 48.3% <sub>[44%, 53%]</sub> | 61.3% | 63.1% | 60.4% | 30 ms |
+| 17 | [LLM Guard 0.3.16 Anonymize](https://github.com/protectai/llm-guard) | library | 43.3% <sub>[41%, 46%]</sub> | 38.5% <sub>[33%, 44%]</sub> | 33.0% | 60.6% | 30.4% | 145 ms |
+| 18 | [Kiji PII (Dataiku, ONNX)](https://huggingface.co/DataikuNLP/kiji-pii-model-onnx) | model | 32.9% <sub>[31%, 35%]</sub> | 27.6% <sub>[24%, 31%]</sub> | 40.9% | 68.6% | 40.0% | 37 ms |
+| 19 | [DataFog 4.9 (+ its LiteLLM guardrail)](https://github.com/DataFog/datafog-python) | request integration | 15.7% <sub>[15%, 17%]</sub> | 0.7% <sub>[0%, 1%]</sub> | 15.7% | 87.9% | 20.3% | 0.2 ms |
+| 20 | [scrubadub 2.0.1](https://github.com/LeapBeyond/scrubadub) | library | 9.4% <sub>[8%, 10%]</sub> | 2.6% <sub>[1%, 4%]</sub> | 12.7% | 65.9% | 13.5% | 0.3 ms |
+| 21 | [LangChain 1.4 PIIMiddleware](https://docs.langchain.com/oss/python/langchain/middleware) | request integration | 7.0% <sub>[6%, 8%]</sub> | 2.5% <sub>[1%, 4%]</sub> | 11.5% | 72.4% | 12.0% | 0.1 ms |
 <!-- HEADLINE:END -->
 
 **Char recall**: share of direct and quasi identifier characters masked.
@@ -62,6 +65,8 @@ detection libraries and models have no notion of a request.
 <!-- STRUCTURED:START -->
 | System | User message | Multimodal part | System prompt | Tool-call arguments | Nested arguments | Tool result | Requests kept intact | Blocked | Failed closed |
 |---|---|---|---|---|---|---|---|---|---|
+| [PrivAiTe 0.8.0 (minilm, opt-in)](https://github.com/crp4222/PrivAiTe) | 2.1% | 2.1% | 1.9% | 2.5% | 2.2% | 2.1% | 100.0% | 0 | 0 |
+| [PrivAiTe 0.8.0 (ultrafast, opt-in)](https://github.com/crp4222/PrivAiTe) | 2.2% | 2.2% | 2.1% | 2.8% | 2.4% | 2.2% | 100.0% | 0 | 0 |
 | [PrivAiTe 0.7.2 (max)](https://github.com/crp4222/PrivAiTe) | 5.6% | 5.6% | 4.8% | 6.1% | 5.3% | 5.6% | 100.0% | 0 | 0 |
 | [PrivAiTe 0.7.2 (onnx, default)](https://github.com/crp4222/PrivAiTe) | 10.3% | 10.3% | 9.2% | 10.7% | 10.3% | 10.3% | 100.0% | 0 | 0 |
 | [PrivAiTe 0.7.2 (light)](https://github.com/crp4222/PrivAiTe) | 38.5% | 38.5% | 38.8% | 38.2% | 37.0% | 38.5% | 100.0% | 0 | 0 |
@@ -77,8 +82,17 @@ detection libraries and models have no notion of a request.
 
 ## What stands out
 
-PrivAiTe's max preset masks the most direct identifiers, ahead of NVIDIA
-GLiNER-PII; PrivAiTe's default preset sits behind three GLiNER models.
+PrivAiTe's own model, [privaite-pii-minilm](https://huggingface.co/crp4222/privaite-pii-minilm),
+masks the most direct identifiers, alone (90.4%) and in PrivAiTe 0.8.0's opt-in
+`minilm` and `ultrafast` presets (90.6% and 90.3%), ahead of PrivAiTe's max
+preset and NVIDIA GLiNER-PII, at 10 to 37 ms per document. Read those rows with
+their contamination: the author of this benchmark trained that model on the
+train splits of five of the eight corpora (their test splits are scored here,
+with every scored document removed from the training data). On the three it
+never saw (TAB, PIILO, Privy), the two presets mask 82.9% and 82.7% of direct
+identifiers against 72.7% for PrivAiTe's default preset; the model card adds
+test sets from other sources. PrivAiTe's default preset sits behind three
+GLiNER models.
 Pattern-based layers (DataFog, LangChain's middleware, scrubadub) mask under 16%
 of direct identifiers, and almost nothing in real text.
 

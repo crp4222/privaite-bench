@@ -1,0 +1,29 @@
+{
+ "system": "privaite_minilm",
+ "title": "PrivAiTe 0.8.0 (minilm, opt-in)",
+ "started": "2026-10-30T20:29:32+00:00",
+ "machine": {
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "memory_gb": 16,
+  "python": "3.12.12"
+ },
+ "versions": {
+  "privaite": "0.8.0",
+  "presidio-analyzer": "2.2.366",
+  "onnxruntime": "1.31.1",
+  "spacy": "3.8.18",
+  "transformers": "5.22.1",
+  "gliner": "not installed",
+  "torch": "not installed"
+ },
+ "preset": "minilm",
+ "onnx_model": null,
+ "onnx_variant": "q4",
+ "changed_from_default": {
+  "presidio.languages": "document language only",
+  "onnx.device": "cpu",
+  "gliner.device": "cpu"
+ },
+ "threads": 8
+}
